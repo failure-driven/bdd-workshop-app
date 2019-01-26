@@ -7,8 +7,8 @@ feature 'Game App', js: true do
     end
 
     Then 'user sees they are on rails' do
-      pending "for some reason I am not on rails?"
-      wait_for { page }.to have_content("Yay I'm on Rails")
+      # note the apostrophe next line
+      wait_for { page }.to have_content("Yay! You’re on Rails!")
     end
   end
 end

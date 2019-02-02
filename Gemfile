@@ -38,6 +38,11 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'rspec-wait'
+
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
+  gem 'pry-byebug'
+  gem 'better_errors', '2.1.1'
 end
 
 group :development do

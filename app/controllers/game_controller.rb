@@ -1,4 +1,3 @@
 class GameController < ApplicationController
-  def index
-  end
+  def index; end
 end

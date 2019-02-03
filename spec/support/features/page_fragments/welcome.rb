@@ -10,4 +10,3 @@ module PageFragments
     end
   end
 end
-

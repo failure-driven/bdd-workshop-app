@@ -8,9 +8,9 @@ feature 'Game App', js: true do
 
     Then 'user sees they are on rails' do
       wait_for { focus_on(:welcome).message_and_versions }.to include(
-        message:       "Yay! You’re on Rails!",
+        message: 'Yay! You’re on Rails!',
         rails_version: match(/^6.0.0/),
-        ruby_version:  match(/^ruby 2.6.0/)
+        ruby_version: match(/^ruby 2.6.0/)
       )
     end
   end

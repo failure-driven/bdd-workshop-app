@@ -7,7 +7,6 @@ feature 'Game', js: true do
     end
 
     Then 'user sees they are on react' do
-      pending("We're not rendering a ReactJS component")
       wait_for { focus_on(:game).message_and_versions }.to include(
         message:       'You are on React',
         react_version: match(/16\.7/)

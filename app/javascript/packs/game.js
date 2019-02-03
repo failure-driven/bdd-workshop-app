@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Game = props => (
+const Game = () => (
   <div>
     <div data-test="message">You are on React</div>
     <div>

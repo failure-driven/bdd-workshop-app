@@ -1,3 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Game renders correctly 1`] = `
+<div>
+  <div
+    data-test="message"
+  >
+    You are on React
+  </div>
+  <div>
+    React Version: 
+    <span
+      data-test="react-version"
+    >
+      16.7.0
+    </span>
+  </div>
+</div>
+`;

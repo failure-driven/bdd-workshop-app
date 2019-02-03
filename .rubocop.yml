@@ -1,0 +1,40 @@
+AllCops:
+  Exclude:
+    - Rakefile
+    - Gemfile
+    - bin/update
+    - bin/rake
+    - bin/setup
+    - bin/yarn
+    - bin/spring
+    - bin/rails
+    - bin/bundle
+    - bin/webpack-dev-server
+    - bin/webpack
+    - config/application.rb
+    - config/environments/production.rb
+    - config/environments/development.rb
+    - config/environments/test.rb
+    - config/spring.rb
+    - config/puma.rb
+    - db/seeds.rb
+    - db/schema.rb
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
+    - node_modules/**/*
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+

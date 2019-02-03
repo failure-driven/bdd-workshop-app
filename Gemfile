@@ -43,6 +43,8 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
   gem 'better_errors', '2.1.1'
+
+  gem 'rubocop'
 end
 
 group :development do

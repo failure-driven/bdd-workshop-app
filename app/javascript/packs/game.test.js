@@ -8,6 +8,11 @@ describe('Game', () => {
   beforeEach(() => {
     wrapper = shallow(<Game />);
   });
+
+  it('renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders a <div>', () => {
     expect(wrapper.type()).toBe('div');
   });

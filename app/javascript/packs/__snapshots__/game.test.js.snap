@@ -12,7 +12,7 @@ exports[`Game renders correctly 1`] = `
     <span
       data-test="react-version"
     >
-      16.7.0
+      16.8.1
     </span>
   </div>
 </div>

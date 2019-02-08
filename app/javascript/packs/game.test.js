@@ -22,7 +22,7 @@ describe('Game', () => {
       'You are on React'
     );
     expect(wrapper.find('[data-test="react-version"]').prop('children')).toBe(
-      '16.7.0'
+      '16.8.1'
     );
   });
 });

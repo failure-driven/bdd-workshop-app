@@ -12,7 +12,7 @@ Assuming you have the following dependencies
 
 * ruby 2.6.0
 * bundler gem
-* node 10.15.1
+* node 10.15.2
 * yarn
 * postgresql
 

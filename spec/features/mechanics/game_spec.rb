@@ -9,7 +9,7 @@ feature 'Game', js: true do
     Then 'user sees they are on react' do
       wait_for { focus_on(:game).message_and_versions }.to include(
         message: 'You are on React',
-        react_version: match(/16\.8\.1/)
+        react_version: match(/16\.8\.4/)
       )
     end
   end

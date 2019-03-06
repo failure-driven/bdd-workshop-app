@@ -1,24 +1,41 @@
-# README
+# Game App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A demo app to go along with the _soon to be written workshop_ on layered
+Behavriour Driven Developemnt (BDD)
+https://github.com/failure-driven/layered-testing-workshop.
 
-Things you may want to cover:
+## Getting started
 
-* Ruby version
+Assuming you have the following dependencies
 
-* System dependencies
+**TODO:** links for installing the below dependencies
 
-* Configuration
+* ruby 2.6.0
+* bundler gem
+* node 10.15.1
+* yarn
+* postgresql
 
-* Database creation
+### Run the tests
 
-* Database initialization
+Run all the tests
 
-* How to run the test suite
+```sh
+./bin/full-build
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Run the dev server
 
-* Deployment instructions
+Fire up rails
+```sh
+rails server
+```
 
-* ...
+visit the rails default home page
+
+  http://localhost:3000/
+
+visit a react component
+
+  http://localhost:3000/game
+

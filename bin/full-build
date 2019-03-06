@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+# check ruby and do bundle install bin/prepare-ruby
+bundle exec rubocop
+bundle exec rspec -f documentation
+
+# check node and do yarn install bin/prepare-node
+yarn lint
+yarn test
+

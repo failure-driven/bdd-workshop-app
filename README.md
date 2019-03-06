@@ -16,6 +16,16 @@ Assuming you have the following dependencies
 * yarn
 * postgresql
 
+### Install libraries
+
+run bundler and yarn to install libraries
+
+```sh
+bundle
+yarn
+bundle exec rails db:create
+```
+
 ### Run the tests
 
 Run all the tests

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe GameController, type: :controller do
+RSpec.describe GameController, type: :request do
   describe 'GET #index' do
     it 'returns http success' do
-      get :index
+      get '/'
       expect(response).to have_http_status(:success)
     end
   end

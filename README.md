@@ -10,7 +10,7 @@ Assuming you have the following dependencies
 
 **TODO:** links for installing the below dependencies
 
-* ruby 2.6.0
+* ruby 2.6.1
 * bundler gem
 * node 10.15.2
 * yarn

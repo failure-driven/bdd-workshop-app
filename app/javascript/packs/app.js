@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './game';
+import Game from '../components/Game';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

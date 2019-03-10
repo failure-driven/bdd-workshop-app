@@ -17,15 +17,19 @@ if [[ "$actual_ruby_version" != *"$expected_ruby_version"* ]]; then
 fi
 
 # prepare ruby gems
-gem update --system --no-document --quiet
-gem install bundler --no-document --quiet
-bundle install
+if [[ ${NO_INTERNET} != "true" ]]; then
+  gem update --system --no-document --quiet
+  gem install bundler --no-document --quiet
+  bundle install
+fi
 
 bundle exec rubocop
 bundle exec rspec -f documentation
 
 # yarn install node modules
-bin/yarn
+if [[ ${NO_INTERNET} != "true" ]]; then
+  bin/yarn
+fi
 
 yarn lint
 yarn test

@@ -1,11 +1,12 @@
 import React from 'react';
+import { Navbar, NavbarBrand } from 'reactstrap';
 
 const Navigation = () => (
-  <nav>
-    <a href="/" className="navbar-brand">
+  <Navbar color="princess-pink" light>
+    <NavbarBrand href="/" data-test-id="landing-page-link">
       Game
-    </a>
-  </nav>
+    </NavbarBrand>
+  </Navbar>
 );
 
 export default Navigation;

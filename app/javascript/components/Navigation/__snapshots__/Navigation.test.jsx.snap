@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation renders correctly 1`] = `
-<nav>
-  <a
-    className="navbar-brand"
+<Navbar
+  color="princess-pink"
+  expand={false}
+  light={true}
+  tag="nav"
+>
+  <NavbarBrand
+    data-test-id="landing-page-link"
     href="/"
+    tag="a"
   >
     Game
-  </a>
-</nav>
+  </NavbarBrand>
+</Navbar>
 `;

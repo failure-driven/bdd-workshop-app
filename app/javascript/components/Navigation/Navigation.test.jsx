@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Game from '.';
+import Navigation from '.';
 
-describe('Game', () => {
+describe('Navigation', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Game />);
+    wrapper = shallow(<Navigation />);
   });
 
   it('renders correctly', () => {

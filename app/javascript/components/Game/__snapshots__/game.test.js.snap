@@ -2,18 +2,11 @@
 
 exports[`Game renders correctly 1`] = `
 <div>
-  <div
-    data-test="message"
+  <Navigation />
+  <section
+    className="main-content"
   >
-    You are on React
-  </div>
-  <div>
-    React Version: 
-    <span
-      data-test="react-version"
-    >
-      16.8.4
-    </span>
-  </div>
+    DO YOU WANT TO PLAY A GAME_
+  </section>
 </div>
 `;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders correctly 1`] = `
+<nav>
+  <a
+    className="navbar-brand"
+    href="/"
+  >
+    Game
+  </a>
+</nav>
+`;

@@ -1,11 +1,10 @@
 import React from 'react';
+import Navigation from '../Navigation';
 
 const Game = () => (
   <div>
-    <div data-test="message">You are on React</div>
-    <div>
-      React Version: <span data-test="react-version">{React.version}</span>
-    </div>
+    <Navigation />
+    <section className="main-content">DO YOU WANT TO PLAY A GAME_</section>
   </div>
 );
 

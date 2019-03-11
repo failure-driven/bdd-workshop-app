@@ -8,6 +8,10 @@ module PageFragments
       navbar_brand.text
     end
 
+    def follow_nav_link(link_text)
+      browser.find('nav .nav-link', text: link_text).click
+    end
+
     def navigation
       browser.find_all('nav .nav-link').map(&:text)
     end

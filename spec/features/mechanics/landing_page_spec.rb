@@ -24,13 +24,12 @@ feature 'landing page', js: true do
     end
 
     Then 'they remain on the landing page' do
-      pending 'why does the react compoennt not render when it is called?'
-      # is it missing some kind of re-paint?
-      wait(0.1).for { focus_on(:landing).brand }.to eq 'Game'
+      # TODO: this does not work without react router, is it missing some kind of re-paint?
+      wait_for { focus_on(:landing).brand }.to eq 'Game'
     end
   end
 
-  context 'special URL with  profile feature toggle' do
+  context 'special URL with profile feature toggle' do
     scenario 'landing page has profile link' do
       When 'a user of the internet visits the site' do
         visit('/?profile=true')
@@ -39,6 +38,14 @@ feature 'landing page', js: true do
       Then 'they are greeted with the plain landing page' do
         wait_for { focus_on(:landing).brand }.to eq 'Game'
         wait_for { focus_on(:landing).navigation }.to eq ['Profile']
+      end
+
+      When 'they click on profile' do
+        focus_on(:landing).follow_nav_link('Profile')
+      end
+
+      Then 'they are take to the profile page' do
+        wait_for { page.current_path }.to eq('/profile')
       end
     end
   end

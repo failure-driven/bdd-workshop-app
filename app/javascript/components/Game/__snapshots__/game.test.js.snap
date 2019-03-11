@@ -1,12 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Game renders correctly 1`] = `
-<div>
-  <Navigation />
-  <section
-    className="main-content"
-  >
-    DO YOU WANT TO PLAY A GAME_
-  </section>
-</div>
+<section
+  className="main-content"
+>
+  DO YOU WANT TO PLAY A GAME_
+</section>
 `;

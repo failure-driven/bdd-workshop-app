@@ -4,11 +4,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from '../components/Game';
+import { BrowserRouter } from 'react-router-dom';
+import Navigation from '../components/Navigation';
+import Routes from '../components/Routes';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Game />,
+    <BrowserRouter>
+      <>
+        <Navigation />
+        <Routes />
+      </>
+    </BrowserRouter>,
     document.body.appendChild(document.createElement('div'))
   );
 });

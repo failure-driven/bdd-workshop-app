@@ -9,15 +9,15 @@ exports[`Navigation renders correctly 1`] = `
 >
   <NavbarBrand
     data-test-id="landing-page-link"
-    href="/"
-    tag="a"
+    tag={[Function]}
+    to="/"
   >
     Game
   </NavbarBrand>
 </Navbar>
 `;
 
-exports[`Navigation url with \`profile=true\` renders profile behind hidden url params 1`] = `
+exports[`Navigation url WITH \`profile=true\` renders profile behind hidden url params 1`] = `
 <Navbar
   color="princess-pink"
   expand={false}
@@ -26,8 +26,8 @@ exports[`Navigation url with \`profile=true\` renders profile behind hidden url 
 >
   <NavbarBrand
     data-test-id="landing-page-link"
-    href="/"
-    tag="a"
+    tag={[Function]}
+    to="/?profile=true"
   >
     Game
   </NavbarBrand>
@@ -41,8 +41,8 @@ exports[`Navigation url with \`profile=true\` renders profile behind hidden url 
       tag="li"
     >
       <NavLink
-        href="/profile"
-        tag="a"
+        tag={[Function]}
+        to="/profile?profile=true"
       >
         Profile
       </NavLink>

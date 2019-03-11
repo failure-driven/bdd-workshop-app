@@ -29,4 +29,17 @@ feature 'landing page', js: true do
       wait(0.1).for { focus_on(:landing).brand }.to eq 'Game'
     end
   end
+
+  context 'special URL with  profile feature toggle' do
+    scenario 'landing page has profile link' do
+      When 'a user of the internet visits the site' do
+        visit('/?profile=true')
+      end
+
+      Then 'they are greeted with the plain landing page' do
+        wait_for { focus_on(:landing).brand }.to eq 'Game'
+        wait_for { focus_on(:landing).navigation }.to eq ['Profile']
+      end
+    end
+  end
 end

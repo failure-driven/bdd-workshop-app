@@ -16,3 +16,37 @@ exports[`Navigation renders correctly 1`] = `
   </NavbarBrand>
 </Navbar>
 `;
+
+exports[`Navigation url with \`profile=true\` renders profile behind hidden url params 1`] = `
+<Navbar
+  color="princess-pink"
+  expand={false}
+  light={true}
+  tag="nav"
+>
+  <NavbarBrand
+    data-test-id="landing-page-link"
+    href="/"
+    tag="a"
+  >
+    Game
+  </NavbarBrand>
+  <Nav
+    className="ml-auto"
+    navbar={true}
+    tag="ul"
+    vertical={false}
+  >
+    <NavItem
+      tag="li"
+    >
+      <NavLink
+        href="/profile"
+        tag="a"
+      >
+        Profile
+      </NavLink>
+    </NavItem>
+  </Nav>
+</Navbar>
+`;

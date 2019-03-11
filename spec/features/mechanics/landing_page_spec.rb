@@ -18,5 +18,15 @@ feature 'landing page', js: true do
       visit('/')
       wait_for { focus_on(:landing).brand }.to eq 'Game'
     end
+
+    And 'clicks on the brand Game link' do
+      focus_on(:landing).follow_brand_link
+    end
+
+    Then 'they remain on the landing page' do
+      pending 'why does the react compoennt not render when it is called?'
+      # is it missing some kind of re-paint?
+      wait(0.1).for { focus_on(:landing).brand }.to eq 'Game'
+    end
   end
 end

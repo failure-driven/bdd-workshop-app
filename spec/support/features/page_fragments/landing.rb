@@ -1,7 +1,11 @@
 module PageFragments
   module Landing
+    def follow_brand_link
+      navbar_brand.click
+    end
+
     def brand
-      browser.find('nav .navbar-brand').text
+      navbar_brand.text
     end
 
     def navigation
@@ -10,6 +14,12 @@ module PageFragments
 
     def content
       browser.find('section.main-content').text
+    end
+
+    private
+
+    def navbar_brand
+      browser.find('nav .navbar-brand')
     end
   end
 end

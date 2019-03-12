@@ -1,7 +1,10 @@
 import React from 'react';
+import WarGamesIntro from '../WarGamesIntro';
 
 const Game = () => (
-  <section className="main-content">DO YOU WANT TO PLAY A GAME_</section>
+  <section className="main-content">
+    <WarGamesIntro />
+  </section>
 );
 
 export default Game;

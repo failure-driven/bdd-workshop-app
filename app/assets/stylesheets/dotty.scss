@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'dotty';
+  src: url(dotty.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.wargames-dotty {
+  color: #99ffff;
+  font-family: 'dotty';
+  font-weight: normal;
+  font-size: 3em;
+  background-color: #1d213b;
+  .question {
+    padding-left: 1em;
+  }
+}

@@ -4,6 +4,6 @@ exports[`Game renders correctly 1`] = `
 <section
   className="main-content"
 >
-  DO YOU WANT TO PLAY A GAME_
+  <WarGamesIntro />
 </section>
 `;

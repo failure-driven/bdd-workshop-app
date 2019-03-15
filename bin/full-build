@@ -19,7 +19,6 @@ fi
 # prepare ruby gems
 if [[ ${NO_INTERNET} != "true" ]]; then
   gem update --system --no-document --quiet
-  gem install bundler --no-document --quiet
   bundle install
 fi
 

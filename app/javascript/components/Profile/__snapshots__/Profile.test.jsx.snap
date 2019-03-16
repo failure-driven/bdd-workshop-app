@@ -2,6 +2,16 @@
 
 exports[`Profile renders correctly 1`] = `
 <div>
-  Profile
+  <h1>
+    Profile
+  </h1>
+  <Spinner
+    color="primary"
+    data-test-id="loading-profile"
+    tag="div"
+    type="border"
+  >
+    Loading...
+  </Spinner>
 </div>
 `;

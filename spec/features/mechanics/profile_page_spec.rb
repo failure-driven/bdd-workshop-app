@@ -12,4 +12,20 @@ feature 'profile page', js: true do
       wait_for { focus_on(:landing).navigation }.to eq ['Profile']
     end
   end
+
+  scenario 'landing on profile page displays a loading state for user id' do
+    When 'I visit the proifle page' do
+      visit('/profile')
+    end
+
+    Then 'I see loading state' do
+      wait_for { focus_on(:profile).is_loading }.to be_truthy
+    end
+  end
+
+  scenario 'loading state'
+  scenario 'error state'
+  scenario 'same id on revist'
+  scenario 'user id does not exist'
+  scenario 'user id is not signed'
 end

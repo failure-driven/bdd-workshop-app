@@ -1,5 +1,13 @@
 import React from 'react';
+import { Spinner } from 'reactstrap';
 
-const Profile = () => <div>Profile</div>;
+function Profile() {
+  return (
+    <div>
+      <h1>Profile</h1>
+      <Spinner color="primary" data-test-id="loading-profile" />
+    </div>
+  );
+}
 
 export default Profile;

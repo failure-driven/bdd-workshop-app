@@ -19,7 +19,19 @@ feature 'profile page', js: true do
     end
 
     Then 'I see loading state' do
-      wait_for { focus_on(:profile).is_loading }.to be_truthy
+      wait_for { focus_on(:profile).test_elements }.to eq ['Loading...']
+    end
+  end
+
+  scenario 'complains bitterly if the profile cannot be retrieved' do
+    When 'I visit the profile page' do
+      visit('/profile')
+    end
+
+    Then 'I see an error message' do
+      pending 'loading does not disappear once error message is displayed'
+      wait_for { focus_on(:message).error }.to eq 'Error - failed to fetch profile'
+      wait_for { focus_on(:profile).test_elements }.to eq []
     end
   end
 

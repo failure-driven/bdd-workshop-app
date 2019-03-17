@@ -3,6 +3,12 @@ module PageFragments
     alias_method :browser, :rspec_example # Capybara DSL + rspec example context
   end
 
+  module DelegateSynchronize
+    def synchronize(*selector_args, &block)
+      page.document.synchronize(*selector_args, &block)
+    end
+  end
+
   def classify(string)
     string.to_s.split('_').map(&:capitalize).join
   end
@@ -13,6 +19,7 @@ module PageFragments
       klass.const_get(classify(sub_klass))
     end
     page = Page.new(self).extend(mod)
+    page.browser.extend(DelegateSynchronize)
     yield page if block_given?
     page
   end

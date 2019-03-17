@@ -43,8 +43,19 @@ feature 'profile page', js: true do
       visit('/profile')
     end
 
-    Then 'a uuid id is presented' do
-      wait_for { focus_on(:profile).user_id }.to match(UUID_REGEX)
+    Then 'a consistent uuid id is presented per browser' do
+      wait_for do
+        @user_uuid = focus_on(:profile).user_id
+      end.to match(UUID_REGEX)
+    end
+
+    When 'the browser refreshes' do
+      page.driver.refresh
+    end
+
+    Then 'the same uuid is presented' do
+      pending 'same uuid is not yet served up'
+      wait(0.1).for { focus_on(:profile).user_id }.to eq @user_uuid
     end
   end
 

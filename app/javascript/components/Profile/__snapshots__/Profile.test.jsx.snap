@@ -61,9 +61,9 @@ exports[`Profile renders profile as returned from fetch 1`] = `
     <h1>
       Profile
     </h1>
-    <span>
-      <Component />
-    </span>
+    <span
+      data-test-id="user-id"
+    />
   </div>
 </Fragment>
 `;

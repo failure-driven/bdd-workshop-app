@@ -16,8 +16,8 @@ class Profile extends Component {
 
   fetchUserProfile() {
     this.fetchUserProfilePromise = API.fetchUserProfile()
-      .then(() => {
-        this.setState({ profile: true });
+      .then(response => {
+        this.setState({ profile: response });
       })
       .catch(error => {
         this.setState({
@@ -42,7 +42,7 @@ class Profile extends Component {
           <div data-test-id="profile">
             <h1>Profile</h1>
             {profile ? (
-              <span>{profile}</span>
+              <span data-test-id="user-id">{profile.id}</span>
             ) : (
               <Spinner color="primary" data-test-id="loading-profile" />
             )}

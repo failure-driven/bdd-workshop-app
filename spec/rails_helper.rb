@@ -11,6 +11,9 @@ Dir['spec/support/**/*.rb'].each do |file|
   require Rails.root.join(file).to_s
 end
 
+# generic UUID regex
+UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

@@ -22,7 +22,7 @@ feature 'profile page', js: true do
     end
 
     Then 'the loading element is no longer visible' do
-      wait_for { focus_on(:profile).test_elements }.to eq []
+      wait_for { focus_on(:profile).test_elements }.to_not include('Loading...')
     end
   end
 
@@ -44,8 +44,7 @@ feature 'profile page', js: true do
     end
 
     Then 'a uuid id is presented' do
-      pending 'user_id not displayed'
-      wait_for { focus_on(:profile).user_id }.to eq 'uuid'
+      wait_for { focus_on(:profile).user_id }.to match(UUID_REGEX)
     end
   end
 

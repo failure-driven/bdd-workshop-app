@@ -9,7 +9,7 @@ RSpec.describe '/api/v1/profiles', type: :request do
 
     it 'returns json' do
       get '/api/v1/profiles', as: :json
-      expect(JSON.parse(response.body)).to eq({})
+      expect(JSON.parse(response.body)).to include('id' => match(UUID_REGEX))
     end
   end
 end

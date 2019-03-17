@@ -8,7 +8,9 @@
 
 ## navigation
 
-- [ ] run rspec with pry
+- [ ] step through rspec
+  - [ ] run rspec with pry
+  - [ ] script that optionaly enables binding.pry and adds # break finds at the beginning?
 - [x] minimise all code blocks
   ```
   ⌘k⌘0 # fold all
@@ -37,11 +39,15 @@
   - global error handling
   - error boundaries - https://reactjs.org/docs/error-boundaries.html
   - testing using C Dodds framework - also custom hooks
+    - https://github.com/kentcdodds/react-testing-library#examples
+    - https://github.com/mpeyper/react-hooks-testing-library
   - [ ] react suspense for spinners? https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0
+  - testing hooks
+    - https://blog.logrocket.com/a-quick-guide-to-testing-react-hooks-fa584c415407
   - placement of alert and closing messages
   - [ ] sort out dev non dev dependencies
 - [ ] review rails
-  - [ ] spec/api_acceptance for request specs?
+  - [ ] spec/api_acceptance request specs?
   - [ ] v1 in api path?
 
 ## nice to have
@@ -59,4 +65,12 @@
 - [ ] feature toggles
 - [ ] better websocket strategy? - https://anycable.io/ or elixir?
 - [ ] Minesota flavoured memes
+
   - https://www.youtube.com/watch?v=KtwxrxGjNdo
+
+- [ ] docker build
+- [ ] cloud-formation deploy
+- [ ] ci with badge on github
+- [ ] better font for war games
+  - https://www.lifewire.com/create-your-own-fonts-using-inkscape-1701895
+- [ ] local storage wrapper https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2

@@ -278,7 +278,7 @@ DEPENDENCIES
   better_errors (= 2.1.1)
   bootsnap (>= 1.4.1)
   byebug
-  capybara (>= 2.15)
+  capybara (>= 3.14)
   capybara-screenshot
   chromedriver-helper
   jbuilder (~> 2.5)

@@ -34,7 +34,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'rspec-example_steps'
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.14'
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome

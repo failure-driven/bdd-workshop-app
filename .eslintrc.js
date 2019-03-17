@@ -3,11 +3,11 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:jest/recommended'],
   parser: 'babel-eslint',
   env: {
-    browser: true
+    browser: true,
+    es6: true
   },
   rules: {
     quotes: ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'always-multiline']
   }
 };
-

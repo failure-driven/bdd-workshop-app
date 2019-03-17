@@ -14,23 +14,26 @@ feature 'profile page', js: true do
   end
 
   scenario 'landing on profile page displays a loading state for user id' do
-    When 'I visit the proifle page' do
-      visit('/profile')
+    When 'I visit the proifle page in original loading state' do
+      with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+        visit('/profile')
+        wait_for { focus_on(:profile).test_elements }.to eq ['Loading...']
+      end
     end
 
-    Then 'I see loading state' do
-      wait_for { focus_on(:profile).test_elements }.to eq ['Loading...']
+    Then 'the loading element is no longer visible' do
+      wait_for { focus_on(:profile).test_elements }.to eq []
     end
   end
 
   scenario 'complains bitterly if the profile cannot be retrieved' do
-    When 'I visit the profile page' do
+    When 'the user visits the profile page and the API returns an error' do
+      ForceApiError.force(method: 'get', url: '/api/v1/profiles', error: 'something went wrong')
       visit('/profile')
     end
 
     Then 'I see an error message' do
-      pending 'loading does not disappear once error message is displayed'
-      wait_for { focus_on(:message).error }.to eq 'Error - failed to fetch profile'
+      wait_for { focus_on(:message).error }.to eq 'Something went wrong - 500 - Internal Server Error'
       wait_for { focus_on(:profile).test_elements }.to eq []
     end
   end

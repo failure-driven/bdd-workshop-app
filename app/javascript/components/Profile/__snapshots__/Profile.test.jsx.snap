@@ -1,19 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile renders correctly 1`] = `
-<div
-  data-test-id="profile"
+exports[`Profile renders an error if profile fetch fails 1`] = `
+<Alert
+  closeAriaLabel="Close"
+  color="danger"
+  fade={true}
+  isOpen={true}
+  tag="div"
+  transition={
+    Object {
+      "appear": true,
+      "baseClass": "fade",
+      "baseClassActive": "show",
+      "enter": true,
+      "exit": true,
+      "in": true,
+      "mountOnEnter": false,
+      "onEnter": [Function],
+      "onEntered": [Function],
+      "onEntering": [Function],
+      "onExit": [Function],
+      "onExited": [Function],
+      "onExiting": [Function],
+      "tag": "div",
+      "timeout": 150,
+      "unmountOnExit": true,
+    }
+  }
 >
-  <h1>
-    Profile
-  </h1>
-  <Spinner
-    color="primary"
-    data-test-id="loading-profile"
-    tag="div"
-    type="border"
+  Something went wrong - 
+  500 - catastrophic failure
+</Alert>
+`;
+
+exports[`Profile renders correctly in loading state 1`] = `
+<Fragment>
+  <div
+    data-test-id="profile"
   >
-    Loading...
-  </Spinner>
-</div>
+    <h1>
+      Profile
+    </h1>
+    <Spinner
+      color="primary"
+      data-test-id="loading-profile"
+      tag="div"
+      type="border"
+    >
+      Loading...
+    </Spinner>
+  </div>
+</Fragment>
+`;
+
+exports[`Profile renders profile as returned from fetch 1`] = `
+<Fragment>
+  <div
+    data-test-id="profile"
+  >
+    <h1>
+      Profile
+    </h1>
+    <span>
+      <Component />
+    </span>
+  </div>
+</Fragment>
 `;

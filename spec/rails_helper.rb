@@ -65,4 +65,13 @@ RSpec.configure do |config|
 
   # include PageFragments in features
   config.include PageFragments, type: :feature
+
+  # for pausing API requests and forcing API errors
+  config.include PauseService, type: :feature
+  config.include ForceApiError, type: :feature
+
+  config.after(:each, type: :feature) do
+    ForceApiError.clear
+    Rails.application.config.should_pause = nil
+  end
 end

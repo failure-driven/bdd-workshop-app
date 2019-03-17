@@ -11,20 +11,24 @@ class Profile extends Component {
   state = {
     failed: false,
     errorMessage: null,
-    profile: null,
+    profile: null, // TODO could we pull it out JSON.parse(localStorage.getItem('player')),
   };
 
   fetchUserProfile() {
-    this.fetchUserProfilePromise = API.fetchUserProfile()
+    // TODO move out to separate lib?
+    const player = localStorage.getItem('player') !== 'undefined' && JSON.parse(localStorage.getItem('player'));
+    this.userProfilePromise = (player
+      ? API.fetchUserProfile(player.id)
+      : API.createUserProfile()
+    )
       .then(response => {
-        this.setState({ profile: response });
+        this.setState({ profile: response.data });
+        localStorage.setItem('player', JSON.stringify(response.data));
       })
-      .catch(error => {
+      .catch(({ response: { status, statusText } }) => {
         this.setState({
           failed: true,
-          errorMessage: `${error.response.status} - ${
-            error.response.statusText
-          }`,
+          errorMessage: [status, statusText].join(' - '),
         });
       });
   }

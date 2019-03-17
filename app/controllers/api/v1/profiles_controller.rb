@@ -1,8 +1,12 @@
 module Api
   module V1
-    class ProfilesController < ApplicationController
-      def index
-        render json: { id: SecureRandom.uuid }
+    class ProfilesController < ApiController
+      def show
+        @player = Player.find(params[:id])
+      end
+
+      def create
+        @player = Player.create!
       end
     end
   end

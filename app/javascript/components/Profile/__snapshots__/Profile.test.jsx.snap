@@ -1,6 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile renders an error if profile fetch fails 1`] = `
+exports[`Profile handles invalid player being set 1`] = `
+<Fragment>
+  <div
+    data-test-id="profile"
+  >
+    <h1>
+      Profile
+    </h1>
+    <Spinner
+      color="primary"
+      data-test-id="loading-profile"
+      tag="div"
+      type="border"
+    >
+      Loading...
+    </Spinner>
+  </div>
+</Fragment>
+`;
+
+exports[`Profile renders an error if profile fetch fails from localstorage the-id 1`] = `
 <Alert
   closeAriaLabel="Close"
   color="danger"
@@ -29,7 +49,7 @@ exports[`Profile renders an error if profile fetch fails 1`] = `
   }
 >
   Something went wrong - 
-  500 - catastrophic failure
+  500 - catastrophic failure in fetch the-id
 </Alert>
 `;
 
@@ -53,7 +73,7 @@ exports[`Profile renders correctly in loading state 1`] = `
 </Fragment>
 `;
 
-exports[`Profile renders profile as returned from fetch 1`] = `
+exports[`Profile renders profile as created as no player found 1`] = `
 <Fragment>
   <div
     data-test-id="profile"
@@ -61,9 +81,34 @@ exports[`Profile renders profile as returned from fetch 1`] = `
     <h1>
       Profile
     </h1>
-    <span
-      data-test-id="user-id"
-    />
+    <Spinner
+      color="primary"
+      data-test-id="loading-profile"
+      tag="div"
+      type="border"
+    >
+      Loading...
+    </Spinner>
+  </div>
+</Fragment>
+`;
+
+exports[`Profile renders profile as returned from fetch the-id 1`] = `
+<Fragment>
+  <div
+    data-test-id="profile"
+  >
+    <h1>
+      Profile
+    </h1>
+    <Spinner
+      color="primary"
+      data-test-id="loading-profile"
+      tag="div"
+      type="border"
+    >
+      Loading...
+    </Spinner>
   </div>
 </Fragment>
 `;

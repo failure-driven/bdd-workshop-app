@@ -15,7 +15,7 @@ feature 'profile page', js: true do
 
   scenario 'landing on profile page displays a loading state for user id' do
     When 'I visit the proifle page in original loading state' do
-      with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+      with_api_route_paused(method: 'post', url: '/api/v1/profiles') do
         visit('/profile')
         wait_for { focus_on(:profile).test_elements }.to eq ['Loading...']
       end
@@ -28,7 +28,7 @@ feature 'profile page', js: true do
 
   scenario 'complains bitterly if the profile cannot be retrieved' do
     When 'the user visits the profile page and the API returns an error' do
-      ForceApiError.force(method: 'get', url: '/api/v1/profiles', error: 'something went wrong')
+      ForceApiError.force(method: 'post', url: '/api/v1/profiles', error: 'something went wrong')
       visit('/profile')
     end
 
@@ -38,7 +38,7 @@ feature 'profile page', js: true do
     end
   end
 
-  scenario 'gets a profile id assigned' do
+  scenario 'gets a profile id assigned for all visits' do
     When 'I visit the proifle page' do
       visit('/profile')
     end
@@ -54,12 +54,10 @@ feature 'profile page', js: true do
     end
 
     Then 'the same uuid is presented' do
-      pending 'same uuid is not yet served up'
-      wait(0.1).for { focus_on(:profile).user_id }.to eq @user_uuid
+      wait_for { focus_on(:profile).user_id }.to eq @user_uuid
     end
   end
 
-  scenario 'same id on revist'
   scenario 'user id does not exist'
   scenario 'user id is not signed'
 end

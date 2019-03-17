@@ -1,43 +1,79 @@
 import axios from 'axios';
-import { fetchUserProfile } from './';
+import { fetchUserProfile, createUserProfile } from './';
+
+describe('createUserProfile', () => {
+  it('should post to create a new player profile', () => {
+    const axiosPosts = [];
+
+    axios.post = (url, { headers }) => {
+      axiosPosts.push({ url, headers });
+      return new Promise(() => {});
+    };
+
+    createUserProfile();
+
+    expect(axiosPosts).toEqual([
+      {
+        url: '/api/v1/profiles.json',
+        headers: { 'Content-Type': 'application/json' },
+      },
+    ]);
+  });
+});
 
 describe('fetchUserProfile', () => {
   it('should request profile', () => {
     const axiosGets = [];
 
-    axios.get = url => {
-      axiosGets.push({ url });
+    axios.get = (url, { headers }) => {
+      axiosGets.push({ url, headers });
       return new Promise(() => {});
     };
 
-    fetchUserProfile();
+    fetchUserProfile('profile-id');
 
     expect(axiosGets).toEqual([
       {
-        url: '/api/v1/profiles',
+        url: '/api/v1/profiles/profile-id.json',
+        headers: { 'Content-Type': 'application/json' },
       },
     ]);
   });
 
   it('should return data from response', async () => {
     axios.get = () => {};
-    axios.get = () => Promise.resolve({ data: 'the data' });
+    axios.get = () => Promise.resolve('the data');
 
     const response = await fetchUserProfile('token');
     expect(response).toEqual('the data');
   });
 
-  it('should allow unexpected errors to be caught', async () => {
-    axios.get = () => {};
+  it('should attempt to create if the fetch fails', async () => {
     const expectedError = new Error('oh no');
     axios.get = () => Promise.reject(expectedError);
 
-    return fetchUserProfile('token')
-      .then(() => {
-        expect('no error').toEqual('unhandled error');
-      })
-      .catch(actualError => {
-        expect(actualError).toEqual(expectedError);
-      });
+    const axiosPosts = [];
+
+    axios.post = (url, { headers }) => {
+      axiosPosts.push({ url, headers });
+      return new Promise(() => {});
+    };
+
+    // TODO sort this out
+    // const response = await fetchUserProfile('profile-id')
+    //   .then(() => {
+    //     expect('no error').toEqual('unhandled error');
+    //   })
+    //   .catch(actualError => {
+    //     expect(actualError).toEqual(expectedError);
+    //   });
+    // expect(response).toEqual('the data');
+
+    // expect(axiosPosts).toEqual([
+    //   {
+    //     url: '/api/v1/profiles.json',
+    //     headers: { 'Content-Type': 'application/json' },
+    //   },
+    // ]);
   });
 });

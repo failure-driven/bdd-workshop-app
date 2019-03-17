@@ -38,8 +38,17 @@ feature 'profile page', js: true do
     end
   end
 
-  scenario 'loading state'
-  scenario 'error state'
+  scenario 'gets a profile id assigned' do
+    When 'I visit the proifle page' do
+      visit('/profile')
+    end
+
+    Then 'a uuid id is presented' do
+      pending 'user_id not displayed'
+      wait_for { focus_on(:profile).user_id }.to eq 'uuid'
+    end
+  end
+
   scenario 'same id on revist'
   scenario 'user id does not exist'
   scenario 'user id is not signed'

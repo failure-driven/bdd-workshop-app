@@ -5,5 +5,9 @@ module PageFragments
         browser.all('[data-test-id="profile"] [data-test-id]').map(&:text)
       end
     end
+
+    def user_id
+      browser.find('[data-test-id="user_id"]').text
+    end
   end
 end

@@ -5,8 +5,8 @@ describe('createUserProfile', () => {
   it('should post to create a new player profile', () => {
     const axiosPosts = [];
 
-    axios.post = (url, { headers }) => {
-      axiosPosts.push({ url, headers });
+    axios.post = (url, data, { headers }) => {
+      axiosPosts.push({ url, data, headers });
       return new Promise(() => {});
     };
 
@@ -14,8 +14,9 @@ describe('createUserProfile', () => {
 
     expect(axiosPosts).toEqual([
       {
-        url: '/api/v1/profiles.json',
-        headers: { 'Content-Type': 'application/json' },
+        url: '/api/v1/profiles',
+        data: {},
+        headers: { Accept: 'application/json' },
       },
     ]);
   });
@@ -34,8 +35,8 @@ describe('fetchUserProfile', () => {
 
     expect(axiosGets).toEqual([
       {
-        url: '/api/v1/profiles/profile-id.json',
-        headers: { 'Content-Type': 'application/json' },
+        url: '/api/v1/profiles/profile-id',
+        headers: { Accept: 'application/json' },
       },
     ]);
   });

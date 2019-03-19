@@ -41,7 +41,6 @@
   - testing using C Dodds framework - also custom hooks
     - https://github.com/kentcdodds/react-testing-library#examples
     - https://github.com/mpeyper/react-hooks-testing-library
-  - [ ] react suspense for spinners? https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0
   - testing hooks
     - https://blog.logrocket.com/a-quick-guide-to-testing-react-hooks-fa584c415407
   - placement of alert and closing messages
@@ -49,6 +48,21 @@
 - [ ] review rails
   - [ ] spec/api_acceptance request specs?
   - [ ] v1 in api path?
+
+## Experimental
+
+added experimental page for untested and demo stuff
+- http://localhost:3000/experimental
+- app/javascript/components/experimental
+- app/javascript/packs/experimental_app.js
+
+### ExProfile
+
+using custom hook library to fetch and suspense fallback for spinners
+
+- as per [blog - usefetch react custom hook](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
+- and lib https://github.com/dai-shi/react-hooks-fetch
+- **ISSUE** post requests seem not to work for me? [github eg](https://github.com/dai-shi/react-hooks-fetch/blob/master/examples/02_extended/src/index.js)
 
 ## nice to have
 

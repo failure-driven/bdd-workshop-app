@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   get '/' => 'landing#index'
   get '/profile' => 'landing#index'
 
+  get '/experimental' => 'landing#experimental'
+
   get '/game' => 'game#index'
 end

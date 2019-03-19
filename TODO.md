@@ -5,12 +5,17 @@
 - chrome version 71 - 75
 - byebug needed new version of readline for Ceels could comment it out
 - be more explicit around running and installing postgres
+- postgres via `asdf` may require re-build to use UUID ? PS
+- [ ] look at `asdf` setup - looks like current trend
 
 ## navigation
 
 - [ ] step through rspec
   - [ ] run rspec with pry
   - [ ] script that optionaly enables binding.pry and adds # break finds at the beginning?
+  - [ ] PS suggestions
+    - [ ] environment variable to set a method `b` to add a binding.pry?
+    - [ ] overwrite capybara wait statement to add a sleep in slow mode?
 - [x] minimise all code blocks
   ```
   ⌘k⌘0 # fold all

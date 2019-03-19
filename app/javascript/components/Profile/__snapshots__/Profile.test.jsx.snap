@@ -1,114 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Profile handles invalid player being set 1`] = `
-<Fragment>
-  <div
-    data-test-id="profile"
-  >
-    <h1>
-      Profile
-    </h1>
-    <Spinner
-      color="primary"
-      data-test-id="loading-profile"
-      tag="div"
-      type="border"
-    >
-      Loading...
-    </Spinner>
-  </div>
-</Fragment>
+<Spinner
+  color="primary"
+  data-test-id="profile-loading"
+  tag="div"
+  type="border"
+>
+  Loading...
+</Spinner>
 `;
 
 exports[`Profile renders an error if profile fetch fails from localstorage the-id 1`] = `
-<Alert
-  closeAriaLabel="Close"
-  color="danger"
-  fade={true}
-  isOpen={true}
-  tag="div"
-  transition={
-    Object {
-      "appear": true,
-      "baseClass": "fade",
-      "baseClassActive": "show",
-      "enter": true,
-      "exit": true,
-      "in": true,
-      "mountOnEnter": false,
-      "onEnter": [Function],
-      "onEntered": [Function],
-      "onEntering": [Function],
-      "onExit": [Function],
-      "onExited": [Function],
-      "onExiting": [Function],
-      "tag": "div",
-      "timeout": 150,
-      "unmountOnExit": true,
-    }
-  }
->
-  Something went wrong - 
-  500 - catastrophic failure in fetch the-id
-</Alert>
+<ErrorAlert
+  errorMessage="500 - catastrophic failure in fetch the-id"
+/>
 `;
 
 exports[`Profile renders correctly in loading state 1`] = `
-<Fragment>
-  <div
-    data-test-id="profile"
-  >
-    <h1>
-      Profile
-    </h1>
-    <Spinner
-      color="primary"
-      data-test-id="loading-profile"
-      tag="div"
-      type="border"
-    >
-      Loading...
-    </Spinner>
-  </div>
-</Fragment>
+<Spinner
+  color="primary"
+  data-test-id="profile-loading"
+  tag="div"
+  type="border"
+>
+  Loading...
+</Spinner>
 `;
 
 exports[`Profile renders profile as created as no player found 1`] = `
-<Fragment>
-  <div
-    data-test-id="profile"
-  >
-    <h1>
-      Profile
-    </h1>
-    <Spinner
-      color="primary"
-      data-test-id="loading-profile"
-      tag="div"
-      type="border"
-    >
-      Loading...
-    </Spinner>
-  </div>
-</Fragment>
+<Spinner
+  color="primary"
+  data-test-id="profile-loading"
+  tag="div"
+  type="border"
+>
+  Loading...
+</Spinner>
 `;
 
 exports[`Profile renders profile as returned from fetch the-id 1`] = `
-<Fragment>
-  <div
-    data-test-id="profile"
-  >
-    <h1>
-      Profile
-    </h1>
-    <Spinner
-      color="primary"
-      data-test-id="loading-profile"
-      tag="div"
-      type="border"
-    >
-      Loading...
-    </Spinner>
-  </div>
-</Fragment>
+<Spinner
+  color="primary"
+  data-test-id="profile-loading"
+  tag="div"
+  type="border"
+>
+  Loading...
+</Spinner>
 `;

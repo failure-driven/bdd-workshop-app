@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Alert, Spinner } from 'reactstrap';
+import { Spinner } from 'reactstrap';
 import API from '../API';
+import ErrorAlert from '../ErrorAlert';
 
 class Profile extends Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class Profile extends Component {
 
   fetchUserProfile() {
     // TODO move out to separate lib?
-    const player = localStorage.getItem('player') !== 'undefined' && JSON.parse(localStorage.getItem('player'));
+    const player =
+      localStorage.getItem('player') !== 'undefined' &&
+      JSON.parse(localStorage.getItem('player'));
     this.userProfilePromise = (player
       ? API.fetchUserProfile(player.id)
       : API.createUserProfile()
@@ -35,25 +38,18 @@ class Profile extends Component {
 
   render() {
     const { profile, failed, errorMessage } = this.state;
-    if (failed) {
-      // TODO should this be moved to an ErrorBoundary?
-      return (
-        <Alert color="danger">Something went wrong - {errorMessage}</Alert>
-      );
-    } else {
-      return (
-        <>
-          <div data-test-id="profile">
-            <h1>Profile</h1>
-            {profile ? (
-              <span data-test-id="user-id">{profile.id}</span>
-            ) : (
-              <Spinner color="primary" data-test-id="loading-profile" />
-            )}
-          </div>
-        </>
-      );
-    }
+    // TODO should this be moved to an ErrorBoundary?
+    if (failed) return <ErrorAlert errorMessage={errorMessage} />;
+    if (!profile)
+      return <Spinner color="primary" data-test-id="profile-loading" />;
+    return (
+      <>
+        <div data-test-id="profile">
+          <h1>Profile</h1>
+          <span data-test-id="profile-user-id">{profile.id}</span>
+        </div>
+      </>
+    );
   }
 }
 

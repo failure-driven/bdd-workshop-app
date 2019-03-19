@@ -2,13 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Profile from '.';
 import API from '../API';
-import { Alert } from 'reactstrap';
-
-const childrenText = element =>
-  element
-    .children()
-    .map(child => child.text())
-    .join('');
+import ErrorAlert from '../ErrorAlert';
 
 describe('Profile', () => {
   it('renders correctly in loading state', () => {
@@ -84,8 +78,8 @@ describe('Profile', () => {
 
     return wrapper.instance().userProfilePromise.then(() => {
       expect(wrapper).toMatchSnapshot();
-      expect(childrenText(wrapper.find(Alert))).toEqual(
-        'Something went wrong - 500 - catastrophic failure in fetch the-id'
+      expect(wrapper.find(ErrorAlert).prop('errorMessage')).toEqual(
+        '500 - catastrophic failure in fetch the-id'
       );
     });
   });

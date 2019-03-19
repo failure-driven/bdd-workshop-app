@@ -17,12 +17,12 @@ feature 'profile page', js: true do
     When 'I visit the proifle page in original loading state' do
       with_api_route_paused(method: 'post', url: '/api/v1/profiles') do
         visit('/profile')
-        wait_for { focus_on(:profile).test_elements }.to eq ['Loading...']
+        wait_for { focus_on(:util).test_elements('profile') }.to eq ['Loading...']
       end
     end
 
     Then 'the loading element is no longer visible' do
-      wait_for { focus_on(:profile).test_elements }.to_not include('Loading...')
+      wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
     end
   end
 

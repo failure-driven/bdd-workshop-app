@@ -17,7 +17,7 @@ module PageFragments
     end
 
     def content
-      browser.find('section.main-content').text
+      browser.find('.jumbotron[data-test-id="main-content"]').text
     end
 
     private

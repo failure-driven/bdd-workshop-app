@@ -1,9 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Game renders correctly 1`] = `
-<section
-  className="main-content"
->
-  <WarGamesIntro />
-</section>
-`;
+exports[`Game renders correctly 1`] = `<WarGamesIntro />`;

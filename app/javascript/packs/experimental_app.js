@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import Experimental from '../components/experimental';
 import ExProfile from '../components/experimental/ExProfile';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <>
         <Navigation />
         <Switch>
-          <Route exact path="/experimental" component={ExProfile} />
+          <Route exact path="/experimental" component={Experimental} />
+          <Route exact path="/experimental/ExProfile" component={ExProfile} />
         </Switch>
       </>
     </BrowserRouter>,

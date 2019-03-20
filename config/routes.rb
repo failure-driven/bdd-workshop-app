@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/profile' => 'landing#index'
 
   get '/experimental' => 'landing#experimental'
+  get '/experimental/*all' => 'landing#experimental'
 
   get '/game' => 'game#index'
 end

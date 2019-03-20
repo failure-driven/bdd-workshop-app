@@ -8,6 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Experimental from '../components/experimental';
 import ExProfile from '../components/experimental/ExProfile';
+import ExHookProfile from '../components/experimental/ExHookProfile';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -17,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <Switch>
           <Route exact path="/experimental" component={Experimental} />
           <Route exact path="/experimental/ExProfile" component={ExProfile} />
+          <Route
+            exact
+            path="/experimental/ExHookProfile"
+            component={ExHookProfile}
+          />
         </Switch>
       </>
     </BrowserRouter>,

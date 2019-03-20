@@ -10,6 +10,9 @@ const Experimental = () => {
       <li>
         <Link to="/experimental/ExProfile">ExProfile</Link>
       </li>
+      <li>
+        <Link to="/experimental/ExHookProfile">ExHookProfile</Link>
+      </li>
     </ul>
   );
 };

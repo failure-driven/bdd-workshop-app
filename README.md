@@ -16,6 +16,35 @@ Assuming you have the following dependencies
 * yarn
 * postgresql
 
+### tool versions
+
+#### asdf
+
+for ruyb and nodejs as stipluated in .tool-versions
+
+```
+asdf plugin-add ruby
+asdf plugin-add nodejs
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+# reload your shell
+which gem # make sure its pointing to asdf
+# bundle install as shown later
+```
+
+if you want to use asdf to manage postgresql
+
+```
+asdf plugin-add postgres
+export POSTGRES_EXTRA_CONFIGURE_OPTIONS=--with-uuid=e2fs
+asdf install
+asdf global postgres $(grep postgres .tool-versions | cut -d ' ' -f 2) # this is required for building pg gem
+# bundle install as shown later
+```
+
+#### docker
+
+TODO ...
+
 ### Install libraries
 
 run bundler and yarn to install libraries

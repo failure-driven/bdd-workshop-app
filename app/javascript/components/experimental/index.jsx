@@ -1,20 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Experimental = () => {
-  return (
-    <ul>
-      <li>
-        <Link to="/experimental">Experimental</Link>
-      </li>
-      <li>
-        <Link to="/experimental/ExProfile">ExProfile</Link>
-      </li>
-      <li>
-        <Link to="/experimental/ExHookProfile">ExHookProfile</Link>
-      </li>
-    </ul>
-  );
+  return <strong>Navigate to experimental components</strong>;
 };
 
 export default Experimental;

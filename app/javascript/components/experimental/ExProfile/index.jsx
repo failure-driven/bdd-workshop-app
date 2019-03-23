@@ -26,11 +26,9 @@ const Profile = () => {
 };
 
 const ExProfile = () => (
-  <main className="p-5" data-test-id="profile">
-    <Suspense fallback={<Loading />}>
-      <Profile />
-    </Suspense>
-  </main>
+  <Suspense fallback={<Loading />}>
+    <Profile />
+  </Suspense>
 );
 
 export default ExProfile;

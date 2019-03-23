@@ -18,5 +18,13 @@ module PageFragments
     def handle
       browser.find('[data-testid="handle"]').text
     end
+
+    def profile_upsell
+      browser.find('[data-testid="profile-upsell"]').text
+    end
+
+    def customize_profile
+      browser.find('.btn', text: 'Customize Profile').click
+    end
   end
 end

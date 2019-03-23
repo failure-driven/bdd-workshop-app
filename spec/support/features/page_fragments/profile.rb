@@ -9,5 +9,22 @@ module PageFragments
     def user_id
       browser.find('[data-testid="handle"]')['data-user-id']
     end
+
+    def progress
+      browser.find('.progress .progress-bar')['aria-valuenow']
+    end
+
+    def progress_text
+      browser.find('[data-testid="profile-progress"]').text
+    end
+
+    def handle_placeholder
+      browser.find('form input')['placeholder']
+    end
+
+    def submit_handle(handle_text)
+      browser.fill_in('handle', with: handle_text)
+      browser.find('[name="submit"]').click
+    end
   end
 end

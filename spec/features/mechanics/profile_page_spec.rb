@@ -70,4 +70,41 @@ feature 'profile page', js: true do
 
   scenario 'user id does not exist'
   scenario 'user id is not signed'
+
+  context 'a user with a profile' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab')
+      page.visit('/')
+      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\"}')"
+    end
+
+    scenario 'profile is 50% comlete' do
+      When 'a user of the internet vists the game page' do
+        visit('/profile')
+      end
+
+      Then 'a progress bar is displayed showing 50%' do
+        wait_for { focus_on(:profile).progress }.to eq('50')
+        wait_for { focus_on(:profile).progress_text }.to eq('50%')
+      end
+    end
+
+    context 'user with a custom handle setup' do
+      before do
+        # @profile.update_attributes(handle: 'princess')
+      end
+
+      scenario 'profile is 50% comlete' do
+        When 'a user of the internet vists the game page' do
+          visit('/profile')
+        end
+
+        Then 'a progress bar is displayed showing 100%' do
+          pending 'no handle no progress'
+          wait_for { focus_on(:profile).progress }.to eq('100')
+          wait_for { focus_on(:profile).progress_text }.to eq('100%')
+        end
+      end
+    end
+  end
 end

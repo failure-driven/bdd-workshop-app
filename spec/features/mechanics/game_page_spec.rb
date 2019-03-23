@@ -44,7 +44,7 @@ feature 'game page', js: true do
     end
 
     scenario 'page shows loading spinner while the profile is being fetched' do
-      When 'a user of the internet vists the game page inoriginal loading state' do
+      When 'a user of the internet vists the game page in original loading state' do
         with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
           visit('/game')
           wait_for { focus_on(:util).test_elements('game') }.to eq ['Loading...']
@@ -53,6 +53,37 @@ feature 'game page', js: true do
 
       Then 'the loading element is no longer visible' do
         wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
+      end
+    end
+
+    scenario 'page shows error if profile fetch failed'
+
+    scenario 'page encourages profile upsell for basic profile' do
+      When 'a user of the internet vists the game page' do
+        visit('/game')
+      end
+
+      Then 'they are encouraged to customize their profile and see their progress' do
+        wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
+        wait_for { focus_on(:util).buttons }.to eq ['Customize Profile!']
+      end
+    end
+
+    context 'user with a custom handle setup' do
+      before do
+        # @profile.update_attributes(handle: 'princess')
+      end
+
+      scenario 'page DOES NOT encourages profile upsell' do
+        When 'a user of the internet vists the game page' do
+          visit('/game')
+        end
+
+        Then 'they are NO LONGER encouraged to customize their profile' do
+          # wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
+          pending 'button is yet to be removed'
+          wait_for { focus_on(:util).buttons }.to eq []
+        end
       end
     end
   end

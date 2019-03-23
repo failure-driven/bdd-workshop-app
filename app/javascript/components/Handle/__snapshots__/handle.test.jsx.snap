@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Handle renders correctly 1`] = `
+<div>
+  <div
+    data-testid="handle"
+    data-user-id="abc-123"
+  >
+    abc-123
+  </div>
+</div>
+`;

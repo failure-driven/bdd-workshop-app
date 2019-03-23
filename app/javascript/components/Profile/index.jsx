@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Alert, Spinner } from 'reactstrap';
 import API from '../API';
 import ErrorAlert from '../ErrorAlert';
+import Handle from '../Handle';
+import ProgressBar from '../ProgressBar';
+import HandleForm from '../HandleForm';
 
 class Profile extends Component {
   constructor(props) {
@@ -54,10 +57,10 @@ class Profile extends Component {
       <>
         {alert && <Alert>{alert}</Alert>}
         <div data-testid="profile">
+          <ProgressBar value="50" />
           <h1>Profile</h1>
-          <div data-testid="handle" data-user-id={profile.id}>
-            {profile.id.slice(0, 8)}
-          </div>
+          <Handle profile={profile} />
+          <HandleForm />
         </div>
       </>
     );

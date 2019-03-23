@@ -25,12 +25,20 @@ feature 'Game App', js: true do
     Then 'they are informed of their profile handle and told the game is coming soon' do
       wait_for { focus_on(:alert).message }.to eq 'Profile successfully created'
       wait_for { @default_handle = focus_on(:game).handle }.to match(UUID_FIRST_8_REGEX)
+    end
 
-      pending 'no redirect back to game to see coming soon status'
-      wait(1.0).for { focus_on(:game).status }.to eq 'coming soon'
+    When 'they navigate back to the game' do
+      # TODO should they be redirected back to the game from create profile?
+      focus_on(:landing).follow_brand_link
+      focus_on(:landing).play_game
+    end
+
+    Then 'they are informed that the game is coming soon' do
+      wait_for { focus_on(:game).status }.to eq 'coming soon'
     end
 
     When 'they navigate to the about page' do
+      pending 'no about link'
       focus_on(:landing).follow_nav_link('About')
     end
 

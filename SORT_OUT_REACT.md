@@ -60,47 +60,75 @@ integration level test suite.
 
 ## React Questions
 
-Around the core user signup flow
+Some decisions:
 
+- **using Hooks** - seems ok
+  - [useProfile](app/javascript/hooks/useProfile/index.js)
+  - [ExHookProfile/useProfile.js](app/javascript/components/experimental/ExHookProfile/useProfile.js)
+- **testing** react hooks
+  - https://github.com/mpeyper/react-hooks-testing-library
+- **testing** react
+  - [react-testing-library](https://github.com/kentcdodds/react-testing-library#examples)
+
+**Questions** Around the core user signup flow
+
+- [ ] **Problem** with commented out tests for hooks that update state using
+  jest mocks and using promises
+  - [app/javascript/hooks/useProfile/useProfile.test.js](app/javascript/hooks/useProfile/useProfile.test.js)
+    ```
+    When testing, code that causes React state updates should be wrapped into act(...):
+
+        act(() => {
+          /* fire events that update state */
+        });
+        /* assert on the output */
+
+    This ensures that you're testing the behavior the user would see in the browser.
+    Learn more at https://fb.me/react-wrap-tests-with-act in TestHook
+    ```
 - [ ] using browser fetch vs axios [Mozilla using
   fetch[(https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
   - guiding principles would suggest fetch is 1 less library
   - have had some issues working out how to test it
-- [ ] hooks or not hooks?
-  - found them handy
-  - make relevant with new technology
-  - guiding princpile to reduce code clutter
-  - cannot test with enzyme
-  - what should I test it with?
-    - https://github.com/mpeyper/react-hooks-testing-library
-    - https://blog.logrocket.com/a-quick-guide-to-testing-react-hooks-fa584c415407
 - [ ] error boundaries - https://reactjs.org/docs/error-boundaries.html
   - are they really that handy?
   - or should I bubble up state to a master component that does all error handling?
-- React testing best practices?
-  - [react-testing-library](https://github.com/kentcdodds/react-testing-library#examples) sounds ok but is this common?
-- [ ] react suspense for spinners?
-  - [example - usefetch react custom hook](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
-  - sounds like it makes compnents simpler
-  - is this a common use?
 - [ ] get a designer to look over it
   - [ ] styled components or not? I am thinking just an old style CSS stylesheet to keep react simple to a minimum
   - currently using reactstrap and seems ok
-- [ ] common patter around placing alert flash pops?
+- [ ] common pattern around placing alert flash pops?
 - [ ] any other things
-- [ ] LocalStorage vs cookie vs JWT
-  - [ ] [local storage wrapper](https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2)
 
-Around the secondary app in spike state at the moment
+**Around the secondary app** in spike state at the moment
 
 - [ ] hooks seem quite useful here although probably should write some custom hooks to reduce duplication
 - [ ] state of websockets
 
 Repo for spike game code -> https://github.com/SelenaSmall/search-term
 
+**Somewhat answered**
+
+- [x] React testing best practices?
+  - [x] [react-testing-library](https://github.com/kentcdodds/react-testing-library#examples) sounds ok but is this common?
+- [x] hooks or not hooks?
+  - found them handy
+  - make relevant with new technology
+  - guiding princpile to reduce code clutter
+  - cannot test with enzyme
+  - what should I test it with?
+    - [x] https://github.com/mpeyper/react-hooks-testing-library
+    - https://blog.logrocket.com/a-quick-guide-to-testing-react-hooks-fa584c415407
+- [x] LocalStorage vs cookie vs JWT
+  - [x] [local storage wrapper](https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2)
+- [x] react suspense for spinners?
+  - **Answer** seems like a bad idea as it is based on undocumented features of `suspense`
+  - [example - usefetch react custom hook](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
+  - sounds like it makes compnents simpler
+  - is this a common use?
+
 - This is all a mess at the moment and not as important but hopefully will be
   re-written by the workshop as a bigger example
-- A `game` is created by an `admin` and a `player` can creae or join a `match`
+- A `game` is created by an `admin` and a `player` can create or join a `match`
   to play against other `players` in a multiplayer game using websockets to
   finally end up on a `result` board
 

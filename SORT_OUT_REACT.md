@@ -73,8 +73,10 @@ Some decisions:
 **Questions** Around the core user signup flow
 
 - [ ] **Problem** with commented out tests for hooks that update state using
-  jest mocks and using promises
+      jest mocks and using promises
+
   - [app/javascript/hooks/useProfile/useProfile.test.js](app/javascript/hooks/useProfile/useProfile.test.js)
+
     ```
     When testing, code that causes React state updates should be wrapped into act(...):
 
@@ -86,13 +88,25 @@ Some decisions:
     This ensures that you're testing the behavior the user would see in the browser.
     Learn more at https://fb.me/react-wrap-tests-with-act in TestHook
     ```
+
+  - https://hashnode.com/post/how-to-mock-react-hooks-cjsc1iyk002mdhws1xj0dob4e
+  - https://medium.com/@jantoine/another-take-on-testing-custom-react-hooks-4461458935d4
+  - https://kentcdodds.com/blog/react-hooks-whats-going-to-happen-to-my-tests
+  - probably get a better grip of jest mocking
+    - https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c
+    - https://medium.com/codeclan/mocking-es-and-commonjs-modules-with-jest-mock-37bbb552da43
+  - [async axios with react-testing-library](https://www.leighhalliday.com/async-axios-react-testing-library)
+  - [Mocking axios in jest testing async](https://www.leighhalliday.com/mocking-axios-in-jest-testing-async-functions)
+  - [how to use async await in react](https://www.valentinog.com/blog/how-async-await-in-react/)
+
 - [ ] using browser fetch vs axios [Mozilla using
-  fetch[(https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+      fetch[(https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
   - guiding principles would suggest fetch is 1 less library
   - have had some issues working out how to test it
 - [ ] error boundaries - https://reactjs.org/docs/error-boundaries.html
   - are they really that handy?
   - or should I bubble up state to a master component that does all error handling?
+- [ ] more on hooks including errors - https://www.robinwieruch.de/react-hooks-fetch-data/
 - [ ] get a designer to look over it
   - [ ] styled components or not? I am thinking just an old style CSS stylesheet to keep react simple to a minimum
   - currently using reactstrap and seems ok
@@ -121,6 +135,7 @@ Repo for spike game code -> https://github.com/SelenaSmall/search-term
 - [x] LocalStorage vs cookie vs JWT
   - [x] [local storage wrapper](https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2)
 - [x] react suspense for spinners?
+
   - **Answer** seems like a bad idea as it is based on undocumented features of `suspense`
   - [example - usefetch react custom hook](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
   - sounds like it makes compnents simpler
@@ -131,4 +146,3 @@ Repo for spike game code -> https://github.com/SelenaSmall/search-term
 - A `game` is created by an `admin` and a `player` can create or join a `match`
   to play against other `players` in a multiplayer game using websockets to
   finally end up on a `result` board
-

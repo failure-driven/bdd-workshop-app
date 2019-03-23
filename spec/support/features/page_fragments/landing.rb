@@ -24,6 +24,10 @@ module PageFragments
       browser.find('.jumbotron[data-testid="main-content"]').click
     end
 
+    def click_hamburger
+      browser.find('button.navbar-toggler').click
+    end
+
     private
 
     def navbar_brand

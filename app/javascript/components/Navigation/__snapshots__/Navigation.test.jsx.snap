@@ -1,63 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation renders correctly 1`] = `
-<Navbar
-  color="princess-pink"
-  expand="md"
-  light={true}
-  tag="nav"
->
-  <NavbarBrand
-    data-testid="landing-page-link"
-    tag={[Function]}
-    to="/"
+<div>
+  <nav
+    class="navbar navbar-expand-md navbar-light bg-princess-pink"
   >
-    Game
-  </NavbarBrand>
-  <Collapse
-    appear={false}
-    enter={true}
-    exit={true}
-    in={false}
-    isOpen={true}
-    mountOnEnter={false}
-    navbar={true}
-    onEnter={[Function]}
-    onEntered={[Function]}
-    onEntering={[Function]}
-    onExit={[Function]}
-    onExited={[Function]}
-    onExiting={[Function]}
-    tag="div"
-    timeout={350}
-    unmountOnExit={false}
-  >
-    <Nav
-      navbar={true}
-      tag="ul"
-      vertical={false}
+    <a
+      class="navbar-brand"
+      data-testid="landing-page-link"
+      href="/"
     >
-      <NavItem
-        tag="li"
+      Game
+    </a>
+    <button
+      class="mr-2 navbar-toggler"
+      type="button"
+    >
+      <span
+        class="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      class="collapse navbar-collapse"
+    >
+      <ul
+        class="navbar-nav"
       >
-        <NavLink
-          tag={[Function]}
-          to="/about"
+        <li
+          class="nav-item"
         >
-          About
-        </NavLink>
-      </NavItem>
-      <NavItem
-        tag="li"
-      >
-        <NavLink
-          tag={[Function]}
-          to="/profile"
+          <a
+            class="nav-link"
+            href="/about"
+          >
+            About
+          </a>
+        </li>
+        <li
+          class="nav-item"
         >
-          Profile
-        </NavLink>
-      </NavItem>
-    </Nav>
-  </Collapse>
-</Navbar>
+          <a
+            class="nav-link"
+            href="/profile"
+          >
+            Profile
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
 `;

@@ -1,10 +1,19 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, cleanup } from 'react-testing-library';
 import Navigation from '.';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Navigation', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it('renders correctly', () => {
-    const wrapper = shallow(<Navigation />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <MemoryRouter>
+        <Navigation />
+      </MemoryRouter>
+    );
+    expect(container).toMatchSnapshot();
   });
 });

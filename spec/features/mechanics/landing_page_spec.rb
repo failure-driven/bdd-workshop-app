@@ -55,4 +55,36 @@ feature 'landing page', js: true do
       wait_for { focus_on(:landing).brand }.to eq 'Game'
     end
   end
+
+  context 'mobile width' do
+    before do
+      visit('/')
+      @browser_window_size = page.driver.browser.manage.window.size
+      page.driver.browser.manage.window.resize_to(767, 768)
+    end
+
+    after do
+      page.driver.browser.manage.window.resize_to(@browser_window_size.width, @browser_window_size.height)
+    end
+
+    scenario 'a user can navigate to all the pages' do
+      When 'a user of the internet visits the site' do
+        visit('/')
+      end
+
+      Then 'navigation is hidden appart from brand and hamburger' do
+        wait_for { focus_on(:landing).brand }.to eq 'Game'
+        wait_for { focus_on(:landing).navigation }.to eq %w[]
+      end
+
+      When 'user expands the hamburger' do
+        focus_on(:landing).click_hamburger
+      end
+
+      Then 'the navigation to about and profile appears' do
+        wait_for { focus_on(:landing).brand }.to eq 'Game'
+        wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
+      end
+    end
+  end
 end

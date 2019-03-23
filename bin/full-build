@@ -22,7 +22,12 @@ if [[ ${NO_INTERNET} != "true" ]]; then
   bundle install
 fi
 
-bundle exec rubocop
+# linting, and general pretty code is optional
+if [[ ${PRETTY_CODE} = "true" ]]; then
+  bundle exec rubocop
+  yarn lint
+fi
+
 bundle exec rspec -f documentation
 
 # yarn install node modules
@@ -30,6 +35,5 @@ if [[ ${NO_INTERNET} != "true" ]]; then
   bin/yarn
 fi
 
-yarn lint
 yarn test
 

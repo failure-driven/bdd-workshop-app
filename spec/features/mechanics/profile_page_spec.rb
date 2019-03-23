@@ -9,7 +9,7 @@ feature 'profile page', js: true do
 
     Then 'I am on the landing page with the profile link visible' do
       wait_for { page.current_path }.to eq('/')
-      wait_for { focus_on(:landing).navigation }.to eq ['Profile']
+      wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
     end
 
     When 'I click on profile' do

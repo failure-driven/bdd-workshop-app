@@ -3,7 +3,7 @@
 exports[`Navigation renders correctly 1`] = `
 <Navbar
   color="princess-pink"
-  expand={false}
+  expand="md"
   light={true}
   tag="nav"
 >
@@ -14,22 +14,50 @@ exports[`Navigation renders correctly 1`] = `
   >
     Game
   </NavbarBrand>
-  <Nav
-    className="ml-auto"
+  <Collapse
+    appear={false}
+    enter={true}
+    exit={true}
+    in={false}
+    isOpen={true}
+    mountOnEnter={false}
     navbar={true}
-    tag="ul"
-    vertical={false}
+    onEnter={[Function]}
+    onEntered={[Function]}
+    onEntering={[Function]}
+    onExit={[Function]}
+    onExited={[Function]}
+    onExiting={[Function]}
+    tag="div"
+    timeout={350}
+    unmountOnExit={false}
   >
-    <NavItem
-      tag="li"
+    <Nav
+      navbar={true}
+      tag="ul"
+      vertical={false}
     >
-      <NavLink
-        tag={[Function]}
-        to="/profile"
+      <NavItem
+        tag="li"
       >
-        Profile
-      </NavLink>
-    </NavItem>
-  </Nav>
+        <NavLink
+          tag={[Function]}
+          to="/about"
+        >
+          About
+        </NavLink>
+      </NavItem>
+      <NavItem
+        tag="li"
+      >
+        <NavLink
+          tag={[Function]}
+          to="/profile"
+        >
+          Profile
+        </NavLink>
+      </NavItem>
+    </Nav>
+  </Collapse>
 </Navbar>
 `;

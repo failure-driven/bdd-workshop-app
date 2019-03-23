@@ -28,7 +28,7 @@ feature 'Game App', js: true do
     end
 
     When 'they navigate back to the game' do
-      # TODO should they be redirected back to the game from create profile?
+      # TODO: should they be redirected back to the game from create profile?
       focus_on(:landing).follow_brand_link
       focus_on(:landing).play_game
     end
@@ -38,12 +38,11 @@ feature 'Game App', js: true do
     end
 
     When 'they navigate to the about page' do
-      pending 'no about link'
       focus_on(:landing).follow_nav_link('About')
     end
 
     Then 'they are informed the game will be out at RailsConf 2019' do
-      wait_for { focus_on(:about).content }.to eq 'Out at RailsConf 2019'
+      wait_for { focus_on(:about).content }.to eq 'A demo app of BDD built for RailsConf 2019'
     end
   end
 end

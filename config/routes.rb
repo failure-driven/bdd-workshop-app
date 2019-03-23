@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/' => 'landing#index'
   get '/profile' => 'landing#index'
   get '/game' => 'landing#index'
+  get '/about' => 'landing#index'
 
   get '/experimental' => 'landing#experimental'
   get '/experimental/*all' => 'landing#experimental'

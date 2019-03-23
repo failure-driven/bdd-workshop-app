@@ -1,10 +1,10 @@
 import { renderHook, cleanup } from 'react-hooks-testing-library';
 import useProfile from './useProfile';
-import api from './api';
-import storage from './storage';
+import api from '../../../hooks/useProfile/api';
+import storage from '../../../hooks/useProfile/storage';
 
-jest.mock('./api');
-jest.mock('./storage');
+jest.mock('../../../hooks/useProfile/api');
+jest.mock('../../../hooks/useProfile/storage');
 
 describe('useProfile', () => {
   const mockPost = jest.fn();

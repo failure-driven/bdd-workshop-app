@@ -27,14 +27,32 @@ feature 'game page', js: true do
   end
 
   context 'user already has a profile' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab')
+      page.visit('/')
+      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\"}')"
+    end
+
     scenario 'game page shows coming soon for users with profile' do
       When 'a user of the internet visits the game' do
         visit('/game')
       end
 
       Then 'they are shown the coming soon status' do
-        pending 'no coming soon yet'
-        wait(1.0).for { focus_on(:game).status }.to eq 'coming soon'
+        wait_for { focus_on(:game).status }.to eq 'coming soon'
+      end
+    end
+
+    scenario 'page shows loading spinner while the profile is being fetched' do
+      When 'a user of the internet vists the game page inoriginal loading state' do
+        with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+          visit('/game')
+          wait_for { focus_on(:util).test_elements('game') }.to eq ['Loading...']
+        end
+      end
+
+      Then 'the loading element is no longer visible' do
+        wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
       end
     end
   end

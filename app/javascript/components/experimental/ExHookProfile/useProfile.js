@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import api from './api';
-import storage from './storage';
+import api from '../../../hooks/useProfile/api';
+import storage from '../../../hooks/useProfile/storage';
 
 const LOCAL_STORAGE_KEY = 'player';
 

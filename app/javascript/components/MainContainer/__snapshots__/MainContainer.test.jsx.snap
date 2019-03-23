@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContainer renders correctly for 1 child 1`] = `
+<main
+  className="m-5"
+>
+  <span>
+    single child
+  </span>
+</main>
+`;
+
+exports[`MainContainer renders correctly for many children 1`] = `
+<main
+  className="m-5"
+>
+  <div>
+    one
+  </div>
+  <div>
+    two
+  </div>
+</main>
+`;

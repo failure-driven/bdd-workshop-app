@@ -10,11 +10,11 @@ Assuming you have the following dependencies
 
 **TODO:** links for installing the below dependencies
 
-* ruby 2.6.1
-* bundler gem
-* node 10.15.2
-* yarn
-* postgresql
+- ruby 2.6.1
+- bundler gem
+- node 10.15.2
+- yarn
+- postgresql
 
 ### tool versions
 
@@ -66,15 +66,28 @@ Run all the tests
 ### Run the dev server
 
 Fire up rails
+
 ```sh
 rails server
 ```
 
 visit the rails default home page
 
-  http://localhost:3000/
+http://localhost:3000/
 
 visit a react component
 
-  http://localhost:3000/game
+http://localhost:3000/game
 
+## Tech Stack
+
+### React testing
+
+Mostly using [Kent C. Dodd's](https://twitter.com/kentcdodds/) [react-testing-libaray]()
+
+with principles such as
+
+- ...
+- no shallow rendering (Ref [Why I never use shallow rendering](https://kentcdodds.com/blog/why-i-never-use-shallow-rendering))
+  - ...
+  - more detail worth reading about - https://medium.com/flatiron-labs/refactoring-an-enzyme-component-test-to-use-react-testing-library-f5c36da6716f

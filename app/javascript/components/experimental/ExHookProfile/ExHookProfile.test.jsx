@@ -1,18 +1,27 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 import ExHookProfile from '.';
+import useProfile from './useProfile';
+
+jest.mock('./useProfile');
 
 describe('ExHookProfile', () => {
   afterEach(cleanup);
 
-  it('set transitions from Loading to Hello', async () => {
-    const { getByTestId, getByText } = render(<ExHookProfile />);
+  it('renders loading by default', async () => {
+    useProfile.mockReturnValue({ profile: undefined });
+    const { getByTestId, queryByTestId } = render(<ExHookProfile />);
 
-    expect(getByTestId('span')).toHaveTextContent('Loading ...');
+    expect(getByTestId('loading')).toHaveTextContent('Loading ...');
+    expect(queryByTestId('profile')).toBeNull();
+  });
 
-    fireEvent.click(getByText('set'));
+  it('renders profile if one is set', async () => {
+    useProfile.mockReturnValue({ profile: { id: 'abc-123' } });
+    const { getByTestId, queryByTestId } = render(<ExHookProfile />);
 
-    expect(getByTestId('span')).toHaveTextContent('hello');
+    expect(queryByTestId('loading')).toBeNull();
+    expect(getByTestId('profile')).toHaveTextContent('abc-123');
   });
 });

@@ -1,42 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import useProfile from './useProfile';
 
-const Loading = ({ setProfile }) => (
-  <>
-    <span data-testid="span">Loading ...</span>
-    <a
-      className="btn btn-secondary"
-      onClick={() => {
-        setProfile('hello');
-      }}
-    >
-      set
-    </a>
-  </>
-);
-Loading.propTypes = {
-  setProfile: PropTypes.func,
-};
-
-const UnsetProfile = ({ profile, setProfile }) => (
-  <>
-    <span data-testid="span">{profile}</span>
-    <a className="btn btn-secondary" onClick={() => setProfile()}>
-      unset
-    </a>
-  </>
-);
-UnsetProfile.propTypes = {
-  profile: PropTypes.string,
-  setProfile: PropTypes.func,
-};
+const Loading = () => <span data-testid="loading">Loading ...</span>;
 
 const ExHookProfile = () => {
-  const { profile, setProfile } = useProfile();
+  const { profile } = useProfile();
 
-  if (!profile) return <Loading setProfile={setProfile} />;
-  return <UnsetProfile setProfile={setProfile} profile={profile} />;
+  if (!profile) return <Loading />;
+  return <span data-testid="profile">{profile.id}</span>;
 };
 
 export default ExHookProfile;

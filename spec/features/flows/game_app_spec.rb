@@ -7,7 +7,7 @@ feature 'Game App', js: true do
     end
 
     Then 'they are greeted with the landing page' do
-      wait_for { focus_on(:landing).content }.to eq "Games make mistakes.\nSHALL WE PLAY A GAME?"
+      wait_for { focus_on(:landing).content }.to match(/^Games make mistakes.\nSHALL WE PLAY A GAME?/)
     end
 
     When 'they navigate to the game' do

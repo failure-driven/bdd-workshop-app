@@ -9,7 +9,7 @@ feature 'landing page', js: true do
     Then 'they are greeted with the landing page' do
       wait_for { focus_on(:landing).brand }.to eq 'Game'
       wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
-      wait_for { focus_on(:landing).content }.to eq "Games make mistakes.\nSHALL WE PLAY A GAME?"
+      wait_for { focus_on(:landing).content }.to match(/^Games make mistakes.\nSHALL WE PLAY A GAME?/)
     end
   end
 

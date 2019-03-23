@@ -15,14 +15,24 @@ exports[`WarGamesIntro renders correctly 1`] = `
     <div
       className="p-3 wargames-dotty"
     >
-      <div>
-        Games make mistakes.
-      </div>
-      <div
-        className="question"
+      <Typist
+        avgTypingDelay={70}
+        className=""
+        cursor={Object {}}
+        delayGenerator={[Function]}
+        onCharacterTyped={[Function]}
+        onLineTyped={[Function]}
+        onTypingDone={[Function]}
+        startDelay={0}
+        stdTypingDelay={25}
       >
-        SHALL WE PLAY A GAME?
-      </div>
+        Games make mistakes.
+        <div
+          className="question"
+        >
+          SHALL WE PLAY A GAME?
+        </div>
+      </Typist>
     </div>
   </Jumbotron>
 </Link>

@@ -14,23 +14,6 @@ exports[`Navigation renders correctly 1`] = `
   >
     Game
   </NavbarBrand>
-</Navbar>
-`;
-
-exports[`Navigation url WITH \`profile=true\` renders profile behind hidden url params 1`] = `
-<Navbar
-  color="princess-pink"
-  expand={false}
-  light={true}
-  tag="nav"
->
-  <NavbarBrand
-    data-test-id="landing-page-link"
-    tag={[Function]}
-    to="/?profile=true"
-  >
-    Game
-  </NavbarBrand>
   <Nav
     className="ml-auto"
     navbar={true}
@@ -42,7 +25,7 @@ exports[`Navigation url WITH \`profile=true\` renders profile behind hidden url 
     >
       <NavLink
         tag={[Function]}
-        to="/profile?profile=true"
+        to="/profile"
       >
         Profile
       </NavLink>

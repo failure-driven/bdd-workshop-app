@@ -6,9 +6,9 @@ feature 'landing page', js: true do
       visit('/')
     end
 
-    Then 'they are greeted with the plain landing page' do
+    Then 'they are greeted with the landing page' do
       wait_for { focus_on(:landing).brand }.to eq 'Game'
-      wait_for { focus_on(:landing).navigation }.to eq []
+      wait_for { focus_on(:landing).navigation }.to eq ['Profile']
       wait_for { focus_on(:landing).content }.to eq "Games make mistakes.\nSHALL WE PLAY A GAME?"
     end
   end
@@ -29,24 +29,30 @@ feature 'landing page', js: true do
     end
   end
 
-  context 'special URL with profile feature toggle' do
-    scenario 'landing page has profile link' do
-      When 'a user of the internet visits the site' do
-        visit('/?profile=true')
-      end
+  scenario 'navigate to and from profile page' do
+    When 'a user of the internet visits the site' do
+      visit('/')
+    end
 
-      Then 'they are greeted with the plain landing page' do
-        wait_for { focus_on(:landing).brand }.to eq 'Game'
-        wait_for { focus_on(:landing).navigation }.to eq ['Profile']
-      end
+    Then 'they are greeted with the plain landing page' do
+      wait_for { focus_on(:landing).brand }.to eq 'Game'
+      wait_for { focus_on(:landing).navigation }.to eq ['Profile']
+    end
 
-      When 'they click on profile' do
-        focus_on(:landing).follow_nav_link('Profile')
-      end
+    When 'they click on profile' do
+      focus_on(:landing).follow_nav_link('Profile')
+    end
 
-      Then 'they are take to the profile page' do
-        wait_for { page.current_path }.to eq('/profile')
-      end
+    Then 'they are take to the profile page' do
+      wait_for { page.current_path }.to eq('/profile')
+    end
+
+    When 'the click on the brand Game link' do
+      focus_on(:landing).follow_brand_link
+    end
+
+    Then 'they go back to the landing page' do
+      wait_for { focus_on(:landing).brand }.to eq 'Game'
     end
   end
 end

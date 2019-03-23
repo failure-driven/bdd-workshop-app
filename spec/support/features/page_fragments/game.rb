@@ -14,5 +14,9 @@ module PageFragments
     def create_profile
       browser.find('div[data-testid="game"] a', text: 'Create Profile').click
     end
+
+    def handle
+      browser.find('[data-testid="handle"]').text
+    end
   end
 end

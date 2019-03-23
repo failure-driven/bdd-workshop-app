@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
+import { Alert, Spinner } from 'reactstrap';
 import API from '../API';
 import ErrorAlert from '../ErrorAlert';
 
@@ -13,7 +13,15 @@ class Profile extends Component {
     failed: false,
     errorMessage: null,
     profile: null, // TODO could we pull it out JSON.parse(localStorage.getItem('player')),
+    alert: null,
   };
+
+  callCreateUserProfile(profile) {
+    return API.createUserProfile().then(response => {
+      profile.state.alert = 'Profile successfully created';
+      return Promise.resolve(response);
+    });
+  }
 
   fetchUserProfile() {
     // TODO move out to separate lib?
@@ -22,7 +30,7 @@ class Profile extends Component {
       JSON.parse(localStorage.getItem('player'));
     this.userProfilePromise = (player
       ? API.fetchUserProfile(player.id)
-      : API.createUserProfile()
+      : this.callCreateUserProfile(this)
     )
       .then(response => {
         this.setState({ profile: response.data });
@@ -37,16 +45,19 @@ class Profile extends Component {
   }
 
   render() {
-    const { profile, failed, errorMessage } = this.state;
+    const { profile, failed, errorMessage, alert } = this.state;
     // TODO should this be moved to an ErrorBoundary?
     if (failed) return <ErrorAlert errorMessage={errorMessage} />;
     if (!profile)
       return <Spinner color="primary" data-test-id="profile-loading" />;
     return (
       <>
+        {alert && <Alert>{alert}</Alert>}
         <div data-test-id="profile">
           <h1>Profile</h1>
-          <span data-test-id="profile-user-id">{profile.id}</span>
+          <div data-testid="handle" data-user-id={profile.id}>
+            {profile.id.slice(0, 8)}
+          </div>
         </div>
       </>
     );

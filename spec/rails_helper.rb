@@ -13,6 +13,7 @@ end
 
 # generic UUID regex
 UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+UUID_FIRST_8_REGEX = /^[0-9a-f]{8}$/
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

@@ -7,7 +7,7 @@ module PageFragments
     end
 
     def user_id
-      browser.find('[data-test-id="profile-user-id"]').text
+      browser.find('[data-testid="handle"]')['data-user-id']
     end
   end
 end

@@ -52,8 +52,7 @@ feature 'profile page', js: true do
     end
 
     Then 'a success message and a handle is show to the "browser"' do
-      pending 'no success message yet'
-      wait(1.0).for { focus_on(:alert).message }.to eq 'Profile successfully created'
+      wait_for { focus_on(:alert).message }.to eq 'Profile successfully created'
       wait_for do
         @user_uuid = focus_on(:profile).user_id
       end.to match(UUID_REGEX)

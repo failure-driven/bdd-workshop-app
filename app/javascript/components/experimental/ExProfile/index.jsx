@@ -3,9 +3,7 @@ import { Spinner } from 'reactstrap';
 import { useFetch } from 'react-hooks-fetch';
 import ErrorAlert from '../../ErrorAlert';
 
-const Loading = () => (
-  <Spinner color="primary" data-test-id="loading-profile" />
-);
+const Loading = () => <Spinner color="primary" data-testid="loading-profile" />;
 
 const Profile = () => {
   const url = '/api/v1/profiles';
@@ -20,7 +18,7 @@ const Profile = () => {
   return (
     <>
       <h1>Profile</h1>
-      <span data-test-id="user-id">{data.id}</span>
+      <span data-testid="user-id">{data.id}</span>
     </>
   );
 };

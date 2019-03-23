@@ -3,7 +3,7 @@
 exports[`Profile handles invalid player being set 1`] = `
 <Spinner
   color="primary"
-  data-test-id="profile-loading"
+  data-testid="profile-loading"
   tag="div"
   type="border"
 >
@@ -20,7 +20,7 @@ exports[`Profile renders an error if profile fetch fails from localstorage the-i
 exports[`Profile renders correctly in loading state 1`] = `
 <Spinner
   color="primary"
-  data-test-id="profile-loading"
+  data-testid="profile-loading"
   tag="div"
   type="border"
 >
@@ -31,7 +31,7 @@ exports[`Profile renders correctly in loading state 1`] = `
 exports[`Profile renders profile as created as no player found 1`] = `
 <Spinner
   color="primary"
-  data-test-id="profile-loading"
+  data-testid="profile-loading"
   tag="div"
   type="border"
 >
@@ -42,7 +42,7 @@ exports[`Profile renders profile as created as no player found 1`] = `
 exports[`Profile renders profile as returned from fetch the-id 1`] = `
 <Spinner
   color="primary"
-  data-test-id="profile-loading"
+  data-testid="profile-loading"
   tag="div"
   type="border"
 >

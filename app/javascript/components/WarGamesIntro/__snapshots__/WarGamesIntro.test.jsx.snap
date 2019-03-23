@@ -9,7 +9,7 @@ exports[`WarGamesIntro renders correctly 1`] = `
 >
   <Jumbotron
     className="m-3"
-    data-test-id="main-content"
+    data-testid="main-content"
     tag="div"
   >
     <div

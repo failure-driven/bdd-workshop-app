@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Navigation = () => {
   return (
     <Navbar color="princess-pink" light>
-      <NavbarBrand tag={Link} to="/" data-test-id="landing-page-link">
+      <NavbarBrand tag={Link} to="/" data-testid="landing-page-link">
         Game
       </NavbarBrand>
       <Nav className="ml-auto" navbar>

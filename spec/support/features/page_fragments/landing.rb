@@ -17,11 +17,11 @@ module PageFragments
     end
 
     def content
-      browser.find('.jumbotron[data-test-id="main-content"]').text
+      browser.find('.jumbotron[data-testid="main-content"]').text
     end
 
     def play_game
-      browser.find('.jumbotron[data-test-id="main-content"]').click
+      browser.find('.jumbotron[data-testid="main-content"]').click
     end
 
     private

@@ -6,7 +6,7 @@ import useProfile from '../../hooks/useProfile';
 const Game = () => {
   const { profile, loading } = useProfile();
 
-  if (loading) return <Spinner data-test-id="game-spinner" />;
+  if (loading) return <Spinner data-testid="game-spinner" />;
   if (profile === undefined) {
     return (
       <div data-testid="game">

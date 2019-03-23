@@ -8,7 +8,7 @@ exports[`Navigation renders correctly 1`] = `
   tag="nav"
 >
   <NavbarBrand
-    data-test-id="landing-page-link"
+    data-testid="landing-page-link"
     tag={[Function]}
     to="/"
   >

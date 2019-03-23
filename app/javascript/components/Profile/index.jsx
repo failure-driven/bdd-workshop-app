@@ -49,11 +49,11 @@ class Profile extends Component {
     // TODO should this be moved to an ErrorBoundary?
     if (failed) return <ErrorAlert errorMessage={errorMessage} />;
     if (!profile)
-      return <Spinner color="primary" data-test-id="profile-loading" />;
+      return <Spinner color="primary" data-testid="profile-loading" />;
     return (
       <>
         {alert && <Alert>{alert}</Alert>}
-        <div data-test-id="profile">
+        <div data-testid="profile">
           <h1>Profile</h1>
           <div data-testid="handle" data-user-id={profile.id}>
             {profile.id.slice(0, 8)}

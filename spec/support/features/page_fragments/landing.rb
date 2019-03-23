@@ -20,6 +20,10 @@ module PageFragments
       browser.find('.jumbotron[data-test-id="main-content"]').text
     end
 
+    def play_game
+      browser.find('.jumbotron[data-test-id="main-content"]').click
+    end
+
     private
 
     def navbar_brand

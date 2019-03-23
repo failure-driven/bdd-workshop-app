@@ -2,4 +2,14 @@ $theme-colors: (
   'princess-pink': #ffb1cf
 );
 
+a.jumbotron-link {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    .jumbotron {
+      background-color: #ddd;
+    }
+  }
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

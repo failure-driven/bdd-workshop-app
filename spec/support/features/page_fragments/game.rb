@@ -6,5 +6,13 @@ module PageFragments
         react_version: browser.find('span[data-test="react-version"]').text
       }
     end
+
+    def status
+      browser.find('div[data-testid="game-status"]').text
+    end
+
+    def create_profile
+      browser.find('div[data-testid="game"] a', text: 'Create Profile').click
+    end
   end
 end

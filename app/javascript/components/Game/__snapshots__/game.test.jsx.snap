@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game renders correctly 1`] = `
+<div
+  data-testid="game"
+>
+  <div
+    data-testid="game-status"
+  >
+    Please create a profile first!
+  </div>
+  <Button
+    color="primary"
+    tag={[Function]}
+    to="/profile"
+  >
+    Create Profile NOW!
+  </Button>
+</div>
+`;

@@ -13,6 +13,11 @@ exports[`Routes renders correctly 1`] = `
       exact={true}
       path="/profile"
     />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/game"
+    />
   </Switch>
 </MainContainer>
 `;

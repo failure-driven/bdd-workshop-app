@@ -51,10 +51,13 @@ feature 'profile page', js: true do
       visit('/profile')
     end
 
-    Then 'a consistent uuid id is presented per browser' do
+    Then 'a success message and a handle is show to the "browser"' do
+      pending 'no success message yet'
+      wait(1.0).for { focus_on(:alert).message }.to eq 'Profile successfully created'
       wait_for do
         @user_uuid = focus_on(:profile).user_id
       end.to match(UUID_REGEX)
+      wait_for { focus_on(:game).handle }.to eq @user_uuid.slice(0, 8)
     end
 
     When 'the browser refreshes' do

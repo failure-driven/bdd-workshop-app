@@ -3,13 +3,8 @@ import { shallow } from 'enzyme';
 import Game from '.';
 
 describe('Game', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Game />);
-  });
-
   it('renders correctly', () => {
+    const wrapper = shallow(<Game />);
     expect(wrapper).toMatchSnapshot();
   });
 });

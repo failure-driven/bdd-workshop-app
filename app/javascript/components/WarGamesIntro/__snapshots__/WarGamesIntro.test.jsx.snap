@@ -1,22 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WarGamesIntro renders correctly 1`] = `
-<Jumbotron
-  className="m-3"
-  data-test-id="main-content"
-  tag="div"
+<Link
+  className="jumbotron-link"
+  data-testid="game-start"
+  replace={false}
+  to="/game"
 >
-  <div
-    className="p-3 wargames-dotty"
+  <Jumbotron
+    className="m-3"
+    data-test-id="main-content"
+    tag="div"
   >
-    <div>
-      Games make mistakes.
-    </div>
     <div
-      className="question"
+      className="p-3 wargames-dotty"
     >
-      SHALL WE PLAY A GAME?
+      <div>
+        Games make mistakes.
+      </div>
+      <div
+        className="question"
+      >
+        SHALL WE PLAY A GAME?
+      </div>
     </div>
-  </div>
-</Jumbotron>
+  </Jumbotron>
+</Link>
 `;

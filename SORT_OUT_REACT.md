@@ -110,8 +110,25 @@ Some decisions:
 - [ ] get a designer to look over it
   - [ ] styled components or not? I am thinking just an old style CSS stylesheet to keep react simple to a minimum
   - currently using reactstrap and seems ok
+  - [ ] boostrap themes?
+    - https://www.codeinwp.com/blog/best-free-bootstrap-templates-for-reactjs/
+  - responsive typography https://www.sitepoint.com/build-responsive-type-scale-bootstrap/
 - [ ] common pattern around placing alert flash pops?
 - [ ] any other things
+  - [ ] take a look at
+    [react-loadable](https://github.com/jamiebuilds/react-loadable) - A higher
+    order component for loading components with promises.
+  - [ ] how much could be sorted with a 3rd party fetch hook like
+    [useFetch](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
+  - any point in storybook for this app?
+    - https://storybook.js.org/
+    - https://storybook.js.org/docs/guides/quick-start-guide/
+    - https://dev.to/nickytonline/getting-started-with-react-storybook-9jh
+    - https://www.learnstorybook.com/
+    - https://marmelab.com/blog/2019/01/17/react-timeline.html
+    - https://medium.com/storybookjs/storybook-4-0-is-here-10b9857fc7de
+    - https://storybook.js.org/docs/addons/addon-gallery/
+  - anything else to add to localstorge https://hackernoon.com/how-to-take-advantage-of-local-storage-in-your-react-projects-a895f2b2d3f2
 
 **Around the secondary app** in spike state at the moment
 
@@ -140,6 +157,7 @@ Repo for spike game code -> https://github.com/SelenaSmall/search-term
   - [example - usefetch react custom hook](https://itnext.io/usefetch-react-custom-hook-for-fetch-api-with-suspense-and-concurrent-mode-in-mind-1d3ba9250e0)
   - sounds like it makes compnents simpler
   - is this a common use?
+  - https://medium.com/@baphemot/understanding-react-suspense-1c73b4b0b1e6
 
 - This is all a mess at the moment and not as important but hopefully will be
   re-written by the workshop as a bigger example

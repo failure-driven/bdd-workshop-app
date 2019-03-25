@@ -81,6 +81,17 @@ http://localhost:3000/game
 
 ## Tech Stack
 
+### Ruby
+
+- [ ] sort out ruby/vscode/prettier
+  - https://github.com/prettier/prettier-vscode
+  - https://github.com/prettier/plugin-ruby
+  - https://github.com/rubyide/vscode-ruby
+
+### JS
+
+- [ ] eslint/prettier
+  - https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a
 ### React testing
 
 Mostly using [Kent C. Dodd's](https://twitter.com/kentcdodds/) [react-testing-libaray]()

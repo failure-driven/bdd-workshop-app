@@ -7,12 +7,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Routes from '../components/Routes';
+import Messages from '../components/Messages';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <BrowserRouter>
       <>
         <Navigation />
+        <Messages />
         <Routes />
       </>
     </BrowserRouter>,

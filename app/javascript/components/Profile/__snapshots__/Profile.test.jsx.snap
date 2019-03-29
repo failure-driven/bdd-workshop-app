@@ -12,9 +12,14 @@ exports[`Profile handles invalid player being set 1`] = `
 `;
 
 exports[`Profile renders an error if profile fetch fails from localstorage the-id 1`] = `
-<ErrorAlert
-  errorMessage="500 - catastrophic failure in fetch the-id"
-/>
+<Spinner
+  color="primary"
+  data-testid="profile-loading"
+  tag="div"
+  type="border"
+>
+  Loading...
+</Spinner>
 `;
 
 exports[`Profile renders correctly in loading state 1`] = `

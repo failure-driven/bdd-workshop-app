@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Alert, Spinner } from 'reactstrap';
 import API from '../API';
-import ErrorAlert from '../ErrorAlert';
 import Handle from '../Handle';
 import ProgressBar from '../ProgressBar';
 import HandleForm from '../HandleForm';
+import messageBus from '../../utils/messageBus';
 
 class Profile extends Component {
   constructor(props) {
@@ -13,8 +13,6 @@ class Profile extends Component {
   }
 
   state = {
-    failed: false,
-    errorMessage: null,
     profile: null, // TODO could we pull it out JSON.parse(localStorage.getItem('player')),
     alert: null,
   };
@@ -27,7 +25,7 @@ class Profile extends Component {
   }
 
   fetchUserProfile() {
-    // TODO move out to separate lib?
+    // TODO move out to separate lib? API
     const player =
       localStorage.getItem('player') !== 'undefined' &&
       JSON.parse(localStorage.getItem('player'));
@@ -40,19 +38,17 @@ class Profile extends Component {
         localStorage.setItem('player', JSON.stringify(response.data));
       })
       .catch(({ response: { status, statusText } }) => {
-        this.setState({
-          failed: true,
-          errorMessage: [status, statusText].join(' - '),
-        });
+        // TODO: 500 - 599 should be generic "something went wrong" message
+        messageBus.error([status, statusText].join(' - '));
       });
   }
 
   render() {
-    const { profile, failed, errorMessage, alert } = this.state;
-    // TODO should this be moved to an ErrorBoundary?
-    if (failed) return <ErrorAlert errorMessage={errorMessage} />;
+    const { profile, alert } = this.state;
+
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
+    // TODO what if request finishes but with failure should spinner dissapear
     return (
       <>
         {alert && <Alert>{alert}</Alert>}

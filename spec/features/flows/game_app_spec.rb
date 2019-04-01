@@ -79,10 +79,10 @@ feature 'Game App', js: true do
       end
 
       Then 'They see their handle being "princess" and no prompt to customize thier profile' do
+        wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
         pending 'button is yet to be removed'
         # TODO: wait for upsell to make sure buttons fail
-        wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
-        wait_for { focus_on(:util).buttons }.to eq []
+        wait(1).for { focus_on(:util).buttons }.to eq []
       end
     end
   end

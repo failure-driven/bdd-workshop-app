@@ -32,6 +32,9 @@ bundle exec rspec -f documentation
 
 # yarn install node modules
 if [[ ${NO_INTERNET} != "true" ]]; then
+  # install yarn
+  npm install yarn --global
+
   bin/yarn
 fi
 

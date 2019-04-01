@@ -71,6 +71,8 @@ using custom hook library to fetch and suspense fallback for spinners
 
 ## nice to have
 
+- [ ] shimmer load https://alligator.io/react/skeleton-screens-react-and-react-native/
+  - https://github.com/danilowoz/react-content-loader
 - sort out ruby formatting, prettier and eslint
 - sort out why js formatting is different then prettier
 - [ ] split testing

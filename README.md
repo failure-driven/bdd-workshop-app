@@ -60,7 +60,22 @@ bundle exec rails db:create
 Run all the tests
 
 ```sh
+make build
+
+# or
 ./bin/full-build
+
+# or if there is no internet but the dependencies have been isntalled
+NO_INTERNET=true ./bin/full-build
+
+# if you want to rubocop and lint
+PRETTY_CODE=true NO_INTERNET=true bin/full-build
+```
+
+### Show the slides
+
+```sh
+make slides
 ```
 
 ### Run the dev server

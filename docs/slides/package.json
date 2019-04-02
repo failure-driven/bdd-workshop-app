@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "mdx-deck": "^2.0.6"
+  },
+  "dependencies": {
+    "file-loader": "^3.0.1",
+    "styled-components": "^4.2.0"
   }
 }

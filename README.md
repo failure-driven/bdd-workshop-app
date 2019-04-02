@@ -2,7 +2,20 @@
 
 A demo app to go along with the _soon to be written workshop_ on layered
 Behavriour Driven Developemnt (BDD)
+
 https://github.com/failure-driven/layered-testing-workshop.
+
+## TL;DR
+
+Assuming you sort out your own dependencies on ruby and node and have
+postgresql running
+
+```sh
+make
+```
+
+will check tooling, install dependencies, run through tests and open the slides
+leaving the slide server running in the window.
 
 ## Getting started
 
@@ -20,7 +33,7 @@ Assuming you have the following dependencies
 
 #### asdf
 
-for ruyb and nodejs as stipluated in .tool-versions
+for ruby and nodejs as stipluated in .tool-versions
 
 ```
 asdf plugin-add ruby

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+# prepare ruby gems
+if [[ ${NO_INTERNET} != "true" ]]; then
+  gem update --system --no-document --quiet
+  bundle install
+fi
+
+# yarn install node modules
+if [[ ${NO_INTERNET} != "true" ]]; then
+  # install yarn
+  npm install yarn --global
+
+  bin/yarn
+fi

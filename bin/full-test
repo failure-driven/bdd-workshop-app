@@ -2,12 +2,6 @@
 
 set -e
 
-# TODO: assuming run from root of project
-. bin/check-tools
-
-# TODO: assuming run from root of project
-. bin/install-libs
-
 # linting, and general pretty code is optional
 if [[ ${PRETTY_CODE} = "true" ]]; then
   bundle exec rubocop

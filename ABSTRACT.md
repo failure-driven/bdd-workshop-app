@@ -12,6 +12,13 @@ component through it's paces down through frontend component tests, API specs
 through to specs to integrate to outside services and everything in between.
 All the while building a fun app with Rails and ReactJS.
 
+**prerequisites:**
+* familiar with running RSpec or similar tests on a rails app
+* can follow setup
+  * http://bit.ly/rails-conf-2019-bdd
+  * which links to the repo for this workshop
+    https://github.com/failure-driven/bdd-workshop-app
+
 ### Michael Milewski
 Developer keen on the people side of things. I love pairing, I love coding with
 people new to writing software and especially driving out software with tests.

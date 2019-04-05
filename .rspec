@@ -1,1 +1,4 @@
 --require spec_helper
+
+# Format spec output as documentation
+--format documentation

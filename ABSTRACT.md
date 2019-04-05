@@ -5,7 +5,7 @@ as on https://railsconf.com/program/workshops#session-782
 ## Multi layer BDD for modern rails web apps
 
 Learn how to organise your integration tests for scalability and drive out functionality
-in a modern rails based web app with multi layered, outside in Behaviour Driven Development,
+in a modern rails based web app with multi-layered, outside-in Behaviour Driven Development,
 BDD. Along with an overview of testing for frontend components, APIs, external integrations
 and everything in between, we will run you through the layers of integration testing
 that matter - from "system flow" specs through "page mechanics" specs that take an
@@ -16,7 +16,7 @@ All the while building a fun app with Rails and ReactJS.
 **prerequisites**
 
 - developer familiar with running RSpec or similar tests on a rails app
-- can follow setup instructions under preparation
+- can follow the setup instructions under preparation
 
 **preparation**
 

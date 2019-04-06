@@ -72,7 +72,7 @@ feature 'landing page', js: true do
         visit('/')
       end
 
-      Then 'navigation is hidden appart from brand and hamburger' do
+      Then 'navigation is hidden apart from brand and hamburger' do
         wait_for { focus_on(:landing).brand }.to eq 'Game'
         wait_for { focus_on(:landing).navigation }.to eq %w[]
       end

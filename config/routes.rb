@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # TODO should we constrain? namespace :api, constraints: { format: 'json' } do
   namespace :api do
     namespace :v1 do
-      resources :profiles, only: %i[show create]
+      resources :profiles, only: %i[show create update]
     end
   end
 

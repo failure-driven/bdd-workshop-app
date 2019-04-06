@@ -16,6 +16,14 @@ RSpec.describe '/api/v1/profiles', type: :request do
       get '/api/v1/profiles/not-valid-player-id', as: :json
       expect(response.status).to eq 404
     end
+
+    describe 'update a player' do
+      it 'returns 204 OK and updates the handle' do
+        put "/api/v1/profiles/#{@player.id}", params: { player: { handle: 'princess' } }, as: :json
+        expect(response.status).to eq 204
+        expect(@player.reload.handle).to eq 'princess'
+      end
+    end
   end
 
   describe 'create new player' do

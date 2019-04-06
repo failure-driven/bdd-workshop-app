@@ -80,8 +80,9 @@ feature 'game page', js: true do
         end
 
         Then 'they are NO LONGER encouraged to customize their profile' do
-          # wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
           pending 'button is yet to be removed'
+          # TODO: need the upsell to make the button not flake for there are no buttons at this stage
+          wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
           wait(1).for { focus_on(:util).buttons }.to eq []
         end
       end

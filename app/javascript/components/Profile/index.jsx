@@ -43,12 +43,20 @@ class Profile extends Component {
       });
   }
 
+  updateUserProfile(data) {
+    data = Object.assign(data, this.state.profile);
+    return API.updateUserProfile({ data: data }).then(response => {
+      messageBus.info('Updated user profile');
+      return Promise.resolve(response);
+    });
+  }
+
   render() {
     const { profile, alert } = this.state;
 
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
-    // TODO what if request finishes but with failure should spinner dissapear
+    // TODO what if request finishes but with failure should spinner dissapear? YES!
     return (
       <>
         {alert && <Alert>{alert}</Alert>}
@@ -56,7 +64,7 @@ class Profile extends Component {
           <ProgressBar value="50" />
           <h1>Profile</h1>
           <Handle profile={profile} />
-          <HandleForm />
+          <HandleForm onSubmit={this.updateUserProfile.bind(this)} />
         </div>
       </>
     );

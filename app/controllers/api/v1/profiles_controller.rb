@@ -8,6 +8,11 @@ module Api
       def create
         @player = Player.create!
       end
+
+      def update
+        @player = Player.find(params[:id])
+        @player.update_attributes!(params.require(:player).permit(:handle))
+      end
     end
   end
 end

@@ -23,6 +23,18 @@ const createUserProfile = async () => {
   return response;
 };
 
+const updateUserProfile = async ({ data: { handle, id } }) => {
+  const response = await axios.put(
+    `/api/v1/profiles/${id}`,
+    { player: { handle } },
+    {
+      headers: { Accept: 'application/json' },
+    }
+  );
+  return response;
+};
+
 export { fetchUserProfile };
 export { createUserProfile };
-export default { fetchUserProfile, createUserProfile };
+export { updateUserProfile };
+export default { fetchUserProfile, createUserProfile, updateUserProfile };

@@ -90,6 +90,16 @@ feature 'profile page', js: true do
       end
     end
 
+    scenario 'user adds a handle' do
+      When 'a user visits the profile and submits a unique handle' do
+        visit('/profile')
+        focus_on(:profile).submit_handle('princess')
+      end
+
+      Then 'a success message is displayed' do
+        wait_for { focus_on(:message).info }.to eq 'Updated user profile'
+      end
+    end
     # context 'user with a custom handle setup' do
     #   before do
     #     # @profile.update_attributes(handle: 'princess')

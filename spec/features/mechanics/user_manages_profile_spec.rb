@@ -12,6 +12,44 @@ feature 'user manages profiles', js: true do
     Then 'an error message is shown'
   end
 
+  context 'Given a user has a partially complete profile' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      page.visit('/')
+      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\"}')"
+    end
+
+    scenario 'a user customizes their profile' do
+      When 'A user plays the game' do
+        visit('/')
+        focus_on(:landing).play_game
+      end
+
+      Then 'an option is shown to customize their profile' do
+        wait_for { focus_on(:game).handle }.to eq '01234567'
+        wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
+      end
+
+      When 'user chooses to customize profile!' do
+        focus_on(:game).customize_profile
+        wait_for { focus_on(:profile).handle_placeholder }.to eq('input your email')
+        focus_on(:profile).submit_email('princess@email.com')
+      end
+
+      And 'Navigates back to the game' do
+        focus_on(:landing).follow_brand_link
+        focus_on(:landing).play_game
+      end
+
+      Then 'an option is NOT shown to customize their profile' do
+        wait_for { focus_on(:game).profile_upsell }.to eq 'customize your profile with custom handle and image'
+        pending 'button is yet to be removed'
+        # TODO: wait for upsell to make sure buttons fail
+        wait(1).for { focus_on(:util).buttons }.to eq []
+      end
+    end
+  end
+
   context 'another profile exists' do
     scenario 'new handles must be unique' do
       When 'user tries to update handle to be the same as an existing one'

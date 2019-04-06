@@ -32,57 +32,117 @@ feature 'Playing the game', js: true do
 
     context 'But there is an existing profile for their email address' do
       before do
-        # create a profile
+        @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
       end
 
       scenario 'A new game commences when the user is successfully registered' do
-        When 'user visits the app'
-        Then 'welcome text is visible'
-        When 'click Lets Play'
-        Then 'user must to sign in or register to continue'
-        When 'user attempts to sign up'
-        # here they fill in a complete profile (handle, email, gravatar, 100% complete) with existing email address
-        Then 'a profile cannot be created if it already exists'
-        When 'user fixes the mistake in their sign up form'
-        Then 'the profile is successfully created'
-        And 'the user is signed in under that profile'
-        And 'game commences'
-        # "Coming soon"
+        When 'user plays a game' do
+          visit('/')
+          focus_on(:landing).play_game
+        end
+
+        Then 'user must sign in or register to continue' do
+          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        end
+
+        When 'user attempts sign up using an existing handle' do
+          focus_on(:auth).sign_up('princess')
+        end
+
+        Then 'a profile cannot be created if it already exists' do
+          pending 'Need to ensure uniqueness of handles'
+          wait_for { focus_on(:message).info }.to eq('Profile not created. Handle must be unique')
+        end
+
+        When 'user chooses a handle that does not already exist in the system' do
+          focus_on(:auth).sign_up('disney_princess')
+        end
+
+        Then 'the profile is successfully created' do
+          wait_for { focus_on(:message).info }.to eq('Updated user profile')
+        end
+
+        And 'the user is signed in under that profile' do
+          wait_for { focus_on(:nav).profile }.to eq('princess')
+        end
+
+        And 'the game commences' do
+          wait_for { focus_on(:game).status }.to eq('coming soon')
+        end
       end
 
       scenario 'A new game CANNOT commence when the user is NOT successfully registered' do
-        When 'user visits the app'
-        Then 'welcome text is visible'
-        When 'click Lets Play'
-        Then 'user must to sign in or register to continue'
-        When 'user attempts to sign up'
-        # here they fill in a complete profile (handle, email, gravatar, 100% complete) with existing email address
-        Then 'a profile cannot be created if it already exists'
-        When 'user navigates to the game link, ignoring the warning'
-        Then 'user must to sign in or register to continue'
+        When 'user plays a game' do
+          visit('/')
+          focus_on(:landing).play_game
+        end
+
+        Then 'user must sign in or register to continue' do
+          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        end
+
+        When 'user attempts sign up using an existing handle' do
+          focus_on(:auth).sign_up('princess')
+        end
+
+        Then 'a profile cannot be created if it already exists' do
+          pending 'Need to ensure uniqueness of handles'
+          wait_for { focus_on(:message).info }.to eq('Profile not created. Handle must be unique')
+        end
+
+        When 'user navigates to the game link, ignoring the warning' do
+          focus_on(:landing).follow_nav_link('Game')
+        end
+
+        Then 'user must to sign in or register to continue' do
+          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        end
       end
     end
   end
 
-  context 'Given the user IS registered AND signed in' do
+  context 'Given a user IS registered AND signed in' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      page.visit('/')
+      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\", \"handle\":\"#{@profile.handle}\"}')"
+    end
+
     scenario 'playing a game' do
-      When 'user visits the app'
-      Then 'welcome text is visible'
-      When 'click Lets Play'
-      Then 'game commences'
-      # "Coming soon"
+      When 'user plays a game' do
+        visit('/')
+        focus_on(:landing).play_game
+      end
+
+      Then 'the game commences' do
+        wait_for { focus_on(:game).status }.to eq('coming soon')
+      end
     end
   end
 
-  context 'Given the user IS registered and NOT signed in' do
+  context 'Given a user IS registered and NOT signed in' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+    end
+
     scenario 'playing a game' do
-      When 'user visits the app'
-      Then 'welcome text is visible'
-      When 'click Lets Play'
-      Then 'user must to sign in or register to continue'
-      When 'user signs in'
-      Then 'game commences'
-      # "Coming soon"
+      When 'user plays a game' do
+        visit('/')
+        focus_on(:landing).play_game
+      end
+
+      Then 'user must sign in or register to continue' do
+        wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+      end
+
+      When 'user signs in using their existing account' do
+        pending 'Need to allow sign in for existing users'
+        focus_on(:auth).sign_in('princess')
+      end
+
+      Then 'the game commences' do
+        wait_for { focus_on(:game).status }.to eq('coming soon')
+      end
     end
   end
 end

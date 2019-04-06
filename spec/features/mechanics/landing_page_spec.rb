@@ -8,7 +8,7 @@ feature 'landing page', js: true do
 
     Then 'they are greeted with the landing page' do
       wait_for { focus_on(:landing).brand }.to eq 'Game'
-      wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
+      wait_for { focus_on(:landing).navigation }.to eq %w[About Register]
       wait_for { focus_on(:landing).content }.to match(/^Games make mistakes.\nSHALL WE PLAY A GAME?/)
     end
   end
@@ -36,15 +36,15 @@ feature 'landing page', js: true do
 
     Then 'they are greeted with the plain landing page' do
       wait_for { focus_on(:landing).brand }.to eq 'Game'
-      wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
+      wait_for { focus_on(:landing).navigation }.to eq %w[About Register]
     end
 
-    When 'they click on profile' do
-      focus_on(:landing).follow_nav_link('Profile')
+    When 'they click on register' do
+      focus_on(:landing).follow_nav_link('Register')
     end
 
-    Then 'they are take to the profile page' do
-      wait_for { page.current_path }.to eq('/profile')
+    Then 'they are take to the register page' do
+      wait_for { page.current_path }.to eq('/register')
     end
 
     When 'the click on the brand Game link' do
@@ -83,7 +83,7 @@ feature 'landing page', js: true do
 
       Then 'the navigation to about and profile appears' do
         wait_for { focus_on(:landing).brand }.to eq 'Game'
-        wait_for { focus_on(:landing).navigation }.to eq %w[About Profile]
+        wait_for { focus_on(:landing).navigation }.to eq %w[About Register]
       end
     end
   end

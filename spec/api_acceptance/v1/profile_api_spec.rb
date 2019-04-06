@@ -29,9 +29,9 @@ RSpec.describe '/api/v1/profiles', type: :request do
   describe 'create new player' do
     it 'returns 200 OK' do
       expect do
-        post '/api/v1/profiles', as: :json
+        post '/api/v1/profiles', params: { player: { handle: 'princess' } }, as: :json
       end.to change { Player.count }.by(1)
-      expect(JSON.parse(response.body)).to include('id' => match(UUID_REGEX))
+      expect(JSON.parse(response.body)).to match('id' => match(UUID_REGEX), 'handle' => 'princess')
     end
   end
 end

@@ -9,9 +9,14 @@ exports[`Routes renders correctly 1`] = `
       path="/"
     />
     <Route
-      component={[Function]}
+      exact={true}
+      path="/register"
+      render={[Function]}
+    />
+    <Route
       exact={true}
       path="/profile"
+      render={[Function]}
     />
     <Route
       component={[Function]}

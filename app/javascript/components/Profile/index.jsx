@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Alert, Spinner } from 'reactstrap';
 import API from '../API';
 import Handle from '../Handle';
+import Avatar from '../Avatar';
 import ProgressBar from '../ProgressBar';
 import HandleForm from '../HandleForm';
 import messageBus from '../../utils/messageBus';
+import MainContainer from '../MainContainer';
+import PropTypes from 'prop-types';
 
 class Profile extends Component {
   constructor(props) {
@@ -13,8 +16,10 @@ class Profile extends Component {
   }
 
   state = {
-    profile: null, // TODO could we pull it out JSON.parse(localStorage.getItem('player')),
+    profile: this.props.profile,
     alert: null,
+    fetchProfile: this.props.fetchProfile,
+    history: this.props.history,
   };
 
   callCreateUserProfile(profile) {
@@ -47,6 +52,8 @@ class Profile extends Component {
     data = Object.assign(data, this.state.profile);
     return API.updateUserProfile({ data: data }).then(response => {
       messageBus.info('Updated user profile');
+      this.state.fetchProfile()
+      this.state.history.push('/game')
       return Promise.resolve(response);
     });
   }
@@ -58,17 +65,24 @@ class Profile extends Component {
       return <Spinner color="primary" data-testid="profile-loading" />;
     // TODO what if request finishes but with failure should spinner dissapear? YES!
     return (
-      <>
+      <MainContainer dataTestId="profile">
         {alert && <Alert>{alert}</Alert>}
-        <div data-testid="profile">
+        <div>
           <ProgressBar value="50" />
-          <h1>Profile</h1>
+          <h1>{profile.handle}</h1>
+          <Avatar />
           <Handle profile={profile} />
-          <HandleForm onSubmit={this.updateUserProfile.bind(this)} />
+          <HandleForm onSubmit={this.updateUserProfile.bind(this)} profile={profile} step="email" />
         </div>
-      </>
+      </MainContainer>
     );
   }
+}
+
+Profile.propTypes = {
+  profile: PropTypes.object,
+  fetchProfile: PropTypes.func,
+  history: PropTypes.object,
 }
 
 export default Profile;

@@ -41,9 +41,9 @@ exports[`Navigation renders correctly 1`] = `
         >
           <a
             class="nav-link"
-            href="/profile"
+            href="/register"
           >
-            Profile
+            Register
           </a>
         </li>
       </ul>

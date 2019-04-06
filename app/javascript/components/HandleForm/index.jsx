@@ -12,10 +12,10 @@ ActionButton.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 };
 
-const HandleForm = ({ onSubmit }) => {
+const HandleForm = ({ onSubmit, step }) => {
   return (
     <Formik
-      initialValues={{ handle: '' }}
+      initialValues={{ handle: '', email: '' }}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         event.preventDefault();
@@ -26,6 +26,7 @@ const HandleForm = ({ onSubmit }) => {
     >
       {({ values, handleChange, handleSubmit, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
+          { step === 'handle' ?
           <FormGroup>
             <Label for="handle">Handle</Label>
             <Input
@@ -36,6 +37,18 @@ const HandleForm = ({ onSubmit }) => {
               placeholder="input a custom handle"
             />
           </FormGroup>
+          : step === 'email' ?
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="input your email"
+            />
+          </FormGroup>
+          : ''}
           <ActionButton isSubmitting={isSubmitting} />
         </Form>
       )}
@@ -44,6 +57,7 @@ const HandleForm = ({ onSubmit }) => {
 };
 HandleForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  step: PropTypes.string,
 };
 
 export default HandleForm;

@@ -10,12 +10,12 @@ describe('createUserProfile', () => {
       return new Promise(() => {});
     };
 
-    createUserProfile();
+    createUserProfile({ handle: 'the-handle' });
 
     expect(axiosPosts).toEqual([
       {
         url: '/api/v1/profiles',
-        data: {},
+        data: { player: { handle: 'the-handle' } },
         headers: { Accept: 'application/json' },
       },
     ]);

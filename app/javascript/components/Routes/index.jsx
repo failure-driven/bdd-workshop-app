@@ -3,14 +3,16 @@ import { Route, Switch } from 'react-router-dom';
 import Game from '../Game';
 import About from '../About';
 import Profile from '../Profile';
+import Register from '../Register';
 import MainContainer from '../MainContainer';
 import WarGamesIntro from '../WarGamesIntro';
 
-const Routes = () => (
+const Routes = (props) => (
   <MainContainer>
     <Switch>
       <Route exact path="/" component={WarGamesIntro} />
-      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/register" render={(routeProps) => <Register {...props} {...routeProps} />} />
+      <Route exact path="/profile" render={(routeProps) => <Profile {...props} {...routeProps} />} />
       <Route exact path="/game" component={Game} />
       <Route exact path="/about" component={About} />
     </Switch>

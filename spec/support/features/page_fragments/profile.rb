@@ -26,5 +26,18 @@ module PageFragments
       browser.fill_in('handle', with: handle_text)
       browser.find('[name="submit"]').click
     end
+
+    def submit_email(email_text)
+      browser.fill_in('email', with: email_text)
+      browser.find('[name="submit"]').click
+    end
+
+    def heading
+      browser.find('main[data-testid="profile"] h1').text
+    end
+
+    def avatar
+      browser.find('main[data-testid="profile"] i[alt="placeholder-avatar"]')
+    end
   end
 end

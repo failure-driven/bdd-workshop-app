@@ -19,16 +19,19 @@ const useProfile = () => {
     return api()
       .get(`/api/v1/profiles/${id}`)
       .then(response => {
-        setLoading(false);
         setProfile(response.data);
+        setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setLoading(false)
+      });
   };
 
   useEffect(() => {
     fetchProfile();
   }, []);
-  return { profile, loading };
+
+  return { profile, loading, fetchProfile };
 };
 
 export default useProfile;

@@ -4,20 +4,12 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import Navigation from '../components/Navigation';
-import Routes from '../components/Routes';
-import Messages from '../components/Messages';
+import App from '../components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
+
   ReactDOM.render(
-    <BrowserRouter>
-      <>
-        <Navigation />
-        <Messages />
-        <Routes />
-      </>
-    </BrowserRouter>,
+    <App />,
     document.body.appendChild(document.createElement('div'))
   );
 });

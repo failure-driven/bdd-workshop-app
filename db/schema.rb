@@ -23,5 +23,4 @@ ActiveRecord::Schema.define(version: 2019_04_06_114048) do
     t.string "handle", null: false
     t.index ["handle"], name: "index_players_on_handle", unique: true
   end
-
 end

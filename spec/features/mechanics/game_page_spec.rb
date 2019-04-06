@@ -7,22 +7,20 @@ feature 'game page', js: true do
     end
 
     Then 'they are greeted with the game create profile page' do
-      wait_for { focus_on(:game).status }.to eq 'Please create a profile first!'
+      wait_for { focus_on(:auth).title }.to eq 'Please sign in or create a profile!'
     end
 
     When 'the user clicks on create profile' do
-      focus_on(:game).create_profile
+      focus_on(:auth).sign_up('princess')
     end
 
     Then 'they see a success message' do
-      wait(1.0).for { focus_on(:alert).message }.to eq 'Profile successfully created'
+      wait_for { focus_on(:message).info }.to eq 'profile successfully created'
     end
 
     And 'a handle and coming soon status' do
-      wait_for { @default_handle = focus_on(:game).handle }.to match(UUID_FIRST_8_REGEX)
-
       pending 'no redirect back to game to see coming soon status'
-      wait(1.0).for { focus_on(:game).status }.to eq 'coming soon'
+      wait_for { focus_on(:game).status }.to eq 'coming soon'
     end
   end
 

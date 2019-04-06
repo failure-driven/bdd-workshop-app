@@ -9,8 +9,10 @@ import {
   NavbarToggler,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Avatar from '../Avatar'
+import PropTypes from 'prop-types';
 
-const Navigation = () => {
+const Navigation = ({profile, loading}) => {
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
@@ -29,15 +31,29 @@ const Navigation = () => {
               About
             </NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to="/profile">
-              Profile
-            </NavLink>
-          </NavItem>
+          {
+            loading ? '' :
+            profile ?
+              <NavItem>
+                <NavLink tag={Link} to="/profile">
+                  <Avatar />
+                  <span data-testid="placeholder-avatar"> {profile.handle}</span>
+                </NavLink>
+              </NavItem>
+              :
+              <NavItem>
+                <NavLink tag={Link} to="/register">
+                  Register
+                </NavLink>
+              </NavItem>
+          }
         </Nav>
       </Collapse>
     </Navbar>
   );
 };
-
+Navigation.propTypes = {
+  profile: PropTypes.object,
+  loading: PropTypes.bool,
+}
 export default Navigation;

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/' => 'landing#index'
+  get '/register' => 'landing#index'
   get '/profile' => 'landing#index'
   get '/game' => 'landing#index'
   get '/about' => 'landing#index'

@@ -2,13 +2,18 @@
 
 exports[`About renders the about page 1`] = `
 <div>
-  <h1>
-    Game App
-  </h1>
-  <p
-    data-testid="about-content"
+  <main
+    class="m-5"
+    data-testid="about"
   >
-    A demo app of BDD built for RailsConf 2019
-  </p>
+    <h1>
+      Game App
+    </h1>
+    <p
+      data-testid="about-content"
+    >
+      A demo app of BDD built for RailsConf 2019
+    </p>
+  </main>
 </div>
 `;

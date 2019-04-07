@@ -1,38 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Routes renders correctly 1`] = `
-<MainContainer>
-  <Switch>
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/"
-    />
-    <Route
-      exact={true}
-      path="/register"
-      render={[Function]}
-    />
-    <Route
-      exact={true}
-      path="/sign_in"
-      render={[Function]}
-    />
-    <Route
-      exact={true}
-      path="/profile"
-      render={[Function]}
-    />
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/game"
-    />
-    <Route
-      component={[Function]}
-      exact={true}
-      path="/about"
-    />
-  </Switch>
-</MainContainer>
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    exact={true}
+    path="/register"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/sign_in"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
+    path="/profile"
+    render={[Function]}
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/game"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/about"
+  />
+</Switch>
 `;

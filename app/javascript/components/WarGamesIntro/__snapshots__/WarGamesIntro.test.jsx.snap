@@ -1,39 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WarGamesIntro renders correctly 1`] = `
-<Link
-  className="jumbotron-link"
-  data-testid="game-start"
-  replace={false}
-  to="/game"
+<MainContainer
+  dataTestId="intro"
 >
-  <Jumbotron
-    className="m-3"
-    data-testid="main-content"
-    tag="div"
+  <Link
+    className="jumbotron-link"
+    data-testid="game-start"
+    replace={false}
+    to="/game"
   >
-    <div
-      className="p-3 wargames-dotty"
+    <Jumbotron
+      className="m-3"
+      data-testid="main-content"
+      tag="div"
     >
-      <Typist
-        avgTypingDelay={70}
-        className=""
-        cursor={Object {}}
-        delayGenerator={[Function]}
-        onCharacterTyped={[Function]}
-        onLineTyped={[Function]}
-        onTypingDone={[Function]}
-        startDelay={0}
-        stdTypingDelay={25}
+      <div
+        className="p-3 wargames-dotty"
       >
-        Games make mistakes.
-        <div
-          className="question"
+        <Typist
+          avgTypingDelay={70}
+          className=""
+          cursor={Object {}}
+          delayGenerator={[Function]}
+          onCharacterTyped={[Function]}
+          onLineTyped={[Function]}
+          onTypingDone={[Function]}
+          startDelay={0}
+          stdTypingDelay={25}
         >
-          SHALL WE PLAY A GAME?
-        </div>
-      </Typist>
-    </div>
-  </Jumbotron>
-</Link>
+          Games make mistakes.
+          <div
+            className="question"
+          >
+            SHALL WE PLAY A GAME?
+          </div>
+        </Typist>
+      </div>
+    </Jumbotron>
+  </Link>
+</MainContainer>
 `;

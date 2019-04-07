@@ -12,6 +12,17 @@ const fetchUserProfile = async id => {
   return response;
 };
 
+const loginAsUser = async ({handle}) => {
+  const response = await axios
+    .post('/api/v1/profiles/sign_in',
+      { handle },
+      {
+        headers: {Accept: 'application/json'},
+      }
+    )
+  return response;
+};
+
 const createUserProfile = async (playerData) => {
   const response = await axios.post(
     '/api/v1/profiles',
@@ -37,4 +48,5 @@ const updateUserProfile = async ({data: {handle, id, email}}) => {
 export {fetchUserProfile};
 export {createUserProfile};
 export {updateUserProfile};
-export default {fetchUserProfile, createUserProfile, updateUserProfile};
+export {loginAsUser};
+export default {fetchUserProfile, createUserProfile, updateUserProfile, loginAsUser};

@@ -143,7 +143,6 @@ feature 'Playing the game', js: true do
       end
 
       When 'user signs in using their existing account' do
-        pending 'Need to allow sign in for existing users'
         focus_on(:auth).sign_in('princess')
       end
 

@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :profiles, only: %i[show create update]
+      post 'profiles/sign_in', to: 'profiles#sign_in'
     end
   end
 
   get '/' => 'landing#index'
   get '/register' => 'landing#index'
   get '/profile' => 'landing#index'
+  get '/sign_in' => 'landing#index'
   get '/game' => 'landing#index'
   get '/about' => 'landing#index'
 

@@ -14,6 +14,10 @@ module Api
         @player.update_attributes!(player_params)
       end
 
+      def sign_in
+        @player = Player.find_by!(handle: params[:handle])
+      end
+
       private
 
       def player_params

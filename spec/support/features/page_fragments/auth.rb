@@ -4,19 +4,18 @@ module PageFragments
       browser.find('main[data-testid="register"] h3').text
     end
 
+    def submit
+      browser.find('[name="submit"]').click
+    end
+
     def sign_up(handle_text)
       browser.fill_in('handle', with: handle_text)
       browser.find('[name="submit"]').click
     end
 
-    def submit
-      browser.find('[name="submit"]').click
-    end
-
     def sign_in(handle_text)
-      # TODO: sign_in and sign_up will be two different buttons
-      browser.fill_in('handle', with: handle_text)
-      browser.find('[name="submit"]').click
+      browser.find('.btn', text: 'sign in with an existing account').click
+      sign_up(handle_text)
     end
   end
 end

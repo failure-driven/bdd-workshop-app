@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterForm Renders a register form 1`] = `
+<Form
+  tag="form"
+>
+  <ActionButton>
+    Next
+  </ActionButton>
+</Form>
+`;

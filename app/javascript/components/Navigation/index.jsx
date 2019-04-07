@@ -26,11 +26,6 @@ const Navigation = ({profile, loading}) => {
       <NavbarToggler onClick={toggleNavbar} className="mr-2" />
       <Collapse isOpen={!collapsed} navbar>
         <Nav navbar>
-          <NavItem>
-            <NavLink tag={Link} to="/about">
-              About
-            </NavLink>
-          </NavItem>
           {
             loading ? '' :
             profile ?

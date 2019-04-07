@@ -8,14 +8,18 @@ import PropTypes from 'prop-types';
 const SignIn = ({ fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
     return loginAsUser(OurFormData)
-      .then(({ data: { id, handle } }) => {
+      .then(({ data: { id, handle, email } }) => {
         localStorage.setItem(
           'player',
           JSON.stringify({ id: id, handle: handle })
         );
         messageBus.info('signed in successfully');
         fetchProfile();
-        history.push('/game');
+        if (id && handle && email) {
+          history.push('/game');
+        } else {
+          history.push('/profile');
+        }
       })
       .catch(res => {
         const errors = res.response.data.errors;

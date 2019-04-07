@@ -129,7 +129,11 @@ feature 'Playing the game', js: true do
 
   context 'Given a user IS registered and NOT signed in' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      @profile = Player.create!(
+        id: '01234567-0123-4abc-8abc-0123456789ab',
+        handle: 'princess',
+        email: 'princess@email.com'
+      )
     end
 
     scenario 'playing a game' do

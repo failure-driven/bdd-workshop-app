@@ -41,7 +41,6 @@ feature 'sign in', js: true do
       end
 
       And "they're taken to their profile page" do
-        pending 'need half complete profiles to redirect to profile page'
         wait_for { focus_on(:profile).heading }.to eq('princess')
       end
 

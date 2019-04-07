@@ -12,6 +12,63 @@ ActionButton.propTypes = {
   isSubmitting: PropTypes.bool.isRequired,
 };
 
+const StepFormGroup = ({
+  step,
+  label,
+  type,
+  placeholder,
+  values,
+  handleChange,
+}) => (
+  <FormGroup>
+    <Label for={step}>{label}</Label>
+    <Input
+      type={type || 'text'}
+      name={step}
+      value={values[step]}
+      onChange={handleChange}
+      placeholder={placeholder}
+    />
+  </FormGroup>
+);
+StepFormGroup.propTypes = {
+  step: PropTypes.string,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  values: PropTypes.object,
+  handleChange: PropTypes.func,
+};
+
+const HandleStepFormGroup = props => (
+  <StepFormGroup
+    {...props}
+    label="Handle"
+    placeholder="input a custom handle"
+  />
+);
+
+const EmailStepFormGroup = props => (
+  <StepFormGroup
+    {...props}
+    label="Email"
+    type="email"
+    placeholder="input your email"
+  />
+);
+
+const RegisterForm = props => (
+  <Form onSubmit={props.handleSubmit}>
+    {props.step === 'handle' && <HandleStepFormGroup {...props} />}
+    {props.step === 'email' && <EmailStepFormGroup {...props} />}
+    <ActionButton {...props} />
+  </Form>
+);
+RegisterForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  step: PropTypes.string,
+};
+
 const HandleForm = ({ onSubmit, step }) => {
   return (
     <Formik
@@ -24,34 +81,7 @@ const HandleForm = ({ onSubmit, step }) => {
         });
       }}
     >
-      {({ values, handleChange, handleSubmit, isSubmitting }) => (
-        <Form onSubmit={handleSubmit}>
-          { step === 'handle' ?
-          <FormGroup>
-            <Label for="handle">Handle</Label>
-            <Input
-              type="text"
-              name="handle"
-              value={values.handle}
-              onChange={handleChange}
-              placeholder="input a custom handle"
-            />
-          </FormGroup>
-          : step === 'email' ?
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              placeholder="input your email"
-            />
-          </FormGroup>
-          : ''}
-          <ActionButton isSubmitting={isSubmitting} />
-        </Form>
-      )}
+      {props => <RegisterForm step={step} {...props} />}
     </Formik>
   );
 };

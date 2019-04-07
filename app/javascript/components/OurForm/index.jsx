@@ -3,10 +3,11 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import RegisterForm from './RegisterForm';
 
-const OurForm = ({ onSubmit, step }) => {
+const OurForm = ({ profile, onSubmit, step }) => {
+  const { handle, email } = profile;
   return (
     <Formik
-      initialValues={{ handle: '', email: '' }}
+      initialValues={{ handle, email }}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         event.preventDefault();
@@ -19,9 +20,19 @@ const OurForm = ({ onSubmit, step }) => {
     </Formik>
   );
 };
+
+OurForm.defaultProps = {
+  profile: { handle: '', email: '' },
+};
+
 OurForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   step: PropTypes.string,
+  profile: PropTypes.shape({
+    id: PropTypes.string,
+    handle: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };
 
 export default OurForm;

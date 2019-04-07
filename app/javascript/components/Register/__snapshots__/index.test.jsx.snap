@@ -9,6 +9,12 @@ exports[`Register renders text and a OurForm 1`] = `
   </h3>
   <OurForm
     onSubmit={[Function]}
+    profile={
+      Object {
+        "email": "",
+        "handle": "",
+      }
+    }
     step="handle"
   />
   <Link

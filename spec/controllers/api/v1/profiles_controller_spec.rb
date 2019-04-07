@@ -2,13 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ProfilesController, type: :controller do
   it 'shows a player' do
-    player = double(Player, id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'the-handle')
+    player = double(
+      Player,
+      id: '01234567-0123-4abc-8abc-0123456789ab',
+      handle: 'the-handle',
+      email: ''
+    )
     expect(Player).to receive(:find).with('the_id').and_return(player)
 
     get :show, params: { id: :the_id }, format: :json
 
     expect(response.code).to eq '200'
-    expect(JSON.parse(response.body)).to eq('id' => '01234567-0123-4abc-8abc-0123456789ab', 'handle' => 'the-handle')
+    expect(
+      JSON.parse(response.body)
+    ).to eq(
+      'id' => '01234567-0123-4abc-8abc-0123456789ab',
+      'handle' => 'the-handle',
+      'email' => ''
+    )
   end
 
   it 'creates a new player' do

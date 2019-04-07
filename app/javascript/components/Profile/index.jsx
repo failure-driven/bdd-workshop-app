@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Spinner } from 'reactstrap';
+import { Button, Alert, Spinner } from 'reactstrap';
 import API from '../API';
 import Handle from '../Handle';
 import Avatar from '../Avatar';
@@ -8,6 +8,7 @@ import OurForm from '../OurForm';
 import messageBus from '../../utils/messageBus';
 import MainContainer from '../MainContainer';
 import PropTypes from 'prop-types';
+import ShowProfile from './ShowProfile';
 
 class Profile extends Component {
   constructor(props) {
@@ -49,8 +50,8 @@ class Profile extends Component {
   }
 
   updateUserProfile(data) {
-    data = Object.assign(data, this.state.profile);
-    return API.updateUserProfile({ data: data }).then(response => {
+    data = Object.assign(this.state.profile, data);
+    return API.updateUserProfile({ data }).then(response => {
       messageBus.info('Updated user profile');
       this.state.fetchProfile();
       this.state.history.push('/game');
@@ -60,15 +61,28 @@ class Profile extends Component {
 
   render() {
     const { profile, alert } = this.state;
+    const progressValue =
+      profile && profile.id && profile.handle && profile.email
+        ? 100
+        : profile && profile.id && profile.handle
+        ? 50
+        : 0;
 
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
     // TODO what if request finishes but with failure should spinner dissapear? YES!
+    if (progressValue === 100)
+      return (
+        <MainContainer dataTestId="profile">
+          <ShowProfile profile={profile} />
+          <Button color="primary">Edit</Button>
+        </MainContainer>
+      );
     return (
       <MainContainer dataTestId="profile">
         {alert && <Alert>{alert}</Alert>}
         <div>
-          <ProgressBar value="50" />
+          <ProgressBar progressValue={progressValue} />
           <h1>{profile.handle}</h1>
           <Avatar />
           <Handle profile={profile} />

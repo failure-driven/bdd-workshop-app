@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShowProfile Displays avatar, handle and email 1`] = `
+<Fragment>
+  <Avatar
+    profile={
+      Object {
+        "email": "princess@email.comn",
+        "handle": "the-handle",
+        "id": "the-id",
+      }
+    }
+  />
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <dl>
+        <dt>
+          handle
+        </dt>
+        <dd>
+          the-handle
+        </dd>
+      </dl>
+      <dl>
+        <dt>
+          email
+        </dt>
+        <dd>
+          princess@email.comn
+        </dd>
+      </dl>
+    </Col>
+  </Row>
+</Fragment>
+`;

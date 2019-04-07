@@ -37,7 +37,11 @@ const SignIn = ({ profile, fetchProfile, history }) => {
   return (
     <MainContainer dataTestId="sign-in">
       <h1>Please sign in to continue!</h1>
-      <OurForm onSubmit={onOurFormSubmit} step="handle" />
+      <OurForm
+        profile={{ handle: null, email: null }}
+        onSubmit={onOurFormSubmit}
+        step="handle"
+      />
     </MainContainer>
   );
 };

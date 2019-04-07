@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar Displays the progressValue 1`] = `
+<Fragment>
+  <div
+    className="text-center"
+    data-testid="profile-progress"
+  >
+    33%
+  </div>
+  <Progress
+    max={100}
+    tag="div"
+    value={33}
+  />
+</Fragment>
+`;

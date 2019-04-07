@@ -4,8 +4,9 @@ import OurForm from '../OurForm';
 import messageBus from '../../utils/messageBus';
 import { loginAsUser } from '../API';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
-const SignIn = ({ fetchProfile, history }) => {
+const SignIn = ({ profile, fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
     return loginAsUser(OurFormData)
       .then(({ data: { id, handle, email } }) => {
@@ -32,6 +33,7 @@ const SignIn = ({ fetchProfile, history }) => {
       });
   };
 
+  if (profile) return <Redirect to="/profile" />;
   return (
     <MainContainer dataTestId="sign-in">
       <h1>Please sign in to continue!</h1>
@@ -42,6 +44,7 @@ const SignIn = ({ fetchProfile, history }) => {
 
 SignIn.propTypes = {
   fetchProfile: PropTypes.func,
+  profile: PropTypes.object,
   history: PropTypes.object,
 };
 

@@ -127,7 +127,6 @@ feature 'sign in', js: true do
         end
 
         Then "they're redirected to their profile" do
-          pending 'this route should redirect to /profile if the user is already signed in'
           wait_for { focus_on(:profile).heading }.to eq('princess')
         end
       end

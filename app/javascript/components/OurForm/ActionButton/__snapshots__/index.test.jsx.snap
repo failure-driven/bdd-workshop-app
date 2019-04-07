@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionButton Renders a primary submit button with children text 1`] = `
+<Button
+  color="primary"
+  name="submit"
+  tag="button"
+  type="submit"
+>
+  button text
+</Button>
+`;

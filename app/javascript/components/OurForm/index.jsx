@@ -1,16 +1,8 @@
 import React from 'react';
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Form, FormGroup, Input, Label } from 'reactstrap';
 import { Formik } from 'formik';
 import PropTypes from 'prop-types';
-
-const ActionButton = ({ isSubmitting }) => (
-  <Button name="submit" color="primary" type="submit" disabled={isSubmitting}>
-    Next
-  </Button>
-);
-ActionButton.propTypes = {
-  isSubmitting: PropTypes.bool.isRequired,
-};
+import ActionButton from './ActionButton';
 
 const StepFormGroup = ({
   step,
@@ -61,7 +53,7 @@ const RegisterForm = props => (
   <Form onSubmit={props.handleSubmit}>
     {props.step === 'handle' && <HandleStepFormGroup {...props} />}
     {props.step === 'email' && <EmailStepFormGroup {...props} />}
-    <ActionButton {...props} />
+    <ActionButton {...props}>Next</ActionButton>
   </Form>
 );
 RegisterForm.propTypes = {

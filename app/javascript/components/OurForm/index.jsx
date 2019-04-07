@@ -69,7 +69,7 @@ RegisterForm.propTypes = {
   step: PropTypes.string,
 };
 
-const HandleForm = ({ onSubmit, step }) => {
+const OurForm = ({ onSubmit, step }) => {
   return (
     <Formik
       initialValues={{ handle: '', email: '' }}
@@ -85,9 +85,9 @@ const HandleForm = ({ onSubmit, step }) => {
     </Formik>
   );
 };
-HandleForm.propTypes = {
+OurForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   step: PropTypes.string,
 };
 
-export default HandleForm;
+export default OurForm;

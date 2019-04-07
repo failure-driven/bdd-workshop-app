@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Register renders text and a form 1`] = `
+exports[`Register renders text and a OurForm 1`] = `
 <MainContainer
   dataTestId="register"
 >
   <h3>
     Please sign in or create a profile!
   </h3>
-  <HandleForm
+  <OurForm
     onSubmit={[Function]}
     step="handle"
   />

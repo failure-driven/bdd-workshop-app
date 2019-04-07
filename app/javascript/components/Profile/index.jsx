@@ -4,7 +4,7 @@ import API from '../API';
 import Handle from '../Handle';
 import Avatar from '../Avatar';
 import ProgressBar from '../ProgressBar';
-import HandleForm from '../HandleForm';
+import OurForm from '../OurForm';
 import messageBus from '../../utils/messageBus';
 import MainContainer from '../MainContainer';
 import PropTypes from 'prop-types';
@@ -52,8 +52,8 @@ class Profile extends Component {
     data = Object.assign(data, this.state.profile);
     return API.updateUserProfile({ data: data }).then(response => {
       messageBus.info('Updated user profile');
-      this.state.fetchProfile()
-      this.state.history.push('/game')
+      this.state.fetchProfile();
+      this.state.history.push('/game');
       return Promise.resolve(response);
     });
   }
@@ -72,7 +72,11 @@ class Profile extends Component {
           <h1>{profile.handle}</h1>
           <Avatar />
           <Handle profile={profile} />
-          <HandleForm onSubmit={this.updateUserProfile.bind(this)} profile={profile} step="email" />
+          <OurForm
+            onSubmit={this.updateUserProfile.bind(this)}
+            profile={profile}
+            step="email"
+          />
         </div>
       </MainContainer>
     );
@@ -83,6 +87,6 @@ Profile.propTypes = {
   profile: PropTypes.object,
   fetchProfile: PropTypes.func,
   history: PropTypes.object,
-}
+};
 
 export default Profile;

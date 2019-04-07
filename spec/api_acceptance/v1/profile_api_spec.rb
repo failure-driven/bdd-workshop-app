@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe '/api/v1/profiles', type: :request do
   context 'player exists' do
     before do
-      @player = Player.create!
+      @player = Player.create!(handle: 'princess')
     end
 
     it 'returns 200 OK' do

@@ -37,19 +37,38 @@ feature 'registration', js: true do
   end
 
   # warnings
-  scenario 'mandatory fields are missing'
-  scenario 'email field is not unique'
+  scenario 'mandatory fields are missing' do
+    When 'user attempts to register without providing a handle' do
+      visit('/register')
+      focus_on(:auth).submit
+    end
+
+    Then 'a warning is shown that this field is mandatory' do
+      wait_for { focus_on(:message).error }.to eq("handle: can't be blank")
+    end
+  end
+
+  context 'Given a a user profile already exists' do
+    before do
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+    end
+
+    scenario 'handle is not unique' do
+      When 'user attempts to register with an existing handle' do
+        visit('/register')
+
+        focus_on(:auth).sign_up('princess')
+      end
+
+      Then 'a warning is shown that this field must be unique' do
+        wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
+      end
+    end
+  end
 
   # errors
   scenario 'profile cannot be created'
 end
 
 # Unit test - profiles
-# describe 'mandatory fields'
-# handle must be present
-#
-# describe 'optional fields'
-# email must be unique
-# handle must be unique
-#
-# characters allowed in various fields
+# characters allowed in fields

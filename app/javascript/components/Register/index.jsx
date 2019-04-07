@@ -13,6 +13,9 @@ const Register = ({fetchProfile, history}) => {
       messageBus.info('profile successfully created');
       fetchProfile()
       history.push('/profile')
+    }).catch((res) => {
+      const messages = Object.keys(res.response.data.errors).map((key) => [key, res.response.data.errors[key]].join(': ')).join()
+      messageBus.error(messages)
     })
   };
 

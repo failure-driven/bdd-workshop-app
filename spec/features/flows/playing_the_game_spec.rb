@@ -50,8 +50,7 @@ feature 'Playing the game', js: true do
         end
 
         Then 'a profile cannot be created if it already exists' do
-          pending 'Need to ensure uniqueness of handles'
-          wait_for { focus_on(:message).info }.to eq('Profile not created. Handle must be unique')
+          wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
         end
 
         When 'user chooses a handle that does not already exist in the system' do
@@ -59,14 +58,18 @@ feature 'Playing the game', js: true do
         end
 
         Then 'the profile is successfully created' do
-          wait_for { focus_on(:message).info }.to eq('Updated user profile')
+          wait_for { focus_on(:message).info }.to eq('profile successfully created')
         end
 
         And 'the user is signed in under that profile' do
-          wait_for { focus_on(:nav).profile }.to eq('princess')
+          wait_for { focus_on(:nav).profile }.to eq('disney_princess')
         end
 
-        And 'the game commences' do
+        When 'user completes their registration' do
+          focus_on(:profile).submit_email('princess@email.com')
+        end
+
+        Then 'the game commences' do
           wait_for { focus_on(:game).status }.to eq('coming soon')
         end
       end
@@ -86,12 +89,12 @@ feature 'Playing the game', js: true do
         end
 
         Then 'a profile cannot be created if it already exists' do
-          pending 'Need to ensure uniqueness of handles'
-          wait_for { focus_on(:message).info }.to eq('Profile not created. Handle must be unique')
+          wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
         end
 
-        When 'user navigates to the game link, ignoring the warning' do
-          focus_on(:landing).follow_nav_link('Game')
+        When 'user tries to play the game again, ignoring the warning' do
+          focus_on(:landing).follow_brand_link
+          focus_on(:landing).play_game
         end
 
         Then 'user must to sign in or register to continue' do
@@ -105,7 +108,11 @@ feature 'Playing the game', js: true do
     before do
       @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
       page.visit('/')
-      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\", \"handle\":\"#{@profile.handle}\"}')"
+      player = {
+        id: @profile.id,
+        handle: @profile.handle
+      }
+      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
     end
 
     scenario 'playing a game' do

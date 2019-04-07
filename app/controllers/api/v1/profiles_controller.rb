@@ -11,7 +11,7 @@ module Api
 
       def update
         @player = Player.find(params[:id])
-        @player.update_attributes!(player_params)
+        @player.update!(player_params)
       end
 
       def sign_in

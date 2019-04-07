@@ -26,9 +26,9 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
   it 'updates an existing player' do
     params = ActionController::Parameters.new(handle: 'the_handle').permit(:handle)
 
-    player = double(Player, id: 'the_id', update_attributes!: {})
+    player = double(Player, id: 'the_id', update!: {})
     expect(Player).to receive(:find).with('the_id').and_return(player)
-    expect(player).to receive(:update_attributes!).with(params).and_return(player)
+    expect(player).to receive(:update!).with(params).and_return(player)
 
     put :update, params: { id: 'the_id', player: { id: 'the_id', handle: 'the_handle' } }, format: :json
 

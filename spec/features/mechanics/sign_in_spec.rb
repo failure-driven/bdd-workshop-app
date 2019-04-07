@@ -21,19 +21,56 @@ feature 'sign in', js: true do
       And 'theyre informed their profile is only 50% complete'
     end
 
-    scenario 'user is taken to game page when profile is 100% complete' do
-      When 'user signs in' do
-        visit('/sign_in')
-        focus_on(:auth).sign_up('princess')
+    context 'and their profile is 100% complete' do
+      before do
+        @profile.update_attributes(email: 'princess@email.com')
       end
 
-      Then 'sign in is successful' do
-        wait_for { focus_on(:message).info }.to eq('signed in successfully')
-        wait_for { focus_on(:nav).profile }.to eq('princess')
+      scenario 'user signs via nav link' do
+        When 'user follows the sign in link in the nav' do
+          visit('/')
+          focus_on(:landing).follow_nav_link('Sign in')
+        end
+
+        Then "they're taken to the sign in page" do
+          wait_for { focus_on(:sign_in).title }.to eq('Please sign in to continue!')
+        end
+
+        When 'user successfully signs in' do
+          focus_on(:auth).sign_up('princess')
+        end
+
+        Then 'sign in is successful' do
+          wait_for { focus_on(:message).info }.to eq('signed in successfully')
+          wait_for { focus_on(:nav).profile }.to eq('princess')
+        end
+
+        And "they're taken to the game page" do
+          wait_for { focus_on(:game).status }.to eq('coming soon')
+        end
       end
 
-      And 'theyre taken to the game page' do
-        wait_for { focus_on(:game).status }.to eq('coming soon')
+      scenario 'user signs via game page link' do
+        When 'user follows the sign in link in the nav' do
+          visit('/game')
+        end
+
+        Then "they're taken to the register page" do
+          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        end
+
+        When 'user successfully signs in with existing account' do
+          focus_on(:auth).sign_in('princess')
+        end
+
+        Then 'sign in is successful' do
+          wait_for { focus_on(:message).info }.to eq('signed in successfully')
+          wait_for { focus_on(:nav).profile }.to eq('princess')
+        end
+
+        And "they're taken to the game page" do
+          wait_for { focus_on(:game).status }.to eq('coming soon')
+        end
       end
     end
 

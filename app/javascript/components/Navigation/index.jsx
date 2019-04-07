@@ -25,30 +25,39 @@ const Navigation = ({profile, loading}) => {
       </NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} className="mr-2" />
       <Collapse isOpen={!collapsed} navbar>
-        <Nav navbar>
+        <Nav className='rightNav ml-auto' navbar>
           {
             loading ? '' :
-            profile ?
-              <NavItem>
-                <NavLink tag={Link} to="/profile">
-                  <Avatar />
-                  <span data-testid="placeholder-avatar"> {profile.handle}</span>
-                </NavLink>
-              </NavItem>
-              :
-              <NavItem>
-                <NavLink tag={Link} to="/register">
-                  Register
-                </NavLink>
-              </NavItem>
+              profile ?
+                <NavItem>
+                  <NavLink tag={Link} to="/profile">
+                    <Avatar />
+                    <span data-testid="placeholder-avatar"> {profile.handle}</span>
+                  </NavLink>
+                </NavItem>
+                :
+                <>
+                  <NavItem>
+                    <NavLink tag={Link} to="/sign_in">
+                      Sign in
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink tag={Link} to="/register">
+                      Register
+                    </NavLink>
+                  </NavItem>
+                </>
           }
         </Nav>
       </Collapse>
     </Navbar>
   );
 };
+
 Navigation.propTypes = {
   profile: PropTypes.object,
   loading: PropTypes.bool,
-}
+};
+
 export default Navigation;

@@ -16,7 +16,7 @@ const SignIn = ({fetchProfile, history}) => {
   };
 
   return (
-    <MainContainer dataTestId='sign-up'>
+    <MainContainer dataTestId='sign-in'>
       <h1>Please sign in to continue!</h1>
       <HandleForm onSubmit={onFormSubmit} step="handle" />
     </MainContainer>

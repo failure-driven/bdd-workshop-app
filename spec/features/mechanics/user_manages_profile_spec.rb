@@ -16,7 +16,11 @@ feature 'user manages profiles', js: true do
     before do
       @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
       page.visit('/')
-      page.execute_script "window.localStorage.setItem('player','{\"id\":\"#{@profile.id}\"}')"
+      player = {
+        id: @profile.id,
+        handle: @profile.handle
+      }
+      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
     end
 
     scenario 'a user customizes their profile' do

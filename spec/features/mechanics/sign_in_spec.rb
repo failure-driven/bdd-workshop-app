@@ -75,6 +75,10 @@ feature 'sign in', js: true do
           wait_for { focus_on(:nav).profile }.to eq('princess')
         end
 
+        And 'the sign in link is no longer visible' do
+          wait_for { focus_on(:landing).navigation }.to eq ['princess']
+        end
+
         And "they're taken to the game page" do
           wait_for { focus_on(:game).status }.to eq('coming soon')
         end
@@ -98,6 +102,10 @@ feature 'sign in', js: true do
           wait_for { focus_on(:nav).profile }.to eq('princess')
         end
 
+        And 'the sign in link is no longer visible' do
+          wait_for { focus_on(:landing).navigation }.to eq ['princess']
+        end
+
         And "they're taken to the game page" do
           wait_for { focus_on(:game).status }.to eq('coming soon')
         end
@@ -105,7 +113,25 @@ feature 'sign in', js: true do
     end
 
     context "AND they're already signed in" do
-      scenario 'user cannot sign in again'
+      before do
+        page.visit('/')
+        player = {
+          id: @profile.id,
+          handle: @profile.handle
+        }
+        page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+      end
+
+      scenario 'sign in page redirects signed in users to their profile' do
+        When 'user visits /sign_in' do
+          visit('/sign_in')
+        end
+
+        Then "they're redirected to their profile" do
+          pending 'this route should redirect to /profile if the user is already signed in'
+          wait_for { focus_on(:profile).heading }.to eq('princess')
+        end
+      end
     end
 
     context 'But their profile has been suspended' do

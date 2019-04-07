@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 feature 'registration', js: true do
-  # success
   scenario 'only mandatory fields are filled in while completing sign up process' do
     When 'user signs up only filling in mandatory fields' do
       visit('/register')
-
       focus_on(:auth).sign_up('princess')
     end
 
@@ -16,6 +14,7 @@ feature 'registration', js: true do
 
     And 'it is shown as 50% complete' do
       wait_for { focus_on(:profile).progress }.to eq('50')
+      wait_for { focus_on(:profile).progress_text }.to eq('50%')
     end
 
     And 'their profile picture is the placeholder image' do
@@ -28,15 +27,38 @@ feature 'registration', js: true do
   end
 
   scenario 'all fields are filled in while completing sign up process' do
-    When 'user signs up only filling in mandatory fields'
-    Then 'a profile is created'
-    # user is signed in
-    # profile details match up to those filled in
-    And 'their profile picture is the placeholder image'
-    And 'it is shown as 100% complete'
+    When 'user signs up only filling in mandatory fields' do
+      visit('/register')
+      focus_on(:auth).sign_up('princess')
+    end
+
+    Then 'a profile is created' do
+      wait_for { focus_on(:profile).heading }.to eq('princess')
+      wait_for { focus_on(:message).info }.to eq('profile successfully created')
+    end
+
+    When 'user completes the sign up process' do
+      pending 'need to work out how to upload an avatar'
+      focus_on(:profile).submit do |form|
+        form.email('princess@email.com')
+        form.avatar('test-avatar')
+      end
+    end
+
+    Then 'the correct profile details are shown' do
+      wait_for { focus_on(:profile).details }.to eq(
+        handle: 'princess',
+        email: 'princess@email.com',
+        avatar: 'test-avatar'
+      )
+    end
+
+    And 'profile is shown as 100% complete' do
+      wait_for { focus_on(:profile).progress }.to eq('100')
+      wait_for { focus_on(:profile).progress_text }.to eq('100%')
+    end
   end
 
-  # warnings
   scenario 'mandatory fields are missing' do
     When 'user attempts to register without providing a handle' do
       visit('/register')
@@ -60,15 +82,9 @@ feature 'registration', js: true do
         focus_on(:auth).sign_up('princess')
       end
 
-      Then 'a warning is shown that this field must be unique' do
+      Then 'profile cannot be created without a unique handle' do
         wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
       end
     end
   end
-
-  # errors
-  scenario 'profile cannot be created'
 end
-
-# Unit test - profiles
-# characters allowed in fields

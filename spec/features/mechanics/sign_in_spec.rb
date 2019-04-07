@@ -2,11 +2,26 @@ require 'rails_helper'
 
 feature 'sign in', js: true do
   scenario 'unregistered users cannot sign in' do
-    When 'user attempts to sign in'
-    Then 'they must register'
-    When 'user registers'
-    And 'they try again to sign in'
-    Then 'sign in is successful'
+    When 'user attempts to sign in' do
+      visit('/sign_in')
+      # TODO: this is a little bit confusing cause at the moment, sign_up and sign_in
+      # use the same method even though they're kind of different
+      focus_on(:auth).sign_up('princess')
+    end
+
+    Then 'user cant be found' do
+      wait_for { focus_on(:message).error }.to eq("Couldn't find Player")
+    end
+
+    When 'user registers' do
+      focus_on(:landing).follow_nav_link('Register')
+      focus_on(:auth).sign_up('princess')
+    end
+
+    Then "they're signed in successfully" do
+      wait_for { focus_on(:message).info }.to eq('profile successfully created')
+      wait_for { focus_on(:nav).profile }.to eq('princess')
+    end
   end
 
   context 'a user is registered' do
@@ -15,10 +30,25 @@ feature 'sign in', js: true do
     end
 
     scenario 'user is taken to profile page when profile is 50% complete' do
-      When 'user signs in'
-      Then 'sign in is successful'
-      And 'theyre taken to their profile page'
-      And 'theyre informed their profile is only 50% complete'
+      When 'user signs in' do
+        visit('/sign_in')
+        focus_on(:auth).sign_up('princess')
+      end
+
+      Then 'sign in is successful' do
+        wait_for { focus_on(:message).info }.to eq('signed in successfully')
+        wait_for { focus_on(:nav).profile }.to eq('princess')
+      end
+
+      And "they're taken to their profile page" do
+        pending 'need half complete profiles to redirect to profile page'
+        wait_for { focus_on(:profile).heading }.to eq('princess')
+      end
+
+      And "they're informed their profile is only 50% complete" do
+        wait_for { focus_on(:profile).progress }.to eq('50')
+        wait_for { focus_on(:profile).progress_text }.to eq('50%')
+      end
     end
 
     context 'and their profile is 100% complete' do

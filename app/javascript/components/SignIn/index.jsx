@@ -12,6 +12,12 @@ const SignIn = ({fetchProfile, history}) => {
       messageBus.info('signed in successfully');
       fetchProfile();
       history.push('/game')
+    }).catch((res) => {
+      const errors = res.response.data.errors;
+      const messages = Array.isArray(errors) ?
+        errors.map((e) => e.detail).join() :
+        Object.keys(errors).map((key) => [key, errors[key]].join(': ')).join()
+      messageBus.error(messages)
     })
   };
 

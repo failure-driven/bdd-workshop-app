@@ -13,10 +13,6 @@ module PageFragments
       browser.find('[name="submit"]').click
     end
 
-    def follow_sign_in_link
-      browser.find('.btn', text: 'sign in with an existing account').click
-    end
-
     def sign_in(handle_text)
       browser.find('.btn', text: 'sign in with an existing account').click
       sign_up(handle_text)

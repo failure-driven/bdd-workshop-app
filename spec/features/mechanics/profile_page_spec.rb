@@ -42,7 +42,7 @@ feature 'profile page', js: true do
     end
 
     scenario 'profile is 50% comlete' do
-      When 'a user of the internet vists the game page' do
+      When 'a user visits their profile' do
         visit('/profile')
       end
 

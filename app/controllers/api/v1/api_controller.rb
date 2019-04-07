@@ -10,6 +10,11 @@ module Api
       rescue_from ActiveRecord::RecordInvalid do |error|
         render json: { errors: error.record.errors }, status: :unprocessable_entity
       end
+
+      rescue_from ActiveRecord::RecordNotFound do |error|
+        detail = error.respond_to?(:model) ? "Couldn't find #{error.model}" : error.message
+        render json: { errors: [{ status: '404', detail: detail }] }, status: :not_found
+      end
     end
   end
 end

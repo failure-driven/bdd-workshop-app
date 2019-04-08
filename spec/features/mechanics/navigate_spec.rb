@@ -7,12 +7,12 @@ feature 'navigation', js: true do
     end
 
     Then 'they are greeted with the plain landing page' do
-      wait_for { focus_on(:landing).brand }.to eq 'Game'
-      wait_for { focus_on(:landing).navigation }.to eq ['Sign in', 'Register']
+      wait_for { focus_on(:nav).brand }.to eq 'Game'
+      wait_for { focus_on(:nav).navigation }.to eq ['Sign in', 'Register']
     end
 
     When 'they click on register' do
-      focus_on(:landing).follow_nav_link('Register')
+      focus_on(:nav).follow_nav_link('Register')
     end
 
     Then 'they are taken to the register page' do
@@ -20,15 +20,15 @@ feature 'navigation', js: true do
     end
 
     When 'the click on the brand Game link' do
-      focus_on(:landing).follow_brand_link
+      focus_on(:nav).follow_brand_link
     end
 
     Then 'they go back to the landing page' do
-      wait_for { focus_on(:landing).brand }.to eq 'Game'
+      wait_for { focus_on(:nav).brand }.to eq 'Game'
     end
 
     When 'they click sign in' do
-      focus_on(:landing).follow_nav_link('Sign in')
+      focus_on(:nav).follow_nav_link('Sign in')
     end
 
     Then 'they are taken to the sign in page' do
@@ -53,16 +53,16 @@ feature 'navigation', js: true do
       end
 
       Then 'they are logged in to the game page' do
-        wait_for { focus_on(:landing).content }.to match(/^Games make mistakes.\nSHALL WE PLAY A GAME?/)
-        wait_for { focus_on(:landing).navigation }.to eq ['princess']
+        wait_for { focus_on(:page_content).container_for('home').heading }.to eq('Play with me?')
+        wait_for { focus_on(:nav).navigation }.to eq ['princess']
       end
 
       When 'the click on the brand Game link' do
-        focus_on(:landing).follow_brand_link
+        focus_on(:nav).follow_brand_link
       end
 
       Then 'they go back to the landing page' do
-        wait_for { focus_on(:landing).brand }.to eq 'Game'
+        wait_for { focus_on(:nav).brand }.to eq 'Game'
       end
     end
   end
@@ -84,25 +84,25 @@ feature 'navigation', js: true do
       end
 
       Then 'navigation is hidden apart from brand and hamburger' do
-        wait_for { focus_on(:landing).brand }.to eq 'Game'
-        wait_for { focus_on(:landing).navigation }.to eq %w[]
+        wait_for { focus_on(:nav).brand }.to eq 'Game'
+        wait_for { focus_on(:nav).navigation }.to eq %w[]
       end
 
       When 'user expands the hamburger' do
-        focus_on(:landing).click_hamburger
+        focus_on(:nav).click_hamburger
       end
 
       Then 'the navigation to sign in and register appears' do
-        wait_for { focus_on(:landing).brand }.to eq 'Game'
-        wait_for { focus_on(:landing).navigation }.to eq ['Sign in', 'Register']
+        wait_for { focus_on(:nav).brand }.to eq 'Game'
+        wait_for { focus_on(:nav).navigation }.to eq ['Sign in', 'Register']
       end
     end
 
     scenario 'Sign in link taken users to the sign in page' do
       When 'a user visits follows the sign in link' do
         visit('/')
-        focus_on(:landing).click_hamburger
-        focus_on(:landing).follow_nav_link('Sign in')
+        focus_on(:nav).click_hamburger
+        focus_on(:nav).follow_nav_link('Sign in')
       end
 
       Then 'sign in page is rendered' do
@@ -113,8 +113,8 @@ feature 'navigation', js: true do
     scenario 'register link taken users to the register page' do
       When 'a user visits follows the sign in link' do
         visit('/')
-        focus_on(:landing).click_hamburger
-        focus_on(:landing).follow_nav_link('Register')
+        focus_on(:nav).click_hamburger
+        focus_on(:nav).follow_nav_link('Register')
       end
 
       Then 'register page is rendered' do

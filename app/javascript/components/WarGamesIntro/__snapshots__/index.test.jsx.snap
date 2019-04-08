@@ -2,8 +2,11 @@
 
 exports[`WarGamesIntro renders correctly 1`] = `
 <MainContainer
-  dataTestId="intro"
+  dataTestId="home"
 >
+  <h1>
+    Play with me?
+  </h1>
   <Link
     className="jumbotron-link"
     data-testid="game-start"
@@ -12,7 +15,7 @@ exports[`WarGamesIntro renders correctly 1`] = `
   >
     <Jumbotron
       className="m-3"
-      data-testid="main-content"
+      data-testid="wargames"
       tag="div"
     >
       <div

@@ -5,9 +5,10 @@ import Typist from 'react-typist';
 import MainContainer from '../MainContainer';
 
 const WarGamesIntro = () => (
-  <MainContainer dataTestId="intro">
+  <MainContainer dataTestId="home">
+    <h1>Play with me?</h1>
     <Link className="jumbotron-link" to="/game" data-testid="game-start">
-      <Jumbotron data-testid="main-content" className="m-3">
+      <Jumbotron data-testid="wargames" className="m-3">
         <div className="p-3 wargames-dotty">
           <Typist>
             Games make mistakes.

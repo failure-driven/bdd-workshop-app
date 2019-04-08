@@ -14,7 +14,7 @@ feature 'sign in', js: true do
     end
 
     When 'user registers' do
-      focus_on(:landing).follow_nav_link('Register')
+      focus_on(:nav).follow_nav_link('Register')
       focus_on(:auth).sign_up('princess')
     end
 
@@ -58,7 +58,7 @@ feature 'sign in', js: true do
       scenario 'user signs via nav link' do
         When 'user follows the sign in link in the nav' do
           visit('/')
-          focus_on(:landing).follow_nav_link('Sign in')
+          focus_on(:nav).follow_nav_link('Sign in')
         end
 
         Then "they're taken to the sign in page" do
@@ -75,7 +75,7 @@ feature 'sign in', js: true do
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:landing).navigation }.to eq ['princess']
+          wait_for { focus_on(:nav).navigation }.to eq ['princess']
         end
 
         And "they're taken to the game page" do
@@ -104,7 +104,7 @@ feature 'sign in', js: true do
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:landing).navigation }.to eq ['princess']
+          wait_for { focus_on(:nav).navigation }.to eq ['princess']
         end
 
         And "they're taken to the game page" do

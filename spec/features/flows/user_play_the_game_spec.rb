@@ -5,7 +5,7 @@ feature 'Playing the game', js: true do
     scenario 'A new game commences when the user is successfully registered' do
       When 'user plays a game' do
         visit('/')
-        focus_on(:landing).play_game
+        focus_on(:game_actions).for_game('wargames').play
       end
 
       Then 'user must sign in or register to continue' do
@@ -40,7 +40,7 @@ feature 'Playing the game', js: true do
       scenario 'A new game commences when the user is successfully registered' do
         When 'user plays a game' do
           visit('/')
-          focus_on(:landing).play_game
+          focus_on(:game_actions).for_game('wargames').play
         end
 
         Then 'user must sign in or register to continue' do
@@ -81,7 +81,7 @@ feature 'Playing the game', js: true do
       scenario 'A new game CANNOT commence when the user is NOT successfully registered' do
         When 'user plays a game' do
           visit('/')
-          focus_on(:landing).play_game
+          focus_on(:game_actions).for_game('wargames').play
         end
 
         Then 'user must sign in or register to continue' do
@@ -99,8 +99,8 @@ feature 'Playing the game', js: true do
         end
 
         When 'user tries to play the game again, ignoring the warning' do
-          focus_on(:landing).follow_brand_link
-          focus_on(:landing).play_game
+          focus_on(:nav).follow_brand_link
+          focus_on(:game_actions).for_game('wargames').play
         end
 
         Then 'user must to sign in or register to continue' do
@@ -126,7 +126,7 @@ feature 'Playing the game', js: true do
     scenario 'playing a game' do
       When 'user plays a game' do
         visit('/')
-        focus_on(:landing).play_game
+        focus_on(:game_actions).for_game('wargames').play
       end
 
       Then 'the game commences' do
@@ -147,7 +147,7 @@ feature 'Playing the game', js: true do
     scenario 'playing a game' do
       When 'user plays a game' do
         visit('/')
-        focus_on(:landing).play_game
+        focus_on(:game_actions).for_game('wargames').play
       end
 
       Then 'user must sign in or register to continue' do

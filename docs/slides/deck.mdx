@@ -451,6 +451,92 @@ _with extension_
 
 ---
 
+# What is a page fragment? (presentation)
+
+- Often referred to as a page model
+- A selenium test suite with capybara running the browser operates by executing browser actions written in code
+- These actions are required to run the tests but they’re not important to the tests themselves
+- And as tests act as a way for documenting behaviours of a system, you want to avoid convoluting them
+- Hiding away these actions into what we’ve come to know as page fragments helps keep tests cleaner, more readable and less fragile to change in the future
+
+---
+
+# Why are they useful? (presentation)
+
+- Changing text on element identified by className or data-attribute means your tests don’t break
+- Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass
+
+---
+
+# Where do they belong in your code base? (presentation)
+
+- along with the rest of your test suite, it makes sense to keep them under spec directory. And as supporting materials for feature tests, you might expect to find them in a similarly named directory
+- spec/support/features
+
+---
+
+# How are they available in tests? (presentation)
+
+- module PageFragments included in rspec.config
+- config.include PageFragments, type: :feature
+- Where do the browser methods come from?
+
+---
+
+# Developer tools (example)
+
+- Element hierarchy - semantic html
+- Find elements in the browser
+
+---
+
+# Facebook (exercise)
+
+- Identify generic elements
+
+---
+
+# Dashboard website (exercise)
+
+- Find specific elements
+- See how they are generic
+- Pseudo construct fragment methods for those elements
+    - How to write them
+    - How to use them
+
+---
+
+# Making assertions (presentation)
+
+- Rules of asserting elements
+- Synchronise method
+- has_no_css
+- to_not be_present
+
+---
+
+# Our app (exercise)
+
+- Hide away basic fragments
+
+---
+
+# OO Design patterns (exercise)
+
+- What does re-usability mean
+- Why is re-usability important
+- Patterns of reusable fragments
+- Abstract reusable fragments
+
+---
+
+# Benefits of page fragments (example)
+
+- Changing text on element identified by className or data-attribute means your tests don’t break
+- Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass
+
+---
+
 # Module 3
 ## Flows and Mechanics
 

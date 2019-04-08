@@ -6,9 +6,9 @@ module PageFragments
       end
     end
 
-    def buttons
+    def other_test_elements
       browser.synchronize do
-        browser.all('.btn').map(&:text)
+        browser.all('[data-testid="profile"] [data-testid]').map(&:text)
       end
     end
   end

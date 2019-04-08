@@ -4,7 +4,8 @@ feature 'registration', js: true do
   scenario 'only mandatory fields are filled in while completing sign up process' do
     When 'user signs up only filling in mandatory fields' do
       visit('/register')
-      focus_on(:auth).sign_up('princess')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('register').submit
     end
 
     Then 'a profile is created' do
@@ -29,7 +30,8 @@ feature 'registration', js: true do
   scenario 'all fields are filled in while completing sign up process' do
     When 'user signs up only filling in mandatory fields' do
       visit('/register')
-      focus_on(:auth).sign_up('princess')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('register').submit
     end
 
     Then 'a profile is created' do
@@ -62,7 +64,7 @@ feature 'registration', js: true do
   scenario 'mandatory fields are missing' do
     When 'user attempts to register without providing a handle' do
       visit('/register')
-      focus_on(:auth).submit
+      focus_on(:form).form_for('register').submit
     end
 
     Then 'a warning is shown that this field is mandatory' do
@@ -79,7 +81,8 @@ feature 'registration', js: true do
       When 'user attempts to register with an existing handle' do
         visit('/register')
 
-        focus_on(:auth).sign_up('princess')
+        focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('register').submit
       end
 
       Then 'profile cannot be created without a unique handle' do

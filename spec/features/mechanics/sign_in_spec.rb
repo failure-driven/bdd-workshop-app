@@ -4,9 +4,8 @@ feature 'sign in', js: true do
   scenario 'unregistered users cannot sign in' do
     When 'user attempts to sign in' do
       visit('/sign_in')
-      # TODO: this is a little bit confusing cause at the moment, sign_up and sign_in
-      # use the same method even though they're kind of different
-      focus_on(:auth).sign_up('princess')
+      focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('sign-in').submit
     end
 
     Then 'user cant be found' do
@@ -15,7 +14,8 @@ feature 'sign in', js: true do
 
     When 'user registers' do
       focus_on(:nav).follow_nav_link('Register')
-      focus_on(:auth).sign_up('princess')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('register').submit
     end
 
     Then "they're signed in successfully" do
@@ -32,7 +32,8 @@ feature 'sign in', js: true do
     scenario 'user is taken to profile page when profile is 50% complete' do
       When 'user signs in' do
         visit('/sign_in')
-        focus_on(:auth).sign_up('princess')
+        focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('sign-in').submit
       end
 
       Then 'sign in is successful' do
@@ -66,7 +67,8 @@ feature 'sign in', js: true do
         end
 
         When 'user successfully signs in' do
-          focus_on(:auth).sign_up('princess')
+          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+          focus_on(:form).form_for('sign-in').submit
         end
 
         Then 'sign in is successful' do
@@ -94,8 +96,10 @@ feature 'sign in', js: true do
           end.to eq('Please sign in or create a profile!')
         end
 
-        When 'user successfully signs in with existing account' do
-          focus_on(:auth).sign_in('princess')
+        When 'user successfully creates an account' do
+          focus_on(:page_content).container_for('register').action_item('sign in with an existing account')
+          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+          focus_on(:form).form_for('sign-in').submit
         end
 
         Then 'sign in is successful' do

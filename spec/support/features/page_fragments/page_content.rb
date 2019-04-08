@@ -13,6 +13,10 @@ module PageFragments
       def heading
         @element.find('h1').text
       end
+
+      def action_item(action)
+        @element.click_on(action)
+      end
     end
   end
 end

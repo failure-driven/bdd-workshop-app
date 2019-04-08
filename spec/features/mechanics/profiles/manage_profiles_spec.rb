@@ -10,7 +10,7 @@ feature 'user manages profiles', js: true do
     Then 'I see an error message' do
       # TODO: 5XX errors should be generic "something went wrong" message
       wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
-      wait_for { focus_on(:profile).test_elements }.to eq []
+      wait_for { focus_on(:util).other_test_elements }.to eq []
     end
   end
 
@@ -58,13 +58,14 @@ feature 'user manages profiles', js: true do
       scenario 'new handles must be unique' do
         When 'user tries to update handle to be the same as an existing one' do
           visit('/profile')
-          focus_on(:profile).edit
-          focus_on(:profile).submit_handle('troll')
+          focus_on(:page_content).container_for('profile').action_item('Edit')
+          focus_on(:form).form_for('profile').fill_in_row_for('handle', 'troll')
+          focus_on(:form).form_for('profile').submit
         end
 
         Then 'a warning message is shown' do
           wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
-          wait_for { focus_on(:profile).field('handle') }.to eq('troll')
+          wait_for { focus_on(:form).form_for('profile').field('handle') }.to eq('troll')
           # TODO: check top right hand for princess unchanged
         end
 
@@ -78,7 +79,8 @@ feature 'user manages profiles', js: true do
         end
 
         When 'user changes handle to something unique' do
-          focus_on(:profile).submit_handle('disney_princess')
+          focus_on(:form).form_for('profile').fill_in_row_for('handle', 'disney_princess')
+          focus_on(:form).form_for('profile').submit
         end
 
         Then 'profile is saved successfully' do

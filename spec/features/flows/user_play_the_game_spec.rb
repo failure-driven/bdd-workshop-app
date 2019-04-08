@@ -15,8 +15,11 @@ feature 'Playing the game', js: true do
       end
 
       When 'user signs up' do
-        focus_on(:auth).sign_up('princess')
-        focus_on(:profile).submit_email('princess@email.com')
+        focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('register').submit
+
+        focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
+        focus_on(:form).form_for('profile').submit
       end
 
       Then 'the profile is successfully created' do
@@ -50,7 +53,8 @@ feature 'Playing the game', js: true do
         end
 
         When 'user attempts sign up using an existing handle' do
-          focus_on(:auth).sign_up('princess')
+          focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+          focus_on(:form).form_for('register').submit
         end
 
         Then 'a profile cannot be created if it already exists' do
@@ -58,7 +62,8 @@ feature 'Playing the game', js: true do
         end
 
         When 'user chooses a handle that does not already exist in the system' do
-          focus_on(:auth).sign_up('disney_princess')
+          focus_on(:form).form_for('register').fill_in_row_for('handle', 'disney_princess')
+          focus_on(:form).form_for('register').submit
         end
 
         Then 'the profile is successfully created' do
@@ -70,7 +75,8 @@ feature 'Playing the game', js: true do
         end
 
         When 'user completes their registration' do
-          focus_on(:profile).submit_email('princess@email.com')
+          focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
+          focus_on(:form).form_for('profile').submit
         end
 
         Then 'the game commences' do
@@ -91,7 +97,8 @@ feature 'Playing the game', js: true do
         end
 
         When 'user attempts sign up using an existing handle' do
-          focus_on(:auth).sign_up('princess')
+          focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+          focus_on(:form).form_for('register').submit
         end
 
         Then 'a profile cannot be created if it already exists' do
@@ -157,7 +164,9 @@ feature 'Playing the game', js: true do
       end
 
       When 'user signs in using their existing account' do
-        focus_on(:auth).sign_in('princess')
+        focus_on(:page_content).container_for('register').action_item('sign in with an existing account')
+        focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('sign-in').submit
       end
 
       Then 'the game commences' do

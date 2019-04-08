@@ -106,7 +106,7 @@ feature 'navigation', js: true do
       end
 
       Then 'sign in page is rendered' do
-        wait_for { focus_on(:sign_in).title }.to eq('Please sign in to continue!')
+        wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Please sign in to continue!')
       end
     end
 
@@ -118,7 +118,9 @@ feature 'navigation', js: true do
       end
 
       Then 'register page is rendered' do
-        wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        wait_for do
+          focus_on(:page_content).container_for('register').heading
+        end.to eq('Please sign in or create a profile!')
       end
     end
   end

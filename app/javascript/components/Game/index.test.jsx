@@ -34,7 +34,7 @@ describe('Game', () => {
         <Game />
       </MemoryRouter>
     );
-    expect(getByTestId('game-status')).toHaveTextContent('coming soon');
+    expect(getByTestId('game')).toHaveTextContent('coming soon');
   });
 
   it('renders loading spinner if loading true', () => {
@@ -47,7 +47,7 @@ describe('Game', () => {
         <Game />
       </MemoryRouter>
     );
-    expect(queryByTestId('game-status')).toBeNull();
+    expect(queryByTestId('game')).toBeNull();
     expect(getByText('Loading...')).toBeTruthy();
   });
 });

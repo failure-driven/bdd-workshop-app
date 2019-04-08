@@ -4,9 +4,9 @@ exports[`Register renders text and a OurForm 1`] = `
 <MainContainer
   dataTestId="register"
 >
-  <h3>
+  <h1>
     Please sign in or create a profile!
-  </h3>
+  </h1>
   <OurForm
     onSubmit={[Function]}
     profile={

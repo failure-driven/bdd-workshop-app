@@ -8,7 +8,7 @@ feature 'registration', js: true do
     end
 
     Then 'a profile is created' do
-      wait_for { focus_on(:profile).heading }.to eq('princess')
+      wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
       wait_for { focus_on(:message).info }.to eq('profile successfully created')
     end
 
@@ -33,7 +33,7 @@ feature 'registration', js: true do
     end
 
     Then 'a profile is created' do
-      wait_for { focus_on(:profile).heading }.to eq('princess')
+      wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
       wait_for { focus_on(:message).info }.to eq('profile successfully created')
     end
 

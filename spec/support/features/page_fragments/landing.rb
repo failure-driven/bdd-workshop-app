@@ -17,11 +17,11 @@ module PageFragments
     end
 
     def content
-      browser.find('.jumbotron[data-testid="main-content"]').text
+      main_content.text
     end
 
     def play_game
-      browser.find('.jumbotron[data-testid="main-content"]').click
+      main_content.click
     end
 
     def click_hamburger
@@ -32,6 +32,10 @@ module PageFragments
 
     def navbar_brand
       browser.find('nav .navbar-brand')
+    end
+
+    def main_content
+      browser.find('.jumbotron[data-testid="main-content"]')
     end
   end
 end

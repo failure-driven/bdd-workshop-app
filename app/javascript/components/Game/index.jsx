@@ -13,7 +13,7 @@ const Game = () => {
   }
   return (
     <MainContainer dataTestId="game">
-      <div data-testid="game-status">coming soon</div>
+      <h1>coming soon</h1>
     </MainContainer>
   );
 };

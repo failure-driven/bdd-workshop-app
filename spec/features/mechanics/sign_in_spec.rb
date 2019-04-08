@@ -41,7 +41,7 @@ feature 'sign in', js: true do
       end
 
       And "they're taken to their profile page" do
-        wait_for { focus_on(:profile).heading }.to eq('princess')
+        wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
       end
 
       And "they're informed their profile is only 50% complete" do
@@ -62,7 +62,7 @@ feature 'sign in', js: true do
         end
 
         Then "they're taken to the sign in page" do
-          wait_for { focus_on(:sign_in).title }.to eq('Please sign in to continue!')
+          wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Please sign in to continue!')
         end
 
         When 'user successfully signs in' do
@@ -79,7 +79,7 @@ feature 'sign in', js: true do
         end
 
         And "they're taken to the game page" do
-          wait_for { focus_on(:game).status }.to eq('coming soon')
+          wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
 
@@ -89,7 +89,9 @@ feature 'sign in', js: true do
         end
 
         Then "they're taken to the register page" do
-          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+          wait_for do
+            focus_on(:page_content).container_for('register').heading
+          end.to eq('Please sign in or create a profile!')
         end
 
         When 'user successfully signs in with existing account' do
@@ -106,7 +108,7 @@ feature 'sign in', js: true do
         end
 
         And "they're taken to the game page" do
-          wait_for { focus_on(:game).status }.to eq('coming soon')
+          wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
     end
@@ -127,7 +129,7 @@ feature 'sign in', js: true do
         end
 
         Then "they're redirected to their profile" do
-          wait_for { focus_on(:profile).heading }.to eq('princess')
+          wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
         end
       end
     end

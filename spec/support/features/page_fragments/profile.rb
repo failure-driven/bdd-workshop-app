@@ -32,10 +32,6 @@ module PageFragments
       browser.find('[name="submit"]').click
     end
 
-    def heading
-      browser.find('main[data-testid="profile"] h1').text
-    end
-
     def avatar
       browser.find('main[data-testid="profile"] i[alt="placeholder-avatar"]')
     end

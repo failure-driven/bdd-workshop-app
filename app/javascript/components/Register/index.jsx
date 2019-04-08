@@ -25,7 +25,7 @@ const Register = ({ fetchProfile, history }) => {
 
   return (
     <MainContainer dataTestId="register">
-      <h3>Please sign in or create a profile!</h3>
+      <h1>Please sign in or create a profile!</h1>
       <OurForm onSubmit={onOurFormSubmit} step="handle" />
       <Link className="btn" to="/sign_in">
         sign in with an existing account

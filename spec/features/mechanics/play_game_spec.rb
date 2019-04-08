@@ -7,7 +7,9 @@ feature 'user plays the game', js: true do
     end
 
     Then 'they are redirected to the sign up page' do
-      wait_for { focus_on(:auth).title }.to eq 'Please sign in or create a profile!'
+      wait_for do
+        focus_on(:page_content).container_for('register').heading
+      end.to eq('Please sign in or create a profile!')
     end
   end
 
@@ -41,7 +43,7 @@ feature 'user plays the game', js: true do
       end
 
       Then 'they are shown the coming soon status' do
-        wait_for { focus_on(:game).status }.to eq 'coming soon'
+        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
       end
     end
   end

@@ -9,7 +9,9 @@ feature 'Playing the game', js: true do
       end
 
       Then 'user must sign in or register to continue' do
-        wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        wait_for do
+          focus_on(:page_content).container_for('register').heading
+        end.to eq('Please sign in or create a profile!')
       end
 
       When 'user signs up' do
@@ -26,7 +28,7 @@ feature 'Playing the game', js: true do
       end
 
       And 'the game commences' do
-        wait_for { focus_on(:game).status }.to eq('coming soon')
+        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
       end
     end
 
@@ -42,7 +44,9 @@ feature 'Playing the game', js: true do
         end
 
         Then 'user must sign in or register to continue' do
-          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+          wait_for do
+            focus_on(:page_content).container_for('register').heading
+          end.to eq('Please sign in or create a profile!')
         end
 
         When 'user attempts sign up using an existing handle' do
@@ -70,7 +74,7 @@ feature 'Playing the game', js: true do
         end
 
         Then 'the game commences' do
-          wait_for { focus_on(:game).status }.to eq('coming soon')
+          wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
 
@@ -81,7 +85,9 @@ feature 'Playing the game', js: true do
         end
 
         Then 'user must sign in or register to continue' do
-          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+          wait_for do
+            focus_on(:page_content).container_for('register').heading
+          end.to eq('Please sign in or create a profile!')
         end
 
         When 'user attempts sign up using an existing handle' do
@@ -98,7 +104,9 @@ feature 'Playing the game', js: true do
         end
 
         Then 'user must to sign in or register to continue' do
-          wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+          wait_for do
+            focus_on(:page_content).container_for('register').heading
+          end.to eq('Please sign in or create a profile!')
         end
       end
     end
@@ -122,7 +130,7 @@ feature 'Playing the game', js: true do
       end
 
       Then 'the game commences' do
-        wait_for { focus_on(:game).status }.to eq('coming soon')
+        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
       end
     end
   end
@@ -143,7 +151,9 @@ feature 'Playing the game', js: true do
       end
 
       Then 'user must sign in or register to continue' do
-        wait_for { focus_on(:auth).title }.to eq('Please sign in or create a profile!')
+        wait_for do
+          focus_on(:page_content).container_for('register').heading
+        end.to eq('Please sign in or create a profile!')
       end
 
       When 'user signs in using their existing account' do
@@ -151,7 +161,7 @@ feature 'Playing the game', js: true do
       end
 
       Then 'the game commences' do
-        wait_for { focus_on(:game).status }.to eq('coming soon')
+        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
       end
     end
   end

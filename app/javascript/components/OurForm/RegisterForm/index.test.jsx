@@ -11,7 +11,7 @@ describe('RegisterForm', () => {
 
   it('Renders an Action button with text next', () => {
     const wrapper = shallow(<RegisterForm />);
-    expect(wrapper.find('ActionButton').prop('children')).toEqual('Next');
+    expect(wrapper.find('ActionButton').prop('children')).toEqual('Submit');
   });
 
   it('Renders the handle step form if step is handle', () => {

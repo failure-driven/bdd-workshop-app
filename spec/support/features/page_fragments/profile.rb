@@ -22,6 +22,10 @@ module PageFragments
       browser.find('form input')['placeholder']
     end
 
+    def field(name)
+      browser.find(%([name="#{name}"])).value
+    end
+
     def submit_handle(handle_text)
       browser.fill_in('handle', with: handle_text)
       browser.find('[name="submit"]').click
@@ -34,6 +38,10 @@ module PageFragments
 
     def avatar
       browser.find('main[data-testid="profile"] i[alt="placeholder-avatar"]')
+    end
+
+    def edit
+      browser.click_on('Edit')
     end
   end
 end

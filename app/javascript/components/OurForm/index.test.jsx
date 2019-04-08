@@ -7,7 +7,7 @@ describe('OurForm', () => {
   describe('WHEN OurForm is rendered', () => {
     it('THEN there is a next submit button that is enabled', () => {
       const { getByText } = render(<OurForm onSubmit={() => {}} />);
-      const nextButton = getByText('Next');
+      const nextButton = getByText('Submit');
       expect(nextButton).toHaveClass('btn-primary');
       expect(nextButton).toHaveAttribute('type');
       expect(nextButton.getAttribute('type')).toEqual('submit');
@@ -19,7 +19,7 @@ describe('OurForm', () => {
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('WHEN the submit button is clicked it is disabled', () => {
     const { getByText } = render(<OurForm onSubmit={() => {}} />);
-    const nextButton = getByText('Next');
+    const nextButton = getByText('Submit');
 
     fireEvent.click(nextButton);
 
@@ -31,7 +31,7 @@ describe('OurForm', () => {
   it.skip('WHEN the submit button is clicked the onSubmit function is called', () => {
     const mockOnSubmit = jest.fn().mockResolvedValue({ data: 'data' });
     const { getByText } = render(<OurForm onSubmit={() => mockOnSubmit} />);
-    const nextButton = getByText('Next');
+    const nextButton = getByText('Submit');
 
     fireEvent.click(nextButton);
 

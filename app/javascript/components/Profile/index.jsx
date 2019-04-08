@@ -21,6 +21,7 @@ class Profile extends Component {
     alert: null,
     fetchProfile: this.props.fetchProfile,
     history: this.props.history,
+    isEditting: false,
   };
 
   callCreateUserProfile(profile) {
@@ -49,18 +50,36 @@ class Profile extends Component {
       });
   }
 
+  toggleIsEditting() {
+    this.setState({ isEditting: !this.state.isEditting });
+  }
+
   updateUserProfile(data) {
     data = Object.assign(this.state.profile, data);
-    return API.updateUserProfile({ data }).then(response => {
-      messageBus.info('Updated user profile');
-      this.state.fetchProfile();
-      this.state.history.push('/game');
-      return Promise.resolve(response);
-    });
+    return API.updateUserProfile({ data })
+      .then(response => {
+        messageBus.info('Updated user profile');
+        this.state.fetchProfile();
+        if (this.state.isEditting) {
+          this.toggleIsEditting();
+        } else {
+          this.state.history.push('/game');
+        }
+        return Promise.resolve(response);
+      })
+      .catch(res => {
+        const errors = res.response.data.errors;
+        const messages = Array.isArray(errors)
+          ? errors.map(e => e.detail).join()
+          : Object.keys(errors)
+              .map(key => [key, errors[key]].join(': '))
+              .join();
+        messageBus.error(messages);
+      });
   }
 
   render() {
-    const { profile, alert } = this.state;
+    const { isEditting, profile, alert } = this.state;
     const progressValue =
       profile && profile.id && profile.handle && profile.email
         ? 100
@@ -71,11 +90,27 @@ class Profile extends Component {
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
     // TODO what if request finishes but with failure should spinner dissapear? YES!
-    if (progressValue === 100)
+    if (progressValue === 100 || isEditting)
       return (
         <MainContainer dataTestId="profile">
-          <ShowProfile profile={profile} />
-          <Button color="primary">Edit</Button>
+          {isEditting ? (
+            <>
+              <OurForm
+                onSubmit={this.updateUserProfile.bind(this)}
+                profile={profile}
+              />
+            </>
+          ) : (
+            <>
+              <ShowProfile profile={profile} />
+              <Button
+                color="primary"
+                onClick={this.toggleIsEditting.bind(this)}
+              >
+                Edit
+              </Button>
+            </>
+          )}
         </MainContainer>
       );
     return (
@@ -91,6 +126,9 @@ class Profile extends Component {
             profile={profile}
             step="email"
           />
+          <Button color="primary" onClick={this.toggleIsEditting.bind(this)}>
+            Edit
+          </Button>
         </div>
       </MainContainer>
     );

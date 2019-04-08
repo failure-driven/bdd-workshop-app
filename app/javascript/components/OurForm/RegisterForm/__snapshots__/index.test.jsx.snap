@@ -4,8 +4,14 @@ exports[`RegisterForm Renders a register form 1`] = `
 <Form
   tag="form"
 >
+  <HandleStepFormGroup
+    step="handle"
+  />
+  <EmailStepFormGroup
+    step="email"
+  />
   <ActionButton>
-    Next
+    Submit
   </ActionButton>
 </Form>
 `;

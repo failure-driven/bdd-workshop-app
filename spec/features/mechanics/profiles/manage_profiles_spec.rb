@@ -48,19 +48,24 @@ feature 'user manages profiles', js: true do
 
     context 'and some other profile exists as well' do
       before do
-        Player.create!(id: '01234567-0123-4abc-8abc-0123456789ac', handle: 'troll')
+        Player.create!(
+          id: '01234567-0123-4abc-8abc-0123456789ac',
+          handle: 'troll',
+          email: 'troll@email.com'
+        )
       end
 
       scenario 'new handles must be unique' do
         When 'user tries to update handle to be the same as an existing one' do
           visit('/profile')
-          pending 'need edit link and page'
           focus_on(:profile).edit
           focus_on(:profile).submit_handle('troll')
         end
 
         Then 'a warning message is shown' do
-          wait_for { focus_on(:messages).error }.to eq('handle: must be unique')
+          wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
+          wait_for { focus_on(:profile).field('handle') }.to eq('troll')
+          # TODO: check top right hand for princess unchanged
         end
 
         When 'user refreshes the page' do
@@ -68,6 +73,7 @@ feature 'user manages profiles', js: true do
         end
 
         Then 'handle has not been updated' do
+          pending 'assert details'
           wait_for { focus_on(:profile).details[:handle] }.to eq('princess')
         end
 

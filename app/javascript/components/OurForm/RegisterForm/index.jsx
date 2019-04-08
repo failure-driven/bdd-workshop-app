@@ -25,7 +25,13 @@ const RegisterForm = props => (
   <Form onSubmit={props.handleSubmit}>
     {props.step === 'handle' && <HandleStepFormGroup {...props} />}
     {props.step === 'email' && <EmailStepFormGroup {...props} />}
-    <ActionButton>Next</ActionButton>
+    {!props.step && (
+      <>
+        <HandleStepFormGroup {...props} step="handle" />
+        <EmailStepFormGroup {...props} step="email" />
+      </>
+    )}
+    <ActionButton>{props.step ? 'Next' : 'Submit'}</ActionButton>
   </Form>
 );
 RegisterForm.propTypes = {

@@ -130,30 +130,26 @@ _layered like an onion_
 
 ---
 
-# Traditional Testing States
+# Traditional Testing Scenario
 
-<table>
-  <tr>
-    <td>Given</td>
-    <td>Arrange</td>
-  </tr>
-  <tr>
-    <td>When</td>
-    <td>Act</td>
-  </tr>
-  <tr>
-    <td>Then</td>
-    <td>Assert</td>
-  </tr>
-</table>
+|           |                                      |             |
+|:--------- |:-------------------------------------|:----------- |
+| **Given** | IMAGE<br />nail and hammer raised         | **Arrange** |
+| **When ** | IMAGE<br />hammer strikes nail            | **Act    ** |
+| **Then ** | IMAGE<br />nail goes into timber          | **Assert ** |
 
 <Notes>
   <ul>
-    <li>assumes the given setup is accurate to the behaviour of your app</li>
-    <li>not case in real life</li>
-    <li>user behaviour is not a 1 shot</li>
-    <li>number of actions</li>
-    <li>often a number of actors</li>
+    <li>made up of these state, GWT</li>
+    <li>Good points</li>
+    <li>Limitations</li>
+    <ul>
+      <li>assumes the given setup is accurate to the behaviour of your app</li>
+      <li>not case in real life</li>
+      <li>user behaviour is not a 1 shot</li>
+      <li>number of actions</li>
+      <li>often a number of actors</li>
+    </ul>
   </ul>
 </Notes>
 
@@ -197,25 +193,47 @@ _layered like an onion_
 
 ---
 
-* **When** I visit https://www.instagram.com/
+* **When** User of the internet visits instagram for a first time
 * **Then** I am shown login and signup details
 
+<div style={{ height: '60vh', width: '100%' }}>
+{/* TODO: why do I need the width="30vw" below? */}
 <Image
-  style={{ width: '35vw', height: '40vh' }}
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
   src={require('file-loader!./images/01_insta_visit.png')} />
+</div>
 
 ---
 
 * **When** I signup with
   * "Michael, saramic+2@gmail.com, saramic2020"
+* **Then** I am encouraged to turn on notifcations
+
+<div style={{ height: '60vh', width: '100%', display: 'flex' }}>
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/02_insta_fillin.png')} />
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/03a_insta_notifications.png')} />
+</div>
+
+---
+
+* **When** I click _"Not Now"_
 * **Then** I am on suggested people to follow page
 
-<div style={{ marginLeft: '10vw', display: 'flex' }}>
-<img
-  style={{ width: '35vw', height: '40vh' }}
-  src={require('file-loader!./images/02_insta_fillin.png')} />
-<img
-  style={{ marginLeft: '10vw', width: '35vw', height: '40vh' }}
+<div style={{ height: '60vh', width: '100%', display: 'flex' }}>
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/03a_insta_notifications.png')} />
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
   src={require('file-loader!./images/03_insta_recommend.png')} />
 </div>
 
@@ -224,13 +242,20 @@ _layered like an onion_
 * **When** I follow instagram, mileycyrus, justinbieber
 * **Then** It shows I am following them
 
+<div style={{ height: '60vh', width: '100%', display: 'flex' }}>
 <Image
-  style={{ width: '35vw', height: '40vh' }}
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/03_insta_recommend.png')} />
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
   src={require('file-loader!./images/04_insta_follow.png')} />
+</div>
 
 ---
 
-* **When** I click get started
+* **When** I click _"Get Started"_
 * **Then** I am encouraged to add my phone and connect through Facebook
 * **And** I have stories from people I follow
 * **And** I have suggestions
@@ -253,9 +278,90 @@ _layered like an onion_
 
 ---
 
-# A number of different flows
+* **When** Email job is run
+* **Then** User recieves the email
+<div style={{ height: '60vh', width: '100%', display: 'flex' }}>
+<Image
+  width="80vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/08_insta_email.png')} />
+</div>
 
-- what if a chosen username is taken?
+---
+
+* **When** click email link _"Confirm your email address"_
+* **Then** User is taken to the site with alert _"You have successfully confirmed your email"_
+
+<div style={{ height: '60vh', width: '100%', display: 'flex' }}>
+<Image
+  width="26vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/09_insta_email_content.png')} />
+<Image
+  width="30vw"
+  style={{ maxHeight: '100%', maxWidth: '100%' }}
+  src={require('file-loader!./images/10_insta_confirm_email.png')} />
+</div>
+
+---
+
+# _"When" "Then"_ flows through the system
+
+[IMAGE?]
+
+---
+
+# Happy path integration?
+
+[IMAGE?]
+
+---
+
+# Other flows?
+
+- what if username is taken?
+- what happens if you turn notifications on?
+- what if you do not follow anyone?
+
+---
+
+# Hey but there was a Given!
+
+* what was the Given? (Arranged state)
+
+<Notes>
+  <ul>
+    <li>GIVEN instagram has users</li>
+    <li>AND users are promoted to be followed</li>
+    <li>For this we will use a CONTEXT</li>
+  </ul>
+</Notes>
+
+---
+
+# let's bring back the Given
+
+as a context
+- context a user is signed up to insagram following 3 users
+
+---
+
+* **Context** instagram has users
+* **And** some users are promoted to be recommended to be followed
+* **When** User of the internet visits instagram for a first time
+* **Then** ...
+
+---
+
+# Why not do each of these actions as Given, When, Then?
+
+[core concpets!!!]
+
+---
+
+# Other tests?
+
+- form not filled in?
 - password too weak?
 - don't follow anyone?
 - notification modal yes/no?
@@ -269,15 +375,20 @@ _layered like an onion_
 - got an error in submission
 - username suggest not working
 
-* NOT IN FLOW
+* NOT IN FLOW - Next layer down
 - split into page mechanics
 
 ---
 
-# let's bring back the Given
+# And even more detail
 
-as a context
-- context a user is signed up to insagram following 3 users
+- reusable form compnents?
+- validation on length of handle
+- valid characters for handle
+- spinners and loading effects
+
+* NOT IN FLOW - Another layer down
+- "unit" tests
 
 ---
 

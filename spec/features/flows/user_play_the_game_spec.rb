@@ -20,7 +20,7 @@ feature 'Playing the game', js: true do
       end
 
       Then 'the profile is successfully created' do
-        wait_for { focus_on(:message).info }.to eq('Updated user profile')
+        wait_for { focus_on(:messages).info }.to eq('Updated user profile')
       end
 
       And 'the user is signed in under that profile' do
@@ -54,7 +54,7 @@ feature 'Playing the game', js: true do
         end
 
         Then 'a profile cannot be created if it already exists' do
-          wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
+          wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
         end
 
         When 'user chooses a handle that does not already exist in the system' do
@@ -62,7 +62,7 @@ feature 'Playing the game', js: true do
         end
 
         Then 'the profile is successfully created' do
-          wait_for { focus_on(:message).info }.to eq('profile successfully created')
+          wait_for { focus_on(:messages).info }.to eq('profile successfully created')
         end
 
         And 'the user is signed in under that profile' do
@@ -95,7 +95,7 @@ feature 'Playing the game', js: true do
         end
 
         Then 'a profile cannot be created if it already exists' do
-          wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
+          wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
         end
 
         When 'user tries to play the game again, ignoring the warning' do

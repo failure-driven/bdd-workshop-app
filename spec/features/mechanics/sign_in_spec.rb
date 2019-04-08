@@ -10,7 +10,7 @@ feature 'sign in', js: true do
     end
 
     Then 'user cant be found' do
-      wait_for { focus_on(:message).error }.to eq("Couldn't find Player")
+      wait_for { focus_on(:messages).error }.to eq("Couldn't find Player")
     end
 
     When 'user registers' do
@@ -19,7 +19,7 @@ feature 'sign in', js: true do
     end
 
     Then "they're signed in successfully" do
-      wait_for { focus_on(:message).info }.to eq('profile successfully created')
+      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
       wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
     end
   end
@@ -36,7 +36,7 @@ feature 'sign in', js: true do
       end
 
       Then 'sign in is successful' do
-        wait_for { focus_on(:message).info }.to eq('signed in successfully')
+        wait_for { focus_on(:messages).info }.to eq('signed in successfully')
         wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
       end
 
@@ -70,7 +70,7 @@ feature 'sign in', js: true do
         end
 
         Then 'sign in is successful' do
-          wait_for { focus_on(:message).info }.to eq('signed in successfully')
+          wait_for { focus_on(:messages).info }.to eq('signed in successfully')
           wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
         end
 
@@ -99,7 +99,7 @@ feature 'sign in', js: true do
         end
 
         Then 'sign in is successful' do
-          wait_for { focus_on(:message).info }.to eq('signed in successfully')
+          wait_for { focus_on(:messages).info }.to eq('signed in successfully')
           wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
         end
 

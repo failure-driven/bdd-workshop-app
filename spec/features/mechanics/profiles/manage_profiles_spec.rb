@@ -9,7 +9,7 @@ feature 'user manages profiles', js: true do
 
     Then 'I see an error message' do
       # TODO: 5XX errors should be generic "something went wrong" message
-      wait_for { focus_on(:message).error }.to eq '500 - Internal Server Error'
+      wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
       wait_for { focus_on(:profile).test_elements }.to eq []
     end
   end
@@ -60,7 +60,7 @@ feature 'user manages profiles', js: true do
         end
 
         Then 'a warning message is shown' do
-          wait_for { focus_on(:message).error }.to eq('handle: must be unique')
+          wait_for { focus_on(:messages).error }.to eq('handle: must be unique')
         end
 
         When 'user refreshes the page' do
@@ -76,7 +76,7 @@ feature 'user manages profiles', js: true do
         end
 
         Then 'profile is saved successfully' do
-          wait_for { focus_on(:message).info }.to eq('profile successfully updated')
+          wait_for { focus_on(:messages).info }.to eq('profile successfully updated')
         end
       end
 

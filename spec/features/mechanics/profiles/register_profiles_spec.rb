@@ -9,7 +9,7 @@ feature 'registration', js: true do
 
     Then 'a profile is created' do
       wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
-      wait_for { focus_on(:message).info }.to eq('profile successfully created')
+      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
     end
 
     And 'it is shown as 50% complete' do
@@ -34,7 +34,7 @@ feature 'registration', js: true do
 
     Then 'a profile is created' do
       wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
-      wait_for { focus_on(:message).info }.to eq('profile successfully created')
+      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
     end
 
     When 'user completes the sign up process' do
@@ -66,7 +66,7 @@ feature 'registration', js: true do
     end
 
     Then 'a warning is shown that this field is mandatory' do
-      wait_for { focus_on(:message).error }.to eq("handle: can't be blank")
+      wait_for { focus_on(:messages).error }.to eq("handle: can't be blank")
     end
   end
 
@@ -83,7 +83,7 @@ feature 'registration', js: true do
       end
 
       Then 'profile cannot be created without a unique handle' do
-        wait_for { focus_on(:message).error }.to eq('handle: has already been taken')
+        wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
       end
     end
   end

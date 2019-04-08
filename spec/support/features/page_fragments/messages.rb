@@ -1,5 +1,5 @@
 module PageFragments
-  module Message
+  module Messages
     def error
       browser.find('.alert.alert-danger').text
     end

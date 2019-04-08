@@ -30,20 +30,20 @@ const Navigation = ({profile, loading}) => {
             loading ? '' :
               profile ?
                 <NavItem>
-                  <NavLink tag={Link} to="/profile">
+                  <NavLink tag={Link} to="/profile" data-testid="profile-link">
                     <Avatar />
-                    <span data-testid="placeholder-avatar"> {profile.handle}</span>
+                    <span> {profile.handle}</span>
                   </NavLink>
                 </NavItem>
                 :
                 <>
                   <NavItem>
-                    <NavLink tag={Link} to="/sign_in">
+                    <NavLink tag={Link} to="/sign_in" data-testid="sign-in-link">
                       Sign in
                     </NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={Link} to="/register">
+                    <NavLink tag={Link} to="/register" data-testid="register-link">
                       Register
                     </NavLink>
                   </NavItem>

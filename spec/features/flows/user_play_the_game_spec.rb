@@ -24,7 +24,7 @@ feature 'Playing the game', js: true do
       end
 
       And 'the user is signed in under that profile' do
-        wait_for { focus_on(:nav).profile }.to eq('princess')
+        wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
       end
 
       And 'the game commences' do
@@ -66,7 +66,7 @@ feature 'Playing the game', js: true do
         end
 
         And 'the user is signed in under that profile' do
-          wait_for { focus_on(:nav).profile }.to eq('disney_princess')
+          wait_for { focus_on(:nav).nav_link('profile') }.to eq('disney_princess')
         end
 
         When 'user completes their registration' do

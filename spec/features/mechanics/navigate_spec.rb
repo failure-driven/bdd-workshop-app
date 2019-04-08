@@ -8,7 +8,7 @@ feature 'navigation', js: true do
 
     Then 'they are greeted with the plain landing page' do
       wait_for { focus_on(:nav).brand }.to eq 'Game'
-      wait_for { focus_on(:nav).navigation }.to eq ['Sign in', 'Register']
+      wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
     end
 
     When 'they click on register' do
@@ -54,7 +54,7 @@ feature 'navigation', js: true do
 
       Then 'they are logged in to the game page' do
         wait_for { focus_on(:page_content).container_for('home').heading }.to eq('Play with me?')
-        wait_for { focus_on(:nav).navigation }.to eq ['princess']
+        wait_for { focus_on(:nav).nav_links }.to eq ['princess']
       end
 
       When 'the click on the brand Game link' do
@@ -85,23 +85,23 @@ feature 'navigation', js: true do
 
       Then 'navigation is hidden apart from brand and hamburger' do
         wait_for { focus_on(:nav).brand }.to eq 'Game'
-        wait_for { focus_on(:nav).navigation }.to eq %w[]
+        wait_for { focus_on(:nav).nav_links }.to eq %w[]
       end
 
       When 'user expands the hamburger' do
-        focus_on(:nav).click_hamburger
+        focus_on(:nav).toggle_hamburger
       end
 
       Then 'the navigation to sign in and register appears' do
         wait_for { focus_on(:nav).brand }.to eq 'Game'
-        wait_for { focus_on(:nav).navigation }.to eq ['Sign in', 'Register']
+        wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
       end
     end
 
     scenario 'Sign in link taken users to the sign in page' do
       When 'a user visits follows the sign in link' do
         visit('/')
-        focus_on(:nav).click_hamburger
+        focus_on(:nav).toggle_hamburger
         focus_on(:nav).follow_nav_link('Sign in')
       end
 
@@ -113,7 +113,7 @@ feature 'navigation', js: true do
     scenario 'register link taken users to the register page' do
       When 'a user visits follows the sign in link' do
         visit('/')
-        focus_on(:nav).click_hamburger
+        focus_on(:nav).toggle_hamburger
         focus_on(:nav).follow_nav_link('Register')
       end
 

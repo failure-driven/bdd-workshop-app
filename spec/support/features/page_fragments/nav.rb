@@ -8,21 +8,20 @@ module PageFragments
       navbar_brand.text
     end
 
+    def nav_links
+      browser.find_all('nav .nav-link').map(&:text)
+    end
+
+    def nav_link(link_to)
+      browser.find("nav .nav-link[data-testid='#{link_to}-link']").text
+    end
+
     def follow_nav_link(link_text)
       browser.find('nav .nav-link', text: link_text).click
     end
 
-    def navigation
-      browser.find_all('nav .nav-link').map(&:text)
-    end
-
-    def click_hamburger
+    def toggle_hamburger
       browser.find('button.navbar-toggler').click
-    end
-
-    # TODO: remove this cause it aint generic
-    def profile
-      browser.find('nav span[data-testid="placeholder-avatar"]').text
     end
 
     private

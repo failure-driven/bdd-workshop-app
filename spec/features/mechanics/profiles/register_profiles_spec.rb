@@ -22,7 +22,7 @@ feature 'registration', js: true do
     end
 
     And 'the user is signed in' do
-      wait_for { focus_on(:nav).profile }.to eq('princess')
+      wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
     end
   end
 

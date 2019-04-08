@@ -20,7 +20,7 @@ feature 'sign in', js: true do
 
     Then "they're signed in successfully" do
       wait_for { focus_on(:message).info }.to eq('profile successfully created')
-      wait_for { focus_on(:nav).profile }.to eq('princess')
+      wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
     end
   end
 
@@ -37,7 +37,7 @@ feature 'sign in', js: true do
 
       Then 'sign in is successful' do
         wait_for { focus_on(:message).info }.to eq('signed in successfully')
-        wait_for { focus_on(:nav).profile }.to eq('princess')
+        wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
       end
 
       And "they're taken to their profile page" do
@@ -71,11 +71,11 @@ feature 'sign in', js: true do
 
         Then 'sign in is successful' do
           wait_for { focus_on(:message).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).profile }.to eq('princess')
+          wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:nav).navigation }.to eq ['princess']
+          wait_for { focus_on(:nav).nav_links }.to eq ['princess']
         end
 
         And "they're taken to the game page" do
@@ -100,11 +100,11 @@ feature 'sign in', js: true do
 
         Then 'sign in is successful' do
           wait_for { focus_on(:message).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).profile }.to eq('princess')
+          wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:nav).navigation }.to eq ['princess']
+          wait_for { focus_on(:nav).nav_links }.to eq ['princess']
         end
 
         And "they're taken to the game page" do

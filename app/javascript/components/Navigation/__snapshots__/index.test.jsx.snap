@@ -31,6 +31,7 @@ exports[`Navigation renders correctly 1`] = `
         >
           <a
             class="nav-link"
+            data-testid="sign-in-link"
             href="/sign_in"
           >
             Sign in
@@ -41,6 +42,7 @@ exports[`Navigation renders correctly 1`] = `
         >
           <a
             class="nav-link"
+            data-testid="register-link"
             href="/register"
           >
             Register

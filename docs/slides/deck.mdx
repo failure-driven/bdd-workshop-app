@@ -727,6 +727,65 @@ end
 # Module 3
 ## Flows and Mechanics
 
+<Notes>
+  <ul>
+    <li>Flows and mechanics are all just integration tests</li>
+  </ul>
+</Notes>
+
+---
+
+# Why do we define the split
+
+- A way to organise your tests
+- Avoid combinatorial explosion
+- Easier to find specific tests for future modification
+- Document how system works
+
+---
+
+# Flows
+
+- Flows encapsulate behaviours from the UI, any Components involved, the API and all that rubbish in the backend, right down to the database layer.
+- They test user and system flows through the app and their follow on effects, much like we did today.
+    - #TODO Example of flow
+
+---
+
+# Mechanics
+
+- Component with enough complexity will have their own mechanics test suite, basically to help with the organisation of the spaghetti your integration tests have the potential to quickly become.
+- Mechanics typically do not have any “flow on” effects so they won’t be covered by the “flow”. These often allow us to integrate in isolation with a component which is a part of the page.
+- #TODO Example of mechanic
+
+---
+
+# Defining which test belongs where
+
+- Rules of flows
+
+---
+
+# Defining which test belongs where
+
+- Rules of mechanics
+
+---
+
+# Your turn!
+
+- Instagram - White board example of cuts through the app
+- Organise example flows
+- Organise example mechanics
+
+---
+
+# Let's see it in action!
+
+- Our app see existing flows & mechanics
+- White board example of cuts through the app
+- Move scenarios from monster file into appropriate flows and mechanics
+
 ---
 
 # Module 4

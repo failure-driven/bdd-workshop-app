@@ -11,11 +11,11 @@ const ShowProfile = ({ profile }) => {
         <Col>
           <dl>
             <dt>handle</dt>
-            <dd>{profile.handle}</dd>
+            <dd data-testid="details-handle">{profile.handle}</dd>
           </dl>
           <dl>
             <dt>email</dt>
-            <dd>{profile.email}</dd>
+            <dd data-testid="details-email">{profile.email}</dd>
           </dl>
         </Col>
       </Row>

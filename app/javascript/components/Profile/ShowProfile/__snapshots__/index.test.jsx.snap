@@ -30,7 +30,9 @@ exports[`ShowProfile Displays avatar, handle and email 1`] = `
         <dt>
           handle
         </dt>
-        <dd>
+        <dd
+          data-testid="details-handle"
+        >
           the-handle
         </dd>
       </dl>
@@ -38,7 +40,9 @@ exports[`ShowProfile Displays avatar, handle and email 1`] = `
         <dt>
           email
         </dt>
-        <dd>
+        <dd
+          data-testid="details-email"
+        >
           princess@email.comn
         </dd>
       </dl>

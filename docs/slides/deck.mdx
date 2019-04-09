@@ -1,5 +1,6 @@
 import { Head, Notes, Image } from 'mdx-deck'
 import Split from './src/Split'
+import { syntaxHighlighter as SyntaxHighlighter } from 'mdx-deck/themes'
 
 export { theme } from './theme'
 
@@ -99,32 +100,6 @@ _Behaviour Driven Development_
 
 ---
 
-# outside in
-
-_layered like an onion_
-
-* UI Flows
-  * core business
-* Page mechanics
-  * possible interactions with a page
-* Frontend Component Tests
-* API Integration
-* service layer tests
-* Controller Unit
-* Domain logic
-
-<Notes>
-  <ul>
-    <li>Flows multi step with flow on effects</li>
-    <li>Mechanics possible interactions expected and unexpected</li>
-    <li>all are unit tests, boundary of units</li>
-    <li>Key is an organisation of tests</li>
-    <li>UI flow should describe a system</li>
-  </ul>
-</Notes>
-
----
-
 # Module 1
 ## When Then steps
 
@@ -152,6 +127,11 @@ _layered like an onion_
     </ul>
   </ul>
 </Notes>
+
+
+---
+
+Grow Given When Then as react component?
 
 ---
 
@@ -306,22 +286,9 @@ _layered like an onion_
 ---
 
 # _"When" "Then"_ flows through the system
-
-[IMAGE?]
-
----
-
 # Happy path integration?
 
 [IMAGE?]
-
----
-
-# Other flows?
-
-- what if username is taken?
-- what happens if you turn notifications on?
-- what if you do not follow anyone?
 
 ---
 
@@ -356,39 +323,6 @@ as a context
 # Why not do each of these actions as Given, When, Then?
 
 [core concpets!!!]
-
----
-
-# Other tests?
-
-- form not filled in?
-- password too weak?
-- don't follow anyone?
-- notification modal yes/no?
-
----
-
-# What about more detail
-
-- email invalid
-- forgot to enter madatory fields
-- got an error in submission
-- username suggest not working
-
-* NOT IN FLOW - Next layer down
-- split into page mechanics
-
----
-
-# And even more detail
-
-- reusable form compnents?
-- validation on length of handle
-- valid characters for handle
-- spinners and loading effects
-
-* NOT IN FLOW - Another layer down
-- "unit" tests
 
 ---
 
@@ -430,17 +364,11 @@ _code dive_
 
 ---
 
-# A second flow that is broken
-
-_with extension_
-
----
-
 # Module 1 Review
 ## When Then steps
 
 * mutlipe When Then actions add up to a flow
-* `rspec-wait` helps organise `RSpec` tests
+* gem `rspec-example_steps` helps organise `RSpec` tests
 * _Key things that this will catch_
 * _How to organise scenarios_
 
@@ -785,6 +713,73 @@ end
 - Our app see existing flows & mechanics
 - White board example of cuts through the app
 - Move scenarios from monster file into appropriate flows and mechanics
+
+---
+
+# SLIDE FROM MM outside in
+
+_layered like an onion_
+
+* UI Flows
+  * core business
+* Page mechanics
+  * possible interactions with a page
+* Frontend Component Tests
+* API Integration
+* service layer tests
+* Controller Unit
+* Domain logic
+
+<Notes>
+  <ul>
+    <li>Flows multi step with flow on effects</li>
+    <li>Mechanics possible interactions expected and unexpected</li>
+    <li>all are unit tests, boundary of units</li>
+    <li>Key is an organisation of tests</li>
+    <li>UI flow should describe a system</li>
+  </ul>
+</Notes>
+
+---
+
+# MM from when then Other flows?
+
+- what if username is taken?
+- what happens if you turn notifications on?
+- what if you do not follow anyone?
+
+---
+
+# MM from when/then Other tests?
+
+- form not filled in?
+- password too weak?
+- don't follow anyone?
+- notification modal yes/no?
+
+---
+
+# MM from when/then What about more detail
+
+- email invalid
+- forgot to enter madatory fields
+- got an error in submission
+- username suggest not working
+
+* NOT IN FLOW - Next layer down
+- split into page mechanics
+
+---
+
+# MM from when/then And even more detail
+
+- reusable form compnents?
+- validation on length of handle
+- valid characters for handle
+- spinners and loading effects
+
+* NOT IN FLOW - Another layer down
+- "unit" tests
 
 ---
 

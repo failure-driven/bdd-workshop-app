@@ -451,89 +451,276 @@ _with extension_
 
 ---
 
-# What is a page fragment? (presentation)
+# What is a page fragment?
 
-- Often referred to as a page model
-- A selenium test suite with capybara running the browser operates by executing browser actions written in code
-- These actions are required to run the tests but they’re not important to the tests themselves
-- And as tests act as a way for documenting behaviours of a system, you want to avoid convoluting them
-- Hiding away these actions into what we’ve come to know as page fragments helps keep tests cleaner, more readable and less fragile to change in the future
-
----
-
-# Why are they useful? (presentation)
-
-- Changing text on element identified by className or data-attribute means your tests don’t break
-- Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass
+<Notes>
+  <ul>
+    <li>Often referred to as a page model</li>
+    <li>A selenium test suite with capybara running the browser operates by executing browser actions written in code</li>
+    <li>These actions are required to run the tests but they’re not important to the tests themselves</li>
+    <li>And as tests act as a way for documenting behaviours of a system, you want to avoid convolution</li>
+  </ul>
+</Notes>
 
 ---
 
-# Where do they belong in your code base? (presentation)
+# What is a page fragment?
 
-- along with the rest of your test suite, it makes sense to keep them under spec directory. And as supporting materials for feature tests, you might expect to find them in a similarly named directory
-- spec/support/features
+- Actions which are required to run the tests
 
----
-
-# How are they available in tests? (presentation)
-
-- module PageFragments included in rspec.config
-- config.include PageFragments, type: :feature
-- Where do the browser methods come from?
+<Notes>
+  <ul>
+    <li></li>
+  </ul>
+</Notes>
 
 ---
 
-# Developer tools (example)
+# Why are they useful?
 
-- Element hierarchy - semantic html
+<Notes>
+  <ul>
+    <li>Hiding away these actions into what we’ve come to know as page fragments helps keep tests cleaner, more readable and less fragile to change in the future</li>
+  </ul>
+</Notes>
+
+---
+
+# Why are they useful?
+
+- Readable tests
+- Less fragile to change
+
+<Notes>
+  <ul>
+    <li>Hiding away these actions into what we’ve come to know as page fragments helps keep tests cleaner, more readable and less fragile to change in the future</li>
+    <li>Changing text on element identified by className or data-attribute means your tests don’t break</li>
+    <li>Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass</li>
+  </ul>
+</Notes>
+
+---
+
+# Where do they belong in your code base?
+
+- cd /game-app
+- mkdir spec/support/features
+
+<Notes>
+  <ul>
+    <li>along with the rest of your test suite, it makes sense to keep them under spec directory. And as supporting materials for feature tests, you might expect to find them in a similarly named directory</li>
+    <li>let's create a new directory called spec/support/features</li>
+  </ul>
+</Notes>
+
+---
+
+# How are they available in tests?
+
+```ruby
+module PageFragments
+  Page = Struct.new :rspec_example do
+    alias_method :browser, :rspec_example # Capybara DSL + rspec example context
+  end
+
+  module DelegateSynchronize
+    def synchronize(*selector_args, &block)
+      page.document.synchronize(*selector_args, &block)
+    end
+  end
+
+  def classify(string)
+    string.to_s.split('_').map(&:capitalize).join
+  end
+
+  def focus_on(*args)
+    require File.join(__dir__, 'page_fragments', args.map(&:to_s))
+    mod = args.inject(PageFragments) do |klass, sub_klass|
+      klass.const_get(classify(sub_klass))
+    end
+    page = Page.new(self).extend(mod)
+    page.browser.extend(DelegateSynchronize)
+    yield page if block_given?
+    page
+  end
+end
+```
+
+<Notes>
+  <ul>
+    <li>module PageFragments included in rspec.config</li>
+    <li>config.include PageFragments, type: :feature</li>
+  </ul>
+</Notes>
+
+---
+
+# How are they available in tests?
+
+- browser methods
+
+<Notes>
+  <ul>
+    <li>Where do the browser methods come from?</li>
+    <li>#TODO</li>
+  </ul>
+</Notes>
+
+---
+
+# Your turn!
+
+- visit website
 - Find elements in the browser
 
+<Notes>
+  <ul>
+    <li>(exercise)</li>
+    <li>Let try an example using dev tools</li>
+    <li>open the browser</li>
+    <li>go to this website</li>
+    <li>open dev tools</li>
+    <li>#TODO example</li>
+    <li>#TODO need to understand a little bit about html element hierarchy?</li>
+  </ul>
+</Notes>
+
 ---
 
-# Facebook (exercise)
-
-- Identify generic elements
-
----
-
-# Dashboard website (exercise)
+# Construct fragment methods
 
 - Find specific elements
-- See how they are generic
 - Pseudo construct fragment methods for those elements
     - How to write them
     - How to use them
 
+<Notes>
+  <ul>
+    <li>(example)</li>
+    <li>Ok, so now we understand the idea of page fragments</li>
+    <li>And we know how to identify elements using browser methods</li>
+    <li>Now, we need to understand how to write and use them</li>
+    <li>#TODO example</li>
+  </ul>
+</Notes>
+
 ---
 
-# Making assertions (presentation)
+# Construct fragment methods
 
-- Rules of asserting elements
+- Your turn!
+- Find specific elements
+- Pseudo construct fragment methods for those elements
+
+<Notes>
+  <ul>
+    <li>(exercise)</li>
+    <li>Now, let's see if we can write some page fragments</li>
+  </ul>
+</Notes>
+
+---
+
+# Making assertions
+
 - Synchronise method
 - has_no_css
 - to_not be_present
 
+<Notes>
+  <ul>
+    <li>(presentation)</li>
+    <li>Synchronise method</li>
+    <li>has_no_css</li>
+    <li>to_not be_present</li>
+  </ul>
+</Notes>
+
 ---
 
-# Our app (exercise)
+# Now let's do it for real!
 
 - Hide away basic fragments
 
+<Notes>
+  <ul>
+    <li>Our app (exercise)</li>
+    <li>convert monster file methods to fragments</li>
+    <li>#TODO run through first example</li>
+    <li>allow everyone to have a go</li>
+  </ul>
+</Notes>
+
 ---
 
-# OO Design patterns (exercise)
+# OO Design patterns
 
-- What does re-usability mean
-- Why is re-usability important
+- Re-usability
+
+<Notes>
+  <ul>
+    <li>(presentation)</li>
+    <li>What does re-usability mean</li>
+    <li>Why is re-usability important</li>
+  </ul>
+</Notes>
+
+---
+
+# OO Design patterns
+
 - Patterns of reusable fragments
-- Abstract reusable fragments
+
+<Notes>
+  <ul>
+    <li>(presentation)</li>
+    <li>Patterns of reusable fragments</li>
+  </ul>
+</Notes>
 
 ---
 
-# Benefits of page fragments (example)
+# Abstract reusable fragments
 
-- Changing text on element identified by className or data-attribute means your tests don’t break
-- Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass
+- Identifying generic elements
+- Abstract reusable methods
+- #TODO example goes here
+
+<Notes>
+  <ul>
+    <li>(example)</li>
+    <li>#TODO run through example</li>
+  </ul>
+</Notes>
+
+---
+
+# Benefits of page fragments
+
+- Readable tests
+- Hide away actions required to run tests but which aren't important to the tests themselves!
+- Less fragile to change
+- Reduced duplication
+
+<Notes>
+  <ul>
+    <li>(example)</li>
+    <li>Changing text on element identified by className or data-attribute means your tests don’t break</li>
+    <li>Changing className on an element means you only make an update to one fragment method in one place and all your tests still pass</li>
+  </ul>
+</Notes>
+
+---
+
+# Summary
+
+- #TODO
+
+<Notes>
+  <ul>
+    <li>#TODO</li>
+  </ul>
+</Notes>
 
 ---
 

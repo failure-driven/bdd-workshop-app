@@ -1,6 +1,7 @@
-import { Head, Notes, Image } from 'mdx-deck'
-import Split from './src/Split'
-import { syntaxHighlighter as SyntaxHighlighter } from 'mdx-deck/themes'
+import { Head, Notes, Image } from 'mdx-deck';
+import Split from './src/Split';
+import { syntaxHighlighter as SyntaxHighlighter } from 'mdx-deck/themes';
+import WhenThenSteps from '../../app/javascript/components/experimental/WhenThenSteps';
 
 export { theme } from './theme'
 
@@ -131,7 +132,9 @@ _Behaviour Driven Development_
 
 ---
 
-Grow Given When Then as react component?
+# Given When Then steps
+
+<WhenThenSteps />
 
 ---
 
@@ -141,17 +144,6 @@ Grow Given When Then as react component?
 * When
 * Then
 
-<Notes>
-  <ul>
-    <li>and get there through When Then steps</li>
-  </ul>
-</Notes>
-
----
-
-* When
-* Then
-
 
 * When
 * Then
@@ -161,10 +153,11 @@ Grow Given When Then as react component?
 * Then
 
 <Notes>
-  <ul>
-    <li>transition errors</li>
-    <li>Given ties us to mocking implementation without testing it's integration</li>
-  </ul>
+
+  * and get there through When Then steps
+  * transition errors
+  * Given ties us to mocking implementation without testing it's integration
+
 </Notes>
 
 ---

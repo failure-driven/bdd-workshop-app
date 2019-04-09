@@ -34,6 +34,11 @@ const ExperimentalNav = () => {
                 ExHookProfile
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/experimental/WhenThenSteps">
+                WhenThenSteps
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>

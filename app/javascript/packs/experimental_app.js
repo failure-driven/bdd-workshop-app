@@ -11,6 +11,7 @@ import Experimental from '../components/experimental';
 import ExProfile from '../components/experimental/ExProfile';
 import ExHookProfile from '../components/experimental/ExHookProfile';
 import MainContainer from '../components/MainContainer';
+import WhenThenSteps from '../components/experimental/WhenThenSteps';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -27,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
               exact
               path="/experimental/ExHookProfile"
               component={ExHookProfile}
+            />
+            <Route
+              exact
+              path="/experimental/WhenThenSteps"
+              component={WhenThenSteps}
             />
           </Switch>
         </MainContainer>

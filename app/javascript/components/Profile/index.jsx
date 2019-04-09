@@ -118,7 +118,7 @@ class Profile extends Component {
         {alert && <Alert>{alert}</Alert>}
         <div>
           <ProgressBar progressValue={progressValue} />
-          <h1>{profile.handle}</h1>
+          <h1 data-testid="details-handle">{profile.handle}</h1>
           <Avatar />
           <Handle profile={profile} />
           <OurForm

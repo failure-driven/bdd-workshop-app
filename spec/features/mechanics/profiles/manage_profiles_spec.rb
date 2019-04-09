@@ -74,17 +74,17 @@ feature 'user manages profiles', js: true do
         end
 
         Then 'handle has not been updated' do
-          pending 'assert details'
           wait_for { focus_on(:profile).details[:handle] }.to eq('princess')
         end
 
         When 'user changes handle to something unique' do
+          focus_on(:page_content).container_for('profile').action_item('Edit')
           focus_on(:form).form_for('profile').fill_in_row_for('handle', 'disney_princess')
           focus_on(:form).form_for('profile').submit
         end
 
         Then 'profile is saved successfully' do
-          wait_for { focus_on(:messages).info }.to eq('profile successfully updated')
+          wait_for { focus_on(:messages).info }.to eq('Updated user profile')
         end
       end
 

@@ -6,6 +6,7 @@ exports[`Avatar renders an avatar 1`] = `
     alt="placeholder-avatar"
     aria-hidden="true"
     className="fa fa-user"
+    data-testid="details-avatar"
   />
 </Fragment>
 `;

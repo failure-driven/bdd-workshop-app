@@ -9,7 +9,7 @@ describe('RegisterForm', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('Renders an Action button with text next', () => {
+  it('Renders an Action button with text submit', () => {
     const wrapper = shallow(<RegisterForm />);
     expect(wrapper.find('ActionButton').prop('children')).toEqual('Submit');
   });

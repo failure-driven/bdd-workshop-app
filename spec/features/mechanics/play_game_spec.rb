@@ -9,7 +9,7 @@ feature 'user plays the game', js: true do
     Then 'they are redirected to the sign up page' do
       wait_for do
         focus_on(:page_content).container_for('register').heading
-      end.to eq('Please sign in or create a profile!')
+      end.to eq('Register')
     end
   end
 

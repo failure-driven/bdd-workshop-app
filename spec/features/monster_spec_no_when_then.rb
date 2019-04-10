@@ -6,7 +6,7 @@ feature 'Signup to play the game', js: true do
     focus_on(:game_actions).for_game('wargames').play
     wait_for do
       focus_on(:page_content).container_for('register').heading
-    end.to eq('Please sign in or create a profile!')
+    end.to eq('Register')
     focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
     focus_on(:form).form_for('register').submit
     focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
@@ -20,7 +20,7 @@ feature 'Signup to play the game', js: true do
     focus_on(:game_actions).for_game('wargames').play
     wait_for do
       focus_on(:page_content).container_for('register').heading
-    end.to eq('Please sign in or create a profile!')
+    end.to eq('Register')
     focus_on(:form).form_for('register').fill_in_row_for('handle', 'troll')
     focus_on(:form).form_for('register').submit
     focus_on(:form).form_for('profile').fill_in_row_for('email', 'troll@email.com')

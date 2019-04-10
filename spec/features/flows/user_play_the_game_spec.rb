@@ -11,7 +11,7 @@ feature 'Playing the game', js: true do
       Then 'user must sign in or register to continue' do
         wait_for do
           focus_on(:page_content).container_for('register').heading
-        end.to eq('Please sign in or create a profile!')
+        end.to eq('Register')
       end
 
       When 'user signs up' do
@@ -49,7 +49,7 @@ feature 'Playing the game', js: true do
         Then 'user must sign in or register to continue' do
           wait_for do
             focus_on(:page_content).container_for('register').heading
-          end.to eq('Please sign in or create a profile!')
+          end.to eq('Register')
         end
 
         When 'user attempts sign up using an existing handle' do
@@ -93,7 +93,7 @@ feature 'Playing the game', js: true do
         Then 'user must sign in or register to continue' do
           wait_for do
             focus_on(:page_content).container_for('register').heading
-          end.to eq('Please sign in or create a profile!')
+          end.to eq('Register')
         end
 
         When 'user attempts sign up using an existing handle' do
@@ -113,7 +113,7 @@ feature 'Playing the game', js: true do
         Then 'user must to sign in or register to continue' do
           wait_for do
             focus_on(:page_content).container_for('register').heading
-          end.to eq('Please sign in or create a profile!')
+          end.to eq('Register')
         end
       end
     end
@@ -160,7 +160,7 @@ feature 'Playing the game', js: true do
       Then 'user must sign in or register to continue' do
         wait_for do
           focus_on(:page_content).container_for('register').heading
-        end.to eq('Please sign in or create a profile!')
+        end.to eq('Register')
       end
 
       When 'user signs in using their existing account' do

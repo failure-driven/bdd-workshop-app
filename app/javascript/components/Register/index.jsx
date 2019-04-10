@@ -5,6 +5,14 @@ import messageBus from '../../utils/messageBus';
 import { createUserProfile } from '../API';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {
+  Col,
+  Row,
+  Card,
+  CardBody,
+  CardHeader,
+  CardTitle,
+} from 'reactstrap';
 
 const Register = ({ fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
@@ -25,11 +33,24 @@ const Register = ({ fetchProfile, history }) => {
 
   return (
     <MainContainer dataTestId="register">
-      <h1>Please sign in or create a profile!</h1>
-      <OurForm onSubmit={onOurFormSubmit} step="handle" />
-      <Link className="btn" to="/sign_in">
-        sign in with an existing account
-      </Link>
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Card>
+            <CardHeader>
+              <h1>Register</h1>
+            </CardHeader>
+            <CardBody>
+              <CardTitle>
+                <span>Register or </span>
+                <Link to="/sign_in">
+                  sign in with an existing account
+                </Link>
+              </CardTitle>
+              <OurForm onSubmit={onOurFormSubmit} step="handle" />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     </MainContainer>
   );
 };

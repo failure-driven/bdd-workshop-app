@@ -5,13 +5,13 @@ import messageBus from '../../utils/messageBus';
 import { loginAsUser } from '../API';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-
 import {
   Col,
   Row,
   Card,
   CardBody,
   CardHeader,
+  CardTitle,
 } from 'reactstrap';
 
 const SignIn = ({ profile, fetchProfile, history }) => {
@@ -51,6 +51,11 @@ const SignIn = ({ profile, fetchProfile, history }) => {
               <h1>Sign In</h1>
             </CardHeader>
             <CardBody>
+              <CardTitle>
+                <span>
+                  Sign in to continue
+                </span>
+              </CardTitle>
               <OurForm
                 profile={{ handle: null, email: null }}
                 onSubmit={onOurFormSubmit}

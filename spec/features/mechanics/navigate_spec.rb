@@ -120,7 +120,7 @@ feature 'navigation', js: true do
       Then 'register page is rendered' do
         wait_for do
           focus_on(:page_content).container_for('register').heading
-        end.to eq('Please sign in or create a profile!')
+        end.to eq('Register')
       end
     end
   end

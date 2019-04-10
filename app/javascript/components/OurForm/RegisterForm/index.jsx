@@ -31,7 +31,7 @@ const RegisterForm = props => (
         <EmailStepFormGroup {...props} step="email" />
       </>
     )}
-    <ActionButton>{props.step ? 'Sign In' : 'Submit'}</ActionButton>
+    <ActionButton>{props.step ? 'Next' : 'Submit'}</ActionButton>
   </Form>
 );
 RegisterForm.propTypes = {

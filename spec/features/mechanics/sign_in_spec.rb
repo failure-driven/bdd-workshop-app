@@ -93,7 +93,7 @@ feature 'sign in', js: true do
         Then "they're taken to the register page" do
           wait_for do
             focus_on(:page_content).container_for('register').heading
-          end.to eq('Please sign in or create a profile!')
+          end.to eq('Register')
         end
 
         When 'user successfully creates an account' do

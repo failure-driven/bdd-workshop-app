@@ -4,25 +4,67 @@ exports[`Register renders text and a OurForm 1`] = `
 <MainContainer
   dataTestId="register"
 >
-  <h1>
-    Please sign in or create a profile!
-  </h1>
-  <OurForm
-    onSubmit={[Function]}
-    profile={
-      Object {
-        "email": "",
-        "handle": "",
-      }
-    }
-    step="handle"
-  />
-  <Link
-    className="btn"
-    replace={false}
-    to="/sign_in"
+  <Row
+    tag="div"
   >
-    sign in with an existing account
-  </Link>
+    <Col
+      md={
+        Object {
+          "offset": 3,
+          "size": 6,
+        }
+      }
+      sm="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Card
+        tag="div"
+      >
+        <CardHeader
+          tag="div"
+        >
+          <h1>
+            Register
+          </h1>
+        </CardHeader>
+        <CardBody
+          tag="div"
+        >
+          <CardTitle
+            tag="div"
+          >
+            <span>
+              Register or 
+            </span>
+            <Link
+              replace={false}
+              to="/sign_in"
+            >
+              sign in with an existing account
+            </Link>
+          </CardTitle>
+          <OurForm
+            onSubmit={[Function]}
+            profile={
+              Object {
+                "email": "",
+                "handle": "",
+              }
+            }
+            step="handle"
+          />
+        </CardBody>
+      </Card>
+    </Col>
+  </Row>
 </MainContainer>
 `;

@@ -6,7 +6,7 @@ feature 'Signup to play the game', js: true do
     page.find(".jumbotron[data-testid='wargames']").click
     wait_for do
       page.find("main[data-testid='register'] h1").text
-    end.to eq('Please sign in or create a profile!')
+    end.to eq('Register')
     page.find("main[data-testid='register']").fill_in('handle', with: 'princess')
     page.fill_in('handle', with: 'princess')
     page.find('[name="submit"]').click
@@ -21,7 +21,7 @@ feature 'Signup to play the game', js: true do
     page.find(".jumbotron[data-testid='wargames']").click
     wait_for do
       page.find("main[data-testid='register'] h1").text
-    end.to eq('Please sign in or create a profile!')
+    end.to eq('Register')
     page.fill_in('handle', with: 'troll')
     page.find('[name="submit"]').click
     page.fill_in('email', with: 'troll@email.com')

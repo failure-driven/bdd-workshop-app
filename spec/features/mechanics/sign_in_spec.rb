@@ -63,7 +63,7 @@ feature 'sign in', js: true do
         end
 
         Then "they're taken to the sign in page" do
-          wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Please sign in to continue!')
+          wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Sign In')
         end
 
         When 'user successfully signs in' do

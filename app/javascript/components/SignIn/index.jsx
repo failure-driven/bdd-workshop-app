@@ -6,6 +6,14 @@ import { loginAsUser } from '../API';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
+import {
+  Col,
+  Row,
+  Card,
+  CardBody,
+  CardHeader,
+} from 'reactstrap';
+
 const SignIn = ({ profile, fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
     return loginAsUser(OurFormData)
@@ -36,12 +44,22 @@ const SignIn = ({ profile, fetchProfile, history }) => {
   if (profile) return <Redirect to="/profile" />;
   return (
     <MainContainer dataTestId="sign-in">
-      <h1>Please sign in to continue!</h1>
-      <OurForm
-        profile={{ handle: null, email: null }}
-        onSubmit={onOurFormSubmit}
-        step="handle"
-      />
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Card>
+            <CardHeader>
+              <h1>Sign In</h1>
+            </CardHeader>
+            <CardBody>
+              <OurForm
+                profile={{ handle: null, email: null }}
+                onSubmit={onOurFormSubmit}
+                step="handle"
+              />
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     </MainContainer>
   );
 };

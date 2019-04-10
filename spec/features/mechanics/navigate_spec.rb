@@ -106,7 +106,7 @@ feature 'navigation', js: true do
       end
 
       Then 'sign in page is rendered' do
-        wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Please sign in to continue!')
+        wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Sign In')
       end
     end
 

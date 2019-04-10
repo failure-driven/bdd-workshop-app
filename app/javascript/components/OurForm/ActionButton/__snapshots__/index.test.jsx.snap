@@ -2,6 +2,7 @@
 
 exports[`ActionButton Renders a primary submit button with children text 1`] = `
 <Button
+  className="float-right"
   color="primary"
   name="submit"
   tag="button"

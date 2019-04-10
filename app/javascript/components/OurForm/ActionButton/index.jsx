@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const ActionButton = ({ children, isSubmitting }) => (
-  <Button name="submit" color="primary" type="submit" disabled={isSubmitting}>
+  <Button name="submit" color="primary" type="submit" disabled={isSubmitting} className="float-right">
     {children}
   </Button>
 );

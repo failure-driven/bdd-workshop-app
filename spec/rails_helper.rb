@@ -75,7 +75,7 @@ RSpec.configure do |config|
   config.include ForceApiError, type: :feature
 
   config.after(:each, type: :feature) do
-    ForceApiError.clear
+    clear_api_error
     Rails.application.config.should_pause = nil
   end
 

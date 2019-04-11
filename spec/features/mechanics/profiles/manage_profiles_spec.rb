@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user manages profiles', js: true do
   scenario 'complains bitterly if the profile cannot be retrieved' do
     When 'the user visits the profile page and the API returns an error' do
-      ForceApiError.force(method: 'post', url: '/api/v1/profiles', error: 'something went wrong')
+      force_api_error(method: 'post', url: '/api/v1/profiles', error: 'something went wrong')
       visit('/profile')
     end
 
@@ -38,7 +38,23 @@ feature 'user manages profiles', js: true do
       end
     end
 
-    scenario 'page shows error if profile fetch failed'
+    scenario 'page shows error if profile fetch failed' do
+      Given 'the profiles API throws errors' do
+        force_api_error(method: 'get', url: '/api/v1/profiles', error: 'failed to fetch profile')
+      end
+
+      When 'user visits their profile page' do
+        visit('/profile')
+      end
+
+      Then 'they get an error' do
+        wait_for { focus_on(:messages).error }.to eq '400 - Bad Request'
+      end
+
+      And 'the API stops throwing errors' do
+        clear_api_error
+      end
+    end
 
     scenario 'complains bitterly if the profile cannot be updated' do
       When 'user tries to update their profile'

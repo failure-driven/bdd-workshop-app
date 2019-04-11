@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/game-app
     docker:
-      - image: circleci/ruby:2.6.2
+      - image: circleci/ruby:2.6.2-stretch-node
         environment:
           PGHOST: localhost
           PGUSER: your-app-name
@@ -15,6 +15,16 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
+
+      - run:
+          name: 'Update Node.js'
+          command: |
+            curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+
+      - run:
+          name: Check current version of node
+          command: node -v
 
       # Restore Cached Dependencies
       - type: cache-restore
@@ -31,6 +41,22 @@ jobs:
         paths:
           - vendor/bundle
 
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - rails-demo-yarn-{{ checksum "yarn.lock" }}
+            - rails-demo-yarn-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
 
@@ -39,3 +65,7 @@ jobs:
 
       # Run the tests
       - run: bundle exec rspec spec/{controllers,api_acceptance}/
+
+      - run: yarn lint
+
+      - run: yarn test

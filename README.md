@@ -5,6 +5,8 @@ Behavriour Driven Developemnt (BDD)
 
 https://github.com/failure-driven/layered-testing-workshop.
 
+[![CircleCI](https://circleci.com/gh/failure-driven/game-app.svg?style=svg)](https://circleci.com/gh/failure-driven/game-app)
+
 ## TL;DR
 
 Assuming you sort out your own dependencies on ruby and node and have

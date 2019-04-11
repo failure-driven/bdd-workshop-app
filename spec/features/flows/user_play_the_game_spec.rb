@@ -27,11 +27,20 @@ feature 'Playing the game', js: true do
       end
 
       And 'the user is signed in under that profile' do
-        wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
+        wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
       end
 
       And 'the game commences' do
         wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
+      end
+
+      When 'the user signs out' do
+        focus_on(:nav).details.click_detail('Sign out')
+      end
+
+      Then 'the user is no longer signed in' do
+        pending 'no sign out functionality yet'
+        wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
       end
     end
 
@@ -71,7 +80,7 @@ feature 'Playing the game', js: true do
         end
 
         And 'the user is signed in under that profile' do
-          wait_for { focus_on(:nav).nav_link('profile') }.to eq('disney_princess')
+          wait_for { focus_on(:nav).details.summary.text }.to eq('disney_princess')
         end
 
         When 'user completes their registration' do

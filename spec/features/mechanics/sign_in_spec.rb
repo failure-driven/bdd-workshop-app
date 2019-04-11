@@ -20,7 +20,7 @@ feature 'sign in', js: true do
 
     Then "they're signed in successfully" do
       wait_for { focus_on(:messages).info }.to eq('profile successfully created')
-      wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
+      wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
     end
   end
 
@@ -38,7 +38,7 @@ feature 'sign in', js: true do
 
       Then 'sign in is successful' do
         wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-        wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
+        wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
       end
 
       And "they're taken to their profile page" do
@@ -73,7 +73,7 @@ feature 'sign in', js: true do
 
         Then 'sign in is successful' do
           wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
+          wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
         end
 
         And 'the sign in link is no longer visible' do
@@ -104,7 +104,7 @@ feature 'sign in', js: true do
 
         Then 'sign in is successful' do
           wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).nav_link('profile') }.to eq('princess')
+          wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
         end
 
         And 'the sign in link is no longer visible' do
@@ -134,6 +134,18 @@ feature 'sign in', js: true do
 
         Then "they're redirected to their profile" do
           wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
+        end
+      end
+
+      scenario 'they sign out' do
+        When 'user signs out' do
+          visit('/')
+          focus_on(:nav).details.click_detail('Sign out')
+        end
+
+        Then 'the user is no longer signed in' do
+          pending 'no sign out functionality yet'
+          wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
         end
       end
     end

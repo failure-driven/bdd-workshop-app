@@ -24,6 +24,25 @@ module PageFragments
       browser.find('button.navbar-toggler').click
     end
 
+    def details
+      Details.new(browser.find('nav [data-testid="details"]'))
+    end
+
+    class Details
+      def initialize(node)
+        @node = node
+      end
+
+      def summary
+        @node.find('[data-testid="summary"]')
+      end
+
+      def click_detail(detail_text)
+        summary['aria-expanded'] == 'false' && summary.click
+        @node.click_on(detail_text)
+      end
+    end
+
     private
 
     def navbar_brand

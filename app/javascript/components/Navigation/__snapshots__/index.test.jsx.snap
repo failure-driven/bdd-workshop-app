@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navigation renders correctly 1`] = `
+exports[`Navigation Renders default unregistered view 1`] = `
 <div>
   <nav
     class="navbar navbar-expand-md navbar-light bg-princess-pink"
@@ -47,6 +47,85 @@ exports[`Navigation renders correctly 1`] = `
           >
             Register
           </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+`;
+
+exports[`Navigation Renders signed in view 1`] = `
+<div>
+  <nav
+    class="navbar navbar-expand-md navbar-light bg-princess-pink"
+  >
+    <a
+      class="navbar-brand"
+      data-testid="landing-page-link"
+      href="/"
+    >
+      Game
+    </a>
+    <button
+      class="mr-2 navbar-toggler"
+      type="button"
+    >
+      <span
+        class="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      class="collapse navbar-collapse"
+    >
+      <ul
+        class="rightNav ml-auto navbar-nav"
+      >
+        <li
+          class="dropdown nav-item"
+          data-testid="details"
+        >
+          <a
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle nav-link"
+            data-testid="summary"
+            href="#"
+          >
+            <i
+              alt="placeholder-avatar"
+              aria-hidden="true"
+              class="fa fa-user"
+              data-testid="details-avatar"
+            />
+            
+            <span>
+               
+            </span>
+          </a>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu dropdown-menu-right"
+            role="menu"
+            tabindex="-1"
+          >
+            <a
+              class="dropdown-item"
+              data-testid="profie-link"
+              href="/profile"
+              role="menuitem"
+              tabindex="0"
+            >
+              Profile
+            </a>
+            <a
+              class="dropdown-item"
+              href="/sign_out"
+              role="menuitem"
+              tabindex="0"
+            >
+              Sign out
+            </a>
+          </div>
         </li>
       </ul>
     </div>

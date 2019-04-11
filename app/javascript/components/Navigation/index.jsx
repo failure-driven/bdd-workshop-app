@@ -7,12 +7,16 @@ import {
   Navbar,
   NavbarBrand,
   NavbarToggler,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Avatar from '../Avatar'
+import Avatar from '../Avatar';
 import PropTypes from 'prop-types';
 
-const Navigation = ({profile, loading}) => {
+const Navigation = ({ profile, loading }) => {
   const toggleNavbar = () => {
     setCollapsed(!collapsed);
   };
@@ -25,30 +29,42 @@ const Navigation = ({profile, loading}) => {
       </NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} className="mr-2" />
       <Collapse isOpen={!collapsed} navbar>
-        <Nav className='rightNav ml-auto' navbar>
-          {
-            loading ? '' :
-              profile ?
-                <NavItem>
-                  <NavLink tag={Link} to="/profile" data-testid="profile-link">
-                    <Avatar />
-                    <span> {profile.handle}</span>
-                  </NavLink>
-                </NavItem>
-                :
-                <>
-                  <NavItem>
-                    <NavLink tag={Link} to="/sign_in" data-testid="sign-in-link">
-                      Sign in
-                    </NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink tag={Link} to="/register" data-testid="register-link">
-                      Register
-                    </NavLink>
-                  </NavItem>
-                </>
-          }
+        <Nav className="rightNav ml-auto" navbar>
+          {loading ? (
+            ''
+          ) : profile ? (
+            <UncontrolledDropdown nav inNavbar data-testid="details">
+              <DropdownToggle nav caret data-testid="summary">
+                <Avatar />
+                <span> {profile.handle}</span>
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem
+                  tag={Link}
+                  to="/profile"
+                  data-testid="profie-link"
+                >
+                  Profile
+                </DropdownItem>
+                <DropdownItem tag={Link} to="/sign_out">
+                  Sign out
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          ) : (
+            <>
+              <NavItem>
+                <NavLink tag={Link} to="/sign_in" data-testid="sign-in-link">
+                  Sign in
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/register" data-testid="register-link">
+                  Register
+                </NavLink>
+              </NavItem>
+            </>
+          )}
         </Nav>
       </Collapse>
     </Navbar>

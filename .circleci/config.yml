@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/game-app
+    docker:
+      - image: circleci/ruby:2.6.2
+        environment:
+          PGHOST: localhost
+          PGUSER: your-app-name
+          RAILS_ENV: test
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: your-app-name
+          POSTGRES_DB: your-app-name_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rake

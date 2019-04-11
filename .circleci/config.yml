@@ -38,4 +38,4 @@ jobs:
       - run: bundle exec rake db:setup
 
       # Run the tests
-      - run: bundle exec rspec spec/{controllers,api_acceptance,requests}/
+      - run: bundle exec rspec spec/{controllers,api_acceptance}/

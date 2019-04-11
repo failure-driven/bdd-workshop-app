@@ -63,9 +63,16 @@ jobs:
       # Setup the database
       - run: bundle exec rake db:setup
 
-      # Run the tests
-      - run: bundle exec rspec spec/{controllers,api_acceptance}/
+      # Pre test
 
       - run: yarn lint
 
+      - run: bundle exec rubocop
+
+      # Run the tests
       - run: yarn test
+
+      - run: bundle exec rspec spec/{controllers,api_acceptance}/
+
+      - run: bundle exec rspec spec/features
+

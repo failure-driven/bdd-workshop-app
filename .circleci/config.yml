@@ -74,5 +74,5 @@ jobs:
 
       - run: bundle exec rspec spec/{controllers,api_acceptance}/
 
-      - run: bundle exec rspec spec/features
+      #- run: bundle exec rspec spec/features
 

@@ -53,7 +53,7 @@ feature 'sign in', js: true do
 
     context 'and their profile is 100% complete' do
       before do
-        @profile.update_attributes(email: 'princess@email.com')
+        @profile.update(email: 'princess@email.com')
       end
 
       scenario 'user signs via nav link' do

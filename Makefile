@@ -3,10 +3,10 @@ PROJECT := game-app
 .DEFAULT_GOAL := all
 
 .PHONY: all
-all: install test slides
+all: install test
 
 .PHONY: install
-install: check_tools install_libs install_mdx_deck
+install: check_tools install_libs
 
 .PHONY: check_tools
 check_tools:

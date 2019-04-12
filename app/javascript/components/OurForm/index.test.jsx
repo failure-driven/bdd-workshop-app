@@ -1,10 +1,31 @@
 import React from 'react';
 import { render, fireEvent } from 'react-testing-library';
 import OurForm from '.';
+import { shallow } from 'enzyme';
 import 'jest-dom/extend-expect';
 
 describe('OurForm', () => {
   describe('WHEN OurForm is rendered', () => {
+    it('THEN renders all the fields', () => {
+      const wrapper = shallow(<OurForm onSubmit={jest.fn()} />);
+      expect(wrapper).toMatchInlineSnapshot(`
+<Formik
+  enableReinitialize={false}
+  initialValues={
+    Object {
+      "email": "",
+      "handle": "",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+>
+  <Component />
+</Formik>
+`);
+    });
     it('THEN there is a next submit button that is enabled', () => {
       const { getByText } = render(<OurForm onSubmit={() => {}} />);
       const nextButton = getByText('Submit');

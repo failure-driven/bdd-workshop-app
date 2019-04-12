@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/register' => 'landing#index'
   get '/profile' => 'landing#index'
   get '/sign_in' => 'landing#index'
+  get '/sign_out' => 'landing#index'
   get '/game' => 'landing#index'
 
   get '/experimental' => 'landing#experimental'

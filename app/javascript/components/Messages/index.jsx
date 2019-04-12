@@ -23,6 +23,8 @@ class Messages extends Component {
     const { status, content } = message;
     if (status == 'info') {
       return <Alert color="info">{content}</Alert>;
+    } else if (status == 'warning') {
+      return <Alert color="warning">{content}</Alert>;
     } else if (status == 'error') {
       return <Alert color="danger">{content}</Alert>;
     }

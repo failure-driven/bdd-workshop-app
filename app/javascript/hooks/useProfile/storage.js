@@ -14,6 +14,7 @@ const storage = key => {
       localStorage.setItem(key, JSON.stringify(value));
       return get();
     },
+    clear: () => localStorage.setItem(key, undefined),
   };
 };
 

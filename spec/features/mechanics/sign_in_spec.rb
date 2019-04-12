@@ -24,6 +24,17 @@ feature 'sign in', js: true do
     end
   end
 
+  scenario 'Non signed in user visits /sign_out' do
+    When 'user signs out' do
+      visit('/sign_out')
+    end
+
+    Then 'the user is not signed in and they are redirected to home page' do
+      wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
+      wait_for { page }.to have_current_path('/')
+    end
+  end
+
   context 'a user is registered' do
     before do
       @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
@@ -144,7 +155,21 @@ feature 'sign in', js: true do
         end
 
         Then 'the user is no longer signed in' do
-          pending 'no sign out functionality yet'
+          wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
+        end
+
+        And 'they are redirected to the home page with a sign out message' do
+          wait_for { page }.to have_current_path('/')
+          wait_for { focus_on(:messages).warn }.to eq('successfully signed out')
+        end
+      end
+
+      scenario 'they visit /sign_out directly' do
+        When 'user signs out' do
+          visit('/sign_out')
+        end
+
+        Then 'the user is no longer signed in' do
           wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
         end
       end

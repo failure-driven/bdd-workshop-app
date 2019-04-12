@@ -19,6 +19,11 @@ exports[`Routes renders correctly 1`] = `
   />
   <Route
     exact={true}
+    path="/sign_out"
+    render={[Function]}
+  />
+  <Route
+    exact={true}
     path="/profile"
     render={[Function]}
   />

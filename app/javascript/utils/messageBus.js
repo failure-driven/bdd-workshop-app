@@ -13,6 +13,9 @@ const notify = (status, content) => {
 const info = content => {
   notify('info', content);
 };
+const warn = content => {
+  notify('warning', content);
+};
 const error = content => {
   notify('error', content);
 };
@@ -20,5 +23,6 @@ const error = content => {
 export default {
   subscribe,
   info,
+  warn,
   error,
 };

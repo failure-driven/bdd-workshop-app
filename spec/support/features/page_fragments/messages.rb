@@ -4,6 +4,10 @@ module PageFragments
       browser.find('.alert.alert-danger').text
     end
 
+    def warn
+      browser.find('.alert.alert-warning').text
+    end
+
     def info
       browser.find('.alert.alert-info').text
     end

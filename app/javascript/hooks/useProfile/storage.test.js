@@ -37,6 +37,15 @@ describe('storage', () => {
     expect(theKeyStorage.get()).toBe(null);
   });
 
+  it('allows a value to be cleaered', () => {
+    const theKeyStorage = storage('the-key');
+    expect(theKeyStorage.get()).toBe(null);
+    theKeyStorage.set({ id: 'abc-123' });
+    expect(theKeyStorage.get()).toEqual({ id: 'abc-123' });
+    theKeyStorage.clear();
+    expect(theKeyStorage.get()).toBe(null);
+  });
+
   it('returns the set value if successfully set', () => {
     const theKeyStorage = storage('the-key');
     expect(theKeyStorage.set({ id: 'abc-123' })).toEqual({ id: 'abc-123' });

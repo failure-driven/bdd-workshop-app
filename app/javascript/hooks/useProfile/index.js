@@ -14,6 +14,7 @@ const useProfile = () => {
     const { id } = profile;
     if (!id) {
       setLoading(false);
+      setProfile(undefined);
       return null;
     }
     return api()
@@ -23,7 +24,7 @@ const useProfile = () => {
         setLoading(false);
       })
       .catch(() => {
-        setLoading(false)
+        setLoading(false);
       });
   };
 

@@ -19,6 +19,14 @@ describe('messageBus', () => {
     ]);
   });
 
+  it('sends warn message on warning', () => {
+    messageBus.warn('a warn message');
+
+    expect(notifications).toEqual([
+      { status: 'warning', content: 'a warn message' },
+    ]);
+  });
+
   it('sends error message on error', () => {
     messageBus.error('an error message');
 

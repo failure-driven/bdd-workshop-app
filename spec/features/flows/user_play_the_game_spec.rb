@@ -39,7 +39,6 @@ feature 'Playing the game', js: true do
       end
 
       Then 'the user is no longer signed in' do
-        pending 'no sign out functionality yet'
         wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
       end
     end

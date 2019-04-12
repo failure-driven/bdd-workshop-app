@@ -43,7 +43,7 @@ feature 'Playing the game', js: true do
       end
     end
 
-    context 'But there is an existing profile for their email address' do
+    context 'But there is an existing profile for their handle' do
       before do
         @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
       end

@@ -1,11 +1,12 @@
-# Game App
+<h1 align="center">Game App</h1>
 
-A demo app to go along with the _soon to be written workshop_ on layered
-Behavriour Driven Developemnt (BDD)
-
-https://github.com/failure-driven/layered-testing-workshop.
+<div align="center">
 
 [![CircleCI](https://circleci.com/gh/failure-driven/game-app.svg?style=svg)](https://circleci.com/gh/failure-driven/game-app)
+
+</div>
+
+A demo app for a Behaviour Driven Development (BDD) workshop.
 
 ## TL;DR
 
@@ -122,6 +123,7 @@ http://localhost:3000/game
 
 - [ ] eslint/prettier
   - https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a
+
 ### React testing
 
 Mostly using [Kent C. Dodd's](https://twitter.com/kentcdodds/) [react-testing-libaray]()

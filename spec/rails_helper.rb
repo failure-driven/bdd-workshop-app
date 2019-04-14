@@ -81,4 +81,9 @@ RSpec.configure do |config|
 
   # render views for controller specs to render jbuilder templates
   config.render_views = true
+
+  # ignore tests marked as flaky by default
+  # can run explicitly using the `--tag flaky` option
+  #   bundle exec rspec --tag flaky
+  config.filter_run_excluding flaky: true
 end

@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   get '/experimental' => 'landing#experimental'
   get '/experimental/*all' => 'landing#experimental'
 
+  get '/flaky' => 'landing#flaky'
+  get '/flaky/*all' => 'landing#flaky'
+
   get '/game' => 'game#index'
 end

@@ -14,28 +14,24 @@ describe('ShowProfile', () => {
       />
     );
     expect(wrapper.find('dl')).toMatchInlineSnapshot(`
-Array [
-  <dl>
-    <dt>
-      handle
-    </dt>
-    <dd
-      data-testid="details-handle"
-    >
-      the-handle
-    </dd>
-  </dl>,
-  <dl>
-    <dt>
-      email
-    </dt>
-    <dd
-      data-testid="details-email"
-    >
-      princess@email.com
-    </dd>
-  </dl>,
-]
+<dl>
+  <dt>
+    handle
+  </dt>
+  <dd
+    data-testid="details-handle"
+  >
+    the-handle
+  </dd>
+  <dt>
+    email
+  </dt>
+  <dd
+    data-testid="details-email"
+  >
+    princess@email.com
+  </dd>
+</dl>
 `);
   });
 });

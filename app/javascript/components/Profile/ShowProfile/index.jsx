@@ -12,8 +12,6 @@ const ShowProfile = ({ profile }) => {
           <dl>
             <dt>handle</dt>
             <dd data-testid="details-handle">{profile.handle}</dd>
-          </dl>
-          <dl>
             <dt>email</dt>
             <dd data-testid="details-email">{profile.email}</dd>
           </dl>

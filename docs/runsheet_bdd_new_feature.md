@@ -1,5 +1,31 @@
 # BDD new feature
 
+## From mechanic
+
+- Mechanic mangae profiles
+
+    spec/xxx_features/mechanics/profiles/manage_profiles_spec.rb
+    line 65
+    rspec spec/xxx_features/mechanics/profiles/manage_profiles_spec.rb
+
+- Profile which renders OurForm which in turn renders Register - update form to need field
+- run mechanic and pass
+- show browser and name is in form but not in output
+- update mechanic now fails for no name in details
+- Profie which renders ShowProfile
+- run mechanic and it fails after the refresh the data is not persisted
+- let's mark it as pending
+- we could commit as we are not breaking the build with a pending spec
+- we need to look at our API spec profile_api_spec.rb
+- fails on unknown attribute
+- we can now migrate `rails generate migration AddNameToPlayer name:string`
+- API spec again profile_api_spec.rb
+- fails on not showing the attribute
+- go to the controller
+- ...
+
+## Full attempt
+
 - Let's review the main "flow" through the app
 - going to the browser http://localhost:3000/
 - the flow is `spec/xxx_features/flows/user_play_the_game_spec.rb`

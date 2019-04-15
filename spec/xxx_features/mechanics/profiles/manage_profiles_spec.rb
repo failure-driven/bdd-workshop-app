@@ -78,6 +78,18 @@ feature 'user manages profiles', js: true do
           email: 'The_princess@gmail.com'
         )
       end
+
+      When 'the page is refreshed' do
+        page.refresh
+      end
+
+      Then 'all the fields are persisted' do
+        wait_for { focus_on(:profile).details }.to eq(
+          avatar: '',
+          handle: 'The_princess',
+          email: 'The_princess@gmail.com'
+        )
+      end
     end
 
     context 'and some other profile exists as well' do

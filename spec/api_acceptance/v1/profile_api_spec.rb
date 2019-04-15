@@ -14,6 +14,7 @@ RSpec.describe '/api/v1/profiles', type: :request do
       expect(response.status).to eq 200
       expect(JSON.parse(response.body)).to include(
         'id' => @player.id,
+        'handle' => 'princess',
         'email' => 'princess@email.com'
       )
     end
@@ -25,9 +26,15 @@ RSpec.describe '/api/v1/profiles', type: :request do
 
     describe 'update a player' do
       it 'returns 204 OK and updates the handle' do
-        put "/api/v1/profiles/#{@player.id}", params: { player: { handle: 'princess' } }, as: :json
+        put "/api/v1/profiles/#{@player.id}", params: {
+          player: {
+            handle: 'princess',
+            email: 'princess@email.com'
+          }
+        }, as: :json
         expect(response.status).to eq 204
         expect(@player.reload.handle).to eq 'princess'
+        expect(@player.reload.email).to eq 'princess@email.com'
       end
     end
   end
@@ -35,9 +42,18 @@ RSpec.describe '/api/v1/profiles', type: :request do
   describe 'create new player' do
     it 'returns 200 OK' do
       expect do
-        post '/api/v1/profiles', params: { player: { handle: 'princess' } }, as: :json
+        post '/api/v1/profiles', params: {
+          player: {
+            handle: 'princess',
+            email: 'princess@email.com'
+          }
+        }, as: :json
       end.to change { Player.count }.by(1)
-      expect(JSON.parse(response.body)).to match('id' => match(UUID_REGEX), 'handle' => 'princess')
+      expect(JSON.parse(response.body)).to match(
+        'id' => match(UUID_REGEX),
+        'handle' => 'princess',
+        'email' => 'princess@email.com'
+      )
     end
   end
 end

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ShowProfile from '.';
-import { Col } from 'reactstrap';
 
 describe('ShowProfile', () => {
   it('Displays avatar, handle and email', () => {
@@ -14,20 +13,8 @@ describe('ShowProfile', () => {
         }}
       />
     );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Col)).toMatchInlineSnapshot(`
-<Col
-  tag="div"
-  widths={
-    Array [
-      "xs",
-      "sm",
-      "md",
-      "lg",
-      "xl",
-    ]
-  }
->
+    expect(wrapper.find('dl')).toMatchInlineSnapshot(`
+Array [
   <dl>
     <dt>
       handle
@@ -37,7 +24,7 @@ describe('ShowProfile', () => {
     >
       the-handle
     </dd>
-  </dl>
+  </dl>,
   <dl>
     <dt>
       email
@@ -47,8 +34,8 @@ describe('ShowProfile', () => {
     >
       princess@email.com
     </dd>
-  </dl>
-</Col>
+  </dl>,
+]
 `);
   });
 });

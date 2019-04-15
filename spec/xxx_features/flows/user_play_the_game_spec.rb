@@ -42,7 +42,7 @@ feature 'Playing the game', js: true do
         wait_for { focus_on(:profile).details }.to eq(
           avatar: '',
           handle: 'princess',
-          email: 'princess@email.com',
+          email: 'princess@email.com'
         )
       end
 

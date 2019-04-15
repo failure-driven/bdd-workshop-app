@@ -62,6 +62,24 @@ feature 'user manages profiles', js: true do
       Then 'an error message is shown'
     end
 
+    scenario 'edit all their fields in the profile' do
+      When 'user tries to update their handle and email by pre pending it with the' do
+        visit('/profile')
+        focus_on(:page_content).container_for('profile').action_item('Edit')
+        focus_on(:form).form_for('profile').fill_in_row_for('handle', 'The_princess')
+        focus_on(:form).form_for('profile').fill_in_row_for('email', 'The_princess@gmail.com')
+        focus_on(:form).form_for('profile').submit
+      end
+
+      Then 'all the fields are prepended with a "The_"' do
+        wait_for { focus_on(:profile).details }.to eq(
+          avatar: '',
+          handle: 'The_princess',
+          email: 'The_princess@gmail.com'
+        )
+      end
+    end
+
     context 'and some other profile exists as well' do
       before do
         Player.create!(

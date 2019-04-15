@@ -34,6 +34,28 @@ feature 'Playing the game', js: true do
         wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
       end
 
+      When 'the user sees their profile' do
+        focus_on(:nav).details.click_detail('Profile')
+      end
+
+      Then 'thier profile is complete' do
+        wait_for { focus_on(:profile).details }.to eq(
+          avatar: '',
+          handle: 'princess',
+          email: 'princess@email.com',
+        )
+      end
+
+      When 'they edit their handle to disney princess' do
+        focus_on(:page_content).container_for('profile').action_item('Edit')
+        focus_on(:form).form_for('profile').fill_in_row_for('handle', 'disney_princess')
+        focus_on(:form).form_for('profile').submit
+      end
+
+      Then 'their handle is successfully updated' do
+        wait_for { focus_on(:messages).info }.to eq('Updated user profile')
+      end
+
       When 'the user signs out' do
         focus_on(:nav).details.click_detail('Sign out')
       end

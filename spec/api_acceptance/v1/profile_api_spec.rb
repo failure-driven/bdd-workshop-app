@@ -3,13 +3,19 @@ require 'rails_helper'
 RSpec.describe '/api/v1/profiles', type: :request do
   context 'player exists' do
     before do
-      @player = Player.create!(handle: 'princess')
+      @player = Player.create!(
+        handle: 'princess',
+        email: 'princess@email.com'
+      )
     end
 
     it 'returns 200 OK' do
       get "/api/v1/profiles/#{@player.id}", as: :json
       expect(response.status).to eq 200
-      expect(JSON.parse(response.body)).to include('id' => @player.id)
+      expect(JSON.parse(response.body)).to include(
+        'id' => @player.id,
+        'email' => 'princess@email.com'
+      )
     end
 
     it 'returns 404 for bad player id' do

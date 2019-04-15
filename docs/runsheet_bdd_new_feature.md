@@ -86,5 +86,118 @@
         />
       )}
 
-  - now we can jump back up to the mechanic and run the tests
+  - now we can update the default form on line 5 of
+    `app/javascript/components/OurForm/RegisterForm/index.test.jsx`
+    by adding
 
+      <StepFormGroup
+        label="Name"
+        placeholder="input your name"
+        step="name"
+      />
+
+  - on the code side on line 49 of RegisterForm/index.jsx
+
+         <StepFormGroup
+            {...props}
+            step="name"
+            label="Name"
+            placeholder="input your name"
+          />
+        </>
+
+  - once we have a passing test we can take a look in the browser to see we
+    have a form field for name
+    http://localhost:3000/profile
+  - also our mechanic should pass a little bit more
+    rspec spec/xxx_features/mechanics/profiles/manage_profiles_spec.rb:65
+  - the form can now be filled in so we can move the pending in
+    `spec/xxx_features/mechanics/profiles/manage_profiles_spec.rb`
+    to line 76 just above the assertion of the details
+  - unfortunately at this stage entering text into the field shows an error in
+    the console about a comopnent changing an uncontrolled field, we need to
+    configure our form to take control of that field in our form library Formik
+  - Formik is configured in /app/javascript/components/OurForm/index.test.jsx
+    where email and handle are configured on line 12 in inline snapshot. lets
+    add name as well
+    "name": "" on line 18
+  - `w` and `t` in our jest watch to filter on `OurForm` we now have a failure
+    which we can implement on line 10 of OurForm/index.jsx
+  - the jest tests now pass but in that file we can see that this should really
+    come from the profie which comes from the api via the serializer
+  - for the moment we can just add it to the default props and we need to add
+    name to the props
+
+        urForm.defaultProps = {
+          profile: { handle: '', email: '', name: '' },
+        };
+
+          email: PropTypes.string,
+          name: PropTypes.string,
+        }),
+
+  - although we need this for prop types convention it still does not get rid
+    of the error in the window as our api does not return a name
+  - for that we need to add an API acceptace spec
+    `spec/api_acceptance/v1/profile_api_spec.rb`
+
+        @player = Player.create!(
+          ...
+          name: 'The Princess'
+
+      it 'returns 200 OK' do
+        ...
+        expect(JSON.parse(response.body)).to include(
+          ...
+          'name' => 'The Princess'
+    
+  - running this
+    `rspec spec/api_acceptance/v1/profile_api_spec.rb` fails as we do not have a name field
+
+            ActiveModel::UnknownAttributeError:
+                   unknown attribute 'name' for Player.
+
+  - we can now skip controller and model tests and create a migration to add
+    the name to the mode Player
+    `rails generate migration AddNameToPlayer name:string`
+
+  - bin/rails db:migrate
+
+  - running this again gives us a new error that it is not returned
+    `rspec spec/api_acceptance/v1/profile_api_spec.rb`
+
+  - we can now jump into the controller spec
+
+    `/spec/controllers/api/v1/profiles_controller_spec.rb` line 21 we need it
+
+    to return a name
+
+            expect(
+          JSON.parse(response.body)
+        ).to eq(
+          'id' => '01234567-0123-4abc-8abc-0123456789ab',
+          'handle' => 'the-handle',
+          'email' => '',
+          'name' => ''
+        )
+
+    running this we get a failure 
+    `rspec spec/controllers/api/v1/profiles_controller_spec.rb:22`
+  - now for this to be serialized we need to update the serializer
+    app/views/api/v1/profiles/show.json.jbuilder
+
+        json.handle @player.handle
+        json.email @player.email
+        json.name @player.name
+
+  - moving back up to the controller it passes
+    `rspec spec/controllers/api/v1/profiles_controller_spec.rb`
+  - and back to the api acceptance
+    `rspec spec/api_acceptance/v1/profile_api_spec.rb`
+    that also passes
+  - now up to the mechanic
+    `rspec spec/xxx_features/mechanics/profiles/manage_profiles_spec.rb`
+  - and although it fails still in the same spot, mostly because we cannot display it?
+  - back into the frontend we find `app/javascript/components/Profile/ShowProfile/index.test.jsx`
+    and add name to the show profile
+  - 

@@ -5,7 +5,7 @@ exports[`ShowProfile Displays avatar, handle and email 1`] = `
   <Avatar
     profile={
       Object {
-        "email": "princess@email.comn",
+        "email": "princess@email.com",
         "handle": "the-handle",
         "id": "the-id",
       }
@@ -43,7 +43,7 @@ exports[`ShowProfile Displays avatar, handle and email 1`] = `
         <dd
           data-testid="details-email"
         >
-          princess@email.comn
+          princess@email.com
         </dd>
       </dl>
     </Col>

@@ -4,11 +4,16 @@ exports[`RegisterForm Renders a register form 1`] = `
 <Form
   tag="form"
 >
-  <HandleStepFormGroup
+  <StepFormGroup
+    label="Handle"
+    placeholder="input a custom handle"
     step="handle"
   />
-  <EmailStepFormGroup
+  <StepFormGroup
+    label="Email"
+    placeholder="input your email"
     step="email"
+    type="email"
   />
   <ActionButton>
     Submit

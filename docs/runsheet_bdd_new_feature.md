@@ -53,3 +53,38 @@
 
   - running the mechanic with the pending also returns a pending spec
   - we now have a pending flow and mechanic
+  - now we have the flow covered off and the mechanics of the edit let's jump down to the comonent
+  - our form can be found in `app/javascript/components/OurForm/RegisterForm/index.jsx`
+  - we need to start our jest tests with `yarn test-watch`
+  - we probably want to filter on `w` to turn on watch usage
+    `p` to filter by file name and type `RegisterForm`
+    now only those tests run
+  - Now it is time to change the component test and add a name field
+    on line 39 of `app/javascript/components/OurForm/RegisterForm/index.test.jsx`
+
+          it('Renders the name with label and placeholder', () => {
+            const wrapper = shallow(<RegisterForm step="name" />);
+            expect(wrapper.find('StepFormGroup')).toMatchInlineSnapshot(`
+        <StepFormGroup
+          label="Name"
+          placeholder="input your name"
+          step="name"
+        />
+        `);
+          });
+
+  - we watch the test fail
+  - finally we can implement something
+    in `app/javascript/components/OurForm/RegisterForm/index.jsx`
+
+        {props.step === 'name' && (
+        <StepFormGroup
+          {...props}
+          step="name"
+          label="Name"
+          placeholder="input your name"
+        />
+      )}
+
+  - now we can jump back up to the mechanic and run the tests
+

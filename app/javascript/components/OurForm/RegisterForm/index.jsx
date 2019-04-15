@@ -4,31 +4,40 @@ import PropTypes from 'prop-types';
 import ActionButton from '../ActionButton';
 import StepFormGroup from '../StepFormGroup';
 
-const HandleStepFormGroup = props => (
-  <StepFormGroup
-    {...props}
-    label="Handle"
-    placeholder="input a custom handle"
-  />
-);
-
-const EmailStepFormGroup = props => (
-  <StepFormGroup
-    {...props}
-    label="Email"
-    type="email"
-    placeholder="input your email"
-  />
-);
-
 const RegisterForm = props => (
   <Form onSubmit={props.handleSubmit}>
-    {props.step === 'handle' && <HandleStepFormGroup {...props} />}
-    {props.step === 'email' && <EmailStepFormGroup {...props} />}
+    {props.step === 'handle' && (
+      <StepFormGroup
+        {...props}
+        step="handle"
+        label="Handle"
+        placeholder="input a custom handle"
+      />
+    )}
+    {props.step === 'email' && (
+      <StepFormGroup
+        {...props}
+        step="email"
+        label="Email"
+        type="email"
+        placeholder="input your email"
+      />
+    )}
     {!props.step && (
       <>
-        <HandleStepFormGroup {...props} step="handle" />
-        <EmailStepFormGroup {...props} step="email" />
+        <StepFormGroup
+          {...props}
+          step="handle"
+          label="Handle"
+          placeholder="input a custom handle"
+        />
+        <StepFormGroup
+          {...props}
+          step="email"
+          label="Email"
+          type="email"
+          placeholder="input your email"
+        />
       </>
     )}
     <ActionButton>{props.step ? 'Next' : 'Submit'}</ActionButton>
@@ -39,5 +48,4 @@ RegisterForm.propTypes = {
   step: PropTypes.string,
 };
 
-export { HandleStepFormGroup, EmailStepFormGroup };
 export default RegisterForm;

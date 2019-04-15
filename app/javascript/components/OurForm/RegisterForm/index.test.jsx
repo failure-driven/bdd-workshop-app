@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import RegisterForm from '.';
-import { EmailStepFormGroup, HandleStepFormGroup } from '../RegisterForm';
 
 describe('RegisterForm', () => {
   it('Renders a register form', () => {
@@ -14,16 +13,27 @@ describe('RegisterForm', () => {
     expect(wrapper.find('ActionButton').prop('children')).toEqual('Submit');
   });
 
-  it('Renders the handle step form if step is handle', () => {
+  it('Renders the handle with label and placeholder', () => {
     const wrapper = shallow(<RegisterForm step="handle" />);
-    expect(
-      wrapper.contains(<HandleStepFormGroup step="handle" />)
-    ).toBeTruthy();
+    expect(wrapper.find('StepFormGroup')).toMatchInlineSnapshot(`
+<StepFormGroup
+  label="Handle"
+  placeholder="input a custom handle"
+  step="handle"
+/>
+`);
   });
 
-  it('Renders the email step form if step is email', () => {
+  it('Renders the email with label and placeholder', () => {
     const wrapper = shallow(<RegisterForm step="email" />);
-    expect(wrapper.contains(<EmailStepFormGroup step="email" />)).toBeTruthy();
+    expect(wrapper.find('StepFormGroup')).toMatchInlineSnapshot(`
+<StepFormGroup
+  label="Email"
+  placeholder="input your email"
+  step="email"
+  type="email"
+/>
+`);
   });
 
   it('Submit calls handleSubmti', () => {

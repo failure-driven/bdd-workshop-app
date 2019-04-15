@@ -5,7 +5,26 @@ import RegisterForm from '.';
 describe('RegisterForm', () => {
   it('Renders a register form', () => {
     const wrapper = shallow(<RegisterForm />);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchInlineSnapshot(`
+<Form
+  tag="form"
+>
+  <StepFormGroup
+    label="Handle"
+    placeholder="input a custom handle"
+    step="handle"
+  />
+  <StepFormGroup
+    label="Email"
+    placeholder="input your email"
+    step="email"
+    type="email"
+  />
+  <ActionButton>
+    Submit
+  </ActionButton>
+</Form>
+`);
   });
 
   it('Renders an Action button with text submit', () => {

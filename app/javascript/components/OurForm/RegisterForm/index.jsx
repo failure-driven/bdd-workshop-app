@@ -6,7 +6,7 @@ import StepFormGroup from '../StepFormGroup';
 
 const RegisterForm = props => (
   <Form onSubmit={props.handleSubmit}>
-    {props.step === 'handle' && (
+    {(props.step === 'handle' || !props.step) && (
       <StepFormGroup
         {...props}
         step="handle"
@@ -14,7 +14,7 @@ const RegisterForm = props => (
         placeholder="input a custom handle"
       />
     )}
-    {props.step === 'email' && (
+    {(props.step === 'email' || !props.step) && (
       <StepFormGroup
         {...props}
         step="email"
@@ -22,23 +22,6 @@ const RegisterForm = props => (
         type="email"
         placeholder="input your email"
       />
-    )}
-    {!props.step && (
-      <>
-        <StepFormGroup
-          {...props}
-          step="handle"
-          label="Handle"
-          placeholder="input a custom handle"
-        />
-        <StepFormGroup
-          {...props}
-          step="email"
-          label="Email"
-          type="email"
-          placeholder="input your email"
-        />
-      </>
     )}
     <ActionButton>{props.step ? 'Next' : 'Submit'}</ActionButton>
   </Form>

@@ -12,16 +12,10 @@ const Game = () => {
   if (profile === undefined) {
     return <Redirect to="/register" />;
   }
-  const progressValue =
-    profile && profile.id && profile.handle && profile.email
-      ? 100
-      : profile && profile.id && profile.handle
-      ? 50
-      : 0;
   return (
     <MainContainer dataTestId="game">
       <h1>coming soon</h1>
-      {progressValue === 100 ? (
+      {profile.percentComplete === 100 ? (
         <p>Your profile is complete!</p>
       ) : (
         <Button

@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import ProgressBar from '.';
 
 describe('ProgressBar', () => {
-  it('Displays the progressValue', () => {
-    const wrapper = shallow(<ProgressBar progressValue={33} />);
+  it('Displays the percentComplete', () => {
+    const wrapper = shallow(<ProgressBar percentComplete={33} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

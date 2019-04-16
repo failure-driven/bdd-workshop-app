@@ -17,7 +17,6 @@ class Profile extends Component {
   }
 
   state = {
-    profile: this.props.profile,
     alert: null,
     fetchProfile: this.props.fetchProfile,
     history: this.props.history,
@@ -41,7 +40,6 @@ class Profile extends Component {
       : this.callCreateUserProfile(this)
     )
       .then(response => {
-        this.setState({ profile: response.data });
         localStorage.setItem('player', JSON.stringify(response.data));
       })
       .catch(({ response: { status, statusText } }) => {
@@ -55,7 +53,7 @@ class Profile extends Component {
   }
 
   updateUserProfile(data) {
-    data = Object.assign(this.state.profile, data);
+    data = Object.assign(this.props.profile, data);
     return API.updateUserProfile({ data })
       .then(response => {
         messageBus.info('Updated user profile');
@@ -77,18 +75,13 @@ class Profile extends Component {
   }
 
   render() {
-    const { isEditting, profile, alert } = this.state;
-    const progressValue =
-      profile && profile.id && profile.handle && profile.email
-        ? 100
-        : profile && profile.id && profile.handle
-        ? 50
-        : 0;
+    const { isEditting, alert } = this.state;
+    const { profile } = this.props;
 
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
     // TODO what if request finishes but with failure should spinner dissapear? YES!
-    if (progressValue === 100 || isEditting)
+    if (profile.percentComplete === 100 || isEditting)
       return (
         <MainContainer dataTestId="profile">
           {isEditting ? (
@@ -125,7 +118,7 @@ class Profile extends Component {
             Hi : <span data-testid="details-handle">{profile.handle}</span>
           </h1>
           <p>Your profile is almost complete</p>
-          <ProgressBar progressValue={progressValue} />
+          <ProgressBar percentComplete={profile.percentComplete} />
           <Avatar />
           <OurForm
             onSubmit={this.updateUserProfile.bind(this)}

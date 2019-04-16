@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProgressBar Displays the progressValue 1`] = `
+exports[`ProgressBar Displays the percentComplete 1`] = `
 <Fragment>
   <div
     className="text-center"

@@ -2,18 +2,18 @@ import React from 'react';
 import { Progress } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-const ProgressBar = ({ progressValue }) => {
+const ProgressBar = ({ percentComplete }) => {
   return (
     <>
       <div className="text-center" data-testid="profile-progress">
-        {`${progressValue}%`}
+        {`${percentComplete}%`}
       </div>
-      <Progress value={progressValue} />
+      <Progress value={percentComplete} />
     </>
   );
 };
 ProgressBar.propTypes = {
-  progressValue: PropTypes.number.isRequired,
+  percentComplete: PropTypes.number.isRequired,
 };
 
 export default ProgressBar;

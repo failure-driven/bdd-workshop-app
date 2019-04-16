@@ -15,7 +15,8 @@ RSpec.describe '/api/v1/profiles', type: :request do
       expect(JSON.parse(response.body)).to include(
         'id' => @player.id,
         'handle' => 'princess',
-        'email' => 'princess@email.com'
+        'email' => 'princess@email.com',
+        'percentComplete' => 100
       )
     end
 
@@ -52,7 +53,8 @@ RSpec.describe '/api/v1/profiles', type: :request do
       expect(JSON.parse(response.body)).to match(
         'id' => match(UUID_REGEX),
         'handle' => 'princess',
-        'email' => 'princess@email.com'
+        'email' => 'princess@email.com',
+        'percentComplete' => 100
       )
     end
   end

@@ -6,7 +6,8 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       Player,
       id: '01234567-0123-4abc-8abc-0123456789ab',
       handle: 'the-handle',
-      email: 'the-email'
+      email: 'the-email',
+      percent_complete: 33
     )
     expect(Player).to receive(:find).with('the-id').and_return(player)
 
@@ -18,7 +19,8 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
     ).to eq(
       'id' => '01234567-0123-4abc-8abc-0123456789ab',
       'handle' => 'the-handle',
-      'email' => 'the-email'
+      'email' => 'the-email',
+      'percentComplete' => 33
     )
   end
 
@@ -31,7 +33,8 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
     player = double(Player,
                     id: 'the-id',
                     handle: 'the-handle',
-                    email: 'the-email')
+                    email: 'the-email',
+                    percent_complete: '33')
     expect(Player).to receive(:create!).with(params).and_return(player)
 
     post :create, params: {
@@ -45,7 +48,8 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
     expect(JSON.parse(response.body)).to eq(
       'id' => 'the-id',
       'handle' => 'the-handle',
-      'email' => 'the-email'
+      'email' => 'the-email',
+      'percentComplete' => '33'
     )
   end
 

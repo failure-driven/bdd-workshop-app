@@ -12,18 +12,28 @@ const Game = () => {
   if (profile === undefined) {
     return <Redirect to="/register" />;
   }
+  const progressValue =
+    profile && profile.id && profile.handle && profile.email
+      ? 100
+      : profile && profile.id && profile.handle
+      ? 50
+      : 0;
   return (
     <MainContainer dataTestId="game">
       <h1>coming soon</h1>
-      <Button
-        data-testid="actions"
-        tag={Link}
-        to="/profile"
-        className="float-right"
-        color="primary"
-      >
-        Complete my profile
-      </Button>
+      {progressValue === 100 ? (
+        <p>Your profile is complete!</p>
+      ) : (
+        <Button
+          data-testid="actions"
+          tag={Link}
+          to="/profile"
+          className="float-right"
+          color="primary"
+        >
+          Complete my profile
+        </Button>
+      )}
     </MainContainer>
   );
 };

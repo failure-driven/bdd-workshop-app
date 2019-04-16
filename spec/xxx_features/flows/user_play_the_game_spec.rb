@@ -91,19 +91,14 @@ feature 'Playing the game', js: true do
       end
 
       And 'the their profile is complete with no further actions' do
-        # wait_for do
-        #   focus_on(:page_content).container_for('game').text
-        # end.to include('Your profile is complete!')
-        # wait_for do
-        #   focus_on(:page_content).container_for('game').actions
-        # end.to eq([])
+        wait_for do
+          focus_on(:page_content).container_for('game').text
+        end.to include('Your profile is complete!')
+        wait_for do
+          focus_on(:page_content).container_for('game').actions
+        end.to eq([])
       end
 
-      When 'they select "complete my profile"' do
-        focus_on(:page_content)
-          .container_for('game')
-          .action_item('Complete my profile')
-      end
       When 'the user signs out' do
         focus_on(:nav).details.click_detail('Sign out')
       end

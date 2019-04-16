@@ -13,9 +13,9 @@ feature 'user plays the game', js: true do
     end
   end
 
-  context 'user exists' do
+  context 'user with incomplete profile' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      @profile = Player.create!(handle: 'princess')
       page.visit('/')
       player = {
         id: @profile.id,
@@ -44,6 +44,40 @@ feature 'user plays the game', js: true do
 
       Then 'they are shown the coming soon status' do
         wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
+      end
+
+      And 'an action to complete their profile' do
+        wait_for do
+          focus_on(:page_content).container_for('game').actions
+        end.to eq(['Complete my profile'])
+      end
+    end
+  end
+
+  context 'user with complete profile' do
+    before do
+      @profile = Player.create!(handle: 'troll', email: 'troll@email.com')
+      page.visit('/')
+      player = {
+        id: @profile.id,
+        handle: @profile.handle
+      }
+      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+    end
+
+    scenario 'users with a profile can play the game' do
+      When 'user visits the game' do
+        visit('/game')
+      end
+
+      Then 'they are shown the coming soon status' do
+        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
+      end
+
+      And 'an action to complete their profile' do
+        wait_for do
+          focus_on(:page_content).container_for('game').actions
+        end.to eq([])
       end
     end
   end

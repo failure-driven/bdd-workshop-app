@@ -40,6 +40,17 @@ exports[`WarGamesIntro renders correctly 1`] = `
           </div>
         </Typist>
       </div>
+      <div
+        className="pt-3"
+      >
+        <Button
+          className="float-right"
+          color="primary"
+          tag="button"
+        >
+          Play Game
+        </Button>
+      </div>
     </Jumbotron>
   </Link>
 </MainContainer>

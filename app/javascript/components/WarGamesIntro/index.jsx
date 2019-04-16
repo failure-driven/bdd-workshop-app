@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron } from 'reactstrap';
+import { Jumbotron, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Typist from 'react-typist';
 import MainContainer from '../MainContainer';
@@ -14,6 +14,11 @@ const WarGamesIntro = () => (
             Games make mistakes.
             <div className="question">SHALL WE PLAY A GAME?</div>
           </Typist>
+        </div>
+        <div className="pt-3">
+          <Button color="primary" className="float-right">
+            Play Game
+          </Button>
         </div>
       </Jumbotron>
     </Link>

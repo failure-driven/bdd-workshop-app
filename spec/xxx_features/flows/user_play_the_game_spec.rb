@@ -14,31 +14,63 @@ feature 'Playing the game', js: true do
         end.to eq('Register')
       end
 
-      When 'user signs up' do
-        focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
-        focus_on(:form).form_for('register').submit
-
-        focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
-        focus_on(:form).form_for('profile').submit
+      When 'user signs up with handle "princess"' do
+        focus_on(:form).form_for('register').submit!(
+          handle: 'princess'
+        )
       end
 
       Then 'the profile is successfully created' do
-        wait_for { focus_on(:messages).info }.to eq('Updated user profile')
+        wait_for do
+          focus_on(:messages).info
+        end.to eq('profile successfully created')
       end
 
       And 'the user is signed in under that profile' do
         wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
       end
 
-      And 'the game commences' do
-        wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
+      And "they are encouraged to complete their profile
+          and also have the option to play the game" do
+        wait_for do
+          focus_on(:page_content).container_for('profile').text
+        end.to include('Your profile is almost complete')
+        wait_for do
+          focus_on(:page_content).container_for('profile').actions
+        end.to eq(['Play the game'])
       end
 
-      When 'the user sees their profile' do
-        focus_on(:nav).details.click_detail('Profile')
+      When 'they choose to "Play the game"' do
+        focus_on(:page_content)
+          .container_for('profile')
+          .action_item('Play the game')
       end
 
-      Then 'thier profile is complete' do
+      Then 'the game commences' do
+        wait_for do
+          focus_on(:page_content).container_for('game').heading
+        end.to eq('coming soon')
+      end
+
+      And 'the user is informed they should complete their profile' do
+        wait_for do
+          focus_on(:page_content).container_for('game').actions
+        end.to eq(['Complete my profile'])
+      end
+
+      When 'they select "complete my profile"' do
+        focus_on(:page_content)
+          .container_for('game')
+          .action_item('Complete my profile')
+      end
+
+      And 'they submit email "princess@email.com"' do
+        focus_on(:form).form_for('profile').submit!(
+          email: 'princess@email.com'
+        )
+      end
+
+      Then 'their profile is complete' do
         wait_for { focus_on(:profile).details }.to eq(
           avatar: '',
           handle: 'princess',
@@ -46,16 +78,32 @@ feature 'Playing the game', js: true do
         )
       end
 
-      When 'they edit their handle to disney princess' do
-        focus_on(:page_content).container_for('profile').action_item('Edit')
-        focus_on(:form).form_for('profile').fill_in_row_for('handle', 'disney_princess')
-        focus_on(:form).form_for('profile').submit
+      When 'they choose to "Play the game"' do
+        focus_on(:page_content)
+          .container_for('profile')
+          .action_item('Play the game')
       end
 
-      Then 'their handle is successfully updated' do
-        wait_for { focus_on(:messages).info }.to eq('Updated user profile')
+      Then 'the game commences' do
+        wait_for do
+          focus_on(:page_content).container_for('game').heading
+        end.to eq('coming soon')
       end
 
+      And 'the their profile is complete with no further actions' do
+        # wait_for do
+        #   focus_on(:page_content).container_for('game').text
+        # end.to include('Your profile is complete!')
+        # wait_for do
+        #   focus_on(:page_content).container_for('game').actions
+        # end.to eq([])
+      end
+
+      When 'they select "complete my profile"' do
+        focus_on(:page_content)
+          .container_for('game')
+          .action_item('Complete my profile')
+      end
       When 'the user signs out' do
         focus_on(:nav).details.click_detail('Sign out')
       end
@@ -107,10 +155,6 @@ feature 'Playing the game', js: true do
         When 'user completes their registration' do
           focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
           focus_on(:form).form_for('profile').submit
-        end
-
-        Then 'the game commences' do
-          wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
 

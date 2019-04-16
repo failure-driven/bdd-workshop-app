@@ -62,33 +62,39 @@ feature 'user manages profiles', js: true do
       Then 'an error message is shown'
     end
 
-    scenario 'edit all their fields in the profile' do
-      When 'user tries to update their handle and email by pre pending it with the' do
-        visit('/profile')
-        focus_on(:page_content).container_for('profile').action_item('Edit')
-        focus_on(:form).form_for('profile').fill_in_row_for('handle', 'The_princess')
-        focus_on(:form).form_for('profile').fill_in_row_for('email', 'The_princess@gmail.com')
-        focus_on(:form).form_for('profile').submit
+    context 'Given a user has a complete profile' do
+      before do
+        @profile.update(email: 'princess@email.com')
       end
 
-      Then 'all the fields are prepended with a "The_"' do
-        wait_for { focus_on(:profile).details }.to eq(
-          avatar: '',
-          handle: 'The_princess',
-          email: 'The_princess@gmail.com'
-        )
-      end
+      scenario 'edit all their fields in the profile' do
+        When 'user tries to update their handle and email by pre pending it with the' do
+          visit('/profile')
+          focus_on(:page_content).container_for('profile').action_item('Edit')
+          focus_on(:form).form_for('profile').fill_in_row_for('handle', 'The_princess')
+          focus_on(:form).form_for('profile').fill_in_row_for('email', 'The_princess@email.com')
+          focus_on(:form).form_for('profile').submit
+        end
 
-      When 'the page is refreshed' do
-        page.refresh
-      end
+        Then 'all the fields are prepended with a "The_"' do
+          wait_for { focus_on(:profile).details }.to eq(
+            avatar: '',
+            handle: 'The_princess',
+            email: 'The_princess@email.com'
+          )
+        end
 
-      Then 'all the fields are persisted' do
-        wait_for { focus_on(:profile).details }.to eq(
-          avatar: '',
-          handle: 'The_princess',
-          email: 'The_princess@gmail.com'
-        )
+        When 'the page is refreshed' do
+          page.refresh
+        end
+
+        Then 'all the fields are persisted' do
+          wait_for { focus_on(:profile).details }.to eq(
+            avatar: '',
+            handle: 'The_princess',
+            email: 'The_princess@email.com'
+          )
+        end
       end
     end
 
@@ -102,8 +108,13 @@ feature 'user manages profiles', js: true do
       end
 
       scenario 'new handles must be unique' do
-        When 'user tries to update handle to be the same as an existing one' do
+        When 'user completes their profile' do
           visit('/profile')
+          focus_on(:form).form_for('profile').fill_in_row_for('email', 'The_princess@email.com')
+          focus_on(:form).form_for('profile').submit
+        end
+
+        And 'tries to update handle to be the same as an existing one' do
           focus_on(:page_content).container_for('profile').action_item('Edit')
           focus_on(:form).form_for('profile').fill_in_row_for('handle', 'troll')
           focus_on(:form).form_for('profile').submit

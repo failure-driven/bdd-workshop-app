@@ -17,6 +17,14 @@ module PageFragments
       def action_item(action)
         @element.click_on(action)
       end
+
+      def actions
+        @element.find_all('[data-testid="actions"]').map(&:text)
+      end
+
+      def text
+        @element.text
+      end
     end
   end
 end

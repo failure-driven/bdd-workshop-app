@@ -53,7 +53,9 @@ feature 'sign in', js: true do
       end
 
       And "they're taken to their profile page" do
-        wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
+        wait_for do
+          focus_on(:page_content).container_for('profile').heading
+        end.to eq('Hi : princess')
       end
 
       And "they're informed their profile is only 50% complete" do
@@ -144,7 +146,9 @@ feature 'sign in', js: true do
         end
 
         Then "they're redirected to their profile" do
-          wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
+          wait_for do
+            focus_on(:page_content).container_for('profile').heading
+          end.to eq('Hi : princess')
         end
       end
 

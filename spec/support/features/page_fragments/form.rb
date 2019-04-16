@@ -21,6 +21,13 @@ module PageFragments
       def submit
         @node.find('[name="submit"]').click
       end
+
+      def submit!(values)
+        values.each do |key, value|
+          fill_in_row_for(key, value)
+        end
+        submit
+      end
     end
   end
 end

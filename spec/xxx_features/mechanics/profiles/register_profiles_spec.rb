@@ -9,8 +9,12 @@ feature 'registration', js: true do
     end
 
     Then 'a profile is created' do
-      wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
-      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
+      wait_for do
+        focus_on(:page_content).container_for('profile').heading
+      end.to eq('Hi : princess')
+      wait_for do
+        focus_on(:messages).info
+      end.to eq('profile successfully created')
     end
 
     And 'it is shown as 50% complete' do
@@ -35,8 +39,12 @@ feature 'registration', js: true do
     end
 
     Then 'a profile is created' do
-      wait_for { focus_on(:page_content).container_for('profile').heading }.to eq('princess')
-      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
+      wait_for do
+        focus_on(:page_content).container_for('profile').heading
+      end.to eq('Hi : princess')
+      wait_for do
+        focus_on(:messages).info
+      end.to eq('profile successfully created')
     end
 
     When 'user completes the sign up process' do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Signup to play the game', js: true do
+feature 'Signup to play the game', js: true, flaky: true do
   scenario 'A couple of users signup and they need unique "handles"' do
     visit('/')
     page.find(".jumbotron[data-testid='wargames']").click

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Alert, Spinner } from 'reactstrap';
 import API from '../API';
-import Handle from '../Handle';
 import Avatar from '../Avatar';
 import ProgressBar from '../ProgressBar';
 import OurForm from '../OurForm';
@@ -9,6 +8,7 @@ import messageBus from '../../utils/messageBus';
 import MainContainer from '../MainContainer';
 import PropTypes from 'prop-types';
 import ShowProfile from './ShowProfile';
+import { Link } from 'react-router-dom';
 
 class Profile extends Component {
   constructor(props) {
@@ -62,8 +62,6 @@ class Profile extends Component {
         this.state.fetchProfile();
         if (this.state.isEditting) {
           this.toggleIsEditting();
-        } else {
-          this.state.history.push('/game');
         }
         return Promise.resolve(response);
       })
@@ -103,12 +101,18 @@ class Profile extends Component {
           ) : (
             <>
               <ShowProfile profile={profile} />
-              <Button
-                color="primary"
-                onClick={this.toggleIsEditting.bind(this)}
-              >
-                Edit
-              </Button>
+              <div data-testid="actions">
+                <Button tag={Link} to="/game" color="secondary">
+                  Play the game
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={this.toggleIsEditting.bind(this)}
+                  className="float-right"
+                >
+                  Edit
+                </Button>
+              </div>
             </>
           )}
         </MainContainer>
@@ -117,18 +121,22 @@ class Profile extends Component {
       <MainContainer dataTestId="profile">
         {alert && <Alert>{alert}</Alert>}
         <div>
+          <h1>
+            Hi : <span data-testid="details-handle">{profile.handle}</span>
+          </h1>
+          <p>Your profile is almost complete</p>
           <ProgressBar progressValue={progressValue} />
-          <h1 data-testid="details-handle">{profile.handle}</h1>
           <Avatar />
-          <Handle profile={profile} />
           <OurForm
             onSubmit={this.updateUserProfile.bind(this)}
             profile={profile}
             step="email"
           />
-          <Button color="primary" onClick={this.toggleIsEditting.bind(this)}>
-            Edit
-          </Button>
+          <div data-testid="actions">
+            <Button tag={Link} to="/game" color="secondary">
+              Play the game
+            </Button>
+          </div>
         </div>
       </MainContainer>
     );

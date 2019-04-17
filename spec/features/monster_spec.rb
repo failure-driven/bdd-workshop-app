@@ -1,53 +1,104 @@
 require 'rails_helper'
 
-feature 'Signup to play the game', js: true, flaky: true do
-  scenario 'A couple of users signup and they need unique "handles"' do
+feature 'Playing the game', js: true do
+  scenario "Sophie Wilson would like to play the game
+            and in order to do so she registers" do
+
     visit('/')
     focus_on(:game_actions).for_game('wargames').play
     wait_for do
       focus_on(:page_content).container_for('register').heading
     end.to eq('Register')
-    focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
-    focus_on(:form).form_for('register').submit
-    focus_on(:form).form_for('profile').fill_in_row_for('email', 'princess@email.com')
-    focus_on(:form).form_for('profile').submit
-    wait_for { focus_on(:messages).info }.to eq('Updated user profile')
-    wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
-    wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
-    # fix with user signs out
-    page.execute_script("window.localStorage.setItem('player','{}')")
-    visit('/')
-    focus_on(:game_actions).for_game('wargames').play
+    focus_on(:form).form_for('register').submit!(
+      handle: 'BBCmicro'
+    )
     wait_for do
-      focus_on(:page_content).container_for('register').heading
-    end.to eq('Register')
-    focus_on(:form).form_for('register').fill_in_row_for('handle', 'troll')
-    focus_on(:form).form_for('register').submit
-    focus_on(:form).form_for('profile').fill_in_row_for('email', 'troll@email.com')
-    focus_on(:form).form_for('profile').submit
-    wait_for { focus_on(:messages).info }.to eq('Updated user profile')
-    wait_for { focus_on(:nav).details.summary.text }.to eq('troll')
-    wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
-    # fix with user signs out
-    page.execute_script("window.localStorage.setItem('player','{}')")
-    visit('/')
-    focus_on(:nav).follow_nav_link('Sign in')
-    focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
-    focus_on(:form).form_for('sign-in').submit
-    wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-    wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
-    wait_for { focus_on(:nav).nav_links }.to eq ['princess']
-    focus_on(:nav).details.click_detail('Profile')
+      focus_on(:messages).info
+    end.to eq('profile successfully created')
+    wait_for { focus_on(:nav).details.summary.text }.to eq('BBCmicro')
+    wait_for do
+      focus_on(:page_content).container_for('profile').text
+    end.to include('Your profile is almost complete')
+    wait_for do
+      focus_on(:page_content).container_for('profile').actions
+    end.to eq(['Play the game'])
+    focus_on(:page_content)
+      .container_for('profile')
+      .action_item('Play the game')
+    wait_for do
+      focus_on(:page_content).container_for('game').heading
+    end.to eq('coming soon')
+    wait_for do
+      focus_on(:page_content).container_for('game').actions
+    end.to eq(['Complete my profile'])
+    focus_on(:page_content)
+      .container_for('game')
+      .action_item('Complete my profile')
+    focus_on(:form).form_for('profile').submit!(
+      email: 'sophie.wilson@acorn.co.uk'
+    )
+    wait_for { focus_on(:profile).details }.to eq(
+      avatar: '',
+      handle: 'BBCmicro',
+      email: 'sophie.wilson@acorn.co.uk'
+    )
+    visit('/profile')
     focus_on(:page_content).container_for('profile').action_item('Edit')
-    focus_on(:form).form_for('profile').fill_in_row_for('handle', 'troll')
+    focus_on(:form).form_for('profile').fill_in_row_for('handle', 'FORMAC')
+    focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
     focus_on(:form).form_for('profile').submit
-    wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
-    wait_for { focus_on(:form).form_for('profile').field('handle') }.to eq('troll')
+    wait_for { focus_on(:profile).details }.to eq(
+      avatar: '',
+      handle: 'FORMAC',
+      email: 'jean.sammet@ibm.com'
+    )
     page.refresh
-    wait_for { focus_on(:profile).details[:handle] }.to eq('princess')
-    focus_on(:page_content).container_for('profile').action_item('Edit')
-    focus_on(:form).form_for('profile').fill_in_row_for('handle', 'disney_princess')
-    focus_on(:form).form_for('profile').submit
-    wait_for { focus_on(:messages).info }.to eq('Updated user profile')
+    wait_for { focus_on(:profile).details }.to eq(
+      avatar: '',
+      handle: 'FORMAC',
+      email: 'jean.sammet@ibm.com'
+    )
+    with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+      visit('/profile')
+      wait_for { focus_on(:util).test_elements('profile') }.to eq ['Loading...']
+    end
+    wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
+    force_api_error(method: 'get', url: '/api/v1/profiles', error: 'failed to fetch profile')
+    visit('/profile')
+    wait_for { focus_on(:messages).error }.to eq '400 - Bad Request'
+    clear_api_error
+    page.refresh
+    focus_on(:page_content)
+      .container_for('profile')
+      .action_item('Play the game')
+    wait_for do
+      focus_on(:page_content).container_for('game').heading
+    end.to eq('coming soon')
+    wait_for do
+      focus_on(:page_content).container_for('game').text
+    end.to include('Your profile is complete!')
+    wait_for do
+      focus_on(:page_content).container_for('game').actions
+    end.to eq([])
+    focus_on(:nav).details.click_detail('Sign out')
+    wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
+    visit('/')
+    focus_on(:game_actions).for_game('wargames').play
+    wait_for do
+      focus_on(:page_content).container_for('register').heading
+    end.to eq('Register')
+    focus_on(:form).form_for('register').fill_in_row_for('handle', 'FORMAC')
+    focus_on(:form).form_for('register').submit
+    wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
+    focus_on(:form).form_for('register').fill_in_row_for('handle', 'CLU')
+    focus_on(:form).form_for('register').submit
+    wait_for { focus_on(:messages).info }.to eq('profile successfully created')
+    wait_for { focus_on(:nav).details.summary.text }.to eq('CLU')
+    focus_on(:page_content)
+      .container_for('profile')
+      .action_item('Play the game')
+    wait_for do
+      focus_on(:page_content).container_for('game').heading
+    end.to eq('coming soon')
   end
 end

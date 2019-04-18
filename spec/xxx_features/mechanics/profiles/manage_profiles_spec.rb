@@ -3,10 +3,7 @@ require 'rails_helper'
 feature 'User manages profile', js: true do
   context 'Jean Sammet has a complete profile and is logged in' do
     before do
-      @profile = Player.create!(handle: 'FORMAC', email: 'jean.sammet@ibm.com')
-      page.visit('/')
-      player = { id: @profile.id, handle: @profile.handle }
-      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+      create_and_login_as(handle: 'FORMAC', email: 'jean.sammet@ibm.com')
     end
 
     scenario 'Jean edits all her fields in the profile' do

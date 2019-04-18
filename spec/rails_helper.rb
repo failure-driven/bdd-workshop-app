@@ -15,6 +15,17 @@ end
 UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
 UUID_FIRST_8_REGEX = /^[0-9a-f]{8}$/
 
+module LoginMacro
+  def create_and_login_as(options)
+    @profile = Player.create!(options)
+    page.visit('/')
+    player = { id: @profile.id, handle: @profile.handle }
+    page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+  end
+end
+
+include LoginMacro
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

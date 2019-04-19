@@ -1,9 +1,6 @@
 # TODO
 
-- [✓] rename sign up to register
-- [✓] remove reference to princess with the theme
 - [ ] hide away complex finder methods in JS specs and Ruby ones
-  - [RegisterForm](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
   - [ShowProfile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
   - [profile page fragment](/Users/michael/projects/failure-driven/game-app/spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
 - [ ] [Theme](docs/theme.md)
@@ -38,8 +35,6 @@
 
   - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
 
-- [✓] add code for name
-- [ ] add code for avatar
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)
   - term
@@ -52,6 +47,12 @@
 - [ ] move to real repo
 
 # DONE
+
+- [✓] rename sign up to register
+- [✓] remove reference to princess with the theme
+- [✓] add code for name
+- [✓] add code for avatar
+- [✓] fix complexity - [RegisterForm](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
 
 ## OLD TODO's
 

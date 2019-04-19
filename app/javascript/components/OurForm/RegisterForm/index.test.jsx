@@ -2,49 +2,52 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import RegisterForm from '.';
 
+const elementsWithProp = (wrapper, element, prop) =>
+  wrapper.find(element).map(e => e.prop(prop));
+
 describe('RegisterForm', () => {
   describe('Render a step in registration process', () => {
     it('Renders email for the email step', () => {
       const wrapper = shallow(<RegisterForm step="email" />);
-      expect(wrapper.find({ label: 'Handle' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Email' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Avatar' }).length).toBe(0);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Email',
+      ]);
     });
 
     it('Renders name for the name step', () => {
       const wrapper = shallow(<RegisterForm step="name" />);
-      expect(wrapper.find({ label: 'Handle' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Name' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Email' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Avatar' }).length).toBe(0);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Name',
+      ]);
     });
 
     it('Renders handle for the handle step', () => {
       const wrapper = shallow(<RegisterForm step="handle" />);
-      expect(wrapper.find({ label: 'Handle' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Email' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Avatar' }).length).toBe(0);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Handle',
+      ]);
     });
 
     it('Renders avatar for the avatar step', () => {
       const wrapper = shallow(<RegisterForm step="avatar" />);
-      expect(wrapper.find({ label: 'Handle' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Email' }).length).toBe(0);
-      expect(wrapper.find({ label: 'Avatar' }).length).toBe(1);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Avatar',
+      ]);
     });
   });
 
   describe('Render edit view', () => {
     it('Renders email, handle and avatar', () => {
       const wrapper = shallow(<RegisterForm />);
-      // TODO change to find all and list labels
-      expect(wrapper.find({ label: 'Handle' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Name' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Email' }).length).toBe(1);
-      expect(wrapper.find({ label: 'Avatar' }).length).toBe(1);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Handle',
+        'Name',
+        'Email',
+        'Avatar',
+      ]);
       expect(wrapper).toMatchSnapshot();
     });
-  })
+  });
 
   it('Renders an Action button with text submit', () => {
     const wrapper = shallow(<RegisterForm />);

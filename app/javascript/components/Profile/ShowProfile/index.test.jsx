@@ -10,7 +10,7 @@ describe('ShowProfile', () => {
           id: 'the-id',
           handle: 'the-handle',
           name: 'the-name',
-          email: 'princess@email.com',
+          email: 'user@email.com',
         }}
       />
     );
@@ -20,10 +20,10 @@ describe('ShowProfile', () => {
     wrapper.find('dt').map((e, i) => {descriptions[e.text()] = values[i]})
 
     expect(descriptions).toEqual({
-      'avatar': '',
-      'name': 'the-name',
-      'email': 'princess@email.com',
       'handle': 'the-handle',
+      'name': 'the-name',
+      'email': 'user@email.com',
+      'avatar': '',
     });
   });
 });

@@ -91,18 +91,18 @@ feature 'Register a profile', js: true do
 
   context 'Given a a user profile already exists' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'Smalltalk')
     end
 
     scenario 'handle is not unique' do
-      When 'user attempts to register with an existing handle' do
+      When 'Another user attempts to register with an existing handle' do
         visit('/register')
 
-        focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('register').fill_in_row_for('handle', 'Smalltalk')
         focus_on(:form).form_for('register').submit
       end
 
-      Then 'profile cannot be created without a unique handle' do
+      Then 'profile cannot be created' do
         wait_for { focus_on(:messages).error }.to eq('handle: has already been taken')
       end
     end

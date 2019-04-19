@@ -52,7 +52,7 @@ language: **Smalltalk**
 Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk 
 which was released in 1980.
 
-## Sohpie Wilson
+## Sophie Wilson
 
 language: **BBC BASIC**
 

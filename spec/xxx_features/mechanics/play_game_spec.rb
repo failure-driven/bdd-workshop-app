@@ -15,7 +15,7 @@ feature 'user plays the game', js: true do
 
   context 'user with incomplete profile' do
     before do
-      @profile = Player.create!(handle: 'princess')
+      @profile = Player.create!(handle: 'BBCmicro')
       page.visit('/')
       player = {
         id: @profile.id,
@@ -57,8 +57,8 @@ feature 'user plays the game', js: true do
   context 'user with complete profile' do
     before do
       @profile = Player.create!(
-        handle: 'troll',
-        email: 'troll@email.com',
+        handle: 'BBCmicro',
+        email: 'sophie.wilson@acorn.co.uk',
         avatar_url: '/bbc_micro_80_80.png'
       )
       page.visit('/')

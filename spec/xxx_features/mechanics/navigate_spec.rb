@@ -38,7 +38,7 @@ feature 'navigation', js: true do
 
   context 'Given a user is registered and signed in' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'COQ')
       page.visit('/')
       player = {
         id: @profile.id,
@@ -54,7 +54,7 @@ feature 'navigation', js: true do
 
       Then 'they are logged in to the game page' do
         wait_for { focus_on(:page_content).container_for('home').heading }.to eq('Play with me?')
-        wait_for { focus_on(:nav).nav_links }.to eq ['princess']
+        wait_for { focus_on(:nav).nav_links }.to eq ['COQ']
       end
 
       When 'the click on the brand Game link' do

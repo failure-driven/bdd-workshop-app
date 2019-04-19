@@ -1,136 +1,136 @@
 require 'rails_helper'
 
 feature 'sign in', js: true do
-  scenario 'unregistered users cannot sign in' do
-    When 'user attempts to sign in' do
-      visit('/sign_in')
-      focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
-      focus_on(:form).form_for('sign-in').submit
-    end
-
-    Then 'user cant be found' do
-      wait_for { focus_on(:messages).error }.to eq("Couldn't find Player")
-    end
-
-    When 'user registers' do
-      focus_on(:nav).follow_nav_link('Register')
-      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
-      focus_on(:form).form_for('register').submit
-    end
-
-    Then "they're signed in successfully" do
-      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
-      wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
-    end
-  end
-
-  scenario 'Non signed in user visits /sign_out' do
-    When 'user signs out' do
+  scenario 'unregistered user visits /sign_out' do
+    When 'Kathleen Booth attempts to visit sign out' do
       visit('/sign_out')
     end
 
-    Then 'the user is not signed in and they are redirected to home page' do
+    Then 'she redirected to home page and not signed in' do
       wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
       wait_for { page }.to have_current_path('/')
     end
   end
 
-  context 'a user is registered' do
+  scenario 'unregistered users cannot sign in' do
+    When 'Kathleen Booth attempts to sign in' do
+      visit('/sign_in')
+      focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'ARC_ASSEMBLY')
+      focus_on(:form).form_for('sign-in').submit
+    end
+
+    But "Kathleen's user can't be found" do
+      wait_for { focus_on(:messages).error }.to eq("Couldn't find Player")
+    end
+
+    When 'Kathleen registers' do
+      focus_on(:nav).follow_nav_link('Register')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'ARC_ASSEMBLY')
+      focus_on(:form).form_for('register').submit
+    end
+
+    Then "she's signed in successfully" do
+      wait_for { focus_on(:messages).info }.to eq('profile successfully created')
+      wait_for { focus_on(:nav).details.summary.text }.to eq('ARC_ASSEMBLY')
+    end
+  end
+
+  context 'Kathleen Booth is already registered to play the game' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'princess')
+      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'ARC_ASSEMBLY')
     end
 
     scenario 'user is taken to profile page when profile is 50% complete' do
-      When 'user signs in' do
+      When 'Kathleen Booth signs in' do
         visit('/sign_in')
-        focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+        focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'ARC_ASSEMBLY')
         focus_on(:form).form_for('sign-in').submit
       end
 
-      Then 'sign in is successful' do
+      Then 'she is signed in successfully' do
         wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-        wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
+        wait_for { focus_on(:nav).details.summary.text }.to eq('ARC_ASSEMBLY')
       end
 
-      And "they're taken to their profile page" do
+      And "she's taken to her profile page" do
         wait_for do
           focus_on(:page_content).container_for('profile').heading
-        end.to eq('Hi : princess')
+        end.to eq('Hi : ARC_ASSEMBLY')
       end
 
-      And "they're informed their profile is only 33% complete" do
+      And "she's informed that her profile is only 33% complete" do
         wait_for { focus_on(:profile).progress }.to eq('33')
         wait_for { focus_on(:profile).progress_text }.to eq('33%')
       end
     end
 
-    context 'and their profile is 100% complete' do
+    context 'and her profile is 100% complete' do
       before do
-        @profile.update(email: 'princess@email.com')
+        @profile.update(email: 'kathleen@arcassembly.com')
       end
 
-      scenario 'user signs via nav link' do
-        When 'user follows the sign in link in the nav' do
+      scenario 'user signs in via nav link' do
+        When 'Kathleen Booth follows the sign in link in the nav' do
           visit('/')
           focus_on(:nav).follow_nav_link('Sign in')
         end
 
-        Then "they're taken to the sign in page" do
+        Then "she's taken to the sign in page" do
           wait_for { focus_on(:page_content).container_for('sign-in').heading }.to eq('Sign In')
         end
 
-        When 'user successfully signs in' do
-          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+        When 'she is signed in with her handle' do
+          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'ARC_ASSEMBLY')
           focus_on(:form).form_for('sign-in').submit
         end
 
         Then 'sign in is successful' do
           wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
+          wait_for { focus_on(:nav).details.summary.text }.to eq('ARC_ASSEMBLY')
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:nav).nav_links }.to eq ['princess']
+          wait_for { focus_on(:nav).nav_links }.to eq ['ARC_ASSEMBLY']
         end
 
-        And "they're taken to the game page" do
+        And "she's taken to the game page" do
           wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
 
-      scenario 'user signs via game page link' do
-        When 'user follows the sign in link in the nav' do
+      scenario 'user signs in via game page link' do
+        When 'Kathleen Booth follows the sign in link in the nav' do
           visit('/game')
         end
 
-        Then "they're taken to the register page" do
+        Then "she's taken to the registration page" do
           wait_for do
             focus_on(:page_content).container_for('register').heading
           end.to eq('Register')
         end
 
-        When 'user successfully creates an account' do
+        When 'Kathleen attempts to sign in using her exiting account' do
           focus_on(:page_content).container_for('register').action_item('sign in with an existing account')
-          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'princess')
+          focus_on(:form).form_for('sign-in').fill_in_row_for('handle', 'ARC_ASSEMBLY')
           focus_on(:form).form_for('sign-in').submit
         end
 
         Then 'sign in is successful' do
           wait_for { focus_on(:messages).info }.to eq('signed in successfully')
-          wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
+          wait_for { focus_on(:nav).details.summary.text }.to eq('ARC_ASSEMBLY')
         end
 
         And 'the sign in link is no longer visible' do
-          wait_for { focus_on(:nav).nav_links }.to eq ['princess']
+          wait_for { focus_on(:nav).nav_links }.to eq ['ARC_ASSEMBLY']
         end
 
-        And "they're taken to the game page" do
+        And "she's taken to the game page" do
           wait_for { focus_on(:page_content).container_for('game').heading }.to eq('coming soon')
         end
       end
     end
 
-    context "AND they're already signed in" do
+    context "AND she's already signed in" do
       before do
         page.visit('/')
         player = {
@@ -141,48 +141,41 @@ feature 'sign in', js: true do
       end
 
       scenario 'sign in page redirects signed in users to their profile' do
-        When 'user visits /sign_in' do
+        When 'Kathleen Booth attempts to visit /sign_in' do
           visit('/sign_in')
         end
 
-        Then "they're redirected to their profile" do
+        Then "she's redirected to her profile" do
           wait_for do
             focus_on(:page_content).container_for('profile').heading
-          end.to eq('Hi : princess')
+          end.to eq('Hi : ARC_ASSEMBLY')
         end
       end
 
-      scenario 'they sign out' do
-        When 'user signs out' do
+      scenario 'user is signed out' do
+        When 'Kathleen Booth signs out' do
           visit('/')
           focus_on(:nav).details.click_detail('Sign out')
         end
 
-        Then 'the user is no longer signed in' do
+        Then 'she is no longer signed in' do
           wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
         end
 
-        And 'they are redirected to the home page with a sign out message' do
+        And "she's redirected to the home page with a sign out message" do
           wait_for { page }.to have_current_path('/')
           wait_for { focus_on(:messages).warn }.to eq('successfully signed out')
         end
       end
 
-      scenario 'they visit /sign_out directly' do
-        When 'user signs out' do
+      scenario 'visiting /sign_out directly signs the user out' do
+        When 'Kathleen Booth signs out' do
           visit('/sign_out')
         end
 
-        Then 'the user is no longer signed in' do
+        Then 'she is no longer signed in' do
           wait_for { focus_on(:nav).nav_links }.to eq ['Sign in', 'Register']
         end
-      end
-    end
-
-    context 'But their profile has been suspended' do
-      scenario 'user cannot sign in when their profile is suspended' do
-        When 'user attempts to sign in'
-        Then 'theyre informed they cannot sign in because their account has been suspended'
       end
     end
   end

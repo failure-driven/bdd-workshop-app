@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import ShowProfile from '.';
 
 describe('ShowProfile', () => {
@@ -15,15 +15,25 @@ describe('ShowProfile', () => {
       />
     );
 
-    const descriptions = {}
-    const values = wrapper.find('dd').map((e) => e.text());
-    wrapper.find('dt').map((e, i) => {descriptions[e.text()] = values[i]})
-
-    expect(descriptions).toEqual({
-      'handle': 'the-handle',
-      'name': 'the-name',
-      'email': 'user@email.com',
-      'avatar': '',
+    expect(mapDdToDtElements(wrapper)).toEqual({
+      handle: 'the-handle',
+      name: 'the-name',
+      email: 'user@email.com',
+      avatar: '',
     });
   });
 });
+
+Object.fromEntries = arr =>
+  Object.assign({}, ...Array.from(arr, ([k, v]) => ({ [k]: v })));
+
+const zip = (arr, ...arrs) => {
+  return arr.map((val, i) => arrs.reduce((a, arr) => [...a, arr[i]], [val]));
+};
+
+const text = e => e.text();
+
+const mapDdToDtElements = wrapper =>
+  Object.fromEntries(
+    zip(wrapper.find('dt').map(text), wrapper.find('dd').map(text))
+  );

@@ -1,7 +1,6 @@
 # TODO
 
 - [ ] hide away complex finder methods in JS specs and Ruby ones
-  - [ShowProfile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
   - [profile page fragment](/Users/michael/projects/failure-driven/game-app/spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
 - [ ] [Theme](docs/theme.md)
   - name
@@ -52,7 +51,9 @@
 - [✓] remove reference to princess with the theme
 - [✓] add code for name
 - [✓] add code for avatar
-- [✓] fix complexity - [RegisterForm](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
+- [✓] fix complexity
+  - [✓][registerform](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
+  - [✓][showprofile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
 
 ## OLD TODO's
 

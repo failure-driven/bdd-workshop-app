@@ -68,10 +68,9 @@ Constructions language.
 ## References
 
 1. 9 Programming Languages and the Women Who Created Them
-
-- Computerworld
-- May 22, 2015
-- https://cacm.acm.org/news/187391-9-programming-languages-and-the-women-who-created-them/fulltext
+    - Computerworld
+    - May 22, 2015
+    - https://cacm.acm.org/news/187391-9-programming-languages-and-the-women-who-created-them/fulltext
 
 1. https://en.wikipedia.org/wiki/Category:Programming_languages_created_by_women
 

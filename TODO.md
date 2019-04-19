@@ -14,7 +14,7 @@
   - 1 liner
   - interesting fact
   - avatar into ./app/assets/images/sample_avatars/ ? or ./public/sample_avatars 80x80 and maybe original?
-- [ ] fix or remove pending
+- [✓] fix or remove pending
 - [ ] Kahoot 5 - 10 multi choice questions (4 answers)
   - intro - about TDD, Rails, RailsConf, Minneapolis
   - review 2a
@@ -26,6 +26,7 @@
   - any other errors
   - terminal open in same window
   - VI colour scheme
+- [ ] make name field editable
 - [ ] finish avatar
   - test for provided suggestion
   - fake integration

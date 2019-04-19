@@ -4,7 +4,6 @@ feature 'Playing the game', js: true do
   scenario "Sophie Wilson would like to play the game
             and in order to do so she registers" do
 
-    pending 'because'
     visit('/')
     focus_on(:game_actions).for_game('wargames').play
     wait_for do
@@ -36,31 +35,38 @@ feature 'Playing the game', js: true do
       .container_for('game')
       .action_item('Complete my profile')
     focus_on(:form).form_for('profile').submit!(
+      name: 'Sophie Wilson'
+    )
+    focus_on(:form).form_for('profile').submit!(
       email: 'sophie.wilson@acorn.co.uk'
     )
     focus_on(:form).form_for('profile').submit!(
       avatarUrl: '/bbc_micro_80_80.png'
     )
     wait_for { focus_on(:profile).details }.to eq(
-      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'BBCmicro',
-      email: 'sophie.wilson@acorn.co.uk'
+      name: 'Sophie Wilson',
+      email: 'sophie.wilson@acorn.co.uk',
+      avatarUrl: '/bbc_micro_80_80.png'
     )
     visit('/profile')
     focus_on(:page_content).container_for('profile').action_item('Edit')
+    # TODO: allow editing name on edit form
     focus_on(:form).form_for('profile').fill_in_row_for('handle', 'FORMAC')
     focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
     focus_on(:form).form_for('profile').submit
     wait_for { focus_on(:profile).details }.to eq(
-      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'FORMAC',
-      email: 'jean.sammet@ibm.com'
+      name: 'Sophie Wilson',
+      email: 'jean.sammet@ibm.com',
+      avatarUrl: '/bbc_micro_80_80.png'
     )
     page.refresh
     wait_for { focus_on(:profile).details }.to eq(
-      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'FORMAC',
-      email: 'jean.sammet@ibm.com'
+      name: 'Sophie Wilson',
+      email: 'jean.sammet@ibm.com',
+      avatarUrl: '/bbc_micro_80_80.png'
     )
     with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
       visit('/profile')

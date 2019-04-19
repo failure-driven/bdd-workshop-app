@@ -4,8 +4,6 @@ feature 'Playing the game', js: true do
   scenario "Sophie Wilson would like to play the game
             and in order to do so she registers" do
 
-    pending 'because'
-
     When 'Sophie visits the site to play the game' do
       visit('/')
       focus_on(:game_actions).for_game('wargames').play
@@ -67,6 +65,12 @@ feature 'Playing the game', js: true do
         .action_item('Complete my profile')
     end
 
+    And 'submits her name "Sophie Wilson"' do
+      focus_on(:form).form_for('profile').submit!(
+        name: 'Sophie Wilson'
+      )
+    end
+
     And 'submits her email "sophie.wilson@acorn.co.uk"' do
       focus_on(:form).form_for('profile').submit!(
         email: 'sophie.wilson@acorn.co.uk'
@@ -81,9 +85,10 @@ feature 'Playing the game', js: true do
 
     Then 'her profile is complete' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'BBCmicro',
-        email: 'sophie.wilson@acorn.co.uk'
+        name: 'Sophie Wilson',
+        email: 'sophie.wilson@acorn.co.uk',
+        avatarUrl: '/bbc_micro_80_80.png'
       )
     end
 
@@ -97,9 +102,10 @@ feature 'Playing the game', js: true do
 
     Then 'they are updated successfully' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'FORMAC',
-        email: 'jean.sammet@ibm.com'
+        name: 'Sophie Wilson',
+        email: 'jean.sammet@ibm.com',
+        avatarUrl: '/bbc_micro_80_80.png'
       )
     end
 
@@ -109,9 +115,10 @@ feature 'Playing the game', js: true do
 
     Then 'all the fields are persisted' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'FORMAC',
-        email: 'jean.sammet@ibm.com'
+        name: 'Sophie Wilson',
+        email: 'jean.sammet@ibm.com',
+        avatarUrl: '/bbc_micro_80_80.png'
       )
     end
 

@@ -31,6 +31,12 @@ describe('ShowProfile', () => {
   >
     princess@email.com
   </dd>
+  <dt>
+    avatar
+  </dt>
+  <dd
+    data-testid="details-avatarUrl"
+  />
 </dl>
 `);
   });

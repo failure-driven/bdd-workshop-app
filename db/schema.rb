@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_114048) do
+ActiveRecord::Schema.define(version: 2019_04_18_233624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_114048) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "handle", null: false
     t.string "email"
+    t.string "avatar_url"
     t.index ["handle"], name: "index_players_on_handle", unique: true
   end
 

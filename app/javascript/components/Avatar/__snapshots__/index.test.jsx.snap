@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avatar renders an avatar 1`] = `
-<Fragment>
-  <i
-    alt="placeholder-avatar"
-    aria-hidden="true"
-    className="fa fa-user"
-    data-testid="details-avatar"
-  />
-</Fragment>
+<styled.img
+  alt="avatar for the-handle"
+  src="the-avatar-url"
+/>
 `;

@@ -56,6 +56,7 @@ exports[`Register renders text and a OurForm 1`] = `
             onSubmit={[Function]}
             profile={
               Object {
+                "avatarUrl": "",
                 "email": "",
                 "handle": "",
               }

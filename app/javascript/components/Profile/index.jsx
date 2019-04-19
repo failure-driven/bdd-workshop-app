@@ -119,11 +119,10 @@ class Profile extends Component {
           </h1>
           <p>Your profile is almost complete</p>
           <ProgressBar percentComplete={profile.percentComplete} />
-          <Avatar />
+          <Avatar profile={profile} />
           <OurForm
             onSubmit={this.updateUserProfile.bind(this)}
             profile={profile}
-            step="email"
           />
           <div data-testid="actions">
             <Button tag={Link} to="/game" color="secondary">

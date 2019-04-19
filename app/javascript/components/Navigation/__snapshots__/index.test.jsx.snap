@@ -97,7 +97,6 @@ exports[`Navigation Renders signed in view 1`] = `
               class="fa fa-user"
               data-testid="details-avatar"
             />
-            
             <span>
                
             </span>

@@ -1,72 +1,73 @@
 require 'rails_helper'
 
-feature 'registration', js: true do
-  scenario 'only mandatory fields are filled in while completing sign up process' do
-    When 'user signs up only filling in mandatory fields' do
+feature 'Register a profile', js: true do
+  scenario 'Adele Goldberg only fills in the mandatory handle field while completeing registration processon' do
+    When 'Adele registers and fills in mandatory handle with "Smalltalk"' do
       visit('/register')
-      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'Smalltalk')
       focus_on(:form).form_for('register').submit
     end
 
-    Then 'a profile is created' do
+    Then 'her "Smalltalk" profile is created' do
       wait_for do
         focus_on(:page_content).container_for('profile').heading
-      end.to eq('Hi : princess')
+      end.to eq('Hi : Smalltalk')
       wait_for do
         focus_on(:messages).info
       end.to eq('profile successfully created')
     end
 
-    And 'it is shown as 50% complete' do
-      wait_for { focus_on(:profile).progress }.to eq('50')
-      wait_for { focus_on(:profile).progress_text }.to eq('50%')
+    And 'the profile is 33% complete' do
+      wait_for { focus_on(:profile).progress }.to eq('33')
+      wait_for { focus_on(:profile).progress_text }.to eq('33%')
     end
 
-    And 'their profile picture is the placeholder image' do
+    And 'her profile picture is the placeholder image' do
       wait_for { focus_on(:profile).avatar }.to be_present
     end
 
-    And 'the user is signed in' do
-      wait_for { focus_on(:nav).details.summary.text }.to eq('princess')
+    And 'she is signed in' do
+      wait_for { focus_on(:nav).details.summary.text }.to eq('Smalltalk')
     end
   end
 
-  scenario 'all fields are filled in while completing sign up process' do
-    When 'user signs up only filling in mandatory fields' do
+  scenario 'Adele fills in all fields while completing registration process' do
+    When 'Adele registers with handle "Smalltalk"' do
       visit('/register')
-      focus_on(:form).form_for('register').fill_in_row_for('handle', 'princess')
+      focus_on(:form).form_for('register').fill_in_row_for('handle', 'Smalltalk')
       focus_on(:form).form_for('register').submit
     end
 
-    Then 'a profile is created' do
+    Then 'her profile is created' do
       wait_for do
         focus_on(:page_content).container_for('profile').heading
-      end.to eq('Hi : princess')
+      end.to eq('Hi : Smalltalk')
       wait_for do
         focus_on(:messages).info
       end.to eq('profile successfully created')
     end
 
-    When 'user completes the sign up process' do
-      pending 'need to work out how to upload an avatar'
-      focus_on(:profile).submit do |form|
-        form.email('princess@email.com')
-        form.avatar('test-avatar')
-      end
+    When 'she adds her email' do
+      focus_on(:form).form_for('profile').submit!(
+        email: 'adele.goldberg@xerox.parc.com'
+      )
+    end
+
+    And 'she confirms her avatar' do
+      focus_on(:form).form_for('profile').submit!(
+        avatarUrl: '/bbc_micro_80_80.png'
+      )
     end
 
     Then 'the correct profile details are shown' do
       wait_for { focus_on(:profile).details }.to eq(
-        handle: 'princess',
-        email: 'princess@email.com',
-        avatar: 'test-avatar'
+        avatarUrl: '/bbc_micro_80_80.png',
+        handle: 'Smalltalk',
+        email: 'adele.goldberg@xerox.parc.com'
       )
     end
 
-    And 'profile is shown as 100% complete' do
-      wait_for { focus_on(:profile).progress }.to eq('100')
-      wait_for { focus_on(:profile).progress_text }.to eq('100%')
-    end
+    # TODO: should we show profile as 100% ??
   end
 
   scenario 'mandatory fields are missing' do

@@ -7,6 +7,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       id: '01234567-0123-4abc-8abc-0123456789ab',
       handle: 'the-handle',
       email: 'the-email',
+      avatar_url: 'the-avatar-url',
       percent_complete: 33
     )
     expect(Player).to receive(:find).with('the-id').and_return(player)
@@ -20,6 +21,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       'id' => '01234567-0123-4abc-8abc-0123456789ab',
       'handle' => 'the-handle',
       'email' => 'the-email',
+      'avatarUrl' => 'the-avatar-url',
       'percentComplete' => 33
     )
   end
@@ -27,20 +29,23 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
   it 'creates a new player' do
     params = ActionController::Parameters.new(
       handle: 'the-handle',
-      email: 'the-email'
-    ).permit(:handle, :email, :name)
+      email: 'the-email',
+      avatar_url: 'the-avatar-url'
+    ).permit(:handle, :email, :name, :avatar_url)
 
     player = double(Player,
                     id: 'the-id',
                     handle: 'the-handle',
                     email: 'the-email',
+                    avatar_url: 'the-avatar-url',
                     percent_complete: '33')
     expect(Player).to receive(:create!).with(params).and_return(player)
 
     post :create, params: {
       player: {
         handle: 'the-handle',
-        email: 'the-email'
+        email: 'the-email',
+        avatar_url: 'the-avatar-url'
       }
     }, format: :plain
 
@@ -49,6 +54,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       'id' => 'the-id',
       'handle' => 'the-handle',
       'email' => 'the-email',
+      'avatarUrl' => 'the-avatar-url',
       'percentComplete' => '33'
     )
   end

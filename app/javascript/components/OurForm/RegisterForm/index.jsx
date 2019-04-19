@@ -23,6 +23,14 @@ const RegisterForm = props => (
         placeholder="input your email"
       />
     )}
+    {(props.step === 'avatar' || !props.step) && (
+      <StepFormGroup
+        {...props}
+        step="avatarUrl"
+        label="Avatar"
+        placeholder="url to your avatar"
+      />
+    )}
     <ActionButton>{props.step ? 'Next' : 'Submit'}</ActionButton>
   </Form>
 );

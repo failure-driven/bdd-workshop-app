@@ -20,6 +20,11 @@ describe('RegisterForm', () => {
     step="email"
     type="email"
   />
+  <StepFormGroup
+    label="Avatar"
+    placeholder="url to your avatar"
+    step="avatarUrl"
+  />
   <ActionButton>
     Submit
   </ActionButton>
@@ -51,6 +56,17 @@ describe('RegisterForm', () => {
   placeholder="input your email"
   step="email"
   type="email"
+/>
+`);
+  });
+
+  it('Renders the avatar with label and placeholder', () => {
+    const wrapper = shallow(<RegisterForm step="avatar" />);
+    expect(wrapper.find('StepFormGroup')).toMatchInlineSnapshot(`
+<StepFormGroup
+  label="Avatar"
+  placeholder="url to your avatar"
+  step="avatarUrl"
 />
 `);
   });

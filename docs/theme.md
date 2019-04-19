@@ -40,7 +40,7 @@ Barbara led the team that developed CLU in 1974 which would influence later lang
 
 language: **Smalltalk**
 
-Adele was a reasercher at Xerox PARCand was part of the team that developed Smalltalk which was released in 1980.
+Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk which was released in 1980.
 
 ## Sohpie Wilson
 

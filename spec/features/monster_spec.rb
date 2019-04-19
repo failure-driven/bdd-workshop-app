@@ -37,8 +37,11 @@ feature 'Playing the game', js: true do
     focus_on(:form).form_for('profile').submit!(
       email: 'sophie.wilson@acorn.co.uk'
     )
+    focus_on(:form).form_for('profile').submit!(
+      avatarUrl: '/bbc_micro_80_80.png'
+    )
     wait_for { focus_on(:profile).details }.to eq(
-      avatar: '',
+      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'BBCmicro',
       email: 'sophie.wilson@acorn.co.uk'
     )
@@ -48,13 +51,13 @@ feature 'Playing the game', js: true do
     focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
     focus_on(:form).form_for('profile').submit
     wait_for { focus_on(:profile).details }.to eq(
-      avatar: '',
+      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'FORMAC',
       email: 'jean.sammet@ibm.com'
     )
     page.refresh
     wait_for { focus_on(:profile).details }.to eq(
-      avatar: '',
+      avatarUrl: '/bbc_micro_80_80.png',
       handle: 'FORMAC',
       email: 'jean.sammet@ibm.com'
     )

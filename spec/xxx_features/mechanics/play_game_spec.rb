@@ -56,7 +56,11 @@ feature 'user plays the game', js: true do
 
   context 'user with complete profile' do
     before do
-      @profile = Player.create!(handle: 'troll', email: 'troll@email.com')
+      @profile = Player.create!(
+        handle: 'troll',
+        email: 'troll@email.com',
+        avatar_url: '/bbc_micro_80_80.png'
+      )
       page.visit('/')
       player = {
         id: @profile.id,

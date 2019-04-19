@@ -71,9 +71,15 @@ feature 'Playing the game', js: true do
       )
     end
 
+    And 'submits her avatar url "bbc_micro_80_80.png' do
+      focus_on(:form).form_for('profile').submit!(
+        avatarUrl: '/bbc_micro_80_80.png'
+      )
+    end
+
     Then 'her profile is complete' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatar: '',
+        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk'
       )
@@ -89,7 +95,7 @@ feature 'Playing the game', js: true do
 
     Then 'they are updated successfully' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatar: '',
+        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'FORMAC',
         email: 'jean.sammet@ibm.com'
       )
@@ -101,7 +107,7 @@ feature 'Playing the game', js: true do
 
     Then 'all the fields are persisted' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatar: '',
+        avatarUrl: '/bbc_micro_80_80.png',
         handle: 'FORMAC',
         email: 'jean.sammet@ibm.com'
       )

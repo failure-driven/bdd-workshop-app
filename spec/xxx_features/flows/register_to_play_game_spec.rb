@@ -71,6 +71,13 @@ feature 'Playing the game', js: true do
       )
     end
 
+    And 'she confirms her avatar image' do
+      pending 'need an avatar url to be suggested'
+      focus_on(:form).form_for('profile').submit!(
+        avatar: 'some_local_url'
+      )
+    end
+
     Then 'her profile is complete' do
       wait_for { focus_on(:profile).details }.to eq(
         avatar: '',

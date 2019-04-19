@@ -13,6 +13,7 @@ describe('OurForm', () => {
   enableReinitialize={false}
   initialValues={
     Object {
+      "avatarUrl": "",
       "email": "",
       "handle": "",
     }
@@ -28,7 +29,7 @@ describe('OurForm', () => {
     });
     it('THEN there is a next submit button that is enabled', () => {
       const { getByText } = render(<OurForm onSubmit={() => {}} />);
-      const nextButton = getByText('Submit');
+      const nextButton = getByText('Next');
       expect(nextButton).toHaveClass('btn-primary');
       expect(nextButton).toHaveAttribute('type');
       expect(nextButton.getAttribute('type')).toEqual('submit');

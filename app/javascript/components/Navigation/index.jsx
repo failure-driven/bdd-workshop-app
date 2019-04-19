@@ -35,7 +35,7 @@ const Navigation = ({ profile, loading }) => {
           ) : profile ? (
             <UncontrolledDropdown nav inNavbar data-testid="details">
               <DropdownToggle nav caret data-testid="summary">
-                <Avatar />
+                <Avatar profile={profile} />
                 <span> {profile.handle}</span>
               </DropdownToggle>
               <DropdownMenu right>

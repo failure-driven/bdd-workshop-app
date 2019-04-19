@@ -58,9 +58,9 @@ feature 'sign in', js: true do
         end.to eq('Hi : princess')
       end
 
-      And "they're informed their profile is only 50% complete" do
-        wait_for { focus_on(:profile).progress }.to eq('50')
-        wait_for { focus_on(:profile).progress_text }.to eq('50%')
+      And "they're informed their profile is only 33% complete" do
+        wait_for { focus_on(:profile).progress }.to eq('33')
+        wait_for { focus_on(:profile).progress_text }.to eq('33%')
       end
     end
 

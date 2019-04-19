@@ -1,43 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import ShowProfile from '.';
 
 describe('ShowProfile', () => {
-  it('Displays avatar, handle and email', () => {
+  it('Displays avatar, name, handle and email', () => {
     const wrapper = shallow(
       <ShowProfile
         profile={{
           id: 'the-id',
           handle: 'the-handle',
+          name: 'the-name',
           email: 'princess@email.com',
         }}
       />
     );
-    expect(wrapper.find('dl')).toMatchInlineSnapshot(`
-<dl>
-  <dt>
-    handle
-  </dt>
-  <dd
-    data-testid="details-handle"
-  >
-    the-handle
-  </dd>
-  <dt>
-    email
-  </dt>
-  <dd
-    data-testid="details-email"
-  >
-    princess@email.com
-  </dd>
-  <dt>
-    avatar
-  </dt>
-  <dd
-    data-testid="details-avatarUrl"
-  />
-</dl>
-`);
+
+    const descriptions = {}
+    const values = wrapper.find('dd').map((e) => e.text());
+    wrapper.find('dt').map((e, i) => {descriptions[e.text()] = values[i]})
+
+    expect(descriptions).toEqual({
+      'avatar': '',
+      'name': 'the-name',
+      'email': 'princess@email.com',
+      'handle': 'the-handle',
+    });
   });
 });

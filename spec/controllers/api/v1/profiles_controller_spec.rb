@@ -6,6 +6,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       Player,
       id: '01234567-0123-4abc-8abc-0123456789ab',
       handle: 'the-handle',
+      name: 'the-name',
       email: 'the-email',
       avatar_url: 'the-avatar-url',
       percent_complete: 33
@@ -20,6 +21,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
     ).to eq(
       'id' => '01234567-0123-4abc-8abc-0123456789ab',
       'handle' => 'the-handle',
+      'name' => 'the-name',
       'email' => 'the-email',
       'avatarUrl' => 'the-avatar-url',
       'percentComplete' => 33
@@ -62,8 +64,9 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
   it 'updates an existing player' do
     params = ActionController::Parameters.new(
       handle: 'the-handle',
+      name: 'the-name',
       email: 'the-email'
-    ).permit(:handle, :email)
+    ).permit(:handle, :name, :email)
 
     player = double(Player, id: 'the-id', update!: {})
     expect(Player).to receive(:find).with('the-id').and_return(player)
@@ -74,6 +77,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       player: {
         id: 'the-id',
         handle: 'the-handle',
+        name: 'the-name',
         email: 'the-email'
       }
     }, format: :json

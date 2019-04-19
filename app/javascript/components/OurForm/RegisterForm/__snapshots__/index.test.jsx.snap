@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegisterForm Render edit view Renders email, handle and avatar 1`] = `
+<Form
+  tag="form"
+>
+  <StepFormGroup
+    label="Handle"
+    placeholder="input a custom handle"
+    step="handle"
+  />
+  <StepFormGroup
+    label="Email"
+    placeholder="input your email"
+    step="email"
+    type="email"
+  />
+  <StepFormGroup
+    label="Avatar"
+    placeholder="url to your avatar"
+    step="avatarUrl"
+  />
+  <ActionButton>
+    Submit
+  </ActionButton>
+</Form>
+`;

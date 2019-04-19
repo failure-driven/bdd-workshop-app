@@ -5,6 +5,7 @@ RSpec.describe '/api/v1/profiles', type: :request do
     before do
       @player = Player.create!(
         handle: 'princess',
+        name: 'Miss Princess',
         email: 'princess@email.com',
         avatar_url: 'http://avatar.com/princess'
       )
@@ -13,13 +14,12 @@ RSpec.describe '/api/v1/profiles', type: :request do
     it 'returns 200 OK' do
       get "/api/v1/profiles/#{@player.id}", as: :json
       expect(response.status).to eq 200
-      expect(JSON.parse(response.body)).to include(
-        'id' => @player.id,
-        'handle' => 'princess',
-        'email' => 'princess@email.com',
-        'avatarUrl' => 'http://avatar.com/princess',
-        'percentComplete' => 100
-      )
+      response_body = JSON.parse(response.body)
+      expect(response_body['handle']).to eq('princess')
+      expect(response_body['name']).to eq('Miss Princess')
+      expect(response_body['email']).to eq('princess@email.com')
+      expect(response_body['avatarUrl']).to eq('http://avatar.com/princess')
+      expect(response_body['percentComplete']).to eq(100)
     end
 
     it 'returns 404 for bad player id' do
@@ -32,12 +32,14 @@ RSpec.describe '/api/v1/profiles', type: :request do
         put "/api/v1/profiles/#{@player.id}", params: {
           player: {
             handle: 'princess',
+            name: 'Miss Princess',
             email: 'princess@email.com',
             avatarUrl: 'http://avatar.com/princess'
           }
         }, as: :json
         expect(response.status).to eq 204
         expect(@player.reload.handle).to eq 'princess'
+        expect(@player.reload.name).to eq 'Miss Princess'
         expect(@player.reload.email).to eq 'princess@email.com'
         expect(@player.reload.avatar_url).to eq 'http://avatar.com/princess'
       end
@@ -55,13 +57,12 @@ RSpec.describe '/api/v1/profiles', type: :request do
           }
         }, as: :json
       end.to change { Player.count }.by(1)
-      expect(JSON.parse(response.body)).to match(
-        'id' => match(UUID_REGEX),
-        'handle' => 'princess',
-        'email' => 'princess@email.com',
-        'avatarUrl' => 'http://avatar.com/princess',
-        'percentComplete' => 100
-      )
+
+      response_body = JSON.parse(response.body)
+      expect(response_body['handle']).to eq('princess')
+      expect(response_body['email']).to eq('princess@email.com')
+      expect(response_body['avatarUrl']).to eq('http://avatar.com/princess')
+      expect(response_body['percentComplete']).to eq(100)
     end
   end
 end

@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import RegisterForm from './RegisterForm';
 
 const OurForm = ({ profile, onSubmit }) => {
-  const { handle, email, avatarUrl } = profile;
+  const { handle, name, email, avatarUrl } = profile;
   const step = !handle
     ? 'handle'
+    : !name
+    ? 'name'
     : !email
     ? 'email'
     : !avatarUrl

@@ -3,7 +3,12 @@ require 'rails_helper'
 feature 'User manages profile', js: true do
   context 'Jean Sammet has a complete profile and is logged in' do
     before do
-      create_and_login_as(handle: 'FORMAC', email: 'jean.sammet@ibm.com', avatar_url: '/bbc_micro_80_80.png')
+      create_and_login_as(
+        handle: 'FORMAC',
+        name: 'Jean Sammet',
+        email: 'jean.sammet@ibm.com',
+        avatar_url: '/bbc_micro_80_80.png'
+      )
     end
 
     scenario 'Jean edits all her fields in the profile' do
@@ -18,6 +23,7 @@ feature 'User manages profile', js: true do
       Then 'they are updated successfully' do
         wait_for { focus_on(:profile).details }.to eq(
           avatarUrl: '/bbc_micro_80_80.png',
+          name: 'Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'
         )
@@ -30,6 +36,7 @@ feature 'User manages profile', js: true do
       Then 'all the fields are persisted' do
         wait_for { focus_on(:profile).details }.to eq(
           avatarUrl: '/bbc_micro_80_80.png',
+          name: 'Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'
         )

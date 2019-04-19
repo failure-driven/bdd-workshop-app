@@ -27,6 +27,8 @@ feature 'User manages profile', js: true do
       scenario 'new handles must be unique' do
         When 'user completes their profile' do
           visit('/profile')
+          focus_on(:form).form_for('profile').fill_in_row_for('name', 'Jean Sammet')
+          focus_on(:form).form_for('profile').submit
           focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
           focus_on(:form).form_for('profile').submit
           focus_on(:form).form_for('profile').fill_in_row_for('avatarUrl', '/bbc_micro_80_80.png')

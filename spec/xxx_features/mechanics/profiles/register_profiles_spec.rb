@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature 'Register a profile', js: true do
-  scenario 'Adele Goldberg only fills in the mandatory handle field while completeing registration processon' do
+  scenario "Adele Goldberg only fills in the mandatory handle field while completing
+            registration processon" do
     When 'Adele registers and fills in mandatory handle with "Smalltalk"' do
       visit('/register')
       focus_on(:form).form_for('register').fill_in_row_for('handle', 'Smalltalk')
@@ -47,7 +48,13 @@ feature 'Register a profile', js: true do
       end.to eq('profile successfully created')
     end
 
-    When 'she adds her email' do
+    When 'she adds her name' do
+      focus_on(:form).form_for('profile').submit!(
+        name: 'Adele Goldberg'
+      )
+    end
+
+    And 'she adds her email' do
       focus_on(:form).form_for('profile').submit!(
         email: 'adele.goldberg@xerox.parc.com'
       )
@@ -63,6 +70,7 @@ feature 'Register a profile', js: true do
       wait_for { focus_on(:profile).details }.to eq(
         avatarUrl: '/bbc_micro_80_80.png',
         handle: 'Smalltalk',
+        name: 'Adele Goldberg',
         email: 'adele.goldberg@xerox.parc.com'
       )
     end

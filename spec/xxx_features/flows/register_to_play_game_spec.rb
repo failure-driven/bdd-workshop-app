@@ -65,6 +65,12 @@ feature 'Playing the game', js: true do
         .action_item('Complete my profile')
     end
 
+    And 'submits her name "Sophie Wlison"' do
+      focus_on(:form).form_for('profile').submit!(
+        name: 'Sophie Wilson'
+      )
+    end
+
     And 'submits her email "sophie.wilson@acorn.co.uk"' do
       focus_on(:form).form_for('profile').submit!(
         email: 'sophie.wilson@acorn.co.uk'
@@ -81,7 +87,8 @@ feature 'Playing the game', js: true do
       wait_for { focus_on(:profile).details }.to eq(
         avatarUrl: '/bbc_micro_80_80.png',
         handle: 'BBCmicro',
-        email: 'sophie.wilson@acorn.co.uk'
+        email: 'sophie.wilson@acorn.co.uk',
+        name: 'Sophie Wilson'
       )
     end
 

@@ -12,6 +12,8 @@ const ShowProfile = ({ profile }) => {
           <dl>
             <dt>handle</dt>
             <dd data-testid="details-handle">{profile.handle}</dd>
+            <dt>name</dt>
+            <dd data-testid="details-name">{profile.name}</dd>
             <dt>email</dt>
             <dd data-testid="details-email">{profile.email}</dd>
             <dt>avatar</dt>

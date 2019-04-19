@@ -34,12 +34,10 @@ const createUserProfile = async playerData => {
   return response;
 };
 
-const updateUserProfile = async ({
-  data: { handle, id, email, avatarUrl },
-}) => {
+const updateUserProfile = async ({data}) => {
   const response = await axios.put(
-    `/api/v1/profiles/${id}`,
-    { player: { handle, email, avatarUrl } },
+    `/api/v1/profiles/${data.id}`,
+    { player: data },
     {
       headers: { Accept: 'application/json' },
     }

@@ -3,19 +3,12 @@ require 'rails_helper'
 feature 'User manages profile', js: true do
   context 'Jean Sammet has an incomplete profile and is logged in' do
     before do
-      @profile = Player.create!(handle: 'FORMAC')
-      page.visit('/')
-      player = { id: @profile.id, handle: @profile.handle }
-      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+      create_and_login_as(handle: 'FORMAC', email: nil, name: nil, avatar_url: nil)
     end
 
     context 'and some other profile exists as well' do
       before do
-        Player.create!(
-          id: '01234567-0123-4abc-8abc-0123456789ac',
-          handle: 'Smalltalk',
-          email: 'adele.goldberg@xerox.parc.com'
-        )
+        create(:player, handle: 'Smalltalk')
       end
 
       scenario 'new handles must be unique' do

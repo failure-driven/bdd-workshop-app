@@ -91,7 +91,7 @@ feature 'Register a profile', js: true do
 
   context 'Given a a user profile already exists' do
     before do
-      Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'Smalltalk')
+      create(:player, handle: 'Smalltalk')
     end
 
     scenario 'handle is not unique' do

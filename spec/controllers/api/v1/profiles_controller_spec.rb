@@ -30,34 +30,21 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
 
   it 'creates a new player' do
     params = ActionController::Parameters.new(
-      handle: 'the-handle',
-      email: 'the-email',
-      avatar_url: 'the-avatar-url'
-    ).permit(:handle, :email, :name, :avatar_url)
+      handle: 'the-handle'
+    ).permit(:handle)
 
-    player = double(Player,
-                    id: 'the-id',
-                    handle: 'the-handle',
-                    email: 'the-email',
-                    avatar_url: 'the-avatar-url',
-                    percent_complete: '33')
+    player = double(Player, id: 'the-id')
     expect(Player).to receive(:create!).with(params).and_return(player)
 
     post :create, params: {
       player: {
-        handle: 'the-handle',
-        email: 'the-email',
-        avatar_url: 'the-avatar-url'
+        handle: 'the-handle'
       }
     }, format: :plain
 
     expect(response.code).to eq '200'
     expect(JSON.parse(response.body)).to eq(
-      'id' => 'the-id',
-      'handle' => 'the-handle',
-      'email' => 'the-email',
-      'avatarUrl' => 'the-avatar-url',
-      'percentComplete' => '33'
+      'id' => 'the-id'
     )
   end
 

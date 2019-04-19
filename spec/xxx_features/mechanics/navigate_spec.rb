@@ -38,13 +38,7 @@ feature 'navigation', js: true do
 
   context 'Given a user is registered and signed in' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'COQ')
-      page.visit('/')
-      player = {
-        id: @profile.id,
-        handle: @profile.handle
-      }
-      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+      create_and_login_as(handle: 'COQ')
     end
 
     scenario 'using navigation links' do

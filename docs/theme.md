@@ -1,23 +1,24 @@
 # Theme
 
-When writing Behaviour Driven specs it is good to immerse yourself in the problems space 
-having realistic characters. As our example app is just a sample of a registration app we 
-had no clear characters to choose from. Instead we decied to choose the women in compute 
-science who created computer languages or were influential in developing languages. Here 
+When writing Behaviour Driven specs it is good to immerse yourself in the problems space
+having realistic characters. As our example app is just a sample of a registration app we
+had no clear characters to choose from. Instead we decied to choose the women in compute
+science who created computer languages or were influential in developing languages. Here
 is a brief about some of these characters, enjoy.
 
 ## Kathleen Booth
 
 language: **ARC assembly** language
+avatar: [sample_avatars/kathleen_booth.jpg]
 
-Kathleen created the ARC assembly language for the ARC (Automatic Relay Calculator) computer 
+Kathleen created the ARC assembly language for the ARC (Automatic Relay Calculator) computer
 in 1950.
 
 ## Grace Hopper
 
 language: **COBOL**
 
-Grace Hopper, whilst working for the U.S. Navy was one of the technical advisers for the 
+Grace Hopper, whilst working for the U.S. Navy was one of the technical advisers for the
 committee that created COBOL.
 
 ## Kateryna Yushchenko
@@ -28,33 +29,35 @@ language: **Address** programming language
 
 language: **FORMAC**
 
-Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely 
+Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
 used for symbolic mathematical computation.
 
 ## Cynthia Solomon
 
 language: **Logo**
+avatar: [sample_avatars/kathleen_booth.jpg]
 
-Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo 
+Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
 went on to be influential in educational programming languages such as Scratch.
 
 ## Barbara Liskov
 
 language: **CLU**
 
-Barbara led the team that developed CLU in 1974 which would influence later languages 
+Barbara led the team that developed CLU in 1974 which would influence later languages
 such as Java and Pythoon.
 
 ## Adele Goldberg
 
 language: **Smalltalk**
 
-Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk 
+Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk
 which was released in 1980.
 
 ## Sophie Wilson
 
 language: **BBC BASIC**
+avatar: [public/bbc_micro_80_80.png]
 
 Sophie developed BBC BASIC, a prgramming langugae used to teach about programming.
 
@@ -62,15 +65,16 @@ Sophie developed BBC BASIC, a prgramming langugae used to teach about programmin
 
 language: **Coq**
 
-Cristine created Cog in 1991 a new implementation based on the Calculus of Inductive 
+Cristine created Cog in 1991 a new implementation based on the Calculus of Inductive
 Constructions language.
 
 ## References
 
 1. 9 Programming Languages and the Women Who Created Them
-    - Computerworld
-    - May 22, 2015
-    - https://cacm.acm.org/news/187391-9-programming-languages-and-the-women-who-created-them/fulltext
+
+   - Computerworld
+   - May 22, 2015
+   - https://cacm.acm.org/news/187391-9-programming-languages-and-the-women-who-created-them/fulltext
 
 1. https://en.wikipedia.org/wiki/Category:Programming_languages_created_by_women
 

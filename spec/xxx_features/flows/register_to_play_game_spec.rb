@@ -122,12 +122,9 @@ feature 'Playing the game', js: true do
     end
   end
 
-  context 'Grace Hopper has registerd her handle COBOL' do
+  context 'COBOL handle (Grace Hopper) has already been taken' do
     before do
-      @profile = Player.create!(
-        handle: 'COBOL',
-        email: 'grace.hopper@navy.mil'
-      )
+      @profile = create(:player, handle: 'COBOL')
     end
 
     scenario 'Users need to register with unique handles' do

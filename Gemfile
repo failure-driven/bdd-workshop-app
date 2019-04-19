@@ -40,6 +40,7 @@ group :development, :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'rspec-wait'
+  gem 'factory_bot_rails'
 
   gem 'pry-rails'
   gem 'pry-stack_explorer'

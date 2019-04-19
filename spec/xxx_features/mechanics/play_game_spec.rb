@@ -15,13 +15,7 @@ feature 'user plays the game', js: true do
 
   context 'user with incomplete profile' do
     before do
-      @profile = Player.create!(handle: 'BBCmicro')
-      page.visit('/')
-      player = {
-        id: @profile.id,
-        handle: @profile.handle
-      }
-      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
+      @profile = create_and_login_as(handle: 'BBCmicro', email: nil)
     end
 
     scenario 'game shows loading spinner while the user profile is being fetched' do
@@ -56,17 +50,11 @@ feature 'user plays the game', js: true do
 
   context 'user with complete profile' do
     before do
-      @profile = Player.create!(
+      create_and_login_as(
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk',
         avatar_url: '/bbc_micro_80_80.png'
       )
-      page.visit('/')
-      player = {
-        id: @profile.id,
-        handle: @profile.handle
-      }
-      page.execute_script("window.localStorage.setItem('player','#{player.to_json}')")
     end
 
     scenario 'users with a profile can play the game' do

@@ -37,7 +37,7 @@ feature 'sign in', js: true do
 
   context 'Kathleen Booth is already registered to play the game' do
     before do
-      @profile = Player.create!(id: '01234567-0123-4abc-8abc-0123456789ab', handle: 'ARC_ASSEMBLY')
+      @profile = Player.create!(handle: 'ARC_ASSEMBLY')
     end
 
     scenario 'user is taken to profile page when profile is 50% complete' do

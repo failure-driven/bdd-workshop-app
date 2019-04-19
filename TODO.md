@@ -4,7 +4,6 @@
 
 - [ ] add missing test around the steps rendered in the front end
   - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
-- [ ] factory bot for profile creation (or similar)
 - [ ] change create to only accept handle and only do that in the tests
 - [ ] simplify Profile component
 - [ ] finish avatar
@@ -24,6 +23,7 @@
   - avatar into ./app/assets/images/sample_avatars/ ? or ./public/sample_avatars 80x80 and maybe original?
 - [ ] Kahoot 5 - 10 multi choice questions (4 answers)
   - intro - about TDD, Rails, RailsConf, Minneapolis
+    - which is not a testing framework?: spinach, bacon, cucumber, celery (✓)
   - review 2a
   - review 2b optional
   - review 3
@@ -45,9 +45,11 @@
   - default instructions
   - kahoot install
 - [ ] move to real repo
+- [ ] simplify or move out step functionality in [OurForm](app/javascript/components/OurForm/index.jsx)
 
 # DONE
 
+- [✓] factory bot for profile creation (or similar)
 - [✓] fix or remove pending
 - [✓] fix monster and monster_when_then
 - [✓] rename sign up to register

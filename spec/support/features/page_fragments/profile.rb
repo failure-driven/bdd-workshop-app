@@ -9,15 +9,7 @@ module PageFragments
     end
 
     def details
-      # just an idea, get all details prepended fields as a hash
-      # TODO: maybe move this out and do this more often?
-      # add .sr-only class for avatar and display that
-      Hash[
-        browser
-        .find('main[data-testid="profile"]')
-        .find_all('[data-testid|="details"]')
-        .map { |e| [e['data-testid'].gsub(/^details-/, ''), e.text] }
-      ].symbolize_keys
+      field_and_key_for_prefixed_fields_within(within: 'profile', prefix: 'details')
     end
 
     def avatar
@@ -28,6 +20,15 @@ module PageFragments
 
     def main
       browser.find('main[data-testid="profile"]')
+    end
+
+    def field_and_key_for_prefixed_fields_within(within:, prefix:)
+      Hash[
+        browser
+        .find(%(main[data-testid="#{within}"]))
+        .find_all(%([data-testid|="#{prefix}"]))
+        .map { |e| [e['data-testid'].gsub(/^#{prefix}-/, ''), e.text] }
+      ].symbolize_keys
     end
   end
 end

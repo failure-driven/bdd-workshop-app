@@ -1,7 +1,5 @@
 # TODO
 
-- [ ] hide away complex finder methods in JS specs and Ruby ones
-  - [profile page fragment](/Users/michael/projects/failure-driven/game-app/spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
 - [ ] [Theme](docs/theme.md)
   - name
   - language
@@ -22,6 +20,8 @@
   - any other errors
   - terminal open in same window
   - VI colour scheme
+  - slack with desktop control
+  - move everything to shared drive
 - [✓] make name field editable
 - [ ] finish avatar
   - test for provided suggestion
@@ -47,11 +47,13 @@
 
 # DONE
 
+- [✓] fix monster and monster_when_then
 - [✓] rename sign up to register
 - [✓] remove reference to princess with the theme
 - [✓] add code for name
 - [✓] add code for avatar
-- [✓] fix complexity
+- [✓] hide away complex finder methods in JS specs and Ruby ones
+  - [✓][profile page fragment](spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
   - [✓][registerform](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
   - [✓][showprofile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
 

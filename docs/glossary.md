@@ -20,3 +20,4 @@
 
 ## ReactJS
 
+## Domain model

@@ -1,6 +1,6 @@
 # Theme
 
-When writing Behaviour Driven specs it is good to immerse yourself in the problems space having realistic characters. As our example app is just a sample of a sign up app we had no clear characters to choose from. Instead we decied to choose the women in compute science who created computer languages or were influential in developing languages. Here is a brief about some of these characters, enjoy.
+When writing Behaviour Driven specs it is good to immerse yourself in the problems space having realistic characters. As our example app is just a sample of a registration app we had no clear characters to choose from. Instead we decied to choose the women in compute science who created computer languages or were influential in developing languages. Here is a brief about some of these characters, enjoy.
 
 ## Kathleen Booth
 

@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] rename sign up to register
+- [✓] rename sign up to register
 - [ ] remove reference to princess with the theme
 - [ ] hide away complex finder methods in JS specs and Ruby ones
   - [RegisterForm](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels

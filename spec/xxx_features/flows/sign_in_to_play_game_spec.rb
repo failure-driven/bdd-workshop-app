@@ -21,7 +21,7 @@ feature 'Playing the game', js: true do
         end.to eq('Register')
       end
 
-      When 'user attempts sign up using an existing handle' do
+      When 'user attempts register using an existing handle' do
         focus_on(:form).form_for('register').fill_in_row_for('handle', 'COBOL')
         focus_on(:form).form_for('register').submit
       end

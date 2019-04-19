@@ -6,7 +6,7 @@ feature 'user plays the game', js: true do
       visit('/game')
     end
 
-    Then 'they are redirected to the sign up page' do
+    Then 'they are redirected to the registration page' do
       wait_for do
         focus_on(:page_content).container_for('register').heading
       end.to eq('Register')

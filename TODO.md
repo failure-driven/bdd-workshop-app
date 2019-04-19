@@ -1,5 +1,19 @@
 # TODO
 
+**MM**
+
+- [ ] add missing test around the steps rendered in the front end
+  - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
+- [ ] factory bot for profile creation (or similar)
+- [ ] change create to only accept handle and only do that in the tests
+- [ ] simplify Profile component
+- [ ] finish avatar
+  - test for provided suggestion
+  - fake integration
+  - Review Frontend specs
+
+**Rest**
+
 - [ ] [Theme](docs/theme.md)
   - name
   - language
@@ -8,7 +22,6 @@
   - 1 liner
   - interesting fact
   - avatar into ./app/assets/images/sample_avatars/ ? or ./public/sample_avatars 80x80 and maybe original?
-- [✓] fix or remove pending
 - [ ] Kahoot 5 - 10 multi choice questions (4 answers)
   - intro - about TDD, Rails, RailsConf, Minneapolis
   - review 2a
@@ -22,18 +35,6 @@
   - VI colour scheme
   - slack with desktop control
   - move everything to shared drive
-- [✓] make name field editable
-- [ ] finish avatar
-  - test for provided suggestion
-  - fake integration
-  - Review Frontend specs
-- [ ] simplify Profile component
-- [ ] factory bot for profile creation (or similar)
-- [ ] change create to only accept handle and only do that in the tests
-- [ ] add missing test around the steps rendered in the front end
-
-  - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
-
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)
   - term
@@ -47,10 +48,12 @@
 
 # DONE
 
+- [✓] fix or remove pending
 - [✓] fix monster and monster_when_then
 - [✓] rename sign up to register
 - [✓] remove reference to princess with the theme
 - [✓] add code for name
+- [✓] make name field editable
 - [✓] add code for avatar
 - [✓] hide away complex finder methods in JS specs and Ruby ones
   - [✓][profile page fragment](spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`

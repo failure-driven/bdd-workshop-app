@@ -1,5 +1,61 @@
 # TODO
 
+- [ ] rename sign up to register
+- [ ] remove reference to princess with the theme
+- [ ] hide away complex finder methods in JS specs and Ruby ones
+  - [RegisterForm](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
+  - [ShowProfile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
+  - [profile page fragment](/Users/michael/projects/failure-driven/game-app/spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
+- [ ] [Theme](docs/theme.md)
+  - name
+  - language
+  - likely handle
+  - link
+  - 1 liner
+  - interesting fact
+  - avatar into ./app/assets/images/sample_avatars/ ? or ./public/sample_avatars 80x80 and maybe original?
+- [ ] fix or remove pending
+- [ ] Kahoot 5 - 10 multi choice questions (4 answers)
+  - intro - about TDD, Rails, RailsConf, Minneapolis
+  - review 2a
+  - review 2b optional
+  - review 3
+- [ ] Selena machine
+  - autoformat RubyMine for ruby - post bracket indent and multi line indent
+  - JS formatting
+  - any other errors
+  - terminal open in same window
+  - VI colour scheme
+- [ ] finish avatar
+  - test for provided suggestion
+  - fake integration
+  - Review Frontend specs
+- [ ] simplify Profile component
+- [ ] factory bot for profile creation (or similar)
+- [ ] change create to only accept handle and only do that in the tests
+- [ ] add missing test around the steps rendered in the front end
+
+  - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
+
+- [ ] add code for name
+- [ ] add code for avatar
+- [ ] fill out [Course outline](docs/course_outline.md)
+- [ ] [Glossary](docs/glossary.md)
+  - term
+  - 1 line description
+  - link for more information
+- [ ] install instructinos
+  - make
+  - default instructions
+  - kahoot install
+- [ ] move to real repo
+
+# DONE
+
+## OLD TODO's
+
+TODO: Michael to sort
+
 ## install
 
 - chrome version 71 - 75
@@ -57,6 +113,7 @@
 ## Experimental
 
 added experimental page for untested and demo stuff
+
 - http://localhost:3000/experimental
 - app/javascript/components/experimental
 - app/javascript/packs/experimental_app.js

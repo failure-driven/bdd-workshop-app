@@ -16,6 +16,7 @@ describe('OurForm', () => {
       "avatarUrl": "",
       "email": "",
       "handle": "",
+      "name": "",
     }
   }
   isInitialValid={false}

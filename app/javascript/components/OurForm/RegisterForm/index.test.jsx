@@ -39,6 +39,7 @@ describe('RegisterForm', () => {
       const wrapper = shallow(<RegisterForm />);
       // TODO change to find all and list labels
       expect(wrapper.find({ label: 'Handle' }).length).toBe(1);
+      expect(wrapper.find({ label: 'Name' }).length).toBe(1);
       expect(wrapper.find({ label: 'Email' }).length).toBe(1);
       expect(wrapper.find({ label: 'Avatar' }).length).toBe(1);
       expect(wrapper).toMatchSnapshot();

@@ -59,6 +59,7 @@ exports[`Register renders text and a OurForm 1`] = `
                 "avatarUrl": "",
                 "email": "",
                 "handle": "",
+                "name": "",
               }
             }
             step="handle"

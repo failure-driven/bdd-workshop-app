@@ -10,6 +10,11 @@ exports[`RegisterForm Render edit view Renders email, handle and avatar 1`] = `
     step="handle"
   />
   <StepFormGroup
+    label="Name"
+    placeholder="input your name"
+    step="name"
+  />
+  <StepFormGroup
     label="Email"
     placeholder="input your email"
     step="email"

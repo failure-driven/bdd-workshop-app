@@ -14,7 +14,7 @@ const RegisterForm = props => (
         placeholder="input a custom handle"
       />
     )}
-    {(props.step === 'name') && (
+    {(props.step === 'name' || !props.step) && (
       <StepFormGroup
         {...props}
         step="name"

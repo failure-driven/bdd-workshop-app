@@ -16,7 +16,7 @@ const OurForm = ({ profile, onSubmit }) => {
     : undefined;
   return (
     <Formik
-      initialValues={{ handle, email, avatarUrl }}
+      initialValues={{ handle, name, email, avatarUrl }}
       onSubmit={(values, { setSubmitting }) => {
         setSubmitting(true);
         event.preventDefault();
@@ -31,7 +31,7 @@ const OurForm = ({ profile, onSubmit }) => {
 };
 
 OurForm.defaultProps = {
-  profile: { handle: '', email: '', avatarUrl: '' },
+  profile: { handle: '', name: '', email: '', avatarUrl: '' },
 };
 
 OurForm.propTypes = {
@@ -39,6 +39,7 @@ OurForm.propTypes = {
   profile: PropTypes.shape({
     id: PropTypes.string,
     handle: PropTypes.string,
+    name: PropTypes.string,
     email: PropTypes.string,
     avatarUrl: PropTypes.string,
   }),

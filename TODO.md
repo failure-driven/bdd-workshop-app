@@ -26,7 +26,7 @@
   - any other errors
   - terminal open in same window
   - VI colour scheme
-- [ ] make name field editable
+- [✓] make name field editable
 - [ ] finish avatar
   - test for provided suggestion
   - fake integration
@@ -38,7 +38,7 @@
 
   - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`
 
-- [ ] add code for name
+- [✓] add code for name
 - [ ] add code for avatar
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)

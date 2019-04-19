@@ -96,6 +96,7 @@ feature 'Playing the game', js: true do
       visit('/profile')
       focus_on(:page_content).container_for('profile').action_item('Edit')
       focus_on(:form).form_for('profile').fill_in_row_for('handle', 'FORMAC')
+      focus_on(:form).form_for('profile').fill_in_row_for('name', 'Jean Sammet')
       focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
       focus_on(:form).form_for('profile').submit
     end
@@ -103,7 +104,7 @@ feature 'Playing the game', js: true do
     Then 'they are updated successfully' do
       wait_for { focus_on(:profile).details }.to eq(
         handle: 'FORMAC',
-        name: 'Sophie Wilson',
+        name: 'Jean Sammet',
         email: 'jean.sammet@ibm.com',
         avatarUrl: '/bbc_micro_80_80.png'
       )
@@ -116,7 +117,7 @@ feature 'Playing the game', js: true do
     Then 'all the fields are persisted' do
       wait_for { focus_on(:profile).details }.to eq(
         handle: 'FORMAC',
-        name: 'Sophie Wilson',
+        name: 'Jean Sammet',
         email: 'jean.sammet@ibm.com',
         avatarUrl: '/bbc_micro_80_80.png'
       )

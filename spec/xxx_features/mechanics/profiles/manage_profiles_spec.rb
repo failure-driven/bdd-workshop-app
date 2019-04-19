@@ -16,6 +16,7 @@ feature 'User manages profile', js: true do
         visit('/profile')
         focus_on(:page_content).container_for('profile').action_item('Edit')
         focus_on(:form).form_for('profile').fill_in_row_for('handle', 'FORTRAN')
+        focus_on(:form).form_for('profile').fill_in_row_for('name', 'The Real Jean Sammet')
         focus_on(:form).form_for('profile').fill_in_row_for('email', 'the.real.jean.sammet@ibm.com')
         focus_on(:form).form_for('profile').submit
       end
@@ -23,7 +24,7 @@ feature 'User manages profile', js: true do
       Then 'they are updated successfully' do
         wait_for { focus_on(:profile).details }.to eq(
           avatarUrl: '/bbc_micro_80_80.png',
-          name: 'Jean Sammet',
+          name: 'The Real Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'
         )
@@ -36,7 +37,7 @@ feature 'User manages profile', js: true do
       Then 'all the fields are persisted' do
         wait_for { focus_on(:profile).details }.to eq(
           avatarUrl: '/bbc_micro_80_80.png',
-          name: 'Jean Sammet',
+          name: 'The Real Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'
         )

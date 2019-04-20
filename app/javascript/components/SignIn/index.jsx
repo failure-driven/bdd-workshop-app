@@ -5,14 +5,7 @@ import messageBus from '../../utils/messageBus';
 import { loginAsUser } from '../API';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import {
-  Col,
-  Row,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-} from 'reactstrap';
+import { Col, Row, Card, CardBody, CardHeader, CardTitle } from 'reactstrap';
 
 const SignIn = ({ profile, fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
@@ -23,12 +16,13 @@ const SignIn = ({ profile, fetchProfile, history }) => {
           JSON.stringify({ id: id, handle: handle })
         );
         messageBus.info('signed in successfully');
-        fetchProfile();
-        if (id && handle && email) {
-          history.push('/game');
-        } else {
-          history.push('/profile');
-        }
+        fetchProfile(id).then(() => {
+          if (id && handle && email) {
+            history.push('/game');
+          } else {
+            history.push('/profile');
+          }
+        });
       })
       .catch(res => {
         const errors = res.response.data.errors;
@@ -52,9 +46,7 @@ const SignIn = ({ profile, fetchProfile, history }) => {
             </CardHeader>
             <CardBody>
               <CardTitle>
-                <span>
-                  Sign in to continue
-                </span>
+                <span>Sign in to continue</span>
               </CardTitle>
               <OurForm
                 profile={{ handle: null, email: null }}

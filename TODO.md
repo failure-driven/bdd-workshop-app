@@ -2,7 +2,6 @@
 
 **MM**
 
-- [ ] simplify Profile component
 - [ ] finish avatar
   - test for provided suggestion
   - fake integration
@@ -56,12 +55,10 @@
   - [✓] VI colour scheme
   - [✓] move everything to shared drive
 - [✓] kahoot install [Kahoot](https://kahoot.com/mobile-app/)
-- [✓] [Theme](docs/theme.md)
+- [✓][theme](docs/theme.md)
   - [✓] fill out themes for people
-- [✓] come up with questions/answers
-- [✓] come up with questions/answers
-- [✓] come up with questions/answers
-- [✓] come up with questions/answers
+- [✓] Kahoot - come up with questions/answers
+- [✓] simplify Profile component
 
 ## OLD TODO's
 

@@ -10,7 +10,7 @@ describe('ProfileSteps', () => {
     expect(wrapper).toMatchInlineSnapshot(`
 <div>
   <h1>
-    Hi :
+    Hi : 
     <span
       data-testid="details-handle"
     />

@@ -48,43 +48,33 @@ feature 'User manages profile', js: true do
       When 'Jean visits their profile page in the original loading state' do
         with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
           visit('/profile')
-          wait_for { focus_on(:util).test_elements('profile') }.to eq ['Loading...']
+          wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
         end
       end
 
       Then 'the loading element is no longer visible' do
-        wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
+        wait_for { focus_on(:util).test_elements('spinner') }.to_not include('Loading...')
       end
     end
 
-    scenario 'page shows error if profile fetch failed' do
-      Given 'the profiles API throws errors' do
+    context 'with API errors for get profile' do
+      before do
         force_api_error(method: 'get', url: '/api/v1/profiles', error: 'failed to fetch profile')
       end
 
-      When 'user visits their profile page' do
-        visit('/profile')
-      end
-
-      Then 'they get an error' do
-        wait_for { focus_on(:messages).error }.to eq '400 - Bad Request'
-      end
-
-      And 'the API stops throwing errors' do
+      after do
         clear_api_error
       end
-    end
-  end
 
-  scenario 'complains bitterly if the profile cannot be retrieved' do
-    When 'Jean visits the profile page and the API returns an error' do
-      force_api_error(method: 'post', url: '/api/v1/profiles', error: 'something went wrong')
-      visit('/profile')
-    end
+      scenario 'page shows error if profile fetch failed' do
+        When 'user visits their profile page' do
+          visit('/profile')
+        end
 
-    Then 'she sees an error message' do
-      wait_for { focus_on(:messages).error }.to eq 'Access deined, please register'
-      wait_for { focus_on(:util).other_test_elements }.to eq []
+        Then 'they get an error' do
+          wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
+        end
+      end
     end
   end
 end

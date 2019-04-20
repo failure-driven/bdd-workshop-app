@@ -5,14 +5,7 @@ import messageBus from '../../utils/messageBus';
 import { createUserProfile } from '../API';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {
-  Col,
-  Row,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-} from 'reactstrap';
+import { Col, Row, Card, CardBody, CardHeader, CardTitle } from 'reactstrap';
 
 const Register = ({ fetchProfile, history }) => {
   const onOurFormSubmit = OurFormData => {
@@ -20,8 +13,9 @@ const Register = ({ fetchProfile, history }) => {
       .then(({ data: { id } }) => {
         localStorage.setItem('player', JSON.stringify({ id: id }));
         messageBus.info('profile successfully created');
-        fetchProfile();
-        history.push('/profile');
+        fetchProfile(id).then(() => {
+          history.push('/profile');
+        });
       })
       .catch(res => {
         const messages = Object.keys(res.response.data.errors)
@@ -42,9 +36,7 @@ const Register = ({ fetchProfile, history }) => {
             <CardBody>
               <CardTitle>
                 <span>Register or </span>
-                <Link to="/sign_in">
-                  sign in with an existing account
-                </Link>
+                <Link to="/sign_in">sign in with an existing account</Link>
               </CardTitle>
               <OurForm onSubmit={onOurFormSubmit} step="handle" />
             </CardBody>

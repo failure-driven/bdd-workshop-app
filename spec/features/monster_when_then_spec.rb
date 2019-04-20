@@ -126,7 +126,7 @@ feature 'Playing the game', js: true do
     When 'Jean visits their profile page in the original loading state' do
       with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
         visit('/profile')
-        wait_for { focus_on(:util).test_elements('profile') }.to eq ['Loading...']
+        wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
       end
     end
 
@@ -143,12 +143,16 @@ feature 'Playing the game', js: true do
     end
 
     Then 'they get an error' do
-      wait_for { focus_on(:messages).error }.to eq '400 - Bad Request'
+      wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
     end
 
     And 'the API stops throwing errors' do
       clear_api_error
       page.refresh
+    end
+
+    When 'user visits their profile page' do
+      visit('/profile')
     end
 
     When 'she chooses to "Play the game"' do

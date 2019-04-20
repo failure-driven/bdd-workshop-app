@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
 import API from '../API';
 import MainContainer from '../MainContainer';
 import messageBus from '../../utils/messageBus';
@@ -11,32 +11,11 @@ import OurForm from '../OurForm';
 class ProfileContainer extends Component {
   constructor(props) {
     super(props);
-    this.fetchUserProfile();
   }
 
   state = {
     isEditting: false,
   };
-
-  fetchUserProfile() {
-    // TODO move out to separate lib? API
-    try {
-      const player =
-        localStorage.getItem('player') !== 'undefined' &&
-        JSON.parse(localStorage.getItem('player'));
-      this.userProfilePromise = API.fetchUserProfile(player.id)
-        .then(response => {
-          localStorage.setItem('player', JSON.stringify(response.data));
-        })
-        .catch(({ response: { status, statusText } }) => {
-          messageBus.error([status, statusText].join(' - '));
-        });
-    } catch (err) {
-      messageBus.error('Access deined, please register');
-
-      this.props.history.push('/');
-    }
-  }
 
   toggleIsEditting() {
     this.setState({ isEditting: !this.state.isEditting });
@@ -67,9 +46,9 @@ class ProfileContainer extends Component {
   render() {
     const { isEditting } = this.state;
     const { profile } = this.props;
-
-    if (!profile)
-      return <Spinner color="primary" data-testid="profile-loading" />;
+    if (!profile) {
+      return <Redirect to="/" />;
+    }
     return (
       <MainContainer dataTestId="profile">
         {isEditting && (

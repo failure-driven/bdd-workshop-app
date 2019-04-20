@@ -22,7 +22,7 @@ feature 'user plays the game', js: true do
       When 'a user visits the game page in original loading state' do
         with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
           visit('/game')
-          wait_for { focus_on(:util).test_elements('game') }.to eq ['Loading...']
+          wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
         end
       end
 

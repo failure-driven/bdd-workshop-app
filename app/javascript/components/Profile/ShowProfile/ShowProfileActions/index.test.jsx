@@ -1,9 +1,9 @@
-import React from "react";
-import ShowProfileActions from ".";
-import { shallow } from "enzyme";
+import React from 'react';
+import ShowProfileActions from '.';
+import { shallow } from 'enzyme';
 
-describe("ShowProfileActions", () => {
-  it("THEN renders", () => {
+describe('ShowProfileActions', () => {
+  it('THEN renders', () => {
     const wrapper = shallow(<ShowProfileActions editOnClick={jest.fn()} />);
     expect(wrapper).toMatchInlineSnapshot(`
 <div

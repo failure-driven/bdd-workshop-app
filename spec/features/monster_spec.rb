@@ -70,14 +70,15 @@ feature 'Playing the game', js: true do
     )
     with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
       visit('/profile')
-      wait_for { focus_on(:util).test_elements('profile') }.to eq ['Loading...']
+      wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
     end
     wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
     force_api_error(method: 'get', url: '/api/v1/profiles', error: 'failed to fetch profile')
     visit('/profile')
-    wait_for { focus_on(:messages).error }.to eq '400 - Bad Request'
+    wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
     clear_api_error
     page.refresh
+    visit('/profile')
     focus_on(:page_content)
       .container_for('profile')
       .action_item('Play the game')

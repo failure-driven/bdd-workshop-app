@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from './api';
 import storage from './storage';
+import messageBus from '../../utils/messageBus';
 
 const LOCAL_STORAGE_KEY = 'player';
 
@@ -9,9 +10,13 @@ const useProfile = () => {
   const [profile, setProfile] = useState();
   const [loading, setLoading] = useState(true);
 
-  const fetchProfile = () => {
+  const localStorageId = () => {
     const profile = profileStorage.get() || {};
     const { id } = profile;
+    return id;
+  };
+
+  const fetchProfile = (id = localStorageId()) => {
     if (!id) {
       setLoading(false);
       setProfile(undefined);
@@ -23,7 +28,8 @@ const useProfile = () => {
         setProfile(response.data);
         setLoading(false);
       })
-      .catch(() => {
+      .catch(({ response: { status, statusText } }) => {
+        messageBus.error([status, statusText].join(' - '));
         setLoading(false);
       });
   };

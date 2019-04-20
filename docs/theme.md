@@ -8,70 +8,93 @@ is a brief about some of these characters, enjoy.
 
 ## Sophie Wilson
 
-language: **BBC BASIC**
-handle: BBCmicro
-avatar: [public/bbc_micro_80_80.png]
+######language: **BBC BASIC**
+######handle: BBCmicro
+######email: sophie.wilson@acorn.co.uk
 
-Sophie developed BBC BASIC, a prgramming langugae used to teach about programming.
+![sophie_wilson](public/sample_avatars/bbc_micro_80_80.jpg)
+
+Sophie developed BBC BASIC, a programming language used to teach about programming.
 
 [Sophie Wilson — Architect of the Modern World](https://medium.com/a-computer-of-ones-own/sophie-wilson-architect-of-the-modern-world-5d538af7eac7)
 
 ## Kathleen Booth
 
-language: **ARC assembly** language
-avatar: [sample_avatars/kathleen_booth.jpg]
+######Language: **ARC assembly** language
+######Handle: ARC_ASSEMBLY
+######Email: kathleen@arcassembly.com
+######Avatar: 
+![kathleen_booth](public/sample_avatars/kathleen_booth.jpg)
 
 Kathleen created the ARC assembly language for the ARC (Automatic Relay Calculator) computer
-in 1950.
+in 1950. 
+
+[Face of HPC - Kathleen Booth](https://www.hpc-diversity.ac.uk/faces-of-hpc/kathleen-booth)
 
 ## Grace Hopper
 
-language: **COBOL**
+######Language: **COBOL**
+######Handle: COBOL
+######Email: grace.hopper@navy.mil
+######Avatar:
+![grace_hopper](public/sample_avatars/grace_hopper.jpg)
 
 Grace Hopper, whilst working for the U.S. Navy was one of the technical advisers for the
 committee that created COBOL.
 
-## Kateryna Yushchenko
-
-language: **Address** programming language
+[The extraordinary life of the 'Queen of code': A Grace Hopper biography](https://interestingengineering.com/the-extraordinary-life-of-the-queen-of-code-a-grace-hopper-biography)
 
 ## Jean Sammet
 
-language: **FORMAC**
+######Language: **FORMAC**
+######Handle: FORMAC
+######Email: jean.sammet@ibm.com
+######Avatar:
+![jean_sammet](public/sample_avatars/jean_sammet.jpg)
 
-Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
-used for symbolic mathematical computation.
+_Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
+used for symbolic mathematical computation._
+
+[Computer pioneer Jean E. Sammet programmed before programming was a thing](https://thenewstack.io/inspiring-life-computing-pioneer-jean-e-sammet/)
 
 ## Cynthia Solomon
 
-language: **Logo**
-handle:
-avatar: [sample_avatars/kathleen_booth.jpg]
-link:
+######Language: **Logo**
+######Handle: LOGO
+######Email: cynthia@logo.com
+######Avatar:
+![cynthia_solomon](public/sample_avatars/logo_terrapin.jpg)
 
-Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
-went on to be influential in educational programming languages such as Scratch.
+_Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
+went on to be influential in educational programming languages such as Scratch._
+
+[Cynthia Solomon - co-creator of the first programming language for children - Logo](https://blog.adafruit.com/2014/02/13/cynthia-solomon-co-creator-of-the-first-programming-language-for-children-logo/)
 
 ## Barbara Liskov
 
-language: **CLU**
+######Language: **CLU**
+######Handle: CLU
+######Email: barbara@clu.com
+######Avatar:
+![barbara_liskov](public/sample_avatars/barbara_liskov.jpg)
 
-Barbara led the team that developed CLU in 1974 which would influence later languages
-such as Java and Pythoon.
+_Barbara led the team that developed CLU in 1974 which would influence later languages
+such as Java and Python._
+
+[Barbara Liskov - inventor of abstract data types](https://medium.com/a-computer-of-ones-own/barbara-liskov-inventor-of-abstract-data-types-9f8908fdcf86)
 
 ## Adele Goldberg
 
-language: **Smalltalk**
+######Language: **Smalltalk**
+######Handle: Smalltalk
+######Email: adele.goldberg@xerox.parc.com
+######Avatar:
+![adele_goldberg](public/sample_avatars/adele_goldberg.jpg)
 
-Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk
+Adele was a researcher at Xerox PARC and was part of the team that developed Smalltalk
 which was released in 1980.
 
-## Christine Paulin-Mohring
-
-language: **Coq**
-
-Cristine created Cog in 1991 a new implementation based on the Calculus of Inductive
-Constructions language.
+[Adele Goldberg - computer scientist](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist))
 
 ## References
 

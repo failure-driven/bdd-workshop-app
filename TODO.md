@@ -15,8 +15,6 @@
 
 **SS**
 
-- [ ] [Theme](docs/theme.md)
-  - [ ] fill out themes for people
 - [ ] Kahoot
   - [ ] Introduction
     - [ ] come up with questions/answers
@@ -66,6 +64,8 @@
   - [✓] VI colour scheme
   - [✓] move everything to shared drive
 - [✓] kahoot install [Kahoot](https://kahoot.com/mobile-app/)
+- [✓] [Theme](docs/theme.md)
+  - [✓] fill out themes for people
 
 ## OLD TODO's
 

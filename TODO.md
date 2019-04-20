@@ -8,12 +8,15 @@
   - fake integration
   - Review Frontend specs
 - [ ] simplify or move out step functionality in [OurForm](app/javascript/components/OurForm/index.jsx)
+  - [ ] crop avatars
+- [ ] install instructions [README](README.md)
+  - make [BDD workshop](https://github.com/failure-driven/bdd-workshop-app)
+  - default instructions
 
-**Rest**
+**SS**
 
 - [ ] [Theme](docs/theme.md)
   - [ ] fill out themes for people
-  - [ ] crop avatars
 - [ ] Kahoot
   - [ ] Introduction
     - [ ] come up with questions/answers
@@ -27,14 +30,15 @@
   - [ ] BDD new feature
     - [ ] come up with questions/answers
     - [ ] create Kahoot
-- [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)
   - term
   - 1 line description
   - link for more information
-- [ ] install instructions [README](README.md)
-  - make [BDD workshop](https://github.com/failure-driven/bdd-workshop-app)
-  - default instructions
+
+**Unallocated**
+
+- [ ] styling
+- [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] move to real repo
 
 # DONE

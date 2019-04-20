@@ -7,29 +7,35 @@
   - test for provided suggestion
   - fake integration
   - Review Frontend specs
+- [ ] simplify or move out step functionality in [OurForm](app/javascript/components/OurForm/index.jsx)
 
 **Rest**
 
 - [ ] [Theme](docs/theme.md)
   - [ ] fill out themes for people
   - [ ] crop avatars
-- [ ] Kahoot 5 - 10 multi choice questions (4 answers)
-  - intro - about TDD, Rails, RailsConf, Minneapolis
-    - which is not a testing framework?: spinach, bacon, cucumber, celery (✓)
-  - review 2a
-  - review 2b optional
-  - review 3
+- [ ] Kahoot
+  - [ ] Introduction
+    - [ ] come up with questions/answers
+    - [ ] create Kahoot
+  - [ ] When/Then
+    - [ ] come up with questions/answers
+    - [ ] create Kahoot
+  - [ ] Flows/Mechanics (optional)
+    - [ ] come up with questions/answers
+    - [ ] create Kahoot
+  - [ ] BDD new feature
+    - [ ] come up with questions/answers
+    - [ ] create Kahoot
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)
   - term
   - 1 line description
   - link for more information
-- [ ] install instructinos
-  - make
+- [ ] install instructions [README](README.md)
+  - make [BDD workshop](https://github.com/failure-driven/bdd-workshop-app)
   - default instructions
-  - kahoot install
 - [ ] move to real repo
-- [ ] simplify or move out step functionality in [OurForm](app/javascript/components/OurForm/index.jsx)
 
 # DONE
 
@@ -55,6 +61,7 @@
   - [✓] terminal open in same window
   - [✓] VI colour scheme
   - [✓] move everything to shared drive
+- [✓] kahoot install [Kahoot](https://kahoot.com/mobile-app/)
 
 ## OLD TODO's
 

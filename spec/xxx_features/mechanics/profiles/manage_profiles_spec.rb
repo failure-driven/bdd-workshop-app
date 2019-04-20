@@ -83,8 +83,7 @@ feature 'User manages profile', js: true do
     end
 
     Then 'she sees an error message' do
-      # TODO: 5XX errors should be generic "something went wrong" message
-      wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'
+      wait_for { focus_on(:messages).error }.to eq 'Access deined, please register'
       wait_for { focus_on(:util).other_test_elements }.to eq []
     end
   end

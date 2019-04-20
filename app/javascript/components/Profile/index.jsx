@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Alert, Spinner } from 'reactstrap';
+import { Button, Spinner } from 'reactstrap';
 import API from '../API';
 import Avatar from '../Avatar';
 import ProgressBar from '../ProgressBar';
@@ -17,35 +17,27 @@ class Profile extends Component {
   }
 
   state = {
-    alert: null,
-    fetchProfile: this.props.fetchProfile,
-    history: this.props.history,
     isEditting: false,
   };
 
-  callCreateUserProfile(profile) {
-    return API.createUserProfile().then(response => {
-      profile.state.alert = 'Profile successfully created';
-      return Promise.resolve(response);
-    });
-  }
-
   fetchUserProfile() {
     // TODO move out to separate lib? API
-    const player =
-      localStorage.getItem('player') !== 'undefined' &&
-      JSON.parse(localStorage.getItem('player'));
-    this.userProfilePromise = (player
-      ? API.fetchUserProfile(player.id)
-      : this.callCreateUserProfile(this)
-    )
-      .then(response => {
-        localStorage.setItem('player', JSON.stringify(response.data));
-      })
-      .catch(({ response: { status, statusText } }) => {
-        // TODO: 500 - 599 should be generic "something went wrong" message
-        messageBus.error([status, statusText].join(' - '));
-      });
+    try {
+      const player =
+        localStorage.getItem('player') !== 'undefined' &&
+        JSON.parse(localStorage.getItem('player'));
+      this.userProfilePromise = API.fetchUserProfile(player.id)
+        .then(response => {
+          localStorage.setItem('player', JSON.stringify(response.data));
+        })
+        .catch(({ response: { status, statusText } }) => {
+          messageBus.error([status, statusText].join(' - '));
+        });
+    } catch (err) {
+      messageBus.error('Access deined, please register');
+
+      this.props.history.push('/');
+    }
   }
 
   toggleIsEditting() {
@@ -57,7 +49,7 @@ class Profile extends Component {
     return API.updateUserProfile({ data })
       .then(response => {
         messageBus.info('Updated user profile');
-        this.state.fetchProfile();
+        this.props.fetchProfile();
         if (this.state.isEditting) {
           this.toggleIsEditting();
         }
@@ -75,7 +67,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { isEditting, alert } = this.state;
+    const { isEditting } = this.state;
     const { profile } = this.props;
 
     if (!profile)
@@ -112,7 +104,6 @@ class Profile extends Component {
       );
     return (
       <MainContainer dataTestId="profile">
-        {alert && <Alert>{alert}</Alert>}
         <div>
           <h1>
             Hi : <span data-testid="details-handle">{profile.handle}</span>

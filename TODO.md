@@ -16,18 +16,10 @@
 **SS**
 
 - [ ] Kahoot
-  - [ ] Introduction
-    - [ ] come up with questions/answers
-    - [ ] create Kahoot
-  - [ ] When/Then
-    - [ ] come up with questions/answers
-    - [ ] create Kahoot
-  - [ ] Flows/Mechanics (optional)
-    - [ ] come up with questions/answers
-    - [ ] create Kahoot
-  - [ ] BDD new feature
-    - [ ] come up with questions/answers
-    - [ ] create Kahoot
+  - [ ] Introduction - create Kahoot
+  - [ ] When/Then - create Kahoot
+  - [ ] Flows/Mechanics (optional) - create Kahoot
+  - [ ] BDD new feature - create Kahoot
 - [ ] [Glossary](docs/glossary.md)
   - term
   - 1 line description
@@ -66,6 +58,10 @@
 - [✓] kahoot install [Kahoot](https://kahoot.com/mobile-app/)
 - [✓] [Theme](docs/theme.md)
   - [✓] fill out themes for people
+- [✓] come up with questions/answers
+- [✓] come up with questions/answers
+- [✓] come up with questions/answers
+- [✓] come up with questions/answers
 
 ## OLD TODO's
 

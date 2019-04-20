@@ -11,27 +11,14 @@
 **Rest**
 
 - [ ] [Theme](docs/theme.md)
-  - name
-  - language
-  - likely handle
-  - link
-  - 1 liner
-  - interesting fact
-  - avatar into ./app/assets/images/sample_avatars/ ? or ./public/sample_avatars 80x80 and maybe original?
+  - [ ] fill out themes for people
+  - [ ] crop avatars
 - [ ] Kahoot 5 - 10 multi choice questions (4 answers)
   - intro - about TDD, Rails, RailsConf, Minneapolis
     - which is not a testing framework?: spinach, bacon, cucumber, celery (✓)
   - review 2a
   - review 2b optional
   - review 3
-- [ ] Selena machine
-  - autoformat RubyMine for ruby - post bracket indent and multi line indent
-  - JS formatting
-  - any other errors
-  - terminal open in same window
-  - VI colour scheme
-  - slack with desktop control
-  - move everything to shared drive
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] [Glossary](docs/glossary.md)
   - term
@@ -61,6 +48,13 @@
   - [✓][profile page fragment](spec/support/features/page_fragments/profile.rb) **line 11 - 21** `def details`
   - [✓][registerform](app/javascript/components/OurForm/RegisterForm/index.test.jsx) **line 9** find all and extract visible labels
   - [✓][showprofile](app/javascript/components/Profile/ShowProfile/index.test.jsx) **line 18-20** `const descriptions = {}`
+- [✓] Selena machine
+  - [✓] autoformat RubyMine for ruby - post bracket indent and multi line indent
+  - [✓] JS formatting
+  - [✓] any other errors
+  - [✓] terminal open in same window
+  - [✓] VI colour scheme
+  - [✓] move everything to shared drive
 
 ## OLD TODO's
 

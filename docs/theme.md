@@ -6,6 +6,16 @@ had no clear characters to choose from. Instead we decied to choose the women in
 science who created computer languages or were influential in developing languages. Here
 is a brief about some of these characters, enjoy.
 
+## Sophie Wilson
+
+language: **BBC BASIC**
+handle: BBCmicro
+avatar: [public/bbc_micro_80_80.png]
+
+Sophie developed BBC BASIC, a prgramming langugae used to teach about programming.
+
+[Sophie Wilson — Architect of the Modern World](https://medium.com/a-computer-of-ones-own/sophie-wilson-architect-of-the-modern-world-5d538af7eac7)
+
 ## Kathleen Booth
 
 language: **ARC assembly** language
@@ -35,7 +45,9 @@ used for symbolic mathematical computation.
 ## Cynthia Solomon
 
 language: **Logo**
+handle:
 avatar: [sample_avatars/kathleen_booth.jpg]
+link:
 
 Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
 went on to be influential in educational programming languages such as Scratch.
@@ -54,13 +66,6 @@ language: **Smalltalk**
 Adele was a reasercher at Xerox PARC and was part of the team that developed Smalltalk
 which was released in 1980.
 
-## Sophie Wilson
-
-language: **BBC BASIC**
-avatar: [public/bbc_micro_80_80.png]
-
-Sophie developed BBC BASIC, a prgramming langugae used to teach about programming.
-
 ## Christine Paulin-Mohring
 
 language: **Coq**
@@ -76,18 +81,18 @@ Constructions language.
    - May 22, 2015
    - https://cacm.acm.org/news/187391-9-programming-languages-and-the-women-who-created-them/fulltext
 
-1. https://en.wikipedia.org/wiki/Category:Programming_languages_created_by_women
+1. [https://en.wikipedia.org/wiki/Category:Programming_languages_created_by_women]
 
-1. https://en.wikipedia.org/wiki/Women_in_computing
+1. [https://en.wikipedia.org/wiki/Women_in_computing]
 
-1. https://www.quora.com/What-programming-languages-were-created-by-women-Which-languages-have-female-committers
+1. [https://www.quora.com/What-programming-languages-were-created-by-women-Which-languages-have-female-committers]
 
-1. https://blog.softheme.com/programming-languages-that-were-created-by-women/
+1. [https://blog.softheme.com/programming-languages-that-were-created-by-women/]
 
-1. https://www.computerworld.com.au/slideshow/574529/pictures-9-programming-languages-women-who-created-them/
+1. [https://www.computerworld.com.au/slideshow/574529/pictures-9-programming-languages-women-who-created-them/]
 
-1. https://www.inc.com/magazine/201710/maria-aspan/how-women-once-ruled-computing.html
+1. [https://www.inc.com/magazine/201710/maria-aspan/how-women-once-ruled-computing.html]
 
-1. https://www.npr.org/sections/alltechconsidered/2014/10/06/345799830/the-forgotten-female-programmers-who-created-modern-tech
+1. [https://www.npr.org/sections/alltechconsidered/2014/10/06/345799830/the-forgotten-female-programmers-who-created-modern-tech]
 
-1. https://biztechmagazine.com/article/2012/05/mothers-technology-10-women-who-invented-and-innovated-tech
+1. [https://biztechmagazine.com/article/2012/05/mothers-technology-10-women-who-invented-and-innovated-tech]

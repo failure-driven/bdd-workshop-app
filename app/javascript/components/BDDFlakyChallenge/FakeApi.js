@@ -1,15 +1,42 @@
 /* eslint-disable no-unused-vars */
 const API_DATA = [
-  { text: 'Selena Gomez', id: 1 },
-  { text: 'Ariel', id: 2 },
-  { text: 'Selena', id: 3 },
-  { text: 'Belle', id: 4 },
-  { text: 'Jasmine', id: 5 },
-  { text: 'Pocahontas', id: 6 },
-  { text: 'Cinderella', id: 7 },
-  { text: 'Snow White', id: 8 },
-  { text: 'Fa Mulan', id: 9 },
-  { text: 'Merida', id: 10 },
+  {
+    imgUrl: '/sample_avatars/bbc_micro_80_80.png',
+    text: 'Selena Gomez',
+    id: 1,
+  },
+  {
+    imgUrl: '/sample_avatars/bbc_micro_80_80.png',
+    text: 'Sophie Wilson',
+    id: 2,
+  },
+  {
+    imgUrl: '/sample_avatars/selena_small_gravatar.png',
+    text: 'Selena',
+    id: 3,
+  },
+  {
+    imgUrl: '/sample_avatars/kathleen_booth.jpg',
+    text: 'Kathleen Booth',
+    id: 4,
+  },
+  { imgUrl: '/sample_avatars/grace_hopper.jpg', text: 'Grace Hopper', id: 5 },
+  { imgUrl: '/sample_avatars/jean_sammet.png', text: 'Jean Sammet', id: 6 },
+  {
+    imgUrl: '/sample_avatars/logo_terrapin.png',
+    text: 'Cynthia Solomon',
+    id: 7,
+  },
+  {
+    imgUrl: '/sample_avatars/barbara_liskov.jpg',
+    text: 'Barbara Liskov',
+    id: 8,
+  },
+  {
+    imgUrl: '/sample_avatars/adele_goldberg.jpg',
+    text: 'Adele Goldberg',
+    id: 9,
+  },
 ];
 
 const FakeApi = ({ latency }) => ({

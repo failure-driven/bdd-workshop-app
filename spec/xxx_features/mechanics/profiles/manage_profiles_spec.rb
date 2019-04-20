@@ -7,7 +7,7 @@ feature 'User manages profile', js: true do
         handle: 'FORMAC',
         name: 'Jean Sammet',
         email: 'jean.sammet@ibm.com',
-        avatar_url: '/bbc_micro_80_80.png'
+        avatar_url: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
@@ -23,7 +23,7 @@ feature 'User manages profile', js: true do
 
       Then 'they are updated successfully' do
         wait_for { focus_on(:profile).details }.to eq(
-          avatarUrl: '/bbc_micro_80_80.png',
+          avatarUrl: '/sample_avatars/bbc_micro_80_80.png',
           name: 'The Real Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'
@@ -36,7 +36,7 @@ feature 'User manages profile', js: true do
 
       Then 'all the fields are persisted' do
         wait_for { focus_on(:profile).details }.to eq(
-          avatarUrl: '/bbc_micro_80_80.png',
+          avatarUrl: '/sample_avatars/bbc_micro_80_80.png',
           name: 'The Real Jean Sammet',
           handle: 'FORTRAN',
           email: 'the.real.jean.sammet@ibm.com'

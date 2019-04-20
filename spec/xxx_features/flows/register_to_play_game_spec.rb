@@ -79,13 +79,13 @@ feature 'Playing the game', js: true do
 
     And 'she confirms her avatar image' do
       focus_on(:form).form_for('profile').submit!(
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
     Then 'her profile is complete' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatarUrl: '/bbc_micro_80_80.png',
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png',
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk',
         name: 'Sophie Wilson'

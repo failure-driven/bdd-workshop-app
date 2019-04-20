@@ -30,8 +30,8 @@ const FlakyNumber3 = () => {
       });
   };
 
-  // the API gets called till all 10 elements have been loaded
-  if (elements.length < 10) loadElement();
+  // the API gets called till all 9 elements have been loaded
+  if (elements.length < 9) loadElement();
 
   // the component renders the Description, rerun controls, alert message
   // and list of elements
@@ -83,7 +83,12 @@ const ColHeight100 = styled.div`
   margin-bottom: 16px;
 `;
 
-const ShareableElement = ({ text, id, action }) => {
+const ShareableElement = ({ text, id, imgUrl, action }) => {
+  const AvatarImg = styled.img`
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  `;
   return (
     <Button
       onClick={() => action(`shared with ${text}`)}
@@ -95,6 +100,7 @@ const ShareableElement = ({ text, id, action }) => {
         backgroundColor: 'red',
       }}
     >
+      <AvatarImg src={imgUrl} alt={`image of ${text}`} />
       {text}
     </Button>
   );

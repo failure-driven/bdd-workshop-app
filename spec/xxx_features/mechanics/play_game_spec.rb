@@ -53,7 +53,7 @@ feature 'user plays the game', js: true do
       create_and_login_as(
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk',
-        avatar_url: '/bbc_micro_80_80.png'
+        avatar_url: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 

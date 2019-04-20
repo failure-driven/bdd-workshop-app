@@ -41,13 +41,13 @@ feature 'Playing the game', js: true do
       email: 'sophie.wilson@acorn.co.uk'
     )
     focus_on(:form).form_for('profile').submit!(
-      avatarUrl: '/bbc_micro_80_80.png'
+      avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
     wait_for { focus_on(:profile).details }.to eq(
       handle: 'BBCmicro',
       name: 'Sophie Wilson',
       email: 'sophie.wilson@acorn.co.uk',
-      avatarUrl: '/bbc_micro_80_80.png'
+      avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
     visit('/profile')
     focus_on(:page_content).container_for('profile').action_item('Edit')
@@ -59,14 +59,14 @@ feature 'Playing the game', js: true do
       handle: 'FORMAC',
       name: 'Jean Sammet',
       email: 'jean.sammet@ibm.com',
-      avatarUrl: '/bbc_micro_80_80.png'
+      avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
     page.refresh
     wait_for { focus_on(:profile).details }.to eq(
       handle: 'FORMAC',
       name: 'Jean Sammet',
       email: 'jean.sammet@ibm.com',
-      avatarUrl: '/bbc_micro_80_80.png'
+      avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
     with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
       visit('/profile')

@@ -7,7 +7,6 @@
   - fake integration
   - Review Frontend specs
 - [ ] simplify or move out step functionality in [OurForm](app/javascript/components/OurForm/index.jsx)
-  - [ ] crop avatars
 - [ ] install instructions [README](README.md)
   - make [BDD workshop](https://github.com/failure-driven/bdd-workshop-app)
   - default instructions
@@ -32,6 +31,7 @@
 
 # DONE
 
+- [✓] crop avatars
 - [✓] change create to only accept handle and only do that in the tests
 - [✓] add missing test around the steps rendered in the front end
   - [OurForm](app/javascript/components/OurForm/index.jsx) **line 8** `const step = !handle`

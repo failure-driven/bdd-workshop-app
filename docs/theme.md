@@ -23,11 +23,11 @@ Sophie developed BBC BASIC, a programming language used to teach about programmi
 ######Language: **ARC assembly** language
 ######Handle: ARC_ASSEMBLY
 ######Email: kathleen@arcassembly.com
-######Avatar: 
+######Avatar:
 ![kathleen_booth](public/sample_avatars/kathleen_booth.jpg)
 
 Kathleen created the ARC assembly language for the ARC (Automatic Relay Calculator) computer
-in 1950. 
+in 1950.
 
 [Face of HPC - Kathleen Booth](https://www.hpc-diversity.ac.uk/faces-of-hpc/kathleen-booth)
 
@@ -50,7 +50,7 @@ committee that created COBOL.
 ######Handle: FORMAC
 ######Email: jean.sammet@ibm.com
 ######Avatar:
-![jean_sammet](public/sample_avatars/jean_sammet.jpg)
+![jean_sammet](public/sample_avatars/jean_sammet.png)
 
 _Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
 used for symbolic mathematical computation._
@@ -63,7 +63,7 @@ used for symbolic mathematical computation._
 ######Handle: LOGO
 ######Email: cynthia@logo.com
 ######Avatar:
-![cynthia_solomon](public/sample_avatars/logo_terrapin.jpg)
+![cynthia_solomon](public/sample_avatars/logo_terrapin.png)
 
 _Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
 went on to be influential in educational programming languages such as Scratch._
@@ -94,7 +94,7 @@ such as Java and Python._
 Adele was a researcher at Xerox PARC and was part of the team that developed Smalltalk
 which was released in 1980.
 
-[Adele Goldberg - computer scientist](https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist))
+[Adele Goldberg - computer scientist](<https://en.wikipedia.org/wiki/Adele_Goldberg_(computer_scientist)>)
 
 ## References
 

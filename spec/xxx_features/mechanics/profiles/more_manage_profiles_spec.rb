@@ -18,7 +18,7 @@ feature 'User manages profile', js: true do
           focus_on(:form).form_for('profile').submit
           focus_on(:form).form_for('profile').fill_in_row_for('email', 'jean.sammet@ibm.com')
           focus_on(:form).form_for('profile').submit
-          focus_on(:form).form_for('profile').fill_in_row_for('avatarUrl', '/bbc_micro_80_80.png')
+          focus_on(:form).form_for('profile').fill_in_row_for('avatarUrl', '/sample_avatars/bbc_micro_80_80.png')
           focus_on(:form).form_for('profile').submit
         end
 

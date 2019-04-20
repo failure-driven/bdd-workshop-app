@@ -62,13 +62,13 @@ feature 'Register a profile', js: true do
 
     And 'she confirms her avatar' do
       focus_on(:form).form_for('profile').submit!(
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
     Then 'the correct profile details are shown' do
       wait_for { focus_on(:profile).details }.to eq(
-        avatarUrl: '/bbc_micro_80_80.png',
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png',
         handle: 'Smalltalk',
         name: 'Adele Goldberg',
         email: 'adele.goldberg@xerox.parc.com'

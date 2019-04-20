@@ -77,9 +77,9 @@ feature 'Playing the game', js: true do
       )
     end
 
-    And 'submits her avatar url "bbc_micro_80_80.png' do
+    And 'submits her avatar url "sample_avatars/bbc_micro_80_80.png' do
       focus_on(:form).form_for('profile').submit!(
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
@@ -88,7 +88,7 @@ feature 'Playing the game', js: true do
         handle: 'BBCmicro',
         name: 'Sophie Wilson',
         email: 'sophie.wilson@acorn.co.uk',
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
@@ -106,7 +106,7 @@ feature 'Playing the game', js: true do
         handle: 'FORMAC',
         name: 'Jean Sammet',
         email: 'jean.sammet@ibm.com',
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 
@@ -119,7 +119,7 @@ feature 'Playing the game', js: true do
         handle: 'FORMAC',
         name: 'Jean Sammet',
         email: 'jean.sammet@ibm.com',
-        avatarUrl: '/bbc_micro_80_80.png'
+        avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
     end
 

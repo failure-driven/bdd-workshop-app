@@ -1,9 +1,10 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
+import {  Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Avatar from '../../Avatar';
+import ShowProfileActions from './ShowProfileActions'
 
-const ShowProfile = ({ profile }) => {
+const ShowProfile = ({ profile, editOnClick }) => {
   return (
     <>
       <Avatar profile={profile} />
@@ -21,6 +22,7 @@ const ShowProfile = ({ profile }) => {
           </dl>
         </Col>
       </Row>
+    <ShowProfileActions editOnClick={editOnClick} />
     </>
   );
 };
@@ -30,6 +32,7 @@ ShowProfile.propTypes = {
     handle: PropTypes.string,
     email: PropTypes.string,
   }),
+  editOnClick: PropTypes.func,
 };
 
 export default ShowProfile;

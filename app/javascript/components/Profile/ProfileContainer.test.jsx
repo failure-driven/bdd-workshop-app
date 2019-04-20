@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Spinner } from 'reactstrap';
-import Profile from '.';
+import ProfileContainer from './ProfileContainer';
 import API from '../API';
 import messageBus from '../../utils/messageBus';
 
@@ -10,7 +10,9 @@ jest.mock('../../utils/messageBus');
 describe('Profile', () => {
   describe('WHEN loading', () => {
     it('THEN it renders a spinner for loading', () => {
-      const wrapper = shallow(<Profile history={{ push: jest.fn() }} />);
+      const wrapper = shallow(
+        <ProfileContainer history={{ push: jest.fn() }} />
+      );
       expect(wrapper.type()).toBe(Spinner);
     });
   });
@@ -25,7 +27,9 @@ describe('Profile', () => {
     it('THEN it renders the profile returned', () => {
       localStorage.setItem('player', JSON.stringify({ id: 'the-id' }));
 
-      const wrapper = shallow(<Profile history={{ push: jest.fn() }} />);
+      const wrapper = shallow(
+        <ProfileContainer history={{ push: jest.fn() }} />
+      );
 
       return wrapper.instance().userProfilePromise.then(() => {
         // expect(wrapper.type()).not.toBe(Spinner);
@@ -60,7 +64,9 @@ describe('Profile', () => {
     it("THEN redirects to '/' and sets error message", () => {
       messageBus.error = jest.fn();
       const historyPush = jest.fn();
-      const wrapper = shallow(<Profile history={{ push: historyPush }} />);
+      const wrapper = shallow(
+        <ProfileContainer history={{ push: historyPush }} />
+      );
 
       return wrapper.instance().userProfilePromise.finally(() => {
         expect(messageBus.error).toHaveBeenCalledWith(
@@ -76,7 +82,7 @@ describe('Profile', () => {
     it("THEN redirects to '/' and sets error message", () => {
       messageBus.error = jest.fn();
       const historyPush = jest.fn();
-      shallow(<Profile history={{ push: historyPush }} />);
+      shallow(<ProfileContainer history={{ push: historyPush }} />);
 
       expect(historyPush).toHaveBeenCalledWith('/');
       expect(messageBus.error).toHaveBeenCalledWith(

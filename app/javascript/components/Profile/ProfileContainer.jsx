@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { Button, Spinner } from 'reactstrap';
+import { Spinner } from 'reactstrap';
 import API from '../API';
-import Avatar from '../Avatar';
-import ProgressBar from '../ProgressBar';
-import OurForm from '../OurForm';
-import messageBus from '../../utils/messageBus';
 import MainContainer from '../MainContainer';
+import messageBus from '../../utils/messageBus';
 import PropTypes from 'prop-types';
 import ShowProfile from './ShowProfile';
-import { Link } from 'react-router-dom';
+import ProfileSteps from './ProfileSteps';
+import OurForm from '../OurForm';
 
-class Profile extends Component {
+class ProfileContainer extends Component {
   constructor(props) {
     super(props);
     this.fetchUserProfile();
@@ -72,64 +70,35 @@ class Profile extends Component {
 
     if (!profile)
       return <Spinner color="primary" data-testid="profile-loading" />;
-    // TODO what if request finishes but with failure should spinner dissapear? YES!
-    if (profile.percentComplete === 100 || isEditting)
-      return (
-        <MainContainer dataTestId="profile">
-          {isEditting ? (
-            <>
-              <OurForm
-                onSubmit={this.updateUserProfile.bind(this)}
-                profile={profile}
-              />
-            </>
-          ) : (
-            <>
-              <ShowProfile profile={profile} />
-              <div data-testid="actions">
-                <Button tag={Link} to="/game" color="secondary">
-                  Play the game
-                </Button>
-                <Button
-                  color="primary"
-                  onClick={this.toggleIsEditting.bind(this)}
-                  className="float-right"
-                >
-                  Edit
-                </Button>
-              </div>
-            </>
-          )}
-        </MainContainer>
-      );
     return (
       <MainContainer dataTestId="profile">
-        <div>
-          <h1>
-            Hi : <span data-testid="details-handle">{profile.handle}</span>
-          </h1>
-          <p>Your profile is almost complete</p>
-          <ProgressBar percentComplete={profile.percentComplete} />
-          <Avatar profile={profile} />
+        {isEditting && (
           <OurForm
             onSubmit={this.updateUserProfile.bind(this)}
             profile={profile}
           />
-          <div data-testid="actions">
-            <Button tag={Link} to="/game" color="secondary">
-              Play the game
-            </Button>
-          </div>
-        </div>
+        )}
+        {profile.percentComplete === 100 && !isEditting && (
+          <ShowProfile
+            profile={profile}
+            editOnClick={this.toggleIsEditting.bind(this)}
+          />
+        )}
+        {profile.percentComplete !== 100 && (
+          <ProfileSteps
+            profile={profile}
+            onSubmit={this.updateUserProfile.bind(this)}
+          />
+        )}
       </MainContainer>
     );
   }
 }
 
-Profile.propTypes = {
+ProfileContainer.propTypes = {
   profile: PropTypes.object,
   fetchProfile: PropTypes.func,
   history: PropTypes.object,
 };
 
-export default Profile;
+export default ProfileContainer;

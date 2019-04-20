@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Game from '../Game';
-import Profile from '../Profile';
+import ProfileContainer from '../Profile/ProfileContainer';
 import SignIn from '../SignIn';
 import SignOut from '../SignOut';
 import Register from '../Register';
@@ -28,7 +28,7 @@ const Routes = props => (
     <Route
       exact
       path="/profile"
-      render={routeProps => <Profile {...props} {...routeProps} />}
+      render={routeProps => <ProfileContainer {...props} {...routeProps} />}
     />
     <Route exact path="/game" component={Game} />
   </Switch>

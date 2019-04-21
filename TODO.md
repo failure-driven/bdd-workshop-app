@@ -25,7 +25,8 @@
 
 **Unallocated**
 
-- [ ] styling
+- [ ] app styling
+- [ ] presentation styling
 - [ ] fill out [Course outline](docs/course_outline.md)
 - [ ] move to real repo
 

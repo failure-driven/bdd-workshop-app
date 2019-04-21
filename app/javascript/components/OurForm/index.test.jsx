@@ -59,7 +59,7 @@ describe('OurForm', () => {
           .dive()
           .find('RegisterForm')
           .prop('step')
-      ).toEqual('avatar');
+      ).toEqual('avatarUrl');
     });
 
     it('THEN if handle, name, email and avatar is filled in then avatar as it is the last', () => {

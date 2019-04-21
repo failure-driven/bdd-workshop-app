@@ -31,7 +31,7 @@ const RegisterForm = props => (
         placeholder="input your email"
       />
     )}
-    {(props.step === 'avatar' || !props.step) && (
+    {(props.step === 'avatarUrl' || !props.step) && (
       <StepFormGroup
         {...props}
         step="avatarUrl"

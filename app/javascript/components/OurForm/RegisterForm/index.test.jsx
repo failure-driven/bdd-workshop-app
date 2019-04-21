@@ -29,7 +29,7 @@ describe('RegisterForm', () => {
     });
 
     it('Renders avatar for the avatar step', () => {
-      const wrapper = shallow(<RegisterForm step="avatar" />);
+      const wrapper = shallow(<RegisterForm step="avatarUrl" />);
       expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
         'Avatar',
       ]);

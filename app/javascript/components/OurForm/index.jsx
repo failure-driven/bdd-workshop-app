@@ -5,15 +5,13 @@ import RegisterForm from './RegisterForm';
 
 const OurForm = ({ profile, onSubmit }) => {
   const { handle, name, email, avatarUrl } = profile;
-  const step = !handle
-    ? 'handle'
-    : !name
-    ? 'name'
-    : !email
-    ? 'email'
-    : !avatarUrl
-    ? 'avatar'
-    : undefined;
+  const step = [
+    'handle',
+    'name',
+    'email',
+    'avatarUrl',
+  ].find((field) => !profile[field])
+
   return (
     <Formik
       initialValues={{ handle, name, email, avatarUrl }}

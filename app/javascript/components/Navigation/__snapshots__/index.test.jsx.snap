@@ -109,7 +109,7 @@ exports[`Navigation Renders signed in view 1`] = `
           >
             <a
               class="dropdown-item"
-              data-testid="profie-link"
+              data-testid="profile-link"
               href="/profile"
               role="menuitem"
               tabindex="0"

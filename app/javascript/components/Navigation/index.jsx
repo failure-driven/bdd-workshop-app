@@ -42,7 +42,7 @@ const Navigation = ({ profile, loading }) => {
                 <DropdownItem
                   tag={Link}
                   to="/profile"
-                  data-testid="profie-link"
+                  data-testid="profile-link"
                 >
                   Profile
                 </DropdownItem>

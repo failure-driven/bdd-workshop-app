@@ -95,7 +95,7 @@ exports[`Navigation Renders signed in view 1`] = `
               alt="placeholder-avatar"
               aria-hidden="true"
               class="fa fa-user"
-              data-testid="details-avatar"
+              data-testid="avatar-default"
             />
             <span>
                

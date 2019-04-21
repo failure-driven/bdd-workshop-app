@@ -13,7 +13,7 @@ module PageFragments
     end
 
     def avatar
-      main.find('i[alt="placeholder-avatar"]')
+      main.find('[data-testid|="avatar"]')['data-testid']
     end
 
     private

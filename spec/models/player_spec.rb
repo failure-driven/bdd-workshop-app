@@ -2,34 +2,38 @@ require 'rails_helper'
 
 RSpec.describe Player, type: :model do
   describe '#percent_complete' do
-    context 'Player with handle' do
-      subject(:player) { Player.create!(handle: 'the-handle') }
+    it 'is 25% complete WHEN player has a handle' do
+      player = Player.create!(
+        handle: 'the-handle'
+      )
+      expect(player.percent_complete).to eq 25
+    end
 
-      it '33 % complete' do
-        expect(player.percent_complete).to eq 33
-      end
+    it 'is 50% complete WHEN player has a handle and name' do
+      player = Player.create!(
+        handle: 'the-handle',
+        name: 'the-name'
+      )
+      expect(player.percent_complete).to eq 50
+    end
 
-      context 'Player with handle and email' do
-        subject(:player) { Player.create!(handle: 'the-handle', email: 'the-email') }
+    it 'is 75% complete WHEN player has a handle, name and email' do
+      player = Player.create!(
+        handle: 'the-handle',
+        name: 'the-name',
+        email: 'the-email'
+      )
+      expect(player.percent_complete).to eq 75
+    end
 
-        it '66 % complete' do
-          expect(player.percent_complete).to eq 66
-        end
-
-        context 'Player with handle and email and avatar url' do
-          subject(:player) do
-            Player.create!(
-              handle: 'the-handle',
-              email: 'the-email',
-              avatar_url: 'the-avatar-url'
-            )
-          end
-
-          it '100 % complete' do
-            expect(player.percent_complete).to eq 100
-          end
-        end
-      end
+    it 'is 100 % complete WHEN player has a handle, name, email and avatar_url' do
+      player = Player.create!(
+        handle: 'the-handle',
+        name: 'the-name',
+        email: 'the-email',
+        avatar_url: 'the-avatar-url'
+      )
+      expect(player.percent_complete).to eq 100
     end
   end
 

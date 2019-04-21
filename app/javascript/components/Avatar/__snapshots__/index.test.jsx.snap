@@ -3,6 +3,7 @@
 exports[`Avatar renders an avatar 1`] = `
 <styled.img
   alt="avatar for the-handle"
+  data-testid="avatar-the-handle"
   src="the-avatar-url"
 />
 `;

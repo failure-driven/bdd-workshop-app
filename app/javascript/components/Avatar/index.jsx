@@ -10,13 +10,13 @@ const AvatarImg = styled.img`
 
 const Avatar = ({ profile: { avatarUrl, handle } }) => {
   if (avatarUrl)
-    return <AvatarImg src={avatarUrl} alt={`avatar for ${handle}`} />;
+    return <AvatarImg data-testid={`avatar-${handle}`} src={avatarUrl} alt={`avatar for ${handle}`} />;
   return (
     <i
       className="fa fa-user"
       aria-hidden="true"
       alt="placeholder-avatar"
-      data-testid="details-avatar"
+      data-testid="avatar-default"
     />
   );
 };

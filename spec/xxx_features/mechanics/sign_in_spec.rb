@@ -57,11 +57,6 @@ feature 'sign in', js: true do
           focus_on(:page_content).container_for('profile').heading
         end.to eq('Hi : ARC_ASSEMBLY')
       end
-
-      And "she's informed that her profile is only 33% complete" do
-        wait_for { focus_on(:profile).progress }.to eq('33')
-        wait_for { focus_on(:profile).progress_text }.to eq('33%')
-      end
     end
 
     context 'and her profile is 100% complete' do

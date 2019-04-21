@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Register a profile', js: true do
   scenario "Adele Goldberg only fills in the mandatory handle field while completing
-            registration processon" do
+            registration process" do
     When 'Adele registers and fills in mandatory handle with "Smalltalk"' do
       visit('/register')
       focus_on(:form).form_for('register').fill_in_row_for('handle', 'Smalltalk')
@@ -18,13 +18,38 @@ feature 'Register a profile', js: true do
       end.to eq('profile successfully created')
     end
 
-    And 'the profile is 33% complete' do
-      wait_for { focus_on(:profile).progress }.to eq('33')
-      wait_for { focus_on(:profile).progress_text }.to eq('33%')
+    And 'the profile is 25% complete' do
+      wait_for { focus_on(:profile).progress }.to eq('25')
+      wait_for { focus_on(:profile).progress_text }.to eq('25%')
+    end
+
+    When 'she adds her name' do
+      focus_on(:form).form_for('profile').fill_in_row_for('name', 'Adele Goldberg')
+      focus_on(:form).form_for('profile').submit
+    end
+
+    Then 'the profile is 50% complete' do
+      wait_for { focus_on(:profile).progress }.to eq('50')
+      wait_for { focus_on(:profile).progress_text }.to eq('50%')
+    end
+
+    When 'she adds her email' do
+      focus_on(:form).form_for('profile').fill_in_row_for('email', 'adele.goldberg@xerox.parc.com')
+      focus_on(:form).form_for('profile').submit
+    end
+
+    Then 'the profile is 75% complete' do
+      wait_for { focus_on(:profile).progress }.to eq('75')
+      wait_for { focus_on(:profile).progress_text }.to eq('75%')
+    end
+
+    When 'she adds her avatar' do
+      focus_on(:form).form_for('profile').fill_in_row_for('avatarUrl', '/sample_avatars/adele_goldberg.jpg')
+      focus_on(:form).form_for('profile').submit
     end
 
     And 'her profile picture is the placeholder image' do
-      wait_for { focus_on(:profile).avatar }.to be_present
+      wait_for { focus_on(:profile).avatar }.to eq 'avatar-Smalltalk'
     end
 
     And 'she is signed in' do
@@ -74,8 +99,6 @@ feature 'Register a profile', js: true do
         email: 'adele.goldberg@xerox.parc.com'
       )
     end
-
-    # TODO: should we show profile as 100% ??
   end
 
   scenario 'mandatory fields are missing' do

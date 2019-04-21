@@ -8,11 +8,11 @@ is a brief about some of these characters, enjoy.
 
 ## Sophie Wilson
 
-######language: **BBC BASIC**
-######handle: BBCmicro
-######email: sophie.wilson@acorn.co.uk
+![sophie_wilson](/public/sample_avatars/bbc_micro_80_80.png)
 
-![sophie_wilson](public/sample_avatars/bbc_micro_80_80.jpg)
+###### language: **BBC BASIC**
+###### handle: BBCmicro
+###### email: sophie.wilson@acorn.co.uk
 
 Sophie developed BBC BASIC, a programming language used to teach about programming.
 
@@ -20,11 +20,11 @@ Sophie developed BBC BASIC, a programming language used to teach about programmi
 
 ## Kathleen Booth
 
-######Language: **ARC assembly** language
-######Handle: ARC_ASSEMBLY
-######Email: kathleen@arcassembly.com
-######Avatar:
-![kathleen_booth](public/sample_avatars/kathleen_booth.jpg)
+![kathleen_booth](/public/sample_avatars/kathleen_booth.jpg)
+
+###### Language: **ARC assembly** language
+###### Handle: ARC_ASSEMBLY
+###### Email: kathleen@arcassembly.com
 
 Kathleen created the ARC assembly language for the ARC (Automatic Relay Calculator) computer
 in 1950.
@@ -33,11 +33,11 @@ in 1950.
 
 ## Grace Hopper
 
-######Language: **COBOL**
-######Handle: COBOL
-######Email: grace.hopper@navy.mil
-######Avatar:
-![grace_hopper](public/sample_avatars/grace_hopper.jpg)
+![grace_hopper](/public/sample_avatars/grace_hopper.jpg)
+
+###### Language: **COBOL**
+###### Handle: COBOL
+###### Email: grace.hopper@navy.mil
 
 Grace Hopper, whilst working for the U.S. Navy was one of the technical advisers for the
 committee that created COBOL.
@@ -46,11 +46,11 @@ committee that created COBOL.
 
 ## Jean Sammet
 
-######Language: **FORMAC**
-######Handle: FORMAC
-######Email: jean.sammet@ibm.com
-######Avatar:
-![jean_sammet](public/sample_avatars/jean_sammet.png)
+![jean_sammet](/public/sample_avatars/jean_sammet.png)
+
+###### Language: **FORMAC**
+###### Handle: FORMAC
+###### Email: jean.sammet@ibm.com
 
 _Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
 used for symbolic mathematical computation._
@@ -59,11 +59,11 @@ used for symbolic mathematical computation._
 
 ## Cynthia Solomon
 
-######Language: **Logo**
-######Handle: LOGO
-######Email: cynthia@logo.com
-######Avatar:
-![cynthia_solomon](public/sample_avatars/logo_terrapin.png)
+![cynthia_solomon](/public/sample_avatars/logo_terrapin.png)
+
+###### Language: **Logo**
+###### Handle: LOGO
+###### Email: cynthia@logo.com
 
 _Cynthia helped develop Logo whilst at the Massachusetts Institute of Technology. Logo
 went on to be influential in educational programming languages such as Scratch._
@@ -72,11 +72,11 @@ went on to be influential in educational programming languages such as Scratch._
 
 ## Barbara Liskov
 
-######Language: **CLU**
-######Handle: CLU
-######Email: barbara@clu.com
-######Avatar:
-![barbara_liskov](public/sample_avatars/barbara_liskov.jpg)
+![barbara_liskov](/public/sample_avatars/barbara_liskov.jpg)
+
+###### Language: **CLU**
+###### Handle: CLU
+###### Email: barbara@clu.com
 
 _Barbara led the team that developed CLU in 1974 which would influence later languages
 such as Java and Python._
@@ -85,11 +85,11 @@ such as Java and Python._
 
 ## Adele Goldberg
 
-######Language: **Smalltalk**
-######Handle: Smalltalk
-######Email: adele.goldberg@xerox.parc.com
-######Avatar:
-![adele_goldberg](public/sample_avatars/adele_goldberg.jpg)
+![adele_goldberg](/public/sample_avatars/adele_goldberg.jpg)
+
+###### Language: **Smalltalk**
+###### Handle: Smalltalk
+###### Email: adele.goldberg@xerox.parc.com
 
 Adele was a researcher at Xerox PARC and was part of the team that developed Smalltalk
 which was released in 1980.

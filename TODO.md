@@ -6,6 +6,7 @@
   - make [BDD workshop](https://github.com/failure-driven/bdd-workshop-app)
   - default instructions
 - [ ] slides GWT
+- [ ] 3 core states of game have to look reasonable]
 - [ ] finish avatar
   - test for provided suggestion
   - fake integration

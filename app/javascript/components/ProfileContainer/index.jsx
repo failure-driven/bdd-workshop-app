@@ -4,8 +4,8 @@ import API from '../API';
 import MainContainer from '../MainContainer';
 import messageBus from '../../utils/messageBus';
 import PropTypes from 'prop-types';
-import ShowProfile from './ShowProfile';
-import ProfileSteps from './ProfileSteps';
+import ShowProfile from '../Profile/ShowProfile';
+import ProfileSteps from '../Profile/ProfileSteps';
 import OurForm from '../OurForm';
 
 class ProfileContainer extends Component {
@@ -14,11 +14,11 @@ class ProfileContainer extends Component {
   }
 
   state = {
-    isEditting: false,
+    isEditing: false,
   };
 
-  toggleIsEditting() {
-    this.setState({ isEditting: !this.state.isEditting });
+  toggleisEditing() {
+    this.setState({ isEditing: !this.state.isEditing });
   }
 
   updateUserProfile(data) {
@@ -27,8 +27,8 @@ class ProfileContainer extends Component {
       .then(response => {
         messageBus.info('Updated user profile');
         this.props.fetchProfile();
-        if (this.state.isEditting) {
-          this.toggleIsEditting();
+        if (this.state.isEditing) {
+          this.toggleisEditing();
         }
         return Promise.resolve(response);
       })
@@ -44,23 +44,23 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { isEditting } = this.state;
+    const { isEditing } = this.state;
     const { profile } = this.props;
     if (!profile) {
       return <Redirect to="/" />;
     }
     return (
       <MainContainer dataTestId="profile">
-        {isEditting && (
+        {isEditing && (
           <OurForm
             onSubmit={this.updateUserProfile.bind(this)}
             profile={profile}
           />
         )}
-        {profile.percentComplete === 100 && !isEditting && (
+        {profile.percentComplete === 100 && !isEditing && (
           <ShowProfile
             profile={profile}
-            editOnClick={this.toggleIsEditting.bind(this)}
+            editOnClick={this.toggleisEditing.bind(this)}
           />
         )}
         {profile.percentComplete !== 100 && (

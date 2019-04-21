@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Game from '../Game';
-import ProfileContainer from '../Profile/ProfileContainer';
+import ProfileContainer from '../ProfileContainer';
 import SignIn from '../SignIn';
 import SignOut from '../SignOut';
 import Register from '../Register';

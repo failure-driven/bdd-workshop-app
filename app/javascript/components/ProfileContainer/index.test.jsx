@@ -1,7 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow } from 'enzyme/build';
 import { Redirect } from 'react-router-dom';
-import ProfileContainer from './ProfileContainer';
+import ProfileContainer from '../ProfileContainer';
 import ProfileSteps from '../Profile/ProfileSteps';
 import ShowProfile from '../Profile/ShowProfile';
 

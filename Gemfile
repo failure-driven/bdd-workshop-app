@@ -41,6 +41,7 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem 'rspec-wait'
   gem 'factory_bot_rails'
+  gem 'timecop'
 
   gem 'pry-rails'
   gem 'pry-stack_explorer'

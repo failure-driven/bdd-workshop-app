@@ -6,19 +6,35 @@
 
 </div>
 
-A demo app for a Behaviour Driven Development (BDD) workshop.
+BDD (Behaviour Driven Development) Workshop App fro Rails Conf 2019 ["Multi
+layer BDD for modern rails web
+apps"](https://railsconf.com/program/workshops#session-782)
 
-## TL;DR
+## TL;DR Setup
 
-Assuming you sort out your own dependencies on ruby and node and have
-postgresql running
+- pull this repo
+  ```
+  git clone git@github.com:failure-driven/bdd-workshop-app.git
+  ```
+- get it up and running (see [Quick start install](#quick-start-install))
+- Install [Kahoot](https://kahoot.com/mobile-app/) for interactive review and surveys
 
-```sh
-make
-```
+## Quick start install
 
-will check tooling, install dependencies, run through tests and open the slides
-leaving the slide server running in the window.
+  ```sh
+  git clone git@github.com:failure-driven/bdd-workshop-app.git
+  cd bdd-workshop-app
+
+  make                          # check versions,
+                                # install libs,
+                                # runs tests
+
+  rails db:create db:migrate    # startup database
+  rails server                  # to run the app
+  ```
+
+**Note:** Make sure to pull this repo closer to the date of the workshop, like
+the day before 😉
 
 ## Kahoot
 
@@ -28,19 +44,54 @@ during the workshop.
 - [App Store](https://itunes.apple.com/app/apple-store/id1131203560?mt=8)
 - [Google Play](https://play.google.com/store/apps/details?id=no.mobitroll.kahoot.android&referrer=utm_source%3Dkahoot%26utm_campaign%3Dmobileapp)
 
-## Getting started
+## Manual install
 
-Assuming you have the following dependencies
-
-**TODO:** links for installing the below dependencies
-
-- ruby 2.6.1
-- bundler gem
-- node 10.15.2
-- yarn
-- postgresql
-
-### tool versions
+- clone the repository
+  ```
+  git clone git@github.com:failure-driven/bdd-workshop-app.git
+  ```
+- change directory into bdd workshop app
+  ```
+  cd bdd-workshop-app
+  ```
+- check you have node **10.15.3** installed
+  ```
+  node -v
+  ```
+  - check you have `yarn` installed
+  ```
+  yarn -v
+  ```
+  - install node dependencies
+  ```
+  yarn install
+  ```
+- check you have ruby **2.6.2** installed
+  ```
+  ruby -v
+  ```
+  - install `bundler` gem
+  ```
+  gem install bundler
+  ```
+  - install gems
+    - dependent on having postgresql installed (`brew install postgresql`)
+    - dependant on having relatively new [Chrome](https://www.google.com/chrome/) installed
+  ```
+  bundle
+  ```
+- check you have postgresql running
+  ```
+  psql --list     # list out databases
+  ```
+- create and migrate your database
+  ```
+  rails db:create db:migrate
+  ```
+- run the specs
+  ```
+  rspec spec
+  ```
 
 #### asdf
 

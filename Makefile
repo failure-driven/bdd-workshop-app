@@ -22,7 +22,7 @@ install_mdx_deck:
 
 .PHONY: test
 test:
-	bin/full-test
+	bin/run-tests
 
 .PHONY: build
 build:

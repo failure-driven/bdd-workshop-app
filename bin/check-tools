@@ -2,17 +2,31 @@
 
 set -e
 
-expected_node_version=`cat .nvmrc`
+echo ""
+echo "checking if correct version of node is installed ..."
+# expected_node_version=`cat .nvmrc`
+expected_node_version=`grep nodejs .tool-versions | awk '{print $2}'`
 actual_node_version=`node -v`
 if [[ "$actual_node_version" != *"$expected_node_version"* ]]; then
-  echo expected node "$expected_node_version" but found node "$actual_node_version"
+  echo ❌ expected node "$expected_node_version" but found node "$actual_node_version"
   exit 1
+else
+  echo "✅  correct version of node found ${expected_node_version}"
 fi
 
-expected_ruby_version=`cat .ruby-version`
+echo ""
+echo "checking if correct version of ruby is installed ..."
+# expected_ruby_version=`cat .ruby-version`
+expected_ruby_version=`grep ruby .tool-versions | awk '{print $2}'`
 actual_ruby_version=`ruby -v`
 if [[ "$actual_ruby_version" != *"$expected_ruby_version"* ]]; then
-  echo expected ruby "$expected_ruby_version" but found ruby "$actual_ruby_version"
+  echo ❌ expected ruby "$expected_ruby_version" but found ruby "$actual_ruby_version"
   exit 1
+else
+  echo "✅  correct version of ruby found ${expected_ruby_version}"
 fi
 
+echo ""
+echo "checking if postgresql is running ..."
+check_connection_to_psql=`psql --list`
+echo "✅  postresql is running"

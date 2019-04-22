@@ -13,11 +13,13 @@ apps"](https://railsconf.com/program/workshops#session-782)
 ## TL;DR Setup
 
 - clone this repo
+
   ```
   git clone git@github.com:failure-driven/bdd-workshop-app.git
   ```
 
 - get it up and running ([Quick start install](#quick-start-install))
+
   ```
   make
   make start
@@ -42,7 +44,7 @@ make                    # check versions,
 make start              # startup database
                         # to run the app rails server
 bin/webpack-dev-server  # for faster ReactJS compilation
-  ```
+```
 
 **Note:** Make sure to pull this repo closer to the date of the workshop, like
 the day before 😉
@@ -55,7 +57,7 @@ during the workshop.
 - [App Store](https://itunes.apple.com/app/apple-store/id1131203560?mt=8)
 - [Google Play](https://play.google.com/store/apps/details?id=no.mobitroll.kahoot.android&referrer=utm_source%3Dkahoot%26utm_campaign%3Dmobileapp)
 
----------------
+---
 
 ## Manual install
 
@@ -70,6 +72,10 @@ during the workshop.
 - check you have node **10.15.3** installed
   ```
   node -v
+  ```
+  - try homebrew?
+  ```
+  brew install node@10
   ```
   - check you have `yarn` installed
   ```
@@ -175,20 +181,20 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version
 
-* System dependencies
+- System dependencies
 
-* Configuration
+- Configuration
 
-* Database creation
+- Database creation
 
-* Database initialization
+- Database initialization
 
-* How to run the test suite
+- How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+- Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+- Deployment instructions
 
-* ...
+- ...

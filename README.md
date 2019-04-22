@@ -30,18 +30,18 @@ apps"](https://railsconf.com/program/workshops#session-782)
 ## Quick start install
 
 ```sh
-                      # clone repo
+                        # clone repo
 git clone git@github.com:failure-driven/bdd-workshop-app.git
 
-cd bdd-workshop-app   # open directory
+cd bdd-workshop-app     # open directory
 
-make                  # check versions,
-                      # install libs,
-                      # runs tests
+make                    # check versions,
+                        # install libs,
+                        # runs tests
 
-make start            # startup database
-                      # to run the app rails server
-                      # and webpack-dev-server
+make start              # startup database
+                        # to run the app rails server
+bin/webpack-dev-server  # for faster ReactJS compilation
   ```
 
 **Note:** Make sure to pull this repo closer to the date of the workshop, like

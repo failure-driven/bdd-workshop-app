@@ -119,6 +119,20 @@ during the workshop.
   ```
   bin/webpack-dev-server
   ```
+- visit the development server
+  - http://localhost:3000
+- run the tests
+  ```
+  bin/full-build
+  ```
+  - or if there is no internet but dependencies have been installed
+    ```
+    NO_INTERNET=true ./bin/full-build
+    ```
+  - if you want to rubocop and lint
+    ```
+    PRETTY_CODE=true NO_INTERNET=true bin/full-build
+    ```
 
 #### asdf
 
@@ -141,76 +155,40 @@ echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
 
 TODO ...
 
-### Install libraries
-
-run bundler and yarn to install libraries
-
-```sh
-bundle
-yarn
-bundle exec rails db:create
-```
-
-### Run the tests
-
-Run all the tests
-
-```sh
-make build
-
-# or
-./bin/full-build
-
-# or if there is no internet but the dependencies have been isntalled
-NO_INTERNET=true ./bin/full-build
-
-# if you want to rubocop and lint
-PRETTY_CODE=true NO_INTERNET=true bin/full-build
-```
-
 ### Show the slides
 
 ```sh
 make slides
 ```
 
-### Run the dev server
+slides are located in `docs/slides/deck.mdx` using
+[mdx-deck](https://github.com/jxnblk/mdx-deck)
 
-Fire up rails
+## Docker
 
-```sh
-rails server
-```
+_TODO_
 
-visit the rails default home page
+# ORIGINAL RAILS README
 
-http://localhost:3000/
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-visit a react component
+Things you may want to cover:
 
-http://localhost:3000/game
+* Ruby version
 
-## Tech Stack
+* System dependencies
 
-### Ruby
+* Configuration
 
-- [ ] sort out ruby/vscode/prettier
-  - https://github.com/prettier/prettier-vscode
-  - https://github.com/prettier/plugin-ruby
-  - https://github.com/rubyide/vscode-ruby
+* Database creation
 
-### JS
+* Database initialization
 
-- [ ] eslint/prettier
-  - https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a
+* How to run the test suite
 
-### React testing
+* Services (job queues, cache servers, search engines, etc.)
 
-Mostly using [Kent C. Dodd's](https://twitter.com/kentcdodds/) [react-testing-libaray]()
+* Deployment instructions
 
-with principles such as
-
-- ...
-- no shallow rendering (Ref [Why I never use shallow rendering](https://kentcdodds.com/blog/why-i-never-use-shallow-rendering))
-  - ...
-  - more detail worth reading about - https://medium.com/flatiron-labs/refactoring-an-enzyme-component-test-to-use-react-testing-library-f5c36da6716f
+* ...

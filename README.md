@@ -16,7 +16,8 @@ apps"](https://railsconf.com/program/workshops#session-782)
   ```
   git clone git@github.com:failure-driven/bdd-workshop-app.git
   ```
-- get it up and running (see [Quick start install](#quick-start-install))
+- get it up and running [Quick start install](#quick-start-install)
+  - failing that try the [Manual install](#manual-install)
 - Install [Kahoot](https://kahoot.com/mobile-app/) for interactive review and surveys
 
 ## Quick start install

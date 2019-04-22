@@ -12,26 +12,36 @@ apps"](https://railsconf.com/program/workshops#session-782)
 
 ## TL;DR Setup
 
-- pull this repo
+- clone this repo
   ```
   git clone git@github.com:failure-driven/bdd-workshop-app.git
   ```
-- get it up and running [Quick start install](#quick-start-install)
+
+- get it up and running ([Quick start install](#quick-start-install))
+  ```
+  make
+  make start
+  ```
+
   - failing that try the [Manual install](#manual-install)
+
 - Install [Kahoot](https://kahoot.com/mobile-app/) for interactive review and surveys
 
 ## Quick start install
 
-  ```sh
-  git clone git@github.com:failure-driven/bdd-workshop-app.git
-  cd bdd-workshop-app
+```sh
+                      # clone repo
+git clone git@github.com:failure-driven/bdd-workshop-app.git
 
-  make                          # check versions,
-                                # install libs,
-                                # runs tests
+cd bdd-workshop-app   # open directory
 
-  rails db:create db:migrate    # startup database
-  rails server                  # to run the app
+make                  # check versions,
+                      # install libs,
+                      # runs tests
+
+make start            # startup database
+                      # to run the app rails server
+                      # and webpack-dev-server
   ```
 
 **Note:** Make sure to pull this repo closer to the date of the workshop, like
@@ -87,34 +97,36 @@ during the workshop.
   ```
 - create and migrate your database
   ```
-  rails db:create db:migrate
+  bundle exec rails db:create db:migrate
   ```
 - run the specs
   ```
-  rspec spec
+  bundle exec rspec spec
+  ```
+- run the rails development server
+  ```
+  bundle exec rails server
+  ```
+- run the webpacker dev server
+  ```
+  bin/webpack-dev-server
   ```
 
 #### asdf
 
-for ruby and nodejs as stipluated in .tool-versions
+Somewhat experimental script to install **asdf** that will manage ruby, nodejs as stipluated in `.tool-versions` file. Will also install PostgreSQL
 
 ```
-asdf plugin-add ruby
-asdf plugin-add nodejs
-bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
-# reload your shell
-which gem # make sure its pointing to asdf
-# bundle install as shown later
+make asdf_install
 ```
 
-if you want to use asdf to manage postgresql
+which runs `bin/asdf-install`
+
+also may want to add to your shell as per [asdf install instructions](https://asdf-vm.com/#/core-manage-asdf-vm)
 
 ```
-asdf plugin-add postgres
-export POSTGRES_EXTRA_CONFIGURE_OPTIONS=--with-uuid=e2fs
-asdf install
-asdf global postgres $(grep postgres .tool-versions | cut -d ' ' -f 2) # this is required for building pg gem
-# bundle install as shown later
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bash_profile
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bash_profile
 ```
 
 #### docker

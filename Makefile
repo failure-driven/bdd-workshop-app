@@ -8,6 +8,11 @@ all: install test
 .PHONY: install
 install: check_tools install_libs
 
+.PHONY: start
+start:
+	bundle exec rails db:create db:migrate
+	bundle exec rails server
+
 .PHONY: check_tools
 check_tools:
 	bin/check-tools
@@ -27,6 +32,10 @@ test:
 .PHONY: build
 build:
 	bin/full-build
+
+.PHONY: asdf_install
+asdf_install:
+	bin/asdf-install
 
 .PHONY: slides
 slides:

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "installing asdf for ruby, node and postgresql"
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.0 || echo "asdf already installed"
+. ~/.asdf/asdf.sh
+asdf plugin-add ruby || echo "ruby plugin already installed"
+asdf plugin-add nodejs || echo "nodejs plugin already installed"
+asdf plugin-add postgres || echo "postgres plugin already installed"
+asdf plugin-update ruby
+asdf plugin-update nodejs
+asdf plugin-update postgres
+~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+export POSTGRES_EXTRA_CONFIGURE_OPTIONS=--with-uuid=e2fs
+asdf install
+asdf global postgres 9.5.15
+# pg initialize in local directory
+initdb tmp/postgres -E utf8 || echo "postgres already initialised"
+# pg start
+pg_ctl -D tmp/postgres -l tmp/postgres/logfile start
+gem install bundler
+npm install yarn -g
+

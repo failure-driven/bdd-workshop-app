@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
-set -e
+#set -e # not sure if this may be a hinderenace if something like postgres is setup differently
 
-echo ""
+echo "checking if asdf installed"
+if [ -x "$(command -v asdff)" ]; then
+  echo "✅  using asdf"
+  asdf plugin-add ruby || echo "ruby plugin already installed"
+  asdf plugin-add nodejs || echo "nodejs plugin already installed"
+  asdf install
+fi
+
 echo "checking if correct version of node is installed ..."
 # expected_node_version=`cat .nvmrc`
 expected_node_version=`grep nodejs .tool-versions | awk '{print $2}'`
@@ -27,6 +34,33 @@ else
 fi
 
 echo ""
-echo "checking if postgresql is running ..."
-check_connection_to_psql=`psql --list`
-echo "✅  postresql is running"
+if [ -x "$(command -v pg_ctl)" ]; then
+  echo "✅  PostgreSQL is installed"
+
+  # check if PostgreSQL is running
+  psql_list="$(command psql --list)"
+  psql_list_return="$?"
+  if [[ $psql_list_return != 0 ]]; then
+    echo "❓ PostgreSQL might NOT be running?"
+    echo ""
+    echo "please start with something like the following"
+    echo ""
+    echo "    brew services stop postgresql"
+    echo "    or"
+    echo "    pg_ctl -D tmp/postgres -l tmp/postgres/logfile start"
+    echo "..."
+  else
+    echo "✅  PostgreSQL is running"
+  fi
+else
+  echo "❌  PostgreSQL is NOT installed"
+  if [ -x "$(command -v asdf)" ]; then
+    echo ""
+    echo "try make asdf_install"
+    exit 1
+  else
+    echo 'try installing postgresql'
+    echo ''
+    echo 'brew install postgresql'
+  fi
+fi

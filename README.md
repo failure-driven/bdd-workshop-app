@@ -55,6 +55,8 @@ during the workshop.
 - [App Store](https://itunes.apple.com/app/apple-store/id1131203560?mt=8)
 - [Google Play](https://play.google.com/store/apps/details?id=no.mobitroll.kahoot.android&referrer=utm_source%3Dkahoot%26utm_campaign%3Dmobileapp)
 
+---------------
+
 ## Manual install
 
 - clone the repository

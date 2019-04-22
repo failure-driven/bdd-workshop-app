@@ -93,6 +93,12 @@ during the workshop.
   ```
   bundle
   ```
+- postgresql install using homebrew
+  ```sh
+  brew info postgresql
+  brew services list
+  psql -V
+  ```
 - check you have postgresql running
   ```
   psql --list     # list out databases

@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: game_app_development
+  database: bdd_workshop_app_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: game_app
+  #username: bdd_workshop_app
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: game_app_test
+  database: bdd_workshop_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: game_app_production
-  username: game_app
-  password: <%= ENV['GAME_APP_DATABASE_PASSWORD'] %>
+  database: bdd_workshop_app_production
+  username: bdd_workshop_app
+  password: <%= ENV['bdd_workshop_app_DATABASE_PASSWORD'] %>

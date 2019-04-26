@@ -1,4 +1,4 @@
-PROJECT := game-app
+PROJECT := bdd-workshop-app
 
 .DEFAULT_GOAL := all
 

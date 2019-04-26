@@ -1,8 +1,8 @@
-<h1 align="center">Game App</h1>
+<h1 align="center">BDD Workshop App</h1>
 
 <div align="center">
 
-[![CircleCI](https://circleci.com/gh/failure-driven/game-app.svg?style=svg)](https://circleci.com/gh/failure-driven/game-app)
+[![CircleCI](https://circleci.com/gh/failure-driven/bdd-workshop-app.svg?style=svg)](https://circleci.com/gh/failure-driven/bdd-workshop-app)
 
 </div>
 

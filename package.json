@@ -1,5 +1,5 @@
 {
-  "name": "game_app",
+  "name": "bdd_workshop_app",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

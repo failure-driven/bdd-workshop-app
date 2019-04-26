@@ -1,9 +1,9 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, Spinner } from 'reactstrap';
+import { Spinner } from 'reactstrap';
 import useProfile from '../../hooks/useProfile';
 import MainContainer from '../MainContainer';
-import { Link } from 'react-router-dom';
+import GameProfile from '../Profile/GameProfile';
 
 const Game = () => {
   const { profile, loading } = useProfile();
@@ -15,19 +15,7 @@ const Game = () => {
   return (
     <MainContainer dataTestId="game">
       <h1>coming soon</h1>
-      {profile.percentComplete === 100 ? (
-        <p>Your profile is complete!</p>
-      ) : (
-        <Button
-          data-testid="actions"
-          tag={Link}
-          to="/profile"
-          className="float-right"
-          color="primary"
-        >
-          Complete my profile
-        </Button>
-      )}
+      <GameProfile profile={profile} />
     </MainContainer>
   );
 };

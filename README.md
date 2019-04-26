@@ -99,6 +99,9 @@ during the workshop.
   ```
   bundle
   ```
+- chrome and chromedriver will be required for bundle to install successfully
+  **TODO** more info
+
 - postgresql install using homebrew
   ```sh
   brew info postgresql

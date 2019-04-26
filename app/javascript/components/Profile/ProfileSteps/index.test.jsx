@@ -1,9 +1,9 @@
-import React from "react";
-import ProfileSteps from ".";
-import { shallow } from "enzyme";
+import React from 'react';
+import ProfileSteps from '.';
+import { shallow } from 'enzyme';
 
-describe("ProfileSteps", () => {
-  it("THEN renders", () => {
+describe('ProfileSteps', () => {
+  it('THEN renders', () => {
     const wrapper = shallow(
       <ProfileSteps profile={{ percentComplete: 33 }} onSubmit={jest.fn()} />
     );

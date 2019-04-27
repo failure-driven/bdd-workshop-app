@@ -31,6 +31,9 @@ jobs:
         name: Restore bundle cache
         key: your-app-name-{{ checksum "Gemfile.lock" }}
 
+      # install specific bundler
+      - run: gem install bundler -v 2.0.1
+
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 

@@ -31,8 +31,7 @@ describe('useProfile', () => {
   // Learn more at https://fb.me/react-wrap-tests-with-act in TestHook
   //
   // also never gets to set the profile as it is called from useEffect?
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('calls get profile with the id set in storage', () => {
+  it('calls get profile with the id set in storage', () => {
     mockGet.mockResolvedValue({ profile: { id: 'abc-123' } });
     storage.mockReturnValue({
       get: () => ({ id: 'abc-123' }),
@@ -50,9 +49,7 @@ describe('useProfile', () => {
     expect(mockGet).toHaveBeenCalledWith('/api/v1/profiles/abc-123');
   });
 
-  // TODO as above
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('profile is undefined if call to get profile fails as there is no profile for the id', () => {
+  it('profile is undefined if call to get profile fails as there is no profile for the id', () => {
     mockGet.mockRejectedValue({ message: 'error' });
     storage.mockReturnValue({
       get: () => ({ id: 'abc-123' }),

@@ -7,10 +7,10 @@ const elementsWithProp = (wrapper, element, prop) =>
 
 describe('RegisterForm', () => {
   describe('Render a step in registration process', () => {
-    it('Renders email for the email step', () => {
-      const wrapper = shallow(<RegisterForm step="email" />);
+    it('Renders handle for the handle step', () => {
+      const wrapper = shallow(<RegisterForm step="handle" />);
       expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
-        'Email',
+        'Handle',
       ]);
     });
 
@@ -21,10 +21,10 @@ describe('RegisterForm', () => {
       ]);
     });
 
-    it('Renders handle for the handle step', () => {
-      const wrapper = shallow(<RegisterForm step="handle" />);
+    it('Renders email for the email step', () => {
+      const wrapper = shallow(<RegisterForm step="email" />);
       expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
-        'Handle',
+        'Email',
       ]);
     });
 

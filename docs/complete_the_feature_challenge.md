@@ -150,6 +150,19 @@ bin/rspec spec/models/player_spec.rb
 - Hint: Sign up process is to fill in handle, name, email, dob, avatarURl - in a `specific order`
 - Hint: A `complete` profile now requires the player to fill in their `dob`
 
+## Extension
+
+If you got to here you have a way of adding a birthday on the multi step
+registration form and display the age
+
+1. Complete the mechanics of managing birthday by adding it to the edit form
+1. Extend the game to show a different view of playing the game dependant on
+   age: for example a different page for
+   - 0 - 4 year old,
+   - 4 - 13 year old
+   - 13 - 18 year old and
+   - 18+
+
 ## Happy Coding!
 
 - Let us know how you got along!

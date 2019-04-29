@@ -8,7 +8,7 @@ describe('OurForm', () => {
   beforeEach(cleanup);
 
   describe('WHEN profile is not complete', () => {
-    it('THEN by default it shows the handle', () => {
+    it('THEN it shows handle by default', () => {
       const wrapper = shallow(<OurForm onSubmit={() => {}} profile={{}} />);
       expect(
         wrapper
@@ -19,7 +19,7 @@ describe('OurForm', () => {
       ).toEqual('handle');
     });
 
-    it('THEN if handle is filled in then name', () => {
+    it('THEN it shows name IF handle', () => {
       const wrapper = shallow(
         <OurForm onSubmit={() => {}} profile={{ handle: 'a-handle' }} />
       );
@@ -32,7 +32,7 @@ describe('OurForm', () => {
       ).toEqual('name');
     });
 
-    it('THEN if handle and name is filled in then email', () => {
+    it('THEN it shows email IF handle AND name', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}
@@ -48,7 +48,7 @@ describe('OurForm', () => {
       ).toEqual('email');
     });
 
-    it('THEN if handle, name and email is filled in then avatar', () => {
+    it('THEN it shows avatar IF handle, name AND email', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}
@@ -64,7 +64,7 @@ describe('OurForm', () => {
       ).toEqual('avatarUrl');
     });
 
-    it('THEN if handle, name, email and avatar is filled in then avatar as it is the last', () => {
+    it('THEN it does not render IF handle, name, email AND avatar', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}

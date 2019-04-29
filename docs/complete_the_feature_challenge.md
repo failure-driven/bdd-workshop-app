@@ -12,26 +12,26 @@
 #### Run tests from command line
 
 **RSpec tests**
-```ruby
+```bash
 bin/rspec path/to/file:line_number
 ```
 
 **Frontend test**
 
 - **All frontend tests**
-    ```ruby
+    ```bash
     yarn watch-test
     ```
 
 - **Specific frontend tests**
-    ```ruby
+    ```bash
     -w
     -p
-    NameOfDirectory
+    [NameOfDirectory]
     ```
 
 **Full test suite**
-```ruby
+```bash
 bin/full-build
 ```
 
@@ -46,10 +46,10 @@ Scenario: `"Sophie Wilson would like to play the game and in order to do so she 
 Line: 4
 
 - We expect this test to fail
-- It is marked as `pending` on Line #TODO
+- It is marked as `pending` on around Line 92 `Then 'her profile is complete'`
 
 To run this spec from the command line
-```ruby
+```bash
 bin/rspec spec/final_features/flows/register_to_play_game_spec.rb:4
 ```
 
@@ -65,7 +65,7 @@ Line: 60
 - Hint: Age is calculated based on the birth date specified during the sign up process
 
 To run this spec from the command line
-```ruby
+```bash
 bin/rspec spec/final_features/mechanics/profiles/register_profiles_spec.rb:60
 ```
 
@@ -84,10 +84,10 @@ Line: 6
 - TODO: Implement frontend code to show the age
 
 To run this spec from the command line
-```ruby
+```bash
 -w
 -p
-NameOfDirectory
+[NameOfDirectory]
 ```
 
 ## API 
@@ -102,7 +102,7 @@ Line: 4
 - Hint: If the API fails with an Http response: 500 try adding in a `binding.pry` and inspect the `response.body`
 
 To run this spec from the command line
-```ruby
+```bash
 bin/rspec spec/api_acceptance/v1/profile_api_spec.rb:4
 ```
 
@@ -118,7 +118,7 @@ Line: 4
 - Hint: Making this test pass may involve updating a serializer
 
 To run this spec from the command line
-```ruby
+```bash
 bin/rspec spec/controllers/api/v1/profiles_controller_spec.rb:4
 ```
 
@@ -134,7 +134,7 @@ File: `spec/models/player_spec.rb`
 - Hint: Freeze at a specific point in time using the Timecop gem to ensure your tests will still pass in any timezone!
 
 To run this spec from the command line
-```ruby
+```bash
 bin/rspec spec/models/player_spec.rb
 ```
 
@@ -142,7 +142,7 @@ bin/rspec spec/models/player_spec.rb
 
 - When you think you have implemented the feature, try running the full test suite
 
-    ```ruby
+    ```bash
     bin/full-build
     ```
 

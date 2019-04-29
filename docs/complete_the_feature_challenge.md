@@ -156,6 +156,7 @@ If you got to here you have a way of adding a birthday on the multi step
 registration form and display the age
 
 1. Complete the mechanics of managing birthday by adding it to the edit form
+1. The steps show a percentage complete, make birthday part of percentage complete
 1. Extend the game to show a different view of playing the game dependant on
    age: for example a different page for
    - 0 - 4 year old,

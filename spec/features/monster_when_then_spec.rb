@@ -92,6 +92,17 @@ feature 'Playing the game', js: true do
       )
     end
 
+    When 'Jean visits their profile page in the original loading state' do
+      with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+        visit('/profile')
+        wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
+      end
+    end
+
+    Then 'the loading element is no longer visible' do
+      wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
+    end
+
     When 'Sophie tries to update her handle and email to that of Jean Sammet' do
       visit('/profile')
       focus_on(:page_content).container_for('profile').action_item('Edit')
@@ -121,17 +132,6 @@ feature 'Playing the game', js: true do
         email: 'jean.sammet@ibm.com',
         avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
       )
-    end
-
-    When 'Jean visits their profile page in the original loading state' do
-      with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
-        visit('/profile')
-        wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
-      end
-    end
-
-    Then 'the loading element is no longer visible' do
-      wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
     end
 
     Given 'the profiles API throws errors' do

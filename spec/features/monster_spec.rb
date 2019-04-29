@@ -49,6 +49,11 @@ feature 'Playing the game', js: true do
       email: 'sophie.wilson@acorn.co.uk',
       avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
+    with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
+      visit('/profile')
+      wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
+    end
+    wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
     visit('/profile')
     focus_on(:page_content).container_for('profile').action_item('Edit')
     focus_on(:form).form_for('profile').fill_in_row_for('handle', 'FORMAC')
@@ -68,11 +73,6 @@ feature 'Playing the game', js: true do
       email: 'jean.sammet@ibm.com',
       avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
     )
-    with_api_route_paused(method: 'get', url: '/api/v1/profiles') do
-      visit('/profile')
-      wait_for { focus_on(:util).test_elements('spinner') }.to eq ['Loading...']
-    end
-    wait_for { focus_on(:util).test_elements('profile') }.to_not include('Loading...')
     force_api_error(method: 'get', url: '/api/v1/profiles', error: 'failed to fetch profile')
     visit('/profile')
     wait_for { focus_on(:messages).error }.to eq '500 - Internal Server Error'

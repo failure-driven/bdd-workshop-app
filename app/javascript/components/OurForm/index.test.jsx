@@ -21,7 +21,13 @@ describe('OurForm', () => {
 
     it('THEN it shows name IF handle', () => {
       const wrapper = shallow(
-        <OurForm onSubmit={() => {}} profile={{ handle: 'a-handle' }} />
+        <OurForm
+          onSubmit={() => {
+          }}
+          profile={{
+            handle: 'a-handle',
+          }}
+        />
       );
       expect(
         wrapper
@@ -35,8 +41,12 @@ describe('OurForm', () => {
     it('THEN it shows email IF handle AND name', () => {
       const wrapper = shallow(
         <OurForm
-          onSubmit={() => {}}
-          profile={{ handle: 'a-handle', name: 'a-name' }}
+          onSubmit={() => {
+          }}
+          profile={{
+            handle: 'a-handle',
+            name: 'a-name',
+          }}
         />
       );
       expect(
@@ -52,7 +62,11 @@ describe('OurForm', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}
-          profile={{ handle: 'a-handle', name: 'a-name', email: 'an-email' }}
+          profile={{
+            handle: 'a-handle',
+            name: 'a-name',
+            email: 'an-email',
+          }}
         />
       );
       expect(

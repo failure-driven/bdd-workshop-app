@@ -51,6 +51,7 @@ committee that created COBOL.
 ###### Language: **FORMAC**
 ###### Handle: FORMAC
 ###### Email: jean.sammet@ibm.com
+###### March 23, 1928 – May 20, 2017
 
 _Jean developed the FORMAC programming language whilst at IBM in 1962. FORMAC was widely
 used for symbolic mathematical computation._

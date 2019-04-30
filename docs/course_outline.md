@@ -7,7 +7,8 @@
 - [Module 4 - Add Feature with Outside-in BDD](#module-4---add-feature-with-outside-in-bdd)
 
 ## Intro
-Slide 1
+
+_Slide 1_
 
 Multi-layer outside-in Behaviour Driven Design (BDD)
 
@@ -44,7 +45,8 @@ bin/webpack-dev-server
 Examples of 100% unit-tested behavioural failures
 
 ## Module 1 - Unit under test
-Slide 16
+
+_Slide 16_
 
 Learn at a high level which parts of the system are covered by integration tests
 
@@ -96,6 +98,7 @@ NOT a good example of a descriptive test
 | ----- | ---------------------------- | ------------------------ |
 |     2 | Game played with only handle |                          |
 |       |                              | complete registration    | 
+|       |                              | show complete profile    | 
 | ----- | ---------------------------- | ------------------------ |
 |     3 | Game played with complete    |                          |
 |       | profile gets a star          |                          |
@@ -105,9 +108,10 @@ NOT a good example of a descriptive test
 | ----- | ---------------------------- | ------------------------ |
 
 ## Module 2 - When Then steps
-Slide 22
 
-Learn how to make integration tests more traceable with `rspec-example_steps`
+_Slide 22_
+
+Learn how to make integration tests more traceable with [`rspec-example_steps`](https://github.com/railsware/rspec-example_steps)
 
 ### Given When Then
 
@@ -128,7 +132,7 @@ Benefits from linking a series of "When/Then" steps
 
 ### Code dive
 
-`spec/features/monster_spec.rb`
+[`spec/features/monster_spec.rb`](/spec/features/monster_spec.rb)
 
 See if you can transform this test into something more readable by adding "When/Then" steps
 
@@ -137,7 +141,8 @@ When [action]
 Then [assertion]
 
 ## Module 3 - Flows vs Mechanics
-Slide 44
+
+_Slide 44_
 
 Learn how to better organise integration specs
 
@@ -152,6 +157,7 @@ Learn how to better organise integration specs
 - Scale your test suite
 
 ### Responsibilities
+
 **Flows**
 
 1. Driven by external interface
@@ -169,16 +175,17 @@ Learn how to better organise integration specs
 
 ### Code dive
 
-`spec/features/monster_spec.rb`
+[`spec/features/monster_spec.rb`](/spec/features/monster_spec.rb)
 
 See if you can extract scenarios from this test into "flows" and "mechanics" under the following directories
-extract from [spec/features/monster_spec.rb] into
+extract from [`spec/features/monster_spec.rb`](/spec/features/monster_spec.rb) into
 
 - Flows `spec/features/flows/`
 - Mechanics `spec/features/mechanics/`
 
 ## Module 4 - Add Feature with Outside-in BDD
-Slide 66
+
+_Slide 66_
 
 Learn how to implement a feature using the Multi-layer outside-in BDD approach
 
@@ -227,31 +234,31 @@ Player sees their age when viewing their profile
 Use multi-layer outside-in BDD to implement the feature
 
 Flow
-`spec/final_features/flows/register_to_play_game_spec.rb:4` 
+[`spec/final_features/flows/register_to_play_game_spec.rb:4`](/spec/final_features/flows/register_to_play_game_spec.rb#L4) 
  - When a user adds their birthday
  - Then they see their age calculated
 
 Mechanic
-`spec/final_features/mechanics/profiles/register_profiles_spec.rb:60`
+[`spec/final_features/mechanics/profiles/register_profiles_spec.rb:60`](/spec/final_features/mechanics/profiles/register_profiles_spec.rb#L60)
  - When birthday field is filled in
  - Then profile is successfully updated
 
 Component
-`app/javascript/components/OurForm/RegisterForm/index.test.jsx:9`
-`app/javascript/components/OurForm/index.test.jsx:10`
+[`app/javascript/components/OurForm/RegisterForm/index.test.jsx:9`](/app/javascript/components/OurForm/RegisterForm/index.test.jsx#L9)
+[`app/javascript/components/OurForm/index.test.jsx:10`](/app/javascript/components/OurForm/index.test.jsx#L10)
  - When user enters their name, email address AND birthday
  - Their they can enter their AvatarUrl
 
 API
-`spec/api_acceptance/v1/profile_api_spec.rb:4`
-`spec/api_acceptance/v1/profile_api_spec.rb:32`
+[`spec/api_acceptance/v1/profile_api_spec.rb:4`](/spec/api_acceptance/v1/profile_api_spec.rb#L4)
+[`spec/api_acceptance/v1/profile_api_spec.rb:32`](/spec/api_acceptance/v1/profile_api_spec.rb#L32)
  - When request is received to update player with a birthday
  - Then api responds with the birthday
 
 Controller
-`spec/controllers/api/v1/profiles_controller_spec.rb:4`
-`spec/controllers/api/v1/profiles_controller_spec.rb:51`
+[`spec/controllers/api/v1/profiles_controller_spec.rb:4`](/spec/controllers/api/v1/profiles_controller_spec.rb#L4)
+[`spec/controllers/api/v1/profiles_controller_spec.rb:51`](spec/controllers/api/v1/profiles_controller_spec.rb#L51)
  - When passing a players birthday
  - Then the birthday parameter is permitted
 
-For additional challenges take a look in [docs/complete_the_feature_challenge.md]
+For additional challenges take a look in [docs/complete_the_feature_challenge.md](/docs/complete_the_feature_challenge.md)

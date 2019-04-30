@@ -2,12 +2,13 @@
 
 When writing Behaviour Driven specs it is good to immerse yourself in the problems space
 having realistic characters. As our example app is just a sample of a registration app we
-had no clear characters to choose from. Instead we decied to choose the women in compute
+had no clear characters to choose from. Instead we decided to choose the women in compute
 science who created computer languages or were influential in developing languages. Here
 is a brief about some of these characters, enjoy.
 
 ## Sophie Wilson
 
+![sophie_wilson](/public/sample_avatars/sophie_wilson.jpg)
 ![sophie_wilson](/public/sample_avatars/bbc_micro_80_80.png)
 
 ###### language: **BBC BASIC**
@@ -47,6 +48,7 @@ committee that created COBOL.
 ## Jean Sammet
 
 ![jean_sammet](/public/sample_avatars/jean_sammet.png)
+![jean_sammet](/public/sample_avatars/jean_sammet_avatar.jpg)
 
 ###### Language: **FORMAC**
 ###### Handle: FORMAC
@@ -60,6 +62,8 @@ used for symbolic mathematical computation._
 
 ## Cynthia Solomon
 
+![cynthia_solomon](/public/sample_avatars/cynthia_solomon.jpg)
+![cynthia_solomon](/public/sample_avatars/logo_spiral.jpg)
 ![cynthia_solomon](/public/sample_avatars/logo_terrapin.png)
 
 ###### Language: **Logo**

@@ -29,6 +29,12 @@ apps"](https://railsconf.com/program/workshops#session-782)
 
 - Install [Kahoot](https://kahoot.com/mobile-app/) for interactive review and surveys
 
+- Documents
+
+    * [Course Outline](/docs/course_outline.md)
+    * [Theme - Women who created programming languages](/docs/theme.md)
+    * [Glossary](/docs/glossary.md)
+
 ## Quick start install
 
 ```sh

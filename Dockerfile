@@ -20,12 +20,12 @@ RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
   nodejs \
   yarn
 
-COPY Gemfile* /usr/src/app/
+COPY Gemfile* package.json yarn.lock /usr/src/app/
 WORKDIR /usr/src/app
 
 ENV BUNDLE_PATH /gems
 
-RUN bundle install
+RUN gem install bundler && bundle install && yarn install
 
 COPY . /usr/src/app/
 

@@ -9,6 +9,7 @@ services:
       - "4000:4000"
     volumes:
       - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
       - gem_cache:/gems
     env_file:
       - .env/development/web
@@ -23,6 +24,7 @@ services:
       - 3035:3035
     volumes:
       - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
       - gem_cache:/gems
     env_file:
       - .env/development/web
@@ -50,4 +52,5 @@ services:
 volumes:
   db_data:
   gem_cache:
+  node_modules:
 

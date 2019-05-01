@@ -2,6 +2,20 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara-screenshot/rspec'
 
+# Make browser slow down execution to see what's going on
+# in the browser (when running non-Headless)
+module SlomoBridge
+  TIMEOUT = ENV.fetch("SLOMO_MS", "0").to_i / 1000.0
+
+  def execute(*)
+    sleep TIMEOUT if TIMEOUT > 0
+    super
+  end
+end
+
+# Don't wait too long in `have_xyz` matchers
+Capybara.default_max_wait_time = 2 # the default is 2
+
 Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(
     app,
@@ -11,7 +25,10 @@ Capybara.register_driver :selenium_chrome do |app|
         args: ['window-size=800,960']
       }
     }
-  )
+  ).tap do |driver|
+    # Enable slomo mode
+    driver.browser.send(:bridge).singleton_class.prepend(SlomoBridge)
+  end
 end
 
 Capybara.javascript_driver = :selenium_chrome

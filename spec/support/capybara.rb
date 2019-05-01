@@ -5,7 +5,7 @@ require 'capybara-screenshot/rspec'
 # Make browser slow down execution to see what's going on
 # in the browser (when running non-Headless)
 module SlomoBridge
-  TIMEOUT = ENV.fetch("SLOMO_MS", "0").to_i / 1000.0
+  TIMEOUT = ENV.fetch('SLOMO_MS', '0').to_i / 1000.0
 
   def execute(*)
     sleep TIMEOUT if TIMEOUT > 0

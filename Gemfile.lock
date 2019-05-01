@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:rails/jbuilder.git
+  revision: 7ff5e25bce45d13282133ed1aab122cc050d396e
+  ref: 7ff5e25bce45d13282133ed1aab122cc050d396e
+  specs:
+    jbuilder (2.8.0)
+      activesupport (>= 4.2.0)
+      multi_json (>= 1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -107,9 +116,6 @@ GEM
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jaro_winkler (1.5.2)
-    jbuilder (2.8.0)
-      activesupport (>= 4.2.0)
-      multi_json (>= 1.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -289,7 +295,7 @@ DEPENDENCIES
   capybara-screenshot
   chromedriver-helper
   factory_bot_rails
-  jbuilder (~> 2.5)
+  jbuilder!
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   pry-byebug

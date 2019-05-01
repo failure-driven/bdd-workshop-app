@@ -16,12 +16,7 @@ gem 'webpacker', '>= 4.0.0.rc.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-#gem 'jbuilder', '~> 2.5'
-# get latest from master that incorporates fixing the deprecation warning
-# https://github.com/rails/jbuilder/pull/453
-#gem 'jbuilder', :git => 'git@github.com:rails/jbuilder.git', :branch => 'master'
-gem 'jbuilder', :git => 'git@github.com:rails/jbuilder.git', :ref => '7ff5e25bce45d13282133ed1aab122cc050d396e'
-
+gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

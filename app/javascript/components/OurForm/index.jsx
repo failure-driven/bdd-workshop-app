@@ -9,6 +9,7 @@ const OurForm = ({ profile, onSubmit }) => {
     'handle',
     'name',
     'email',
+    'birthday',
     'avatarUrl',
   ].find((field) => !profile[field])
 

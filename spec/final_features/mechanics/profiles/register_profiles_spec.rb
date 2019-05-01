@@ -85,6 +85,13 @@ feature 'Register a profile', js: true do
       )
     end
 
+
+    And 'she adds her birthday' do
+      focus_on(:form).form_for('profile').submit!(
+        birthday: '04/08/1957'
+      )
+    end
+
     And 'she confirms her avatar' do
       focus_on(:form).form_for('profile').submit!(
         avatarUrl: '/sample_avatars/bbc_micro_80_80.png'

@@ -77,6 +77,12 @@ feature 'Playing the game', js: true do
       )
     end
 
+    And 'submits her birthday "04/08/1957"' do
+      focus_on(:form).form_for('profile').submit!(
+        birthday: "04/08/1957"
+      )
+    end
+
     And 'she confirms her avatar image' do
       focus_on(:form).form_for('profile').submit!(
         avatarUrl: '/sample_avatars/bbc_micro_80_80.png'
@@ -84,11 +90,13 @@ feature 'Playing the game', js: true do
     end
 
     Then 'her profile is complete' do
+      pending 'no age calculation yet'
       wait_for { focus_on(:profile).details }.to eq(
         avatarUrl: '/sample_avatars/bbc_micro_80_80.png',
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk',
-        name: 'Sophie Wilson'
+        name: 'Sophie Wilson',
+        age: '61',
       )
     end
 

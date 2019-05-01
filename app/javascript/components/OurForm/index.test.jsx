@@ -58,7 +58,7 @@ describe('OurForm', () => {
       ).toEqual('email');
     });
 
-    it('THEN it shows avatar IF handle, name AND email', () => {
+    it('THEN it shows birthday IF handle, name AND email', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}
@@ -75,10 +75,10 @@ describe('OurForm', () => {
           .dive()
           .find('RegisterForm')
           .prop('step')
-      ).toEqual('avatarUrl');
+      ).toEqual('birthday');
     });
 
-    it('THEN it does not render IF handle, name, email AND avatar', () => {
+    it('THEN it shows avatar IF handle, name , email AND birthday', () => {
       const wrapper = shallow(
         <OurForm
           onSubmit={() => {}}
@@ -86,6 +86,28 @@ describe('OurForm', () => {
             handle: 'a-handle',
             name: 'a-name',
             email: 'an-email',
+            birthday: 'a-birthday'
+          }}
+        />
+      );
+      expect(
+        wrapper
+          .find('Formik')
+          .dive()
+          .find('RegisterForm')
+          .prop('step')
+      ).toEqual('avatarUrl');
+    });
+
+    it('THEN it does not render IF handle, name, email, birthday avatar', () => {
+      const wrapper = shallow(
+        <OurForm
+          onSubmit={() => {}}
+          profile={{
+            handle: 'a-handle',
+            name: 'a-name',
+            email: 'an-email',
+            birthday: 'a-birthday',
             avatarUrl: 'an-avatar-url',
           }}
         />

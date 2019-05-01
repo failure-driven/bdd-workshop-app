@@ -31,6 +31,15 @@ const RegisterForm = props => (
         placeholder="input your email"
       />
     )}
+    {(props.step === 'birthday') && (
+      <StepFormGroup
+        {...props}
+        step="birthday"
+        label="Birthday"
+        type="date"
+        placeholder="input your date of birth"
+        />
+    )}
     {(props.step === 'avatarUrl' || !props.step) && (
       <StepFormGroup
         {...props}

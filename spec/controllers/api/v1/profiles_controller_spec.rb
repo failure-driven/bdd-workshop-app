@@ -8,6 +8,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       handle: 'the-handle',
       name: 'the-name',
       email: 'the-email',
+      birthday: 'the-birthday',
       avatar_url: 'the-avatar-url',
       percent_complete: 33
     )
@@ -23,6 +24,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       'handle' => 'the-handle',
       'name' => 'the-name',
       'email' => 'the-email',
+      'birthday' => 'the-birthday',
       'avatarUrl' => 'the-avatar-url',
       'percentComplete' => 33
     )
@@ -52,8 +54,9 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
     params = ActionController::Parameters.new(
       handle: 'the-handle',
       name: 'the-name',
-      email: 'the-email'
-    ).permit(:handle, :name, :email)
+      email: 'the-email',
+      birthday: 'the-birthday',
+    ).permit(:handle, :name, :email, :birthday)
 
     player = double(Player, id: 'the-id', update!: {})
     expect(Player).to receive(:find).with('the-id').and_return(player)
@@ -65,7 +68,8 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
         id: 'the-id',
         handle: 'the-handle',
         name: 'the-name',
-        email: 'the-email'
+        email: 'the-email',
+        birthday: 'the-birthday',
       }
     }, format: :json
 

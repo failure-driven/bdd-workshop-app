@@ -28,6 +28,13 @@ describe('RegisterForm', () => {
       ]);
     });
 
+    it('Renders birthday for the birthday step', () => {
+      const wrapper = shallow(<RegisterForm step="birthday" />);
+      expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([
+        'Birthday',
+      ]);
+    });
+
     it('Renders avatar for the avatar step', () => {
       const wrapper = shallow(<RegisterForm step="avatarUrl" />);
       expect(elementsWithProp(wrapper, 'StepFormGroup', 'label')).toEqual([

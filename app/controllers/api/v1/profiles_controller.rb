@@ -21,7 +21,7 @@ module Api
       private
 
       def player_params
-        params.require(:player).permit(:handle, :name, :email, :avatar_url)
+        params.require(:player).permit(:handle, :name, :email, :birthday, :avatar_url)
       end
     end
   end

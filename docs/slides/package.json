@@ -7,11 +7,9 @@
     "build": "mdx-deck build deck.mdx",
     "help": "mdx-deck"
   },
-  "devDependencies": {
-    "mdx-deck": "^2.0.6"
-  },
   "dependencies": {
     "file-loader": "^3.0.1",
+    "mdx-deck": "^1.10.2",
     "styled-components": "^4.2.0"
   }
 }

@@ -10,6 +10,8 @@ BDD (Behaviour Driven Development) Workshop App fro Rails Conf 2019 ["Multi
 layer BDD for modern rails web
 apps"](https://railsconf.com/program/workshops#session-782)
 
+[Presentation slides](https://failure-driven.github.io/bdd-workshop-app/)
+
 ## TL;DR Setup
 
 - clone this repo

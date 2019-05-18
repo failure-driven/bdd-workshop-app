@@ -1,6 +1,7 @@
+export { default as theme } from './src';
 import { Appear, Head, Notes, Image } from 'mdx-deck';
 import { syntaxHighlighter as SyntaxHighlighter } from 'mdx-deck/themes';
-import { Layout } from './src';
+import { Layout, BGImage } from './src';
 
 <Head>
   <title>BDD workshop</title>
@@ -189,7 +190,796 @@ Let’s take a look at a 100% unit tested, behavioural failure
 
 ---
 
-# TODO complete notes
+<Image
+  style={{ width: '60vw', height: '70vh' }}
+  src="images/window-2-unit-tests-0-integration-tests.gif"/>
 
-<https://github.com/failure-driven/bdd-workshop-app>
+<Notes>
+
+* another example
+* 2 unit tests
+* 0 integration tests
+
+let's take a look at the plan for today
+
+</Notes>
+
+---
+
+# Modules
+
+1. The Unit Under Test
+1. When Then Steps
+1. Flows vs Mechanics
+1. Add a Feature with Outside-In BDD
+
+<Notes>
+
+* Main focus of today is to get to module 4 Add a feature with outside in BDD
+* The biggest takeaway is hopefully module 3 in how to scale large amounts of
+  integration specs by splitting them into Flows and Mechanics
+* To get there we need some tools which we will cover in module 1 and 2
+* A quick look at the unit under test to understand our demo app and the role
+  of tests 
+* Followed by When Then steps to manage these tests
+
+</Notes>
+
+---
+
+#  Module 1  
+
+##  The Unit Under Test 
+
+---
+
+# React + Rails
+
+<Notes>
+
+Diagram:
+
+* Frontend React
+* Components
+* Frontend lives as a client on the browser
+* API/ Serializer
+* Controller
+* Model
+* Database
+
+</Notes>
+
+---
+
+# Testing boundaries
+
+## Integration tests and the rest
+
+<Notes>
+
+* talk and draw in on diagram
+
+</Notes>
+
+---
+
+# How does the app work?
+
+## Open spec/features/monster_spec.rb
+
+<Notes>
+
+* go through the file in editor
+
+</Notes>
+
+---
+
+# How does the app really work?
+
+## Let’s take a look
+
+<Notes>
+
+* draw out the states of the app
+* run the app and see it in dev mode on http://localhost:3000
+
+</Notes>
+
+---
+
+# 1. The Unit under Test - Review
+
+* Units under test
+    * Frontend & backend together - Integration
+    * Backend (API to DB) - Integration
+    * Components - Isolated unit
+* Read tests, understand how the system works
+
+---
+
+# Module 2
+
+## When Then steps
+
+---
+
+<div style={{float: 'left'}}>
+
+#### GIVEN
+
+<Image
+  style={{ width: '300px', height: '300px' }}
+  src="images/balance_100.png"/>
+</div>
+
+<Appear>
+
+<div style={{float: 'left'}}>
+
+#### WHEN
+
+<Image
+  style={{ width: '300px', height: '300px' }}
+  src="images/withdraw_70.png"/>
+</div>
+
+<div style={{float: 'left'}}>
+
+#### THEN
+
+<Image
+  style={{ width: '300px', height: '300px' }}
+  src="images/balance_30.png"/>
+</div>
+</Appear>
+
+<Notes>
+
+* GIVEN I have $100 balance in the bank
+* WHEN I withdraw $70
+* THEN I should have $30 left and $70 in my wallet
+* These GIVEN WHEN THEN steps are a good way to describe and organise any test
+    * It is a simple formula to follow
+        * GIVEN - setup a known state
+        * WHEN - perform a repeatable action
+        * THEN - affirm an expected result
+    * It is similar to the scientific method
+    * It tests 1 thing at a time and all in 1 go, 1 shot for the action which happens in the “WHEN” step
+What are the limitations?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/money_transfer.jpg" />
+
+<Notes>
+
+* What if at the same time your partner also withdraw money from the account?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/bank_account_interest.jpg" />
+
+<Notes>
+
+* What if Interest was added to your account?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/atm_pin_retries_exceeded.jpg" />
+
+<Notes>
+
+* What if You got your pin wrong and were locked out?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/bank_hacker.jpg" />
+
+<Notes>
+
+* What if Your card had been blocked due to suspicious activity?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/activate_card.jpg" />
+
+<Notes>
+
+* What if your card had not been activated yet?
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/basket_ball_last_second.jpg" />
+
+<Notes>
+
+* Given When Then gives you the ability to test 1 shot at a time
+* Set everything up just right
+* Do your thing
+* And assert that everything you want to happen does
+* But there are limitations …
+* There may be so many actors and system changes in place that it can get quite complex.
+* Also there is no clear narrative how you got to a particular state if it is
+  all locked away in a Given step
+* let’s take a look at an alternative
+
+</Notes>
+
+---
+
+<div style={{float: 'left'}}>
+
+#### CONTEXT
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/making_it_rain.gif"/>
+</div>
+
+<Appear>
+
+<div style={{float: 'left'}}>
+
+#### WHEN<br/>THEN
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/create_account.png"/>
+</div>
+
+<div style={{float: 'left'}}>
+
+#### WHEN<br/>THEN
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/activate.png"/>
+</div>
+
+<div style={{float: 'left'}}>
+
+#### WHEN<br/>THEN
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/balance_100.png"/>
+</div>
+
+<div style={{float: 'left'}}>
+
+#### WHEN<br/>THEN
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/withdraw_70.png"/>
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/balance_30.png"/>
+</div>
+
+<div style={{float: 'left'}}>
+
+#### WHEN<br/>THEN
+
+<Image
+  style={{ width: '200px', height: '200px' }}
+  src="images/dancing_stick.gif"/>
+</div>
+</Appear>
+
+<Notes>
+
+* CONTEXT that I have $100 to my name in the first place
+* WHEN I create an account with $100
+* THEN the account is approved,
+* AND I have $100 in my account
+* AND the process of sending the card to me is set in progress
+- WHEN my card arrives and I activate it over the phone
+- THEN it is confirmed to be active
+* WHEN my card arrives and I activate it over the phone
+* THEN it is confirmed to be active
+- WHEN I access my account with my card
+- THEN it informs me my balance is $100
+* WHEN I withdraw $70
+* THEN my balance is $30
+- WHEN my friends ask my to go out and I have $70 in my wallet
+- THEN I can say Yes
+
+</Notes>
+
+---
+
+# From<br/>Given/When/Then<br/>To<br/>series of When/Then
+
+<Notes>
+
+* We are suggesting that GIVEN WHEN THEN gets changed to a series of WHEN THEN
+  steps
+* NOTE many people would say this is breaking the cardinal rule of BDD, they
+  warn you against this!
+* We believe that when multiple systems and actors are involved this series of
+  WHEN THEN scenarios, is better and at documenting and testing how the system
+  works.
+
+More on how to scale these tests in the next module
+
+</Notes>
+
+---
+
+# "When" "Then"<br/>flows through the system
+
+<Notes>
+
+* For the moment the series of WHEN THEN steps will take us on a core path
+  through our system
+* It should be the core business path
+* The WHEN THEN narrative conveys this to developers
+
+</Notes>
+
+---
+
+# Let's take a look
+
+## code dive
+
+<Notes>
+
+* code run through when/then
+
+</Notes>
+
+---
+
+# 2. When Then steps - Review
+
+* Integration specs
+    * ‘When Then’ pair denotes behaviour
+    * Multiple ‘When Then’ behaviours per scenario
+    * Owned by developers
+    * First code you write!
+* `gem rspec-example_steps`
+
+<Notes>
+
+* Each When Then should denote a behaviour
+* Multiple When and Then behaviours per scenario describe a larger part of your system.
+* These integration feature specs are owned by developers, not business analysts or testers
+* These integration feature specs should be the first piece of code we as developers write of a new application or a new feature. We will see this in an upcoming module
+* This is a tool for us to better understand a test and modify it in future
+* https://create.kahoot.it/share/review-module-2-when-then-steps/1d69652a-906a-46f0-a21a-803bb515180d
+
+</Notes>
+
+---
+
+# Module 3
+
+## Flows vs Mechanics
+
+---
+
+# The problem
+
+<Appear>
+<div>
+
+* Hundreds of scenarios
+
+</div>
+<div>
+
+* Big unreadable files
+
+</div>
+<div>
+
+* Deeply nested contexts
+
+</div>
+<div>
+
+* Hard to find existing tests
+
+</div>
+</Appear>
+
+<Notes>
+
+* But the problem with just talking about integration specs is that you could
+  come up with hundreds of scenarios to describe the expected behaviours of
+  your system
+* As you can imagine, needing so many tests can quickly lead to files that are
+  1000’s of lines long 
+* And tangled with deeply nested contexts
+* Those files probably also have names which make it increasingly hard to find
+  the tests you’re interested in modifying
+
+So what can we do about it?
+
+</Notes>
+
+---
+
+# A solution
+
+<Appear>
+<div>
+
+* Separate different responsibilities
+
+</div>
+</Appear>
+
+<Notes>
+
+* A solution that Fresho’s CTO Perryn Fowler came up with and that we follow is
+  to split these integration tests up according to what it is that they’re
+  responsible for testing.
+* At this level, we believe there are two main responsibilities of tests The
+* first is what we like to refer to as Flows
+
+</Notes>
+
+---
+
+# Flows
+
+* Driven by external interface
+* Particular sequence of events
+* Effects of a series of interactions
+* Multiple actors
+
+<Notes>
+
+* Test the entire system works together the ways it’s expected to.
+* Primarily about the follow on effects of user and system interactions
+* Dependant on a particular sequence of event taking place
+* And typically involve multiple actors 
+
+And the second, we refer to as Mechanics
+
+</Notes>
+
+---
+
+# Mechanics
+
+* Driven by partial interface
+* Immediate behaviour of one unit
+* Single actor
+* No critical flow on effects 
+* Exercise in more detail
+
+<Notes>
+
+* About testing the intricacies of individual pieces of functionality
+* They determine the immediate behaviour of a single action
+* This behaviour typically has no flow on effects
+* Focussing in on a small part allows these behaviours to be exercised in more
+  detail
+
+</Notes>
+
+---
+
+# A solution
+
+* Separate different responsibilities
+* Organise tests
+* Scale your test suite!
+
+<Notes>
+
+* Splitting integration tests by responsibility like this
+* Helps us find tests in the future for modification 
+* Helps us decide where to write new tests
+* As a side effect, naming those test files becomes easier too, 
+* Because their naming is more explicitly linked to the examples inside
+* And most importantly, your test suite suddenly becomes scalable!
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/marionette.jpg" />
+
+<Notes>
+
+* using a marionette as a metaphor
+* the woden panel is our user interface and making the puppet walk is a flow as
+  there are flow on effects of lifting 1 foot in that the other foot has to go
+  down
+* manipulating a single leg via the hip and string to the foot would be a
+  mechanic to allow a leg to make a step
+* manpulating the leg by itself would be a unit test
+
+</Notes>
+
+---
+
+<div style={{float: 'left'}}>
+
+# Flows  
+
+## “Making a puppet walk”
+
+</div>
+
+<div style={{float: 'right'}}>
+
+# Mechanics
+
+## “Manipulating a single leg”
+
+</div>
+
+<Notes>
+
+* “making the puppet walk” is about flow on effects of the user manipulating a wooden panel
+* “manipulating a single leg”  is about the mechanics of a single legs movements
+
+</Notes>
+
+---
+
+# Let's take a look
+
+## code dive
+
+<Notes>
+
+* flow vs mechanic code exercise
+
+</Notes>
+
+---
+
+export default Layout
+
+<BGImage src="images/flow_mechanic_extraction.jpg" />
+
+<Notes>
+
+* extraction of flows and mechanics from the monster file
+
+</Notes>
+
+---
+
+# 3. Flows vs Mechanics - Review
+
+* Organise integration tests
+* Document how system works
+* Flows
+    * Effects of a series of interactions
+    * Multiple actors
+* Mechanics
+    * Immediate behaviour of one unit
+    * Single actor
+
+<Notes>
+
+* Flows and Mechanics are all integration tests
+* We split them up based on their responsibilities as a way to organise these
+  tests
+* Means examples are easier to find for future modification
+* Clear way to document how the system behaves
+* Flows 
+* Test flow on effects of a series of user interactions
+* Mechanics 
+* Test immediate behaviours of a single action within the system
+* Flows and Mechanics are another tool on top of When/Then steps that help
+  organise our tests and describe intent which will help in building out a new
+  feature in the next module
+* https://create.kahoot.it/share/review-module-3-flows-vs-mechanics/ef79ddcd-076e-4a0c-867d-2041e6d22c73 
+
+</Notes>
+
+---
+
+# Module 4
+
+## Add a Feature with Outside-In BDD
+
+---
+
+# Testing boundaries
+
+* Every test is a unit test
+
+
+---
+
+# Testing boundaries
+
+* Flow
+    * Full system integration
+    * API, controller, model, db and frontend
+    * Test flows with core alternate outcomes
+
+---
+
+# Testing boundaries
+
+* Mechanic
+    * Full system integration
+    * API, controller, model, db and single component
+    * Test user experience when errors/loading occur
+
+
+---
+
+# Testing boundaries
+
+* Component
+    * Isolated unit
+    * Test wrong/missing params passed in
+
+
+---
+
+# Testing boundaries
+
+* API
+    * Backend integration
+    * Test valid/invalid request params
+    * Test response to valid/invalid params
+
+---
+
+# Testing boundaries
+
+* Controller
+    * Isolated unit
+    * Test collaboration with other units
+
+
+---
+
+# Testing boundaries
+
+* Model (domain)
+    * Isolated unit
+    * Test data retrieval
+    * Test actions performed on that data
+
+---
+
+# New feature
+
+* What is the new feature?
+* How do we drive this feature with BDD?
+
+---
+
+# Let's take a look
+
+## code      dive
+
+---
+
+# Complete the feature
+
+* Flow - pending
+* Mechanic - assert age shows up in profile page
+* Component - render age in profile component
+* API - show view responds with age value
+* Controller - show view responds with age value
+* Model - TDD age method 
+    * return nil when player does not have dob
+    * calculate age when birthday is today
+    * calculate age when birthday is tomorrow
+    * Hint: Timecop.freeze in gemfile
+
+---
+
+# Complete the feature
+
+```
+git pull --rebase 	OR 
+git clone git@github.com/failure-driven/bdd-workshop-app.git
+```
+
+* docs/complete_the_feature_challenge.md
+* complete solution by [date]
+* tweet us if you get stuck @selenasmall88 @saramic
+
+---
+
+# Image credits
+
+* Photo by Sean Stratton on Unsplash slide 1
+* https://medium.com/@Cyrdup/unit-testing-yourea-doing-it-wrong-407a07692989 slide 6
+* Photo by Nicolas Thomas on Unsplash slide 9
+* Photo by israel palacio on Unsplash slide 15
+* Photo by Ugne Vasyliute on Unsplash slide 20
+* Photo by Jeremy Bishop on Unsplash slide 21
+* Photo by Ravi Pinisetti on Unsplash slide 23
+* https://www.instagram.com/_bahamasgirl_/ slide 29
+* Photo by Blake Cheek on Unsplash module 4
+* Photo by Jakob Boman on Unsplash module 4
+
+---
+
+# RailsConf 2019
+
+<Image
+  style={{ width: '300px', height: '300px', margin: 'auto' }}
+  src="images/railsconf2019.png" />
+
+Abigail Phoenix & Marty Haught
+
+---
+
+# Melbourne Ruby & Dev community
+
+<Image
+  style={{ width: '368px', height: '300px', margin: 'auto' }}
+  src="images/ruby.png" />
+
+Paal Ringstad from @LeWagonMEL
+Jessie Wang from Code Mentoring Melbourne
+@ceels  @NessNimmo  @Quintrino
+
+---
+
+# Fresho
+
+<Image
+  style={{ width: '300px', height: '300px', margin: 'auto' }}
+  src="images/fresho_logo_green.svg" />
+
+Huw Birrell & James Andronis
+
+Fresho Dev Team
+Dave, Patrick, Mark, Dan
+
+---
+
+# Perryn Fowler
+
+<Image
+  style={{ width: '300px', height: '300px', margin: 'auto' }}
+  src="images/perryn.png" />
+
+@perrynfowler
+
+---
+
+export default Layout
+
+<BGImage src="images/failure_driven.jpg" />
+
+Thank You
+
+https://failure-driven.com
 

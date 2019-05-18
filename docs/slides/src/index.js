@@ -1,3 +1,8 @@
-import Layout from './layout'
+import Layout from './layout';
+import BGImage from './bg-image';
+import Theme from './theme';
 
-export { Layout }
+export { BGImage, Layout }
+
+export default Theme;
+

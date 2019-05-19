@@ -55,7 +55,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
       handle: 'the-handle',
       name: 'the-name',
       email: 'the-email',
-      birthday: 'the-birthday',
+      birthday: 'the-birthday'
     ).permit(:handle, :name, :email, :birthday)
 
     player = double(Player, id: 'the-id', update!: {})
@@ -69,7 +69,7 @@ RSpec.describe Api::V1::ProfilesController, type: :controller do
         handle: 'the-handle',
         name: 'the-name',
         email: 'the-email',
-        birthday: 'the-birthday',
+        birthday: 'the-birthday'
       }
     }, format: :json
 

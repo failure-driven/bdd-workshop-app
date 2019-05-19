@@ -86,7 +86,7 @@ describe('OurForm', () => {
             handle: 'a-handle',
             name: 'a-name',
             email: 'an-email',
-            birthday: 'a-birthday'
+            birthday: 'a-birthday',
           }}
         />
       );

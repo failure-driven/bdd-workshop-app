@@ -79,7 +79,7 @@ feature 'Playing the game', js: true do
 
     And 'submits her birthday "04/08/1957"' do
       focus_on(:form).form_for('profile').submit!(
-        birthday: "04/08/1957"
+        birthday: '04/08/1957'
       )
     end
 
@@ -96,7 +96,7 @@ feature 'Playing the game', js: true do
         handle: 'BBCmicro',
         email: 'sophie.wilson@acorn.co.uk',
         name: 'Sophie Wilson',
-        age: '61',
+        age: '61'
       )
     end
 

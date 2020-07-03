@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/bdd-workshop-app
     docker:
-      - image: circleci/ruby:2.6.2-stretch-node
+      - image: circleci/ruby:2.6.2-stretch-node-browsers
         environment:
           PGHOST: localhost
           PGUSER: your-app-name
@@ -16,12 +16,6 @@ jobs:
           POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
-
-      - run:
-          name: "Update Node.js"
-          command: |
-            curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
-            curl https://www.npmjs.com/install.sh | sudo bash
 
       - run:
           name: Check current version of node

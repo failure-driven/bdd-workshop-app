@@ -13,11 +13,12 @@ jobs:
           POSTGRES_USER: your-app-name
           POSTGRES_DB: your-app-name_test
           POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
 
       - run:
-          name: 'Update Node.js'
+          name: "Update Node.js"
           command: |
             curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
@@ -76,6 +77,4 @@ jobs:
       - run: yarn test
 
       - run: bundle exec rspec spec/{controllers,api_acceptance}/
-
       #- run: bundle exec rspec spec/features
-

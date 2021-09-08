@@ -45,7 +45,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'
-  gem 'better_errors', '2.1.1'
+  gem 'better_errors', '2.8.0'
 
   gem 'rubocop'
   gem 'rubocop-performance'
